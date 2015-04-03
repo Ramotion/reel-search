@@ -8,18 +8,30 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, FlowDataDestination {
 
+    @IBOutlet weak var textField: UITextField!
+    var reactor: TextFieldReactor<SimplePrefixQueryDataSource, ViewController>!
+    
+    @IBOutlet weak var tableView: UITableView!
+    var wrapper: TableViewDataWrapper<UITableViewCell>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        reactor = TextFieldReactor(textField: textField, dataFlow: SimplePrefixQueryDataSource(data) *> self)
+        wrapper = TableViewDataWrapper(tableView: tableView, cellId: "The Cell")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private let data: [String] = [
+        "hello",
+        "world",
+        "bar",
+        "baz",
+        "boron"
+    ]
+    
+    func processData(data: [String]) {
+        println(data)
     }
-
-
 }
-

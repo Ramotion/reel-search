@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E98538F1ACD77C600DA5F0E /* RAMReel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E98538E1ACD77C600DA5F0E /* RAMReel.swift */; };
+		9E9853901ACD77C600DA5F0E /* RAMReel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E98538E1ACD77C600DA5F0E /* RAMReel.swift */; };
 		9EC670FB1ACD4249003ACE2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC670FA1ACD4249003ACE2A /* AppDelegate.swift */; };
-		9EC670FE1ACD4249003ACE2A /* RAMReel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9EC670FC1ACD4249003ACE2A /* RAMReel.xcdatamodeld */; };
 		9EC671001ACD4249003ACE2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC670FF1ACD4249003ACE2A /* ViewController.swift */; };
 		9EC671031ACD4249003ACE2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EC671011ACD4249003ACE2A /* Main.storyboard */; };
 		9EC671051ACD4249003ACE2A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EC671041ACD4249003ACE2A /* Images.xcassets */; };
 		9EC671081ACD4249003ACE2A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC671061ACD4249003ACE2A /* LaunchScreen.xib */; };
 		9EC671141ACD4249003ACE2A /* RAMReelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC671131ACD4249003ACE2A /* RAMReelTests.swift */; };
+		9ECAE8701ACEB83100138F01 /* DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECAE86F1ACEB83100138F01 /* DataFlow.swift */; };
+		9ECAE8711ACEB83100138F01 /* DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECAE86F1ACEB83100138F01 /* DataFlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,10 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E98538E1ACD77C600DA5F0E /* RAMReel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMReel.swift; sourceTree = "<group>"; };
 		9EC670F51ACD4249003ACE2A /* RAMReel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RAMReel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EC670F91ACD4249003ACE2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EC670FA1ACD4249003ACE2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9EC670FD1ACD4249003ACE2A /* RAMReel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RAMReel.xcdatamodel; sourceTree = "<group>"; };
 		9EC670FF1ACD4249003ACE2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9EC671021ACD4249003ACE2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9EC671041ACD4249003ACE2A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -38,6 +41,7 @@
 		9EC6710D1ACD4249003ACE2A /* RAMReelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RAMReelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EC671121ACD4249003ACE2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EC671131ACD4249003ACE2A /* RAMReelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMReelTests.swift; sourceTree = "<group>"; };
+		9ECAE86F1ACEB83100138F01 /* DataFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFlow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +88,9 @@
 				9EC671011ACD4249003ACE2A /* Main.storyboard */,
 				9EC671041ACD4249003ACE2A /* Images.xcassets */,
 				9EC671061ACD4249003ACE2A /* LaunchScreen.xib */,
-				9EC670FC1ACD4249003ACE2A /* RAMReel.xcdatamodeld */,
 				9EC670F81ACD4249003ACE2A /* Supporting Files */,
+				9E98538E1ACD77C600DA5F0E /* RAMReel.swift */,
+				9ECAE86F1ACEB83100138F01 /* DataFlow.swift */,
 			);
 			path = RAMReel;
 			sourceTree = "<group>";
@@ -216,8 +221,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EC671001ACD4249003ACE2A /* ViewController.swift in Sources */,
-				9EC670FE1ACD4249003ACE2A /* RAMReel.xcdatamodeld in Sources */,
 				9EC670FB1ACD4249003ACE2A /* AppDelegate.swift in Sources */,
+				9E98538F1ACD77C600DA5F0E /* RAMReel.swift in Sources */,
+				9ECAE8701ACEB83100138F01 /* DataFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +231,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E9853901ACD77C600DA5F0E /* RAMReel.swift in Sources */,
+				9ECAE8711ACEB83100138F01 /* DataFlow.swift in Sources */,
 				9EC671141ACD4249003ACE2A /* RAMReelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +423,7 @@
 				9EC671191ACD4249003ACE2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9EC6711A1ACD4249003ACE2A /* Build configuration list for PBXNativeTarget "RAMReelTests" */ = {
 			isa = XCConfigurationList;
@@ -423,21 +432,9 @@
 				9EC6711C1ACD4249003ACE2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		9EC670FC1ACD4249003ACE2A /* RAMReel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				9EC670FD1ACD4249003ACE2A /* RAMReel.xcdatamodel */,
-			);
-			currentVersion = 9EC670FD1ACD4249003ACE2A /* RAMReel.xcdatamodel */;
-			path = RAMReel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 9EC670ED1ACD4249003ACE2A /* Project object */;
 }
