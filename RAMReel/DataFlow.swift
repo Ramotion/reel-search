@@ -8,7 +8,7 @@
 
 import UIKit
 
-infix operator *> { precedence 200 }
+infix operator *> { precedence 180 }
 
 public func *>
     <

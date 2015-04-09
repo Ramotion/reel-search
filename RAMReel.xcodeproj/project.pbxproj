@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9E98538F1ACD77C600DA5F0E /* RAMReel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E98538E1ACD77C600DA5F0E /* RAMReel.swift */; };
-		9E9853901ACD77C600DA5F0E /* RAMReel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E98538E1ACD77C600DA5F0E /* RAMReel.swift */; };
+		9E98538F1ACD77C600DA5F0E /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E98538E1ACD77C600DA5F0E /* TextFieldReactor.swift */; };
+		9E9853901ACD77C600DA5F0E /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E98538E1ACD77C600DA5F0E /* TextFieldReactor.swift */; };
 		9EC670FB1ACD4249003ACE2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC670FA1ACD4249003ACE2A /* AppDelegate.swift */; };
 		9EC671001ACD4249003ACE2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC670FF1ACD4249003ACE2A /* ViewController.swift */; };
 		9EC671031ACD4249003ACE2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EC671011ACD4249003ACE2A /* Main.storyboard */; };
@@ -17,6 +17,10 @@
 		9EC671141ACD4249003ACE2A /* RAMReelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC671131ACD4249003ACE2A /* RAMReelTests.swift */; };
 		9ECAE8701ACEB83100138F01 /* DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECAE86F1ACEB83100138F01 /* DataFlow.swift */; };
 		9ECAE8711ACEB83100138F01 /* DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECAE86F1ACEB83100138F01 /* DataFlow.swift */; };
+		9ED3EFED1AD67C90003C3056 /* CollectionViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3EFEC1AD67C90003C3056 /* CollectionViewWrapper.swift */; };
+		9ED3EFEE1AD67C90003C3056 /* CollectionViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3EFEC1AD67C90003C3056 /* CollectionViewWrapper.swift */; };
+		9ED3EFF61AD6BC2B003C3056 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3EFF51AD6BC2B003C3056 /* CollectionViewLayout.swift */; };
+		9ED3EFF71AD6BC2B003C3056 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3EFF51AD6BC2B003C3056 /* CollectionViewLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9E98538E1ACD77C600DA5F0E /* RAMReel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMReel.swift; sourceTree = "<group>"; };
+		9E98538E1ACD77C600DA5F0E /* TextFieldReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldReactor.swift; sourceTree = "<group>"; };
 		9EC670F51ACD4249003ACE2A /* RAMReel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RAMReel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EC670F91ACD4249003ACE2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EC670FA1ACD4249003ACE2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +46,8 @@
 		9EC671121ACD4249003ACE2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EC671131ACD4249003ACE2A /* RAMReelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMReelTests.swift; sourceTree = "<group>"; };
 		9ECAE86F1ACEB83100138F01 /* DataFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFlow.swift; sourceTree = "<group>"; };
+		9ED3EFEC1AD67C90003C3056 /* CollectionViewWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWrapper.swift; sourceTree = "<group>"; };
+		9ED3EFF51AD6BC2B003C3056 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +95,10 @@
 				9EC671041ACD4249003ACE2A /* Images.xcassets */,
 				9EC671061ACD4249003ACE2A /* LaunchScreen.xib */,
 				9EC670F81ACD4249003ACE2A /* Supporting Files */,
-				9E98538E1ACD77C600DA5F0E /* RAMReel.swift */,
 				9ECAE86F1ACEB83100138F01 /* DataFlow.swift */,
+				9E98538E1ACD77C600DA5F0E /* TextFieldReactor.swift */,
+				9ED3EFEC1AD67C90003C3056 /* CollectionViewWrapper.swift */,
+				9ED3EFF51AD6BC2B003C3056 /* CollectionViewLayout.swift */,
 			);
 			path = RAMReel;
 			sourceTree = "<group>";
@@ -220,9 +228,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ED3EFF61AD6BC2B003C3056 /* CollectionViewLayout.swift in Sources */,
 				9EC671001ACD4249003ACE2A /* ViewController.swift in Sources */,
 				9EC670FB1ACD4249003ACE2A /* AppDelegate.swift in Sources */,
-				9E98538F1ACD77C600DA5F0E /* RAMReel.swift in Sources */,
+				9E98538F1ACD77C600DA5F0E /* TextFieldReactor.swift in Sources */,
+				9ED3EFED1AD67C90003C3056 /* CollectionViewWrapper.swift in Sources */,
 				9ECAE8701ACEB83100138F01 /* DataFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,9 +241,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E9853901ACD77C600DA5F0E /* RAMReel.swift in Sources */,
+				9E9853901ACD77C600DA5F0E /* TextFieldReactor.swift in Sources */,
+				9ED3EFEE1AD67C90003C3056 /* CollectionViewWrapper.swift in Sources */,
 				9ECAE8711ACEB83100138F01 /* DataFlow.swift in Sources */,
 				9EC671141ACD4249003ACE2A /* RAMReelTests.swift in Sources */,
+				9ED3EFF71AD6BC2B003C3056 /* CollectionViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
