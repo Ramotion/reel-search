@@ -24,7 +24,7 @@ protocol WrapperProtocol {
     
 }
 
-public class TableViewDataWrapper
+public final class CollectionViewWrapper
     <
     DataType,
     CellClass: UICollectionViewCell
@@ -33,13 +33,13 @@ public class TableViewDataWrapper
         DataType == CellClass.DataType
     >: FlowDataDestination, WrapperProtocol {
     
-    public func processData(data: [DataType]) {
-        self.data = data
-    }
     var data: [DataType] = [] {
         didSet {
             collectionView.reloadData()
         }
+    }
+    public func processData(data: [DataType]) {
+        self.data = data
     }
     
     let collectionView: UICollectionView
@@ -48,7 +48,7 @@ public class TableViewDataWrapper
     let dataSource = CollectionViewDataSource()
     let delegate   = CollectionViewDelegate()
     
-    init(collectionView: UICollectionView, cellId: String) {
+    public init(collectionView: UICollectionView, cellId: String) {
         self.collectionView = collectionView
         self.cellId         = cellId
         
@@ -58,7 +58,7 @@ public class TableViewDataWrapper
         collectionView.dataSource = dataSource
     }
     
-    func createCell(cv: UICollectionView, _ ip: NSIndexPath) -> UICollectionViewCell {
+    public func createCell(cv: UICollectionView, _ ip: NSIndexPath) -> UICollectionViewCell {
         let cell = cv.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: ip) as! CellClass
         
         let row  = ip.row
@@ -69,7 +69,7 @@ public class TableViewDataWrapper
         return cell as UICollectionViewCell
     }
     
-    var numberOfCells:Int {
+    public var numberOfCells:Int {
         return data.count
     }
     
@@ -92,7 +92,6 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
 }
 
 class CollectionViewDelegate: NSObject, UICollectionViewDelegate {
-    
     
     
 }

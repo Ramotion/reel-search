@@ -1,5 +1,5 @@
 //
-//  CollectionViewLayout.swift
+//  RAMCollectionViewLayout.swift
 //  RAMReel
 //
 //  Created by Mikhail Stepkin on 4/9/15.
@@ -8,7 +8,8 @@
 
 import UIKit
 
-public class CollectionViewLayout: UICollectionViewFlowLayout {
+@objc(RAMCollectionViewLayout)
+public class RAMCollectionViewLayout: UICollectionViewFlowLayout {
     
     func itemOffset(item: Int) -> CGFloat {
         

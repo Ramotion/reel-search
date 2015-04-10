@@ -39,7 +39,7 @@ public final class TextFieldReactor
     
     private let target:Target
     
-    init(textField: UITextField, dataFlow: DataFlow<DS, DD>) {
+    private init(textField: UITextField, dataFlow: DataFlow<DS, DD>) {
         self.textField  = textField
         self.dataFlow   = dataFlow
         

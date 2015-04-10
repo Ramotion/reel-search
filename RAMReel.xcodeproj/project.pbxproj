@@ -440,6 +440,7 @@
 				9E82B3941AD7EEAE0063F1B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9E82B3951AD7EEAE0063F1B0 /* Build configuration list for PBXNativeTarget "RAMReelTests" */ = {
 			isa = XCConfigurationList;
@@ -448,6 +449,7 @@
 				9E82B3971AD7EEAE0063F1B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
