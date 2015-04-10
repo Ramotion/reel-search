@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-infix operator &> { precedence 175 }
+infix operator <&> { precedence 175 }
 
-public func &>
+public func <&>
     <
     DS: FlowDataSource,
     DD: FlowDataDestination

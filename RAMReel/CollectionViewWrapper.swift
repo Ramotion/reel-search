@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ConfigurableCell {
+public protocol ConfigurableCell {
     
     typealias DataType
     
@@ -24,7 +24,7 @@ protocol WrapperProtocol {
     
 }
 
-class TableViewDataWrapper
+public class TableViewDataWrapper
     <
     DataType,
     CellClass: UICollectionViewCell
@@ -33,7 +33,7 @@ class TableViewDataWrapper
         DataType == CellClass.DataType
     >: FlowDataDestination, WrapperProtocol {
     
-    func processData(data: [DataType]) {
+    public func processData(data: [DataType]) {
         self.data = data
     }
     var data: [DataType] = [] {
@@ -46,6 +46,7 @@ class TableViewDataWrapper
     let cellId: String
     
     let dataSource = CollectionViewDataSource()
+    let delegate   = CollectionViewDelegate()
     
     init(collectionView: UICollectionView, cellId: String) {
         self.collectionView = collectionView
@@ -87,5 +88,11 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         
         return cell
     }
+    
+}
+
+class CollectionViewDelegate: NSObject, UICollectionViewDelegate {
+    
+    
     
 }

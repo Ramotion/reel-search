@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9EC670F41ACD4249003ACE2A"
-               BuildableName = "RAMReel.app"
+               BlueprintIdentifier = "9E82B37B1AD7EEAE0063F1B0"
+               BuildableName = "RAMReel.framework"
                BlueprintName = "RAMReel"
                ReferencedContainer = "container:RAMReel.xcodeproj">
             </BuildableReference>
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9EC6710C1ACD4249003ACE2A"
+               BlueprintIdentifier = "9E82B3861AD7EEAE0063F1B0"
                BuildableName = "RAMReelTests.xctest"
                BlueprintName = "RAMReelTests"
                ReferencedContainer = "container:RAMReel.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9EC6710C1ACD4249003ACE2A"
+               BlueprintIdentifier = "9E82B3861AD7EEAE0063F1B0"
                BuildableName = "RAMReelTests.xctest"
                BlueprintName = "RAMReelTests"
                ReferencedContainer = "container:RAMReel.xcodeproj">
@@ -56,8 +56,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9EC670F41ACD4249003ACE2A"
-            BuildableName = "RAMReel.app"
+            BlueprintIdentifier = "9E82B37B1AD7EEAE0063F1B0"
+            BuildableName = "RAMReel.framework"
             BlueprintName = "RAMReel"
             ReferencedContainer = "container:RAMReel.xcodeproj">
          </BuildableReference>
@@ -72,16 +72,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9EC670F41ACD4249003ACE2A"
-            BuildableName = "RAMReel.app"
+            BlueprintIdentifier = "9E82B37B1AD7EEAE0063F1B0"
+            BuildableName = "RAMReel.framework"
             BlueprintName = "RAMReel"
             ReferencedContainer = "container:RAMReel.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -91,16 +90,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9EC670F41ACD4249003ACE2A"
-            BuildableName = "RAMReel.app"
+            BlueprintIdentifier = "9E82B37B1AD7EEAE0063F1B0"
+            BuildableName = "RAMReel.framework"
             BlueprintName = "RAMReel"
             ReferencedContainer = "container:RAMReel.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

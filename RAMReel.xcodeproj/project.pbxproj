@@ -7,137 +7,151 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9E98538F1ACD77C600DA5F0E /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E98538E1ACD77C600DA5F0E /* TextFieldReactor.swift */; };
-		9E9853901ACD77C600DA5F0E /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E98538E1ACD77C600DA5F0E /* TextFieldReactor.swift */; };
-		9EC670FB1ACD4249003ACE2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC670FA1ACD4249003ACE2A /* AppDelegate.swift */; };
-		9EC671001ACD4249003ACE2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC670FF1ACD4249003ACE2A /* ViewController.swift */; };
-		9EC671031ACD4249003ACE2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EC671011ACD4249003ACE2A /* Main.storyboard */; };
-		9EC671051ACD4249003ACE2A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EC671041ACD4249003ACE2A /* Images.xcassets */; };
-		9EC671081ACD4249003ACE2A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC671061ACD4249003ACE2A /* LaunchScreen.xib */; };
-		9EC671141ACD4249003ACE2A /* RAMReelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC671131ACD4249003ACE2A /* RAMReelTests.swift */; };
-		9ECAE8701ACEB83100138F01 /* DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECAE86F1ACEB83100138F01 /* DataFlow.swift */; };
-		9ECAE8711ACEB83100138F01 /* DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECAE86F1ACEB83100138F01 /* DataFlow.swift */; };
-		9ED3EFED1AD67C90003C3056 /* CollectionViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3EFEC1AD67C90003C3056 /* CollectionViewWrapper.swift */; };
-		9ED3EFEE1AD67C90003C3056 /* CollectionViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3EFEC1AD67C90003C3056 /* CollectionViewWrapper.swift */; };
-		9ED3EFF61AD6BC2B003C3056 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3EFF51AD6BC2B003C3056 /* CollectionViewLayout.swift */; };
-		9ED3EFF71AD6BC2B003C3056 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3EFF51AD6BC2B003C3056 /* CollectionViewLayout.swift */; };
+		9E82B3821AD7EEAE0063F1B0 /* RAMReel.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E82B3811AD7EEAE0063F1B0 /* RAMReel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E82B3881AD7EEAE0063F1B0 /* RAMReel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E82B37C1AD7EEAE0063F1B0 /* RAMReel.framework */; };
+		9E82B38F1AD7EEAE0063F1B0 /* RAMReelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B38E1AD7EEAE0063F1B0 /* RAMReelTests.swift */; };
+		9E82B39D1AD7EED30063F1B0 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3981AD7EED30063F1B0 /* CollectionViewLayout.swift */; };
+		9E82B39E1AD7EED30063F1B0 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3981AD7EED30063F1B0 /* CollectionViewLayout.swift */; };
+		9E82B39F1AD7EED30063F1B0 /* CollectionViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3991AD7EED30063F1B0 /* CollectionViewWrapper.swift */; };
+		9E82B3A01AD7EED30063F1B0 /* CollectionViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3991AD7EED30063F1B0 /* CollectionViewWrapper.swift */; };
+		9E82B3A11AD7EED30063F1B0 /* DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B39A1AD7EED30063F1B0 /* DataFlow.swift */; };
+		9E82B3A21AD7EED30063F1B0 /* DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B39A1AD7EED30063F1B0 /* DataFlow.swift */; };
+		9E82B3A31AD7EED30063F1B0 /* RAMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B39B1AD7EED30063F1B0 /* RAMCell.swift */; };
+		9E82B3A41AD7EED30063F1B0 /* RAMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B39B1AD7EED30063F1B0 /* RAMCell.swift */; };
+		9E82B3A51AD7EED30063F1B0 /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B39C1AD7EED30063F1B0 /* TextFieldReactor.swift */; };
+		9E82B3A61AD7EED30063F1B0 /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B39C1AD7EED30063F1B0 /* TextFieldReactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9EC6710E1ACD4249003ACE2A /* PBXContainerItemProxy */ = {
+		9E82B3891AD7EEAE0063F1B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9EC670ED1ACD4249003ACE2A /* Project object */;
+			containerPortal = 9E82B3731AD7EEAE0063F1B0 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9EC670F41ACD4249003ACE2A;
+			remoteGlobalIDString = 9E82B37B1AD7EEAE0063F1B0;
 			remoteInfo = RAMReel;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9E98538E1ACD77C600DA5F0E /* TextFieldReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldReactor.swift; sourceTree = "<group>"; };
-		9EC670F51ACD4249003ACE2A /* RAMReel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RAMReel.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9EC670F91ACD4249003ACE2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9EC670FA1ACD4249003ACE2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9EC670FF1ACD4249003ACE2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9EC671021ACD4249003ACE2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9EC671041ACD4249003ACE2A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9EC671071ACD4249003ACE2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		9EC6710D1ACD4249003ACE2A /* RAMReelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RAMReelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9EC671121ACD4249003ACE2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9EC671131ACD4249003ACE2A /* RAMReelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMReelTests.swift; sourceTree = "<group>"; };
-		9ECAE86F1ACEB83100138F01 /* DataFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFlow.swift; sourceTree = "<group>"; };
-		9ED3EFEC1AD67C90003C3056 /* CollectionViewWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWrapper.swift; sourceTree = "<group>"; };
-		9ED3EFF51AD6BC2B003C3056 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
+		9E82B37C1AD7EEAE0063F1B0 /* RAMReel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RAMReel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E82B3801AD7EEAE0063F1B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E82B3811AD7EEAE0063F1B0 /* RAMReel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RAMReel.h; sourceTree = "<group>"; };
+		9E82B3871AD7EEAE0063F1B0 /* RAMReelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RAMReelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E82B38D1AD7EEAE0063F1B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E82B38E1AD7EEAE0063F1B0 /* RAMReelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMReelTests.swift; sourceTree = "<group>"; };
+		9E82B3981AD7EED30063F1B0 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
+		9E82B3991AD7EED30063F1B0 /* CollectionViewWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWrapper.swift; sourceTree = "<group>"; };
+		9E82B39A1AD7EED30063F1B0 /* DataFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFlow.swift; sourceTree = "<group>"; };
+		9E82B39B1AD7EED30063F1B0 /* RAMCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMCell.swift; sourceTree = "<group>"; };
+		9E82B39C1AD7EED30063F1B0 /* TextFieldReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldReactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9EC670F21ACD4249003ACE2A /* Frameworks */ = {
+		9E82B3781AD7EEAE0063F1B0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9EC6710A1ACD4249003ACE2A /* Frameworks */ = {
+		9E82B3841AD7EEAE0063F1B0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E82B3881AD7EEAE0063F1B0 /* RAMReel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9EC670EC1ACD4249003ACE2A = {
+		9E82B3721AD7EEAE0063F1B0 = {
 			isa = PBXGroup;
 			children = (
-				9EC670F71ACD4249003ACE2A /* RAMReel */,
-				9EC671101ACD4249003ACE2A /* RAMReelTests */,
-				9EC670F61ACD4249003ACE2A /* Products */,
+				9E82B37E1AD7EEAE0063F1B0 /* RAMReel */,
+				9E82B38B1AD7EEAE0063F1B0 /* RAMReelTests */,
+				9E82B37D1AD7EEAE0063F1B0 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9EC670F61ACD4249003ACE2A /* Products */ = {
+		9E82B37D1AD7EEAE0063F1B0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9EC670F51ACD4249003ACE2A /* RAMReel.app */,
-				9EC6710D1ACD4249003ACE2A /* RAMReelTests.xctest */,
+				9E82B37C1AD7EEAE0063F1B0 /* RAMReel.framework */,
+				9E82B3871AD7EEAE0063F1B0 /* RAMReelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9EC670F71ACD4249003ACE2A /* RAMReel */ = {
+		9E82B37E1AD7EEAE0063F1B0 /* RAMReel */ = {
 			isa = PBXGroup;
 			children = (
-				9EC670FA1ACD4249003ACE2A /* AppDelegate.swift */,
-				9EC670FF1ACD4249003ACE2A /* ViewController.swift */,
-				9EC671011ACD4249003ACE2A /* Main.storyboard */,
-				9EC671041ACD4249003ACE2A /* Images.xcassets */,
-				9EC671061ACD4249003ACE2A /* LaunchScreen.xib */,
-				9EC670F81ACD4249003ACE2A /* Supporting Files */,
-				9ECAE86F1ACEB83100138F01 /* DataFlow.swift */,
-				9E98538E1ACD77C600DA5F0E /* TextFieldReactor.swift */,
-				9ED3EFEC1AD67C90003C3056 /* CollectionViewWrapper.swift */,
-				9ED3EFF51AD6BC2B003C3056 /* CollectionViewLayout.swift */,
+				9E82B3811AD7EEAE0063F1B0 /* RAMReel.h */,
+				9E82B3A71AD7EED70063F1B0 /* Code */,
+				9E82B37F1AD7EEAE0063F1B0 /* Supporting Files */,
 			);
 			path = RAMReel;
 			sourceTree = "<group>";
 		};
-		9EC670F81ACD4249003ACE2A /* Supporting Files */ = {
+		9E82B37F1AD7EEAE0063F1B0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9EC670F91ACD4249003ACE2A /* Info.plist */,
+				9E82B3801AD7EEAE0063F1B0 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9EC671101ACD4249003ACE2A /* RAMReelTests */ = {
+		9E82B38B1AD7EEAE0063F1B0 /* RAMReelTests */ = {
 			isa = PBXGroup;
 			children = (
-				9EC671131ACD4249003ACE2A /* RAMReelTests.swift */,
-				9EC671111ACD4249003ACE2A /* Supporting Files */,
+				9E82B38E1AD7EEAE0063F1B0 /* RAMReelTests.swift */,
+				9E82B38C1AD7EEAE0063F1B0 /* Supporting Files */,
 			);
 			path = RAMReelTests;
 			sourceTree = "<group>";
 		};
-		9EC671111ACD4249003ACE2A /* Supporting Files */ = {
+		9E82B38C1AD7EEAE0063F1B0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9EC671121ACD4249003ACE2A /* Info.plist */,
+				9E82B38D1AD7EEAE0063F1B0 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9E82B3A71AD7EED70063F1B0 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				9E82B3981AD7EED30063F1B0 /* CollectionViewLayout.swift */,
+				9E82B3991AD7EED30063F1B0 /* CollectionViewWrapper.swift */,
+				9E82B39A1AD7EED30063F1B0 /* DataFlow.swift */,
+				9E82B39B1AD7EED30063F1B0 /* RAMCell.swift */,
+				9E82B39C1AD7EED30063F1B0 /* TextFieldReactor.swift */,
+			);
+			name = Code;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		9E82B3791AD7EEAE0063F1B0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E82B3821AD7EEAE0063F1B0 /* RAMReel.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		9EC670F41ACD4249003ACE2A /* RAMReel */ = {
+		9E82B37B1AD7EEAE0063F1B0 /* RAMReel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9EC671171ACD4249003ACE2A /* Build configuration list for PBXNativeTarget "RAMReel" */;
+			buildConfigurationList = 9E82B3921AD7EEAE0063F1B0 /* Build configuration list for PBXNativeTarget "RAMReel" */;
 			buildPhases = (
-				9EC670F11ACD4249003ACE2A /* Sources */,
-				9EC670F21ACD4249003ACE2A /* Frameworks */,
-				9EC670F31ACD4249003ACE2A /* Resources */,
+				9E82B3771AD7EEAE0063F1B0 /* Sources */,
+				9E82B3781AD7EEAE0063F1B0 /* Frameworks */,
+				9E82B3791AD7EEAE0063F1B0 /* Headers */,
+				9E82B37A1AD7EEAE0063F1B0 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -145,76 +159,71 @@
 			);
 			name = RAMReel;
 			productName = RAMReel;
-			productReference = 9EC670F51ACD4249003ACE2A /* RAMReel.app */;
-			productType = "com.apple.product-type.application";
+			productReference = 9E82B37C1AD7EEAE0063F1B0 /* RAMReel.framework */;
+			productType = "com.apple.product-type.framework";
 		};
-		9EC6710C1ACD4249003ACE2A /* RAMReelTests */ = {
+		9E82B3861AD7EEAE0063F1B0 /* RAMReelTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9EC6711A1ACD4249003ACE2A /* Build configuration list for PBXNativeTarget "RAMReelTests" */;
+			buildConfigurationList = 9E82B3951AD7EEAE0063F1B0 /* Build configuration list for PBXNativeTarget "RAMReelTests" */;
 			buildPhases = (
-				9EC671091ACD4249003ACE2A /* Sources */,
-				9EC6710A1ACD4249003ACE2A /* Frameworks */,
-				9EC6710B1ACD4249003ACE2A /* Resources */,
+				9E82B3831AD7EEAE0063F1B0 /* Sources */,
+				9E82B3841AD7EEAE0063F1B0 /* Frameworks */,
+				9E82B3851AD7EEAE0063F1B0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9EC6710F1ACD4249003ACE2A /* PBXTargetDependency */,
+				9E82B38A1AD7EEAE0063F1B0 /* PBXTargetDependency */,
 			);
 			name = RAMReelTests;
 			productName = RAMReelTests;
-			productReference = 9EC6710D1ACD4249003ACE2A /* RAMReelTests.xctest */;
+			productReference = 9E82B3871AD7EEAE0063F1B0 /* RAMReelTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9EC670ED1ACD4249003ACE2A /* Project object */ = {
+		9E82B3731AD7EEAE0063F1B0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Ramotion;
 				TargetAttributes = {
-					9EC670F41ACD4249003ACE2A = {
+					9E82B37B1AD7EEAE0063F1B0 = {
 						CreatedOnToolsVersion = 6.3;
 					};
-					9EC6710C1ACD4249003ACE2A = {
+					9E82B3861AD7EEAE0063F1B0 = {
 						CreatedOnToolsVersion = 6.3;
-						TestTargetID = 9EC670F41ACD4249003ACE2A;
 					};
 				};
 			};
-			buildConfigurationList = 9EC670F01ACD4249003ACE2A /* Build configuration list for PBXProject "RAMReel" */;
+			buildConfigurationList = 9E82B3761AD7EEAE0063F1B0 /* Build configuration list for PBXProject "RAMReel" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
-			mainGroup = 9EC670EC1ACD4249003ACE2A;
-			productRefGroup = 9EC670F61ACD4249003ACE2A /* Products */;
+			mainGroup = 9E82B3721AD7EEAE0063F1B0;
+			productRefGroup = 9E82B37D1AD7EEAE0063F1B0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9EC670F41ACD4249003ACE2A /* RAMReel */,
-				9EC6710C1ACD4249003ACE2A /* RAMReelTests */,
+				9E82B37B1AD7EEAE0063F1B0 /* RAMReel */,
+				9E82B3861AD7EEAE0063F1B0 /* RAMReelTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9EC670F31ACD4249003ACE2A /* Resources */ = {
+		9E82B37A1AD7EEAE0063F1B0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EC671031ACD4249003ACE2A /* Main.storyboard in Resources */,
-				9EC671081ACD4249003ACE2A /* LaunchScreen.xib in Resources */,
-				9EC671051ACD4249003ACE2A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9EC6710B1ACD4249003ACE2A /* Resources */ = {
+		9E82B3851AD7EEAE0063F1B0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -224,62 +233,43 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9EC670F11ACD4249003ACE2A /* Sources */ = {
+		9E82B3771AD7EEAE0063F1B0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9ED3EFF61AD6BC2B003C3056 /* CollectionViewLayout.swift in Sources */,
-				9EC671001ACD4249003ACE2A /* ViewController.swift in Sources */,
-				9EC670FB1ACD4249003ACE2A /* AppDelegate.swift in Sources */,
-				9E98538F1ACD77C600DA5F0E /* TextFieldReactor.swift in Sources */,
-				9ED3EFED1AD67C90003C3056 /* CollectionViewWrapper.swift in Sources */,
-				9ECAE8701ACEB83100138F01 /* DataFlow.swift in Sources */,
+				9E82B3A51AD7EED30063F1B0 /* TextFieldReactor.swift in Sources */,
+				9E82B3A31AD7EED30063F1B0 /* RAMCell.swift in Sources */,
+				9E82B39F1AD7EED30063F1B0 /* CollectionViewWrapper.swift in Sources */,
+				9E82B3A11AD7EED30063F1B0 /* DataFlow.swift in Sources */,
+				9E82B39D1AD7EED30063F1B0 /* CollectionViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9EC671091ACD4249003ACE2A /* Sources */ = {
+		9E82B3831AD7EEAE0063F1B0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E9853901ACD77C600DA5F0E /* TextFieldReactor.swift in Sources */,
-				9ED3EFEE1AD67C90003C3056 /* CollectionViewWrapper.swift in Sources */,
-				9ECAE8711ACEB83100138F01 /* DataFlow.swift in Sources */,
-				9EC671141ACD4249003ACE2A /* RAMReelTests.swift in Sources */,
-				9ED3EFF71AD6BC2B003C3056 /* CollectionViewLayout.swift in Sources */,
+				9E82B3A01AD7EED30063F1B0 /* CollectionViewWrapper.swift in Sources */,
+				9E82B3A41AD7EED30063F1B0 /* RAMCell.swift in Sources */,
+				9E82B3A61AD7EED30063F1B0 /* TextFieldReactor.swift in Sources */,
+				9E82B39E1AD7EED30063F1B0 /* CollectionViewLayout.swift in Sources */,
+				9E82B38F1AD7EEAE0063F1B0 /* RAMReelTests.swift in Sources */,
+				9E82B3A21AD7EED30063F1B0 /* DataFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9EC6710F1ACD4249003ACE2A /* PBXTargetDependency */ = {
+		9E82B38A1AD7EEAE0063F1B0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9EC670F41ACD4249003ACE2A /* RAMReel */;
-			targetProxy = 9EC6710E1ACD4249003ACE2A /* PBXContainerItemProxy */;
+			target = 9E82B37B1AD7EEAE0063F1B0 /* RAMReel */;
+			targetProxy = 9E82B3891AD7EEAE0063F1B0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		9EC671011ACD4249003ACE2A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9EC671021ACD4249003ACE2A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		9EC671061ACD4249003ACE2A /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9EC671071ACD4249003ACE2A /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		9EC671151ACD4249003ACE2A /* Debug */ = {
+		9E82B3901AD7EEAE0063F1B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -298,7 +288,8 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -321,10 +312,12 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		9EC671161ACD4249003ACE2A /* Release */ = {
+		9E82B3911AD7EEAE0063F1B0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -343,6 +336,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -359,33 +353,47 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		9EC671181ACD4249003ACE2A /* Debug */ = {
+		9E82B3931AD7EEAE0063F1B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = RAMReel/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		9EC671191ACD4249003ACE2A /* Release */ = {
+		9E82B3941AD7EEAE0063F1B0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = RAMReel/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		9EC6711B1ACD4249003ACE2A /* Debug */ = {
+		9E82B3961AD7EEAE0063F1B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -397,14 +405,12 @@
 				INFOPLIST_FILE = RAMReelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RAMReel.app/RAMReel";
 			};
 			name = Debug;
 		};
-		9EC6711C1ACD4249003ACE2A /* Release */ = {
+		9E82B3971AD7EEAE0063F1B0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -412,41 +418,38 @@
 				INFOPLIST_FILE = RAMReelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RAMReel.app/RAMReel";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9EC670F01ACD4249003ACE2A /* Build configuration list for PBXProject "RAMReel" */ = {
+		9E82B3761AD7EEAE0063F1B0 /* Build configuration list for PBXProject "RAMReel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9EC671151ACD4249003ACE2A /* Debug */,
-				9EC671161ACD4249003ACE2A /* Release */,
+				9E82B3901AD7EEAE0063F1B0 /* Debug */,
+				9E82B3911AD7EEAE0063F1B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9EC671171ACD4249003ACE2A /* Build configuration list for PBXNativeTarget "RAMReel" */ = {
+		9E82B3921AD7EEAE0063F1B0 /* Build configuration list for PBXNativeTarget "RAMReel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9EC671181ACD4249003ACE2A /* Debug */,
-				9EC671191ACD4249003ACE2A /* Release */,
+				9E82B3931AD7EEAE0063F1B0 /* Debug */,
+				9E82B3941AD7EEAE0063F1B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		9EC6711A1ACD4249003ACE2A /* Build configuration list for PBXNativeTarget "RAMReelTests" */ = {
+		9E82B3951AD7EEAE0063F1B0 /* Build configuration list for PBXNativeTarget "RAMReelTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9EC6711B1ACD4249003ACE2A /* Debug */,
-				9EC6711C1ACD4249003ACE2A /* Release */,
+				9E82B3961AD7EEAE0063F1B0 /* Debug */,
+				9E82B3971AD7EEAE0063F1B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9EC670ED1ACD4249003ACE2A /* Project object */;
+	rootObject = 9E82B3731AD7EEAE0063F1B0 /* Project object */;
 }

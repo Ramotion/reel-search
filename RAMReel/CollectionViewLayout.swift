@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionViewLayout: UICollectionViewFlowLayout {
+public class CollectionViewLayout: UICollectionViewFlowLayout {
     
     func itemOffset(item: Int) -> CGFloat {
         
@@ -18,14 +18,14 @@ class CollectionViewLayout: UICollectionViewFlowLayout {
         return CGFloat(result)
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath:NSIndexPath) -> UICollectionViewLayoutAttributes {
+    override public func layoutAttributesForItemAtIndexPath(indexPath:NSIndexPath) -> UICollectionViewLayoutAttributes {
         let attributes = super.layoutAttributesForItemAtIndexPath(indexPath)
         
         self.modifyLayoutAttributes(attributes)
         return attributes
     }
    
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject] {
+    override public func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject] {
         let allAttributesInRect = super.layoutAttributesForElementsInRect(rect)
         
         for cellAttributes in allAttributesInRect! {
