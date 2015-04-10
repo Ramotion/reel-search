@@ -7,19 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9E82B3821AD7EEAE0063F1B0 /* RAMReel.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E82B3811AD7EEAE0063F1B0 /* RAMReel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9E82B3881AD7EEAE0063F1B0 /* RAMReel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E82B37C1AD7EEAE0063F1B0 /* RAMReel.framework */; };
 		9E82B38F1AD7EEAE0063F1B0 /* RAMReelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B38E1AD7EEAE0063F1B0 /* RAMReelTests.swift */; };
-		9E82B39D1AD7EED30063F1B0 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3981AD7EED30063F1B0 /* CollectionViewLayout.swift */; };
-		9E82B39E1AD7EED30063F1B0 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3981AD7EED30063F1B0 /* CollectionViewLayout.swift */; };
-		9E82B39F1AD7EED30063F1B0 /* CollectionViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3991AD7EED30063F1B0 /* CollectionViewWrapper.swift */; };
-		9E82B3A01AD7EED30063F1B0 /* CollectionViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3991AD7EED30063F1B0 /* CollectionViewWrapper.swift */; };
-		9E82B3A11AD7EED30063F1B0 /* DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B39A1AD7EED30063F1B0 /* DataFlow.swift */; };
-		9E82B3A21AD7EED30063F1B0 /* DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B39A1AD7EED30063F1B0 /* DataFlow.swift */; };
-		9E82B3A31AD7EED30063F1B0 /* RAMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B39B1AD7EED30063F1B0 /* RAMCell.swift */; };
-		9E82B3A41AD7EED30063F1B0 /* RAMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B39B1AD7EED30063F1B0 /* RAMCell.swift */; };
-		9E82B3A51AD7EED30063F1B0 /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B39C1AD7EED30063F1B0 /* TextFieldReactor.swift */; };
-		9E82B3A61AD7EED30063F1B0 /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B39C1AD7EED30063F1B0 /* TextFieldReactor.swift */; };
+		9E82B3ED1AD810460063F1B0 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9E82B3EA1AD810460063F1B0 /* Apache License.txt */; };
+		9E82B3EE1AD810460063F1B0 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E82B3EB1AD810460063F1B0 /* Roboto-Light.ttf */; };
+		9E82B3EF1AD810460063F1B0 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E82B3EB1AD810460063F1B0 /* Roboto-Light.ttf */; };
+		9E82B3F61AD810B50063F1B0 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F01AD810B50063F1B0 /* CollectionViewLayout.swift */; };
+		9E82B3F71AD810B50063F1B0 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F01AD810B50063F1B0 /* CollectionViewLayout.swift */; };
+		9E82B3F81AD810B50063F1B0 /* CollectionViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F11AD810B50063F1B0 /* CollectionViewWrapper.swift */; };
+		9E82B3F91AD810B50063F1B0 /* CollectionViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F11AD810B50063F1B0 /* CollectionViewWrapper.swift */; };
+		9E82B3FA1AD810B50063F1B0 /* DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F21AD810B50063F1B0 /* DataFlow.swift */; };
+		9E82B3FB1AD810B50063F1B0 /* DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F21AD810B50063F1B0 /* DataFlow.swift */; };
+		9E82B3FC1AD810B50063F1B0 /* RAMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F31AD810B50063F1B0 /* RAMCell.swift */; };
+		9E82B3FD1AD810B50063F1B0 /* RAMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F31AD810B50063F1B0 /* RAMCell.swift */; };
+		9E82B3FE1AD810B50063F1B0 /* RAMReel.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E82B3F41AD810B50063F1B0 /* RAMReel.h */; };
+		9E82B3FF1AD810B50063F1B0 /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F51AD810B50063F1B0 /* TextFieldReactor.swift */; };
+		9E82B4001AD810B50063F1B0 /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F51AD810B50063F1B0 /* TextFieldReactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,15 +38,17 @@
 /* Begin PBXFileReference section */
 		9E82B37C1AD7EEAE0063F1B0 /* RAMReel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RAMReel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E82B3801AD7EEAE0063F1B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9E82B3811AD7EEAE0063F1B0 /* RAMReel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RAMReel.h; sourceTree = "<group>"; };
 		9E82B3871AD7EEAE0063F1B0 /* RAMReelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RAMReelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E82B38D1AD7EEAE0063F1B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E82B38E1AD7EEAE0063F1B0 /* RAMReelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMReelTests.swift; sourceTree = "<group>"; };
-		9E82B3981AD7EED30063F1B0 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
-		9E82B3991AD7EED30063F1B0 /* CollectionViewWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWrapper.swift; sourceTree = "<group>"; };
-		9E82B39A1AD7EED30063F1B0 /* DataFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFlow.swift; sourceTree = "<group>"; };
-		9E82B39B1AD7EED30063F1B0 /* RAMCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMCell.swift; sourceTree = "<group>"; };
-		9E82B39C1AD7EED30063F1B0 /* TextFieldReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldReactor.swift; sourceTree = "<group>"; };
+		9E82B3EA1AD810460063F1B0 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Apache License.txt"; path = "Roboto/Apache License.txt"; sourceTree = "<group>"; };
+		9E82B3EB1AD810460063F1B0 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Light.ttf"; path = "Roboto/Roboto-Light.ttf"; sourceTree = "<group>"; };
+		9E82B3F01AD810B50063F1B0 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewLayout.swift; path = Framework/CollectionViewLayout.swift; sourceTree = "<group>"; };
+		9E82B3F11AD810B50063F1B0 /* CollectionViewWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewWrapper.swift; path = Framework/CollectionViewWrapper.swift; sourceTree = "<group>"; };
+		9E82B3F21AD810B50063F1B0 /* DataFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataFlow.swift; path = Framework/DataFlow.swift; sourceTree = "<group>"; };
+		9E82B3F31AD810B50063F1B0 /* RAMCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RAMCell.swift; path = Framework/RAMCell.swift; sourceTree = "<group>"; };
+		9E82B3F41AD810B50063F1B0 /* RAMReel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RAMReel.h; path = Framework/RAMReel.h; sourceTree = "<group>"; };
+		9E82B3F51AD810B50063F1B0 /* TextFieldReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldReactor.swift; path = Framework/TextFieldReactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +91,8 @@
 		9E82B37E1AD7EEAE0063F1B0 /* RAMReel */ = {
 			isa = PBXGroup;
 			children = (
-				9E82B3811AD7EEAE0063F1B0 /* RAMReel.h */,
-				9E82B3A71AD7EED70063F1B0 /* Code */,
+				9E82B3F41AD810B50063F1B0 /* RAMReel.h */,
+				9E82B3A71AD7EED70063F1B0 /* Framework */,
 				9E82B37F1AD7EEAE0063F1B0 /* Supporting Files */,
 			);
 			path = RAMReel;
@@ -96,6 +101,7 @@
 		9E82B37F1AD7EEAE0063F1B0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9E82B3E91AD810250063F1B0 /* Roboto */,
 				9E82B3801AD7EEAE0063F1B0 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -118,16 +124,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9E82B3A71AD7EED70063F1B0 /* Code */ = {
+		9E82B3A71AD7EED70063F1B0 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				9E82B3981AD7EED30063F1B0 /* CollectionViewLayout.swift */,
-				9E82B3991AD7EED30063F1B0 /* CollectionViewWrapper.swift */,
-				9E82B39A1AD7EED30063F1B0 /* DataFlow.swift */,
-				9E82B39B1AD7EED30063F1B0 /* RAMCell.swift */,
-				9E82B39C1AD7EED30063F1B0 /* TextFieldReactor.swift */,
+				9E82B3F01AD810B50063F1B0 /* CollectionViewLayout.swift */,
+				9E82B3F11AD810B50063F1B0 /* CollectionViewWrapper.swift */,
+				9E82B3F21AD810B50063F1B0 /* DataFlow.swift */,
+				9E82B3F31AD810B50063F1B0 /* RAMCell.swift */,
+				9E82B3F51AD810B50063F1B0 /* TextFieldReactor.swift */,
 			);
-			name = Code;
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		9E82B3E91AD810250063F1B0 /* Roboto */ = {
+			isa = PBXGroup;
+			children = (
+				9E82B3EA1AD810460063F1B0 /* Apache License.txt */,
+				9E82B3EB1AD810460063F1B0 /* Roboto-Light.ttf */,
+			);
+			name = Roboto;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +152,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E82B3821AD7EEAE0063F1B0 /* RAMReel.h in Headers */,
+				9E82B3FE1AD810B50063F1B0 /* RAMReel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E82B3EE1AD810460063F1B0 /* Roboto-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +243,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E82B3ED1AD810460063F1B0 /* Apache License.txt in Resources */,
+				9E82B3EF1AD810460063F1B0 /* Roboto-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,11 +255,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E82B3A51AD7EED30063F1B0 /* TextFieldReactor.swift in Sources */,
-				9E82B3A31AD7EED30063F1B0 /* RAMCell.swift in Sources */,
-				9E82B39F1AD7EED30063F1B0 /* CollectionViewWrapper.swift in Sources */,
-				9E82B3A11AD7EED30063F1B0 /* DataFlow.swift in Sources */,
-				9E82B39D1AD7EED30063F1B0 /* CollectionViewLayout.swift in Sources */,
+				9E82B3FF1AD810B50063F1B0 /* TextFieldReactor.swift in Sources */,
+				9E82B3F61AD810B50063F1B0 /* CollectionViewLayout.swift in Sources */,
+				9E82B3FA1AD810B50063F1B0 /* DataFlow.swift in Sources */,
+				9E82B3FC1AD810B50063F1B0 /* RAMCell.swift in Sources */,
+				9E82B3F81AD810B50063F1B0 /* CollectionViewWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,12 +267,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E82B3A01AD7EED30063F1B0 /* CollectionViewWrapper.swift in Sources */,
-				9E82B3A41AD7EED30063F1B0 /* RAMCell.swift in Sources */,
-				9E82B3A61AD7EED30063F1B0 /* TextFieldReactor.swift in Sources */,
-				9E82B39E1AD7EED30063F1B0 /* CollectionViewLayout.swift in Sources */,
+				9E82B3F71AD810B50063F1B0 /* CollectionViewLayout.swift in Sources */,
+				9E82B3FB1AD810B50063F1B0 /* DataFlow.swift in Sources */,
+				9E82B3FD1AD810B50063F1B0 /* RAMCell.swift in Sources */,
 				9E82B38F1AD7EEAE0063F1B0 /* RAMReelTests.swift in Sources */,
-				9E82B3A21AD7EED30063F1B0 /* DataFlow.swift in Sources */,
+				9E82B3F91AD810B50063F1B0 /* CollectionViewWrapper.swift in Sources */,
+				9E82B4001AD810B50063F1B0 /* TextFieldReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

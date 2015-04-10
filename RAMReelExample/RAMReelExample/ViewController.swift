@@ -21,6 +21,7 @@ class ViewController: UIViewController, FlowDataSource, FlowDataDestination, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println(self.textField.font)
         wrapper = CollectionViewWrapper(collectionView: collectionView, cellId: "RAMCell")
         
         reactorA = textField <&> self *> wrapper
