@@ -55,8 +55,8 @@
                                 </cells>
                             </collectionView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hJs-m6-NGQ">
-                                <rect key="frame" x="20" y="275" width="560" height="44"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="10" y="275" width="13" height="44"/>
+                                <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="yUp-zc-DRm"/>
                                 </constraints>
@@ -67,13 +67,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="P67-Fj-pDt" secondAttribute="bottom" id="1xA-Pn-Iwf"/>
-                            <constraint firstItem="hJs-m6-NGQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="7EE-L1-nAn"/>
-                            <constraint firstAttribute="trailing" secondItem="hJs-m6-NGQ" secondAttribute="trailing" constant="20" id="91w-Fz-13r"/>
+                            <constraint firstItem="hJs-m6-NGQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="7EE-L1-nAn"/>
+                            <constraint firstAttribute="trailing" secondItem="hJs-m6-NGQ" secondAttribute="trailing" constant="10" id="91w-Fz-13r"/>
                             <constraint firstAttribute="centerY" secondItem="hJs-m6-NGQ" secondAttribute="centerY" constant="3" id="R7F-V4-I1J"/>
                             <constraint firstAttribute="trailing" secondItem="P67-Fj-pDt" secondAttribute="trailing" id="SiB-yx-k4a"/>
                             <constraint firstItem="P67-Fj-pDt" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="WS4-mM-q0V"/>
                             <constraint firstItem="P67-Fj-pDt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pLE-ih-KgY"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="91w-Fz-13r"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="P67-Fj-pDt" id="wAB-H7-6bI"/>

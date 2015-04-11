@@ -9,41 +9,41 @@
 import UIKit
 import RAMReel
 
-class ViewController: UIViewController, FlowDataSource, FlowDataDestination, UITableViewDelegate {
+class ViewController: UIViewController, FlowDataDestination, UITableViewDelegate {
 
     @IBOutlet weak var textField: UITextField!
-    var reactorA: TextFieldReactor<ViewController, CollectionViewWrapper<(String, UIColor), RAMCell>>!
-    var reactorB: TextFieldReactor<ViewController, ViewController>!
+    var reactorA: TextFieldReactor<SimplePrefixQueryDataSource, CollectionViewWrapper<NSAttributedString, ExampleCell>>!
+    var reactorB: TextFieldReactor<SimplePrefixQueryDataSource, ViewController>!
     
     @IBOutlet weak var collectionView: UICollectionView!
-    var wrapper: CollectionViewWrapper<(String, UIColor), RAMCell>!
+    var wrapper: CollectionViewWrapper<NSAttributedString, ExampleCell>!
+    
+    var simpleDataSource: SimplePrefixQueryDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         println(self.textField.font)
-        wrapper = CollectionViewWrapper(collectionView: collectionView, cellId: "RAMCell")
+        wrapper = CollectionViewWrapper(collectionView: collectionView, cellId: "ExampleCell")
         
-        reactorA = textField <&> self *> wrapper
-        reactorB = textField <&> self *> self
+        simpleDataSource = SimplePrefixQueryDataSource(data)
+        
+        reactorA = textField <&> simpleDataSource *> wrapper
+        reactorB = textField <&> simpleDataSource *> self
     }
 
-    private let data: [(String, UIColor)] = [
-        ("hello", UIColor.greenColor()),
-        ("hell", UIColor.redColor()),
-        ("world", UIColor.blueColor()),
-        ("war", UIColor.blackColor()),
-        ("bar", UIColor.purpleColor()),
-        ("baz", UIColor.yellowColor()),
-        ("boron", UIColor.orangeColor()),
-        ("bark", UIColor.brownColor())
+    private let data: [String] = [
+        "hello",
+        "hell",
+        "world",
+        "war",
+        "bar",
+        "baz",
+        "boron",
+        "bark"
     ]
     
-    func resultsForQuery(query: String) -> [(String, UIColor)] {
-        return data.filter({ $0.0.hasPrefix(query) })
-    }
-    
-    func processData(data: [(String, UIColor)]) {
+    func processData(data: [NSAttributedString]) {
         println(data)
     }
     

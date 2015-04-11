@@ -8,14 +8,6 @@
 
 import UIKit
 
-public protocol ConfigurableCell {
-    
-    typealias DataType
-    
-    func configureCell(data: DataType)
-    
-}
-
 protocol WrapperProtocol {
     
     var numberOfCells: Int {get}
@@ -46,7 +38,6 @@ public final class CollectionViewWrapper
     let cellId: String
     
     let dataSource = CollectionViewDataSource()
-    let delegate   = CollectionViewDelegate()
     
     public init(collectionView: UICollectionView, cellId: String) {
         self.collectionView = collectionView
@@ -88,10 +79,5 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         
         return cell
     }
-    
-}
-
-class CollectionViewDelegate: NSObject, UICollectionViewDelegate {
-    
     
 }
