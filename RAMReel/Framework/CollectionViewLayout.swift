@@ -35,18 +35,35 @@ public class RAMCollectionViewLayout: UICollectionViewFlowLayout {
         return allAttributesInRect!
     }
     
+    var itemHeight: CGFloat = 0
     func modifyLayoutAttributes(layoutattributes: UICollectionViewLayoutAttributes) {
+        
+        println(layoutattributes)
         
         if let collectionView = self.collectionView {
             layoutattributes.center = collectionView.center
             
             var frame              = layoutattributes.frame
+            itemHeight             = frame.size.height
+            
             frame.size.width       = collectionView.bounds.width
             frame.origin.x         = collectionView.bounds.origin.x
-            frame.origin.y        += frame.size.height * itemOffset(layoutattributes.indexPath.item)
+            frame.origin.y        += itemHeight * itemOffset(layoutattributes.indexPath.item)
             layoutattributes.frame = frame
         }
         
+    }
+    
+    public override func collectionViewContentSize() -> CGSize {
+        if
+            let collectionView = self.collectionView,
+            let number = collectionView.dataSource?.collectionView(collectionView, numberOfItemsInSection: 0)
+        {
+            let size = CGSize(width: collectionView.bounds.width, height: CGFloat(number) * itemHeight)
+            return size
+        }
+        
+        return CGSizeZero
     }
     
 }

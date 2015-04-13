@@ -33,7 +33,15 @@ public final class TextFieldReactor
         DS.QueryType  == String
     >
 {
-    var theme = ExampleTheme.sharedTheme
+    public var theme: Theme {
+        didSet {
+            updateFont()
+        }
+    }
+    
+    func updateFont() {
+        self.textField.font = theme.font
+    }
     
     let textField : UITextField
     let dataFlow  : DataFlow<DS, DD>
@@ -41,16 +49,15 @@ public final class TextFieldReactor
     private let target:Target
     
     private init(textField: UITextField, dataFlow: DataFlow<DS, DD>) {
+        self.theme = ExampleTheme.sharedTheme
+        
         self.textField      = textField
-        self.textField.font = theme.font
-        
-        println(self.textField.font)
-        
         self.dataFlow       = dataFlow
-        
         self.target         = Target(hook: dataFlow.transport)
         
         textField.addTarget(target, action: Target.actionSelector, forControlEvents: Target.controlEvents)
+        
+        updateFont()
     }
     
     deinit {

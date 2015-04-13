@@ -8,12 +8,9 @@
 
 import UIKit
 
-protocol Theme {
-    
-    static var sharedTheme: Self { get }
-    
+public protocol Theme {
+
     var font: UIFont { get }
-    var elementHeight: CGFloat { get }
     
 }
 
@@ -23,9 +20,14 @@ struct ExampleTheme: Theme {
     
     let isRobotoLoaded = ExampleTheme.loadRoboto()
     
-    let font:UIFont = UIFont(name: "Roboto Light", size: 36) ?? UIFont.systemFontOfSize(36, weight: UIFontWeightThin)
-    
-    let elementHeight: CGFloat = 44.0
+    var font:UIFont {
+        if self.isRobotoLoaded {
+            return UIFont(name: "Roboto-Light", size: 36)!
+        }
+        else {
+            return UIFont.systemFontOfSize(36, weight: UIFontWeightThin)
+        }
+    }
     
     static private var loadToken = dispatch_once_t()
     static private func loadRoboto() -> Bool {

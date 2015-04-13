@@ -22,8 +22,7 @@ class ViewController: UIViewController, FlowDataDestination, UITableViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        println(self.textField.font)
+
         wrapper = CollectionViewWrapper(collectionView: collectionView, cellId: "ExampleCell")
         
         simpleDataSource = SimplePrefixQueryDataSource(data)

@@ -32,12 +32,21 @@ public class ExampleCell: UICollectionViewCell, ConfigurableCell {
     
     var textLabel: UILabel!
     
-    var theme = ExampleTheme.sharedTheme
+    public var theme: Theme = ExampleTheme.sharedTheme {
+        didSet {
+            updateFont()
+        }
+    }
+    
+    func updateFont() {
+        textLabel.font = theme.font
+    }
+    
     private func setup() {
         let labelFrame = CGRectInset(self.contentView.bounds, 10, 8)
         textLabel = UILabel(frame: labelFrame)
         
-        textLabel.font = theme.font
+        updateFont()
         
         self.contentView.addSubview(textLabel)
     }
