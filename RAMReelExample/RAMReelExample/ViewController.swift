@@ -9,7 +9,7 @@
 import UIKit
 import RAMReel
 
-class ViewController: UIViewController, FlowDataDestination, UITableViewDelegate {
+class ViewController: UIViewController, FlowDataDestination, UICollectionViewDelegate, UIScrollViewDelegate {
 
     @IBOutlet weak var textField: UITextField!
     var reactorA: TextFieldReactor<SimplePrefixQueryDataSource, CollectionViewWrapper<NSAttributedString, ExampleCell>>!
@@ -25,6 +25,10 @@ class ViewController: UIViewController, FlowDataDestination, UITableViewDelegate
 
         wrapper = CollectionViewWrapper(collectionView: collectionView, cellId: "ExampleCell")
         
+        collectionView.delegate = self
+        let scrollView = collectionView as UIScrollView
+        scrollView.delegate = self
+        
         simpleDataSource = SimplePrefixQueryDataSource(data)
         
         reactorA = textField <&> simpleDataSource *> wrapper
@@ -39,11 +43,54 @@ class ViewController: UIViewController, FlowDataDestination, UITableViewDelegate
         "bar",
         "baz",
         "boron",
-        "bark"
+        "bark",
+        "hello",
+        "hell",
+        "world",
+        "war",
+        "bar",
+        "baz",
+        "boron",
+        "bark",
+        "hello",
+        "hell",
+        "world",
+        "war",
+        "bar",
+        "baz",
+        "boron",
+        "bark",
+        "hello",
+        "hell",
+        "world",
+        "war",
+        "bar",
+        "baz",
+        "boron",
+        "bark",
     ]
     
     func processData(data: [NSAttributedString]) {
-        println(data)
+//        println(data)
+        
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if
+            let windows = UIApplication.sharedApplication().windows as? [UIWindow],
+            let window  = windows.first
+        {
+            let rect = scrollView.convertRect(textField.frame, fromView: nil)
+            println("winrect:\(rect)")
+            let attrs = wrapper.cellAttributes(collectionView.convertRect(rect, fromView: self.collectionView))
+            
+            println(attrs)
+        }
+        
+    }
+    
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        println("cell: \(cell.frame)")
     }
     
 }

@@ -8,11 +8,13 @@
 
 import UIKit
 
-protocol WrapperProtocol {
+protocol WrapperProtocol : class {
     
-    var numberOfCells: Int {get}
+    var numberOfCells: Int { get }
     
     func createCell(UICollectionView, NSIndexPath) -> UICollectionViewCell
+    
+    func cellAttributes(rect: CGRect) -> [UICollectionViewLayoutAttributes]
     
 }
 
@@ -21,9 +23,9 @@ public final class CollectionViewWrapper
     DataType,
     CellClass: UICollectionViewCell
     where
-        CellClass: ConfigurableCell,
-        DataType == CellClass.DataType
-    >: FlowDataDestination, WrapperProtocol {
+    CellClass: ConfigurableCell,
+    DataType == CellClass.DataType
+>: FlowDataDestination, WrapperProtocol {
     
     var data: [DataType] = [] {
         didSet {
@@ -45,11 +47,11 @@ public final class CollectionViewWrapper
         
         collectionView.registerClass(CellClass.self, forCellWithReuseIdentifier: cellId)
         
-        dataSource.wrapper   = self
+        dataSource.wrapper        = self
         collectionView.dataSource = dataSource
     }
     
-    public func createCell(cv: UICollectionView, _ ip: NSIndexPath) -> UICollectionViewCell {
+    func createCell(cv: UICollectionView, _ ip: NSIndexPath) -> UICollectionViewCell {
         let cell = cv.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: ip) as! CellClass
         
         let row  = ip.row
@@ -60,24 +62,38 @@ public final class CollectionViewWrapper
         return cell as UICollectionViewCell
     }
     
-    public var numberOfCells:Int {
+    var numberOfCells:Int {
         return data.count
+    }
+    
+    public func cellAttributes(rect: CGRect) -> [UICollectionViewLayoutAttributes] {
+        let layout     = collectionView.collectionViewLayout
+        if
+            let returns    = layout.layoutAttributesForElementsInRect(rect),
+            let attributes = returns as? [UICollectionViewLayoutAttributes]
+        {
+            return attributes
+        }
+    
+        return []
     }
     
 }
 
 class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
-    var wrapper: WrapperProtocol!
+    weak var wrapper: WrapperProtocol?
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.wrapper.numberOfCells
+        let number = self.wrapper?.numberOfCells
+        
+        return number ?? 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = self.wrapper.createCell(collectionView, indexPath)
-        
-        return cell
+        let cell = self.wrapper?.createCell(collectionView, indexPath)
+
+        return cell ?? UICollectionViewCell()
     }
     
 }
