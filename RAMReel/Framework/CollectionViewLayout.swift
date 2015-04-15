@@ -9,71 +9,102 @@
 import UIKit
 
 @objc(RAMCollectionViewLayout)
-public class RAMCollectionViewLayout: UICollectionViewFlowLayout {
+public class RAMCollectionViewLayout: UICollectionViewLayout {
     
-    func itemOffset(item: Int) -> CGFloat {
-        
-        let halfItem  = round(Double(item)/2)
-        let result = halfItem * pow(-1, Double(item))
-        
-        return CGFloat(result)
+    public override func initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+        return self.layoutAttributesForItemAtIndexPath(itemIndexPath)
     }
     
     public override func layoutAttributesForItemAtIndexPath(indexPath:NSIndexPath) -> UICollectionViewLayoutAttributes {
-        let attributes = super.layoutAttributesForItemAtIndexPath(indexPath)
-        
+        let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
         self.modifyLayoutAttributes(attributes)
+        
         return attributes
     }
    
     public override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject] {
-        let allAttributesInRect = super.layoutAttributesForElementsInRect(rect)
+
+        var allAttributesInRect = [(UICollectionViewLayoutAttributes, CGFloat)]()
         
-        for cellAttributes in allAttributesInRect! {
-            self.modifyLayoutAttributes(cellAttributes as! UICollectionViewLayoutAttributes)
+        if let numberOfItems = collectionView?.numberOfItemsInSection(0) {
+            for item in 0 ..< numberOfItems {
+                let indexPath = NSIndexPath(forItem: item, inSection: 0)
+                
+                let attributes = self.layoutAttributesForItemAtIndexPath(indexPath)
+                
+                if rect.intersects(attributes.frame) {
+                    let intersection = CGRectIntersection(rect, attributes.frame)
+                    allAttributesInRect.append((attributes, intersection.area))
+                }
+            }
         }
-        return allAttributesInRect!
+        
+        allAttributesInRect.sort {
+            let (_, a1) = $0
+            let (_, a2) = $1
+            
+            return a1 > a2
+        }
+        
+        let attributes = allAttributesInRect.map ({ (attr: UICollectionViewLayoutAttributes, _) -> AnyObject in
+            return attr as AnyObject
+        })
+        
+        return attributes
     }
     
-    public override func initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        if let attributes = super.initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath) {
-            self.modifyLayoutAttributes(attributes)
-            return attributes
-        }
-        
-        return nil
-    }
-    
-    var itemHeight: CGFloat = 0
+    var itemHeight: CGFloat = 44
     func modifyLayoutAttributes(layoutattributes: UICollectionViewLayoutAttributes) {
         
-        if let collectionView = self.collectionView {
-            layoutattributes.center = collectionView.center
+        if
+            let collectionView = self.collectionView
+        {
+            let number = collectionView.numberOfItemsInSection(0)
+            let height = CGFloat(number) * itemHeight
             
-            var frame              = layoutattributes.frame
-            itemHeight             = frame.size.height
-            
-            frame.size.width       = collectionView.bounds.width
-            frame.origin.x         = collectionView.bounds.origin.x
-            frame.origin.y        += itemHeight * itemOffset(layoutattributes.indexPath.item)
-            layoutattributes.frame = frame
+            var frame               = layoutattributes.frame
+            frame.size.height       = itemHeight
+            frame.size.width        = collectionView.bounds.width
+            frame.origin.x          = collectionView.bounds.origin.x
+            frame.origin.y          = itemHeight * CGFloat(layoutattributes.indexPath.item)
+            layoutattributes.frame  = frame
         }
         
     }
     
     public override func collectionViewContentSize() -> CGSize {
-        if
-            let collectionView = self.collectionView,
-            let number = collectionView.dataSource?.collectionView(collectionView, numberOfItemsInSection: 0)
+        
+        if let collectionView = self.collectionView
         {
+            let number = collectionView.numberOfItemsInSection(0)
             let height = CGFloat(number) * itemHeight
-            collectionView.contentInset = UIEdgeInsets(top: height/2, left: 0, bottom: height/2, right: 0)
+            
+            let insets = (collectionView.frame.height - itemHeight)/2
+            
+            collectionView.contentInset = UIEdgeInsets(top: insets, left: 0, bottom: insets, right: 0)
             
             let size = CGSize(width: collectionView.bounds.width, height: height)
             return size
         }
         
         return CGSizeZero
+    
+    }
+    
+    public override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    
+        return true
+        
+    }
+    
+}
+
+extension CGRect {
+    
+    var area: CGFloat {
+        
+        return self.height * self.width
+        
     }
     
 }

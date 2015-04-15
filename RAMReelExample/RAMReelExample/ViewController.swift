@@ -9,7 +9,7 @@
 import UIKit
 import RAMReel
 
-class ViewController: UIViewController, FlowDataDestination, UICollectionViewDelegate, UIScrollViewDelegate {
+class ViewController: UIViewController, FlowDataDestination, UICollectionViewDelegate {
 
     @IBOutlet weak var textField: UITextField!
     var reactorA: TextFieldReactor<SimplePrefixQueryDataSource, CollectionViewWrapper<NSAttributedString, ExampleCell>>!
@@ -72,25 +72,30 @@ class ViewController: UIViewController, FlowDataDestination, UICollectionViewDel
     
     func processData(data: [NSAttributedString]) {
 //        println(data)
-        
     }
+
+}
+
+extension ViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        if
-            let windows = UIApplication.sharedApplication().windows as? [UIWindow],
-            let window  = windows.first
-        {
-            let rect = scrollView.convertRect(textField.frame, fromView: nil)
-            println("winrect:\(rect)")
-            let attrs = wrapper.cellAttributes(collectionView.convertRect(rect, fromView: self.collectionView))
-            
-            println(attrs)
+        
+        let rect = scrollView.convertRect(textField.frame, fromView: textField.superview)
+        
+        let attrs = wrapper.cellAttributes(rect)
+        
+        let cells = attrs.map {
+            self.collectionView?.cellForItemAtIndexPath($0.indexPath)! as! ExampleCell
         }
         
-    }
-    
-    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        println("cell: \(cell.frame)")
+        if let firstCell = cells.first {
+            self.textField.text = firstCell.description
+        }
+        
+//        if let firstAttr = attrs.first {
+//            println(attrs)
+//        }
+        
     }
     
 }

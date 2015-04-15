@@ -18,6 +18,10 @@ public protocol ConfigurableCell {
 
 public class ExampleCell: UICollectionViewCell, ConfigurableCell {
     
+    public override var description: String {
+        return self.textLabel.text ?? ""
+    }
+    
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -43,7 +47,7 @@ public class ExampleCell: UICollectionViewCell, ConfigurableCell {
     }
     
     private func setup() {
-        let labelFrame = CGRectInset(self.contentView.bounds, 10, 8)
+        let labelFrame = CGRectInset(self.contentView.bounds, 20, 8)
         textLabel = UILabel(frame: labelFrame)
         
         updateFont()
