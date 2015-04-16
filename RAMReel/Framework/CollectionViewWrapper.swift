@@ -28,10 +28,26 @@ public final class CollectionViewWrapper
 >: FlowDataDestination, WrapperProtocol {
     
     var data: [DataType] = [] {
+        
         didSet {
             collectionView.reloadData()
+            collectionView.layoutIfNeeded()
+            
+            let number = collectionView.numberOfItemsInSection(0)
+            if number > 0 {
+                let middle = Int( floor(CGFloat(number)/2) )
+                println(middle)
+                let indexPath: NSIndexPath = NSIndexPath(forItem: middle, inSection: 0)
+                
+                collectionView.scrollToItemAtIndexPath(
+                    indexPath,
+                    atScrollPosition: UICollectionViewScrollPosition.CenteredVertically,
+                    animated: true)
+            }
+
         }
     }
+    
     public func processData(data: [DataType]) {
         self.data = data
     }
@@ -44,7 +60,7 @@ public final class CollectionViewWrapper
     public init(collectionView: UICollectionView, cellId: String) {
         self.collectionView = collectionView
         self.cellId         = cellId
-        
+
         collectionView.registerClass(CellClass.self, forCellWithReuseIdentifier: cellId)
         
         dataSource.wrapper        = self

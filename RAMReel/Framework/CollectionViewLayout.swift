@@ -11,6 +11,15 @@ import UIKit
 @objc(RAMCollectionViewLayout)
 public class RAMCollectionViewLayout: UICollectionViewLayout {
     
+    public override func prepareLayout() {
+        super.prepareLayout()
+        
+        if let collectionView = self.collectionView {
+            let insets = (collectionView.frame.height - itemHeight)/2
+            collectionView.contentInset = UIEdgeInsets(top: insets, left: 0, bottom: insets, right: 0)
+        }
+    }
+    
     public override func initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         return self.layoutAttributesForItemAtIndexPath(itemIndexPath)
     }
@@ -21,9 +30,9 @@ public class RAMCollectionViewLayout: UICollectionViewLayout {
         
         return attributes
     }
-   
+    
     public override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject] {
-
+        
         var allAttributesInRect = [(UICollectionViewLayoutAttributes, CGFloat)]()
         
         if let numberOfItems = collectionView?.numberOfItemsInSection(0) {
@@ -46,8 +55,8 @@ public class RAMCollectionViewLayout: UICollectionViewLayout {
             return a1 > a2
         }
         
-        let attributes = allAttributesInRect.map ({ (attr: UICollectionViewLayoutAttributes, _) -> AnyObject in
-            return attr as AnyObject
+        let attributes = allAttributesInRect.map ({ (attr: AnyObject, _) -> AnyObject in
+            attr
         })
         
         return attributes
@@ -79,20 +88,16 @@ public class RAMCollectionViewLayout: UICollectionViewLayout {
             let number = collectionView.numberOfItemsInSection(0)
             let height = CGFloat(number) * itemHeight
             
-            let insets = (collectionView.frame.height - itemHeight)/2
-            
-            collectionView.contentInset = UIEdgeInsets(top: insets, left: 0, bottom: insets, right: 0)
-            
             let size = CGSize(width: collectionView.bounds.width, height: height)
             return size
         }
         
         return CGSizeZero
-    
+        
     }
     
     public override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
-    
+        
         return true
         
     }
