@@ -84,16 +84,12 @@ extension ViewController: UIScrollViewDelegate {
         
         let attrs = wrapper.cellAttributes(rect)
         
-        let cells = attrs.map {
-            self.collectionView?.cellForItemAtIndexPath($0.indexPath)! as! ExampleCell
-        }
+//        let cells = attrs.map {
+//            self.collectionView?.cellForItemAtIndexPath($0.indexPath)! as! ExampleCell
+//        }
         
-        if let firstCell = cells.first {
-            self.textField.text = firstCell.description
-        }
-        
-//        if let firstAttr = attrs.first {
-//            println(attrs)
+//        if let firstCell = cells.first {
+//            self.textField.text = firstCell.description
 //        }
         
     }

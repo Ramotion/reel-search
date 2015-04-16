@@ -35,14 +35,14 @@ public final class CollectionViewWrapper
             
             let number = collectionView.numberOfItemsInSection(0)
             if number > 0 {
-                let middle = Int( floor(CGFloat(number)/2) )
-                println(middle)
+                let middle = number/2
+
                 let indexPath: NSIndexPath = NSIndexPath(forItem: middle, inSection: 0)
+                if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
+                    let topInset = collectionView.contentInset.top
+                    collectionView.contentOffset = CGPoint(x: 0, y: cell.frame.minY - topInset)
+                }
                 
-                collectionView.scrollToItemAtIndexPath(
-                    indexPath,
-                    atScrollPosition: UICollectionViewScrollPosition.CenteredVertically,
-                    animated: true)
             }
 
         }
