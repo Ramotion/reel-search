@@ -1,1 +1,0 @@
-[![Build Status](https://travis-ci.org/Ramotion/reel-search.svg?branch=travis)](https://travis-ci.org/Ramotion/reel-search)
