@@ -28,21 +28,25 @@ public class CollectionViewWrapper
 >: FlowDataDestination, WrapperProtocol {
     
     var data: [DataType] = [] {
-        
         didSet {
-            collectionView.reloadData()
-            collectionView.layoutIfNeeded()
+            updateOffset()
+        }
+    }
+    
+    func updateOffset() {
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
+        
+        let number = collectionView.numberOfItemsInSection(0)
+        if number > 0 {
+            let inset      = collectionView.contentInset.top
+            let item       = CGFloat(number/2)
+            let itemHeight = collectionLayout.itemHeight
+            let offset     = CGPoint(x: 0, y: item * itemHeight - inset)
             
-            let number = collectionView.numberOfItemsInSection(0)
-            if number > 0 {
-                let middle = number/2
-
-                let indexPath: NSIndexPath = NSIndexPath(forItem: middle, inSection: 0)
-                if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
-                    let topInset = collectionView.contentInset.top
-                    collectionView.contentOffset = CGPoint(x: 0, y: cell.frame.minY - topInset)
-                }
-            }
+            collectionView.contentOffset = offset
+            
+            scrollDelegate.adjustScroll(collectionView)
         }
     }
     
@@ -67,6 +71,7 @@ public class CollectionViewWrapper
         dataSource.wrapper        = self
         collectionView.dataSource = dataSource
         collectionView.collectionViewLayout = collectionLayout
+        collectionView.bounces    = false
         
         let scrollView = collectionView as UIScrollView
         scrollView.delegate = scrollDelegate
@@ -128,25 +133,25 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
         super.init()
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        
+    func adjustScroll(scrollView: UIScrollView) {
         let inset           = scrollView.contentInset.top
         let currentOffsetY  = scrollView.contentOffset.y + inset
-        let itemIndex       = round(currentOffsetY/itemHeight)
-        let adjestedOffsetY = itemIndex * itemHeight - inset
+        let itemIndex       = Int(round(currentOffsetY/itemHeight))
+        let adjestedOffsetY = CGFloat(itemIndex) * itemHeight - inset
         
         let topBorder   : CGFloat = 0                        // Zero offset means that we really have inset size padding at top
         let bottomBorder: CGFloat = scrollView.bounds.height // Max offset is scrollView height without vertical insets
         
         if currentOffsetY.between(topBorder, bottomBorder) && currentOffsetY != adjestedOffsetY {
-            
-            UIView.performWithoutAnimation({
-                let newOffset = CGPoint(x: 0, y: adjestedOffsetY)
-                scrollView.contentOffset = newOffset
-            })
-
+            let newOffset = CGPoint(x: 0, y: adjestedOffsetY)
+            scrollView.setContentOffset(newOffset, animated: true)
         }
     }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        adjustScroll(scrollView)
+    }
+    
 }
 
 extension CGFloat {

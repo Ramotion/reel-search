@@ -58,7 +58,7 @@ public class RAMCollectionViewLayout: UICollectionViewLayout {
         let attributes = allAttributesInRect.map ({ (attr: AnyObject, _) -> AnyObject in
             attr
         })
-        
+
         return attributes
     }
     
@@ -95,13 +95,6 @@ public class RAMCollectionViewLayout: UICollectionViewLayout {
         return CGSizeZero
         
     }
-    
-    public override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
-        
-        return true
-        
-    }
-    
 }
 
 extension CGRect {

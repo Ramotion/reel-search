@@ -18,10 +18,6 @@ public protocol ConfigurableCell {
 
 public class ExampleCell: UICollectionViewCell, ConfigurableCell {
     
-    public override var description: String {
-        return self.textLabel.text ?? ""
-    }
-    
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
