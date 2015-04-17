@@ -6,5 +6,5 @@ before_install:
 - brew update
 - brew outdated xctool || brew upgrade xctool
 - pod install
-script:
-- xctool -workspace RAMReel.xcworkspace -scheme RAMReel
+xcode_workspace: RAMReel.xcworkspace
+xcode_scheme: RAMReel
