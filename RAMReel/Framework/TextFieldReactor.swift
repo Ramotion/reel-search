@@ -24,7 +24,7 @@ public func <&>
     return TextFieldReactor(textField: left, dataFlow: right)
 }
 
-public final class TextFieldReactor
+public class TextFieldReactor
     <
     DS: FlowDataSource,
     DD: FlowDataDestination

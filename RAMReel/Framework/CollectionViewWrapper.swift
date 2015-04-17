@@ -18,7 +18,7 @@ protocol WrapperProtocol : class {
     
 }
 
-public final class CollectionViewWrapper
+public class CollectionViewWrapper
     <
     DataType,
     CellClass: UICollectionViewCell
@@ -42,9 +42,7 @@ public final class CollectionViewWrapper
                     let topInset = collectionView.contentInset.top
                     collectionView.contentOffset = CGPoint(x: 0, y: cell.frame.minY - topInset)
                 }
-                
             }
-
         }
     }
     
@@ -55,16 +53,23 @@ public final class CollectionViewWrapper
     let collectionView: UICollectionView
     let cellId: String
     
-    let dataSource = CollectionViewDataSource()
+    let dataSource       = CollectionViewDataSource()
+    let collectionLayout = RAMCollectionViewLayout()
+    let scrollDelegate: ScrollViewDelegate
     
     public init(collectionView: UICollectionView, cellId: String) {
         self.collectionView = collectionView
         self.cellId         = cellId
+        self.scrollDelegate = ScrollViewDelegate(itemHeight: collectionLayout.itemHeight)
 
         collectionView.registerClass(CellClass.self, forCellWithReuseIdentifier: cellId)
         
         dataSource.wrapper        = self
         collectionView.dataSource = dataSource
+        collectionView.collectionViewLayout = collectionLayout
+        
+        let scrollView = collectionView as UIScrollView
+        scrollView.delegate = scrollDelegate
     }
     
     func createCell(cv: UICollectionView, _ ip: NSIndexPath) -> UICollectionViewCell {
@@ -98,18 +103,56 @@ public final class CollectionViewWrapper
 
 class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
-    weak var wrapper: WrapperProtocol?
+    weak var wrapper: WrapperProtocol!
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let number = self.wrapper?.numberOfCells
+        let number = self.wrapper.numberOfCells
         
-        return number ?? 0
+        return number
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = self.wrapper?.createCell(collectionView, indexPath)
+        let cell = self.wrapper.createCell(collectionView, indexPath)
+        
+        return cell
+    }
+    
+}
 
-        return cell ?? UICollectionViewCell()
+class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
+    
+    let itemHeight: CGFloat
+    init (itemHeight: CGFloat) {
+        self.itemHeight = itemHeight
+        
+        super.init()
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+        let inset           = scrollView.contentInset.top
+        let currentOffsetY  = scrollView.contentOffset.y + inset
+        let itemIndex       = round(currentOffsetY/itemHeight)
+        let adjestedOffsetY = itemIndex * itemHeight - inset
+        
+        let topBorder   : CGFloat = 0                        // Zero offset means that we really have inset size padding at top
+        let bottomBorder: CGFloat = scrollView.bounds.height // Max offset is scrollView height without vertical insets
+        
+        if currentOffsetY.between(topBorder, bottomBorder) && currentOffsetY != adjestedOffsetY {
+            
+            UIView.performWithoutAnimation({
+                let newOffset = CGPoint(x: 0, y: adjestedOffsetY)
+                scrollView.contentOffset = newOffset
+            })
+
+        }
+    }
+}
+
+extension CGFloat {
+    
+    func between(a: CGFloat, _ b: CGFloat) -> Bool {
+        return (a <= self) && (self <= b)
     }
     
 }

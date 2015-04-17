@@ -21,7 +21,7 @@ public func *>
     return DataFlow(from: left, to: right)
 }
 
-public final class DataFlow
+public class DataFlow
     <
     DS: FlowDataSource,
     DD: FlowDataDestination

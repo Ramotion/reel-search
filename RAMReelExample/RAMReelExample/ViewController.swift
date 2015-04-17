@@ -25,10 +25,6 @@ class ViewController: UIViewController, FlowDataDestination, UICollectionViewDel
 
         wrapper = CollectionViewWrapper(collectionView: collectionView, cellId: "ExampleCell")
         
-        collectionView.delegate = self
-        let scrollView = collectionView as UIScrollView
-        scrollView.delegate = self
-        
         simpleDataSource = SimplePrefixQueryDataSource(data)
         
         reactorA = textField <&> simpleDataSource *> wrapper
