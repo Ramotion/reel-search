@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -54,11 +54,10 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hJs-m6-NGQ">
-                                <rect key="frame" x="16" y="204" width="44" height="44"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hJs-m6-NGQ">
+                                <rect key="frame" x="20" y="278" width="560" height="44"/>
                                 <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="45J-7f-750"/>
                                     <constraint firstAttribute="height" constant="44" id="yUp-zc-DRm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="36"/>
@@ -68,20 +67,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="P67-Fj-pDt" secondAttribute="bottom" id="1xA-Pn-Iwf"/>
-                            <constraint firstItem="hJs-m6-NGQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="7EE-L1-nAn"/>
-                            <constraint firstAttribute="trailing" secondItem="hJs-m6-NGQ" secondAttribute="trailing" constant="10" id="91w-Fz-13r"/>
-                            <constraint firstAttribute="centerY" secondItem="hJs-m6-NGQ" secondAttribute="centerY" id="R7F-V4-I1J"/>
+                            <constraint firstItem="hJs-m6-NGQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="7EE-L1-nAn"/>
+                            <constraint firstAttribute="trailing" secondItem="hJs-m6-NGQ" secondAttribute="trailing" constant="20" symbolic="YES" id="Gwq-Re-0lJ"/>
                             <constraint firstAttribute="trailing" secondItem="P67-Fj-pDt" secondAttribute="trailing" id="SiB-yx-k4a"/>
                             <constraint firstItem="P67-Fj-pDt" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="WS4-mM-q0V"/>
+                            <constraint firstItem="P67-Fj-pDt" firstAttribute="centerY" secondItem="hJs-m6-NGQ" secondAttribute="centerY" id="ZPP-i4-6A2"/>
                             <constraint firstItem="P67-Fj-pDt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pLE-ih-KgY"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="91w-Fz-13r"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
+                        <outlet property="bottomConstraint" destination="1xA-Pn-Iwf" id="yyJ-7P-T9k"/>
                         <outlet property="collectionView" destination="P67-Fj-pDt" id="wAB-H7-6bI"/>
                         <outlet property="textField" destination="hJs-m6-NGQ" id="L2Q-bq-qdr"/>
                     </connections>

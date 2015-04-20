@@ -20,6 +20,7 @@ class ViewController: UIViewController, FlowDataDestination, UICollectionViewDel
     
     var simpleDataSource: SimplePrefixQueryDataSource!
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,6 +30,39 @@ class ViewController: UIViewController, FlowDataDestination, UICollectionViewDel
         
         reactorA = textField <&> simpleDataSource *> wrapper
         reactorB = textField <&> simpleDataSource *> self
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: Selector("keyboard:"),
+            name: UIKeyboardWillChangeFrameNotification,
+            object: nil
+        )
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func keyboard(notification: NSNotification) {
+        if
+            let userInfo = notification.userInfo as! [String: AnyObject]?,
+            
+            let startFrame = userInfo[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue(),
+            let endFrame   = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue(),
+        
+            let animDuration: NSTimeInterval = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue,
+            let animCurveRaw = userInfo[UIKeyboardAnimationCurveUserInfoKey]?.unsignedIntegerValue
+        {
+            println(animDuration)
+            println(animCurveRaw)
+            
+            let animCurve = UIViewAnimationOptions(rawValue: UInt(animCurveRaw))
+            
+            self.bottomConstraint.constant = self.view.frame.height - endFrame.origin.y
+            UIView.animateWithDuration(animDuration, delay: 0.0, options: animCurve, animations: {
+                self.textField.layoutIfNeeded()
+            }, completion: nil)
+        }
     }
 
     private let data: [String] = [
@@ -79,14 +113,6 @@ extension ViewController: UIScrollViewDelegate {
         let rect = scrollView.convertRect(textField.frame, fromView: textField.superview)
         
         let attrs = wrapper.cellAttributes(rect)
-        
-//        let cells = attrs.map {
-//            self.collectionView?.cellForItemAtIndexPath($0.indexPath)! as! ExampleCell
-//        }
-        
-//        if let firstCell = cells.first {
-//            self.textField.text = firstCell.description
-//        }
         
     }
     

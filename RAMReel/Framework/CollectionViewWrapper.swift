@@ -25,28 +25,11 @@ public class CollectionViewWrapper
     where
     CellClass: ConfigurableCell,
     DataType == CellClass.DataType
->: FlowDataDestination, WrapperProtocol {
+>: NSObject, FlowDataDestination, WrapperProtocol {
     
     var data: [DataType] = [] {
         didSet {
             updateOffset()
-        }
-    }
-    
-    func updateOffset() {
-        collectionView.reloadData()
-        collectionView.layoutIfNeeded()
-        
-        let number = collectionView.numberOfItemsInSection(0)
-        if number > 0 {
-            let inset      = collectionView.contentInset.top
-            let item       = CGFloat(number/2)
-            let itemHeight = collectionLayout.itemHeight
-            let offset     = CGPoint(x: 0, y: item * itemHeight - inset)
-            
-            collectionView.contentOffset = offset
-            
-            scrollDelegate.adjustScroll(collectionView)
         }
     }
     
@@ -61,11 +44,16 @@ public class CollectionViewWrapper
     let collectionLayout = RAMCollectionViewLayout()
     let scrollDelegate: ScrollViewDelegate
     
+    let rotationWrapper = NotificationCallbackWrapper(name: UIDeviceOrientationDidChangeNotification, object: UIDevice.currentDevice())
+    let keyboardWrapper = NotificationCallbackWrapper(name: UIKeyboardWillChangeFrameNotification)
+    
     public init(collectionView: UICollectionView, cellId: String) {
         self.collectionView = collectionView
         self.cellId         = cellId
         self.scrollDelegate = ScrollViewDelegate(itemHeight: collectionLayout.itemHeight)
-
+        
+        super.init()
+        
         collectionView.registerClass(CellClass.self, forCellWithReuseIdentifier: cellId)
         
         dataSource.wrapper        = self
@@ -75,6 +63,13 @@ public class CollectionViewWrapper
         
         let scrollView = collectionView as UIScrollView
         scrollView.delegate = scrollDelegate
+        
+        rotationWrapper.callback = updateOffset
+        keyboardWrapper.callback = adjustScroll
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func createCell(cv: UICollectionView, _ ip: NSIndexPath) -> UICollectionViewCell {
@@ -104,6 +99,29 @@ public class CollectionViewWrapper
         return []
     }
     
+    // MARK: — Update & Adjust
+    
+    func updateOffset() {
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
+        
+        let number = collectionView.numberOfItemsInSection(0)
+        if number > 0 {
+            let inset      = collectionView.contentInset.top
+            let item       = CGFloat(number/2)
+            let itemHeight = collectionLayout.itemHeight
+            let offset     = CGPoint(x: 0, y: item * itemHeight - inset)
+            
+            collectionView.contentOffset = offset
+            
+            scrollDelegate.adjustScroll(collectionView)
+        }
+    }
+    
+    func adjustScroll() {
+        scrollDelegate.adjustScroll(collectionView)
+    }
+    
 }
 
 class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
@@ -129,7 +147,7 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
     let itemHeight: CGFloat
     init (itemHeight: CGFloat) {
         self.itemHeight = itemHeight
-        
+    
         super.init()
     }
     
@@ -142,22 +160,46 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
         let topBorder   : CGFloat = 0                        // Zero offset means that we really have inset size padding at top
         let bottomBorder: CGFloat = scrollView.bounds.height // Max offset is scrollView height without vertical insets
         
-        if currentOffsetY.between(topBorder, bottomBorder) && currentOffsetY != adjestedOffsetY {
+        UIView.animateWithDuration(0.1) {
             let newOffset = CGPoint(x: 0, y: adjestedOffsetY)
-            scrollView.setContentOffset(newOffset, animated: true)
+            scrollView.contentOffset = newOffset
         }
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         adjustScroll(scrollView)
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            adjustScroll(scrollView)
+        }
     }
     
 }
 
-extension CGFloat {
+class NotificationCallbackWrapper: NSObject {
     
-    func between(a: CGFloat, _ b: CGFloat) -> Bool {
-        return (a <= self) && (self <= b)
+    func callItBack() {
+        callback?()
+    }
+    
+    typealias VoidToVoid = () -> ()
+    var callback: VoidToVoid?
+    
+    init(name: String, object: AnyObject? = nil) {
+        super.init()
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: Selector("callItBack"),
+            name: name,
+            object: object
+        )
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
 }
