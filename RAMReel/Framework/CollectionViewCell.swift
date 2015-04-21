@@ -1,5 +1,5 @@
 //
-//  ExampleCell.swift
+//  RAMCell.swift
 //  RAMReel
 //
 //  Created by Mikhail Stepkin on 4/10/15.
@@ -14,9 +14,11 @@ public protocol ConfigurableCell {
     
     func configureCell(data: DataType)
     
+    var theme: Theme { get set }
+    
 }
 
-public class ExampleCell: UICollectionViewCell, ConfigurableCell {
+public class RAMCell: UICollectionViewCell, ConfigurableCell {
     
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -32,7 +34,7 @@ public class ExampleCell: UICollectionViewCell, ConfigurableCell {
     
     var textLabel: UILabel!
     
-    public var theme: Theme = ExampleTheme.sharedTheme {
+    public var theme: Theme = ExampleTheme() {
         didSet {
             updateFont()
         }
@@ -40,20 +42,30 @@ public class ExampleCell: UICollectionViewCell, ConfigurableCell {
     
     func updateFont() {
         textLabel.font = theme.font
+        textLabel.textColor = theme.textColor.colorWithAlphaComponent(0.3)
     }
     
     private func setup() {
-        let labelFrame = CGRectInset(self.contentView.bounds, 20, 8)
+        let labelFrame = self.contentView.bounds
         textLabel = UILabel(frame: labelFrame)
-        
-        updateFont()
+        textLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         self.contentView.addSubview(textLabel)
+        
+        let views = ["textLabel": textLabel]
+        
+        let textLabelHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(20)-[textLabel]-(20)-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views) as! [NSLayoutConstraint]
+        self.addConstraints(textLabelHConstraints)
+        
+        let textLabelVConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[textLabel]-|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views) as! [NSLayoutConstraint]
+        self.addConstraints(textLabelVConstraints)
+        
+        updateFont()
     }
     
-    public func configureCell(s: NSAttributedString) {
+    public func configureCell(s: String) {
         
-        self.textLabel.attributedText = s
+        self.textLabel.text = s
     
     }
     

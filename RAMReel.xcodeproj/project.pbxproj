@@ -22,6 +22,8 @@
 		9E82B3FD1AD810B50063F1B0 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F31AD810B50063F1B0 /* CollectionViewCell.swift */; };
 		9E82B3FF1AD810B50063F1B0 /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F51AD810B50063F1B0 /* TextFieldReactor.swift */; };
 		9E82B4001AD810B50063F1B0 /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F51AD810B50063F1B0 /* TextFieldReactor.swift */; };
+		9EE1A4561AE63209001A7FF2 /* RAMReel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1A4551AE63209001A7FF2 /* RAMReel.swift */; };
+		9EE1A4571AE63209001A7FF2 /* RAMReel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1A4551AE63209001A7FF2 /* RAMReel.swift */; };
 		9EEF41031AD94D5B0018E358 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEF41021AD94D5B0018E358 /* Theme.swift */; };
 		9EEF41041AD94D5B0018E358 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEF41021AD94D5B0018E358 /* Theme.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +52,7 @@
 		9E82B3F31AD810B50063F1B0 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = Framework/CollectionViewCell.swift; sourceTree = "<group>"; };
 		9E82B3F41AD810B50063F1B0 /* RAMReel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RAMReel.h; path = Framework/RAMReel.h; sourceTree = "<group>"; };
 		9E82B3F51AD810B50063F1B0 /* TextFieldReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldReactor.swift; path = Framework/TextFieldReactor.swift; sourceTree = "<group>"; };
+		9EE1A4551AE63209001A7FF2 /* RAMReel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RAMReel.swift; path = Framework/RAMReel.swift; sourceTree = "<group>"; };
 		9EEF41021AD94D5B0018E358 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = Framework/Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +132,7 @@
 		9E82B3A71AD7EED70063F1B0 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				9EE1A4551AE63209001A7FF2 /* RAMReel.swift */,
 				9EEF41021AD94D5B0018E358 /* Theme.swift */,
 				9EEF41051AD94FFF0018E358 /* CollectionView */,
 				9EEF41061AD950450018E358 /* Data */,
@@ -281,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EE1A4561AE63209001A7FF2 /* RAMReel.swift in Sources */,
 				9E82B3FF1AD810B50063F1B0 /* TextFieldReactor.swift in Sources */,
 				9E82B3F61AD810B50063F1B0 /* CollectionViewLayout.swift in Sources */,
 				9E82B3FA1AD810B50063F1B0 /* DataFlow.swift in Sources */,
@@ -294,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EE1A4571AE63209001A7FF2 /* RAMReel.swift in Sources */,
 				9E82B3F71AD810B50063F1B0 /* CollectionViewLayout.swift in Sources */,
 				9E82B3FB1AD810B50063F1B0 /* DataFlow.swift in Sources */,
 				9E82B3FD1AD810B50063F1B0 /* CollectionViewCell.swift in Sources */,

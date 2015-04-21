@@ -40,6 +40,7 @@ public class TextFieldReactor
     }
     
     func updateFont() {
+        self.textField.textColor = theme.textColor
         self.textField.font = theme.font
     }
     
@@ -59,10 +60,14 @@ public class TextFieldReactor
         
         updateFont()
     }
-    
+
     deinit {
         textField.removeTarget(target, action: Target.actionSelector, forControlEvents: Target.controlEvents)
     }
+}
+
+func fun(s: String) {
+    println(s)
 }
 
 final class Target: NSObject {

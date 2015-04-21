@@ -10,6 +10,7 @@ import UIKit
 
 public protocol Theme {
 
+    var textColor: UIColor { get }
     var font: UIFont { get }
     
 }
@@ -17,6 +18,8 @@ public protocol Theme {
 struct ExampleTheme: Theme {
     
     static let sharedTheme = ExampleTheme()
+    
+    let textColor = UIColor.blackColor()
     
     let isRobotoLoaded = ExampleTheme.loadRoboto()
     

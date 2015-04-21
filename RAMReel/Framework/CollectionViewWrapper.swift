@@ -54,6 +54,8 @@ public class CollectionViewWrapper
         
         super.init()
         
+        self.scrollDelegate.itemIndexChangeCallback = indexCallback
+        
         collectionView.registerClass(CellClass.self, forCellWithReuseIdentifier: cellId)
         
         dataSource.wrapper        = self
@@ -70,6 +72,13 @@ public class CollectionViewWrapper
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func indexCallback(index: Int) {
+        let indexPath = NSIndexPath(forItem: index, inSection: 0)
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        
+        println(cell)
     }
     
     func createCell(cv: UICollectionView, _ ip: NSIndexPath) -> UICollectionViewCell {
@@ -101,7 +110,7 @@ public class CollectionViewWrapper
     
     // MARK: — Update & Adjust
     
-    func updateOffset() {
+    func updateOffset(notification: NSNotification? = nil) {
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
         
@@ -118,7 +127,7 @@ public class CollectionViewWrapper
         }
     }
     
-    func adjustScroll() {
+    func adjustScroll(notification: NSNotification? = nil) {
         scrollDelegate.adjustScroll(collectionView)
     }
     
@@ -144,10 +153,24 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
 
 class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
     
+    typealias ItemIndexChangeCallback = (Int) -> ()
+    
+    var itemIndexChangeCallback: ItemIndexChangeCallback?
+    private(set) var itemIndex: Int? = nil {
+        didSet (newIndex) {
+            if
+                let callback = itemIndexChangeCallback,
+                let index = newIndex
+            {
+                callback(index)
+            }
+        }
+    }
+    
     let itemHeight: CGFloat
     init (itemHeight: CGFloat) {
         self.itemHeight = itemHeight
-    
+        
         super.init()
     }
     
@@ -156,6 +179,11 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
         let currentOffsetY  = scrollView.contentOffset.y + inset
         let itemIndex       = Int(round(currentOffsetY/itemHeight))
         let adjestedOffsetY = CGFloat(itemIndex) * itemHeight - inset
+        
+        self.itemIndex = nil
+        if itemIndex > 0 {
+            self.itemIndex = itemIndex
+        }
         
         let topBorder   : CGFloat = 0                        // Zero offset means that we really have inset size padding at top
         let bottomBorder: CGFloat = scrollView.bounds.height // Max offset is scrollView height without vertical insets
@@ -178,28 +206,3 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
     
 }
 
-class NotificationCallbackWrapper: NSObject {
-    
-    func callItBack() {
-        callback?()
-    }
-    
-    typealias VoidToVoid = () -> ()
-    var callback: VoidToVoid?
-    
-    init(name: String, object: AnyObject? = nil) {
-        super.init()
-        
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: Selector("callItBack"),
-            name: name,
-            object: object
-        )
-    }
-    
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-    
-}
