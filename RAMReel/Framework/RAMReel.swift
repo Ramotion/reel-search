@@ -11,6 +11,7 @@ import UIKit
 public final class RAMReel
     <
     CellClass: UICollectionViewCell,
+    TextFieldClass: UITextField,
     DataSource: FlowDataSource
     where
     CellClass: ConfigurableCell,
@@ -23,7 +24,7 @@ public final class RAMReel
     
     // MARK: TextField
     let reactor  : TextFieldReactor<DataSource, CollectionWrapperClass>
-    let textField: UITextField
+    let textField: TextFieldClass
     
     // MARK: CollectionView
     typealias CollectionWrapperClass = CollectionViewWrapper<DataSource.ResultType, CellClass>
@@ -69,13 +70,12 @@ public final class RAMReel
         self.wrapper = CollectionViewWrapper(collectionView: collectionView, cellId: "RAMCell")
         
         // MARK: TextField
-        self.textField = UITextField()
+        self.textField = TextFieldClass()
         self.textField.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         self.textField.autocapitalizationType = UITextAutocapitalizationType.None
         self.textField.autocorrectionType     = UITextAutocorrectionType.No
         
-        self.textField.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.1)
         self.view.addSubview(self.textField)
         
         reactor = textField <&> dataSource *> wrapper
@@ -91,7 +91,6 @@ public final class RAMReel
         cascadeTheme()
         addHConstraints()
         addVConstraints()
-        
     }
     
     deinit {

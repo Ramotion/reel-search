@@ -12,7 +12,7 @@ import RAMReel
 class ViewController: UIViewController, UICollectionViewDelegate {
 
     var dataSource: SimplePrefixQueryDataSource!
-    var ramReel: RAMReel<RAMCell, SimplePrefixQueryDataSource>!
+    var ramReel: RAMReel<RAMCell, RAMTextField, SimplePrefixQueryDataSource>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,19 +61,5 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         "boron",
         "bark",
     ]
-    
-    func processData(data: [String]) {
-//        println(data)
-    }
 
-}
-
-extension ViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        
-//        let attrs = wrapper.cellAttributes(rect)
-        
-    }
-    
 }

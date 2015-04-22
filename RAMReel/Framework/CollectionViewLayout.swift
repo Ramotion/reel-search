@@ -14,8 +14,12 @@ public class RAMCollectionViewLayout: UICollectionViewLayout {
     public override func prepareLayout() {
         super.prepareLayout()
         
+        updateInsets()
+    }
+    
+    func updateInsets() {
         if let collectionView = self.collectionView {
-            let insets = (collectionView.frame.height - itemHeight)/2
+            let insets = (collectionView.bounds.height - itemHeight)/2
             collectionView.contentInset = UIEdgeInsets(top: insets, left: 0, bottom: insets, right: 0)
         }
     }
@@ -97,7 +101,7 @@ public class RAMCollectionViewLayout: UICollectionViewLayout {
     }
 }
 
-extension CGRect {
+private extension CGRect {
     
     var area: CGFloat {
         

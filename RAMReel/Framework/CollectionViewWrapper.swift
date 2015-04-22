@@ -25,11 +25,14 @@ public class CollectionViewWrapper
     where
     CellClass: ConfigurableCell,
     DataType == CellClass.DataType
->: NSObject, FlowDataDestination, WrapperProtocol {
+>: FlowDataDestination, WrapperProtocol {
     
     var data: [DataType] = [] {
         didSet {
             updateOffset()
+            
+            scrollDelegate.itemIndex = nil
+            scrollDelegate.adjustScroll(collectionView)
         }
     }
     
@@ -45,14 +48,12 @@ public class CollectionViewWrapper
     let scrollDelegate: ScrollViewDelegate
     
     let rotationWrapper = NotificationCallbackWrapper(name: UIDeviceOrientationDidChangeNotification, object: UIDevice.currentDevice())
-    let keyboardWrapper = NotificationCallbackWrapper(name: UIKeyboardWillChangeFrameNotification)
+    let keyboardWrapper = NotificationCallbackWrapper(name: UIKeyboardDidChangeFrameNotification)
     
     public init(collectionView: UICollectionView, cellId: String) {
         self.collectionView = collectionView
         self.cellId         = cellId
         self.scrollDelegate = ScrollViewDelegate(itemHeight: collectionLayout.itemHeight)
-        
-        super.init()
         
         self.scrollDelegate.itemIndexChangeCallback = indexCallback
         
@@ -67,18 +68,20 @@ public class CollectionViewWrapper
         scrollView.delegate = scrollDelegate
         
         rotationWrapper.callback = updateOffset
-        keyboardWrapper.callback = adjustScroll
+        keyboardWrapper.callback  = adjustScroll
     }
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    var selectedItem: DataType?
     func indexCallback(index: Int) {
-        let indexPath = NSIndexPath(forItem: index, inSection: 0)
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
         
-        println(cell)
+        if 0 <= index && index < data.count {
+            let item = data[index]
+            selectedItem = item
+        }
     }
     
     func createCell(cv: UICollectionView, _ ip: NSIndexPath) -> UICollectionViewCell {
@@ -104,7 +107,7 @@ public class CollectionViewWrapper
         {
             return attributes
         }
-    
+        
         return []
     }
     
@@ -114,21 +117,27 @@ public class CollectionViewWrapper
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
         
-        let number = collectionView.numberOfItemsInSection(0)
-        if number > 0 {
-            let inset      = collectionView.contentInset.top
-            let item       = CGFloat(number/2)
-            let itemHeight = collectionLayout.itemHeight
-            let offset     = CGPoint(x: 0, y: item * itemHeight - inset)
+        let durationNumber = notification?.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
+        let duration = durationNumber?.doubleValue ?? 0.1
+        
+        UIView.animateWithDuration(duration) {
+            let number    = self.collectionView.numberOfItemsInSection(0)
+            let itemIndex = self.scrollDelegate.itemIndex ?? number/2
             
-            collectionView.contentOffset = offset
-            
-            scrollDelegate.adjustScroll(collectionView)
+            if itemIndex > 0 {
+                let inset      = self.collectionView.contentInset.top
+                let itemHeight = self.collectionLayout.itemHeight
+                let offset     = CGPoint(x: 0, y: CGFloat(itemIndex) * itemHeight - inset)
+                
+                self.collectionView.contentOffset = offset
+            }
         }
     }
     
     func adjustScroll(notification: NSNotification? = nil) {
-        scrollDelegate.adjustScroll(collectionView)
+        collectionView.contentInset = UIEdgeInsetsZero
+        collectionLayout.updateInsets()
+        self.updateOffset(notification: notification)
     }
     
 }
@@ -157,7 +166,7 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
     
     var itemIndexChangeCallback: ItemIndexChangeCallback?
     private(set) var itemIndex: Int? = nil {
-        didSet (newIndex) {
+        willSet (newIndex) {
             if
                 let callback = itemIndexChangeCallback,
                 let index = newIndex
@@ -180,17 +189,21 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
         let itemIndex       = Int(round(currentOffsetY/itemHeight))
         let adjestedOffsetY = CGFloat(itemIndex) * itemHeight - inset
         
-        self.itemIndex = nil
         if itemIndex > 0 {
             self.itemIndex = itemIndex
         }
         
-        let topBorder   : CGFloat = 0                        // Zero offset means that we really have inset size padding at top
-        let bottomBorder: CGFloat = scrollView.bounds.height // Max offset is scrollView height without vertical insets
+        let ε:CGFloat = 0.5
+        let Δ = fabs(scrollView.contentOffset.y - adjestedOffsetY)
         
-        UIView.animateWithDuration(0.1) {
-            let newOffset = CGPoint(x: 0, y: adjestedOffsetY)
-            scrollView.contentOffset = newOffset
+        if Δ > ε {
+            let topBorder   : CGFloat = 0                        // Zero offset means that we really have inset size padding at top
+            let bottomBorder: CGFloat = scrollView.bounds.height // Max offset is scrollView height without vertical insets
+            
+            UIView.animateWithDuration(0.1) {
+                let newOffset = CGPoint(x: 0, y: adjestedOffsetY)
+                scrollView.contentOffset = newOffset
+            }
         }
     }
     
@@ -205,4 +218,3 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
     }
     
 }
-
