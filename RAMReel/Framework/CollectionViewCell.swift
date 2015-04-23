@@ -38,7 +38,7 @@ public class RAMCell: UICollectionViewCell, ConfigurableCell {
     
     var textLabel: UILabel!
     
-    public var theme: Theme = ExampleTheme() {
+    public var theme: Theme = RAMTheme.sharedTheme {
         didSet {
             updateFont()
         }

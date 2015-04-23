@@ -29,11 +29,11 @@ public class TextFieldReactor
     DS: FlowDataSource,
     DD: FlowDataDestination
     where
-        DS.ResultType == DD.DataType,
-        DS.QueryType  == String
+    DS.ResultType == DD.DataType,
+    DS.QueryType  == String
     >
 {
-    public var theme: Theme {
+    public var theme: Theme = RAMTheme.sharedTheme {
         didSet {
             updateFont()
         }
@@ -47,45 +47,49 @@ public class TextFieldReactor
     let textField : UITextField
     let dataFlow  : DataFlow<DS, DD>
     
-    private let target:Target
+    private let editingTarget:TextFieldTarget
     
     private init(textField: UITextField, dataFlow: DataFlow<DS, DD>) {
-        self.theme = ExampleTheme.sharedTheme
+        self.textField = textField
+        self.dataFlow  = dataFlow
         
-        self.textField      = textField
-        self.dataFlow       = dataFlow
-        self.target         = Target(hook: dataFlow.transport)
+        self.editingTarget = TextFieldTarget(controlEvents: UIControlEvents.EditingChanged) { dataFlow.transport($0.text) }
         
-        textField.addTarget(target, action: Target.actionSelector, forControlEvents: Target.controlEvents)
+        self.editingTarget.beTargetFor(textField)
         
         updateFont()
     }
-
-    deinit {
-        textField.removeTarget(target, action: Target.actionSelector, forControlEvents: Target.controlEvents)
-    }
+    
 }
 
-func fun(s: String) {
-    println(s)
-}
-
-final class Target: NSObject {
+final class TextFieldTarget: NSObject {
     
-    static let actionSelector = Selector("editingChanged:")
-    static let controlEvents  = UIControlEvents.EditingChanged
+    static let actionSelector = Selector("action:")
     
-    typealias HookType = (String) -> ()
+    let controlEvents: UIControlEvents
     
-    let hook: HookType
-    init(hook: HookType) {
+    typealias HookType = (UITextField) -> ()
+    var hook: HookType?
+    
+    init(controlEvents:UIControlEvents, hook: HookType? = nil) {
+        self.controlEvents = controlEvents
         self.hook = hook
         
         super.init()
     }
     
-    func editingChanged(textField: UITextField) {
-        hook(textField.text)
+    var textField: UITextField?
+    func beTargetFor(textField: UITextField) {
+        self.textField = textField
+        self.textField?.addTarget(self, action: TextFieldTarget.actionSelector, forControlEvents: controlEvents)
     }
     
+    deinit {
+        textField?.removeTarget(self, action: TextFieldTarget.actionSelector, forControlEvents: controlEvents)
+    }
+    
+    func action(textField: UITextField) {
+        hook?(textField)
+    }
+
 }

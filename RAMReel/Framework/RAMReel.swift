@@ -17,14 +17,18 @@ public final class RAMReel
     CellClass: ConfigurableCell,
     CellClass.DataType   == DataSource.ResultType,
     DataSource.QueryType == String
-    > {
+> {
     
     /// Container view
     public let view: UIView
     
+    /// Gradient View
+    let gradientView: GradientView
+    
     // MARK: TextField
     let reactor  : TextFieldReactor<DataSource, CollectionWrapperClass>
     let textField: TextFieldClass
+    let returnTarget: TextFieldTarget
     
     // MARK: CollectionView
     typealias CollectionWrapperClass = CollectionViewWrapper<DataSource.ResultType, CellClass>
@@ -34,17 +38,32 @@ public final class RAMReel
     // MARK: Data Source
     let dataSource: DataSource
     
+    // MARK: Selected Item
+    public var selectedItem: DataSource.ResultType? {
+        return wrapper.selectedItem
+    }
+    
     // MARK: Layout
     let layout: UICollectionViewLayout = RAMCollectionViewLayout()
-
-    public var theme:Theme = ExampleTheme() {
+    
+    public var theme:Theme = RAMTheme.sharedTheme {
         didSet {
-            cascadeTheme()
+            updateVisuals()
         }
     }
     
-    func cascadeTheme() {
-        self.reactor.theme = theme
+    func updateVisuals() {
+        self.reactor.theme      = theme
+        self.gradientView.theme = theme
+        
+        self.view.backgroundColor = UIColor.clearColor()
+        
+        self.collectionView.backgroundColor = theme.listBackgroundColor
+        self.collectionView.showsHorizontalScrollIndicator = false
+        self.collectionView.showsVerticalScrollIndicator   = false
+        
+        self.textField.autocapitalizationType = UITextAutocapitalizationType.None
+        self.textField.autocorrectionType     = UITextAutocorrectionType.No
         
         let visibleCells = self.collectionView.visibleCells() as! [CellClass]
         visibleCells.map { cell in
@@ -55,16 +74,17 @@ public final class RAMReel
     var bottomConstraint: NSLayoutConstraint?
     let keyboardCallbackWrapper: NotificationCallbackWrapper
     
-    public init(frame: CGRect, dataSource: DataSource) {
+    public typealias HookType = (DataSource.ResultType) -> ()
+    let hook: HookType?
+    
+    public init(frame: CGRect, dataSource: DataSource, placeholder: String = "", hook: HookType? = nil) {
         self.view = UIView(frame: frame)
-        self.view.backgroundColor = UIColor.whiteColor()
         self.dataSource = dataSource
+        self.hook = hook
         
         // MARK: CollectionView
         self.collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         self.collectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
-        self.collectionView.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(self.collectionView)
         
         self.wrapper = CollectionViewWrapper(collectionView: collectionView, cellId: "RAMCell")
@@ -72,13 +92,14 @@ public final class RAMReel
         // MARK: TextField
         self.textField = TextFieldClass()
         self.textField.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
-        self.textField.autocapitalizationType = UITextAutocapitalizationType.None
-        self.textField.autocorrectionType     = UITextAutocorrectionType.No
-        
+        self.textField.placeholder = placeholder
         self.view.addSubview(self.textField)
         
         reactor = textField <&> dataSource *> wrapper
+        
+        self.gradientView = GradientView(frame: view.bounds)
+        self.gradientView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
+        self.view.insertSubview(gradientView, belowSubview: textField)
         
         views = [
             "collectionView": collectionView,
@@ -86,9 +107,23 @@ public final class RAMReel
         ]
         
         self.keyboardCallbackWrapper = NotificationCallbackWrapper(name: UIKeyboardWillChangeFrameNotification)
+        
+        let controlEvents = UIControlEvents.EditingDidEnd | UIControlEvents.EditingDidEndOnExit
+        returnTarget = TextFieldTarget(controlEvents: controlEvents)
+        
         self.keyboardCallbackWrapper.callback = keyboard
         
-        cascadeTheme()
+        returnTarget.beTargetFor(textField)
+        returnTarget.hook = { _ -> () in
+            if
+                let hook = self.hook,
+                let selectedItem = self.selectedItem
+            {
+                hook(selectedItem)
+            }
+        }
+        
+        updateVisuals()
         addHConstraints()
         addVConstraints()
     }

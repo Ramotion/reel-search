@@ -18,9 +18,12 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         
         dataSource = SimplePrefixQueryDataSource(data)
-        ramReel = RAMReel(frame: self.view.frame, dataSource: dataSource)
+        ramReel = RAMReel(frame: self.view.bounds, dataSource: dataSource, placeholder: "Need something?") {
+            println($0)
+        }
         
-        self.view = ramReel.view
+        self.view.addSubview(ramReel.view)
+        ramReel.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
     }
     
     deinit {
