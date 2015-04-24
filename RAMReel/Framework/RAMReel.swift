@@ -8,6 +8,22 @@
 
 import UIKit
 
+public protocol Renderable {
+
+    // Implement this method in order to be able to put data to textField field
+    // Simplest implementation may return object description
+    func render() -> String
+    
+}
+
+extension String: Renderable {
+    
+    public func render() -> String {
+        return self
+    }
+    
+}
+
 public final class RAMReel
     <
     CellClass: UICollectionViewCell,
@@ -16,7 +32,8 @@ public final class RAMReel
     where
     CellClass: ConfigurableCell,
     CellClass.DataType   == DataSource.ResultType,
-    DataSource.QueryType == String
+    DataSource.QueryType == String,
+    DataSource.ResultType: Renderable
 > {
     
     /// Container view
@@ -108,7 +125,7 @@ public final class RAMReel
         
         self.keyboardCallbackWrapper = NotificationCallbackWrapper(name: UIKeyboardWillChangeFrameNotification)
         
-        let controlEvents = UIControlEvents.EditingDidEnd | UIControlEvents.EditingDidEndOnExit
+        let controlEvents = UIControlEvents.EditingDidEndOnExit
         returnTarget = TextFieldTarget(controlEvents: controlEvents)
         
         self.keyboardCallbackWrapper.callback = keyboard
@@ -119,7 +136,9 @@ public final class RAMReel
                 let hook = self.hook,
                 let selectedItem = self.selectedItem
             {
+                self.textField.text = selectedItem.render()
                 hook(selectedItem)
+                self.wrapper.data = []
             }
         }
         
