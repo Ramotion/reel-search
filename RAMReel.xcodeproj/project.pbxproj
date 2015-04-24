@@ -24,7 +24,6 @@
 		9E82B4001AD810B50063F1B0 /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F51AD810B50063F1B0 /* TextFieldReactor.swift */; };
 		9EDED7191AE8F84A003F7783 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDED7181AE8F84A003F7783 /* GradientView.swift */; };
 		9EDED71A1AE8F84A003F7783 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDED7181AE8F84A003F7783 /* GradientView.swift */; };
-		9EDED71C1AE911AB003F7783 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDED71B1AE911AB003F7783 /* QuartzCore.framework */; };
 		9EE1A4561AE63209001A7FF2 /* RAMReel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1A4551AE63209001A7FF2 /* RAMReel.swift */; };
 		9EE1A4571AE63209001A7FF2 /* RAMReel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1A4551AE63209001A7FF2 /* RAMReel.swift */; };
 		9EE3E52B1AE79BF8008F1136 /* RAMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3E52A1AE79BF8008F1136 /* RAMTextField.swift */; };
@@ -58,7 +57,6 @@
 		9E82B3F41AD810B50063F1B0 /* RAMReel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RAMReel.h; path = Framework/RAMReel.h; sourceTree = "<group>"; };
 		9E82B3F51AD810B50063F1B0 /* TextFieldReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldReactor.swift; path = Framework/TextFieldReactor.swift; sourceTree = "<group>"; };
 		9EDED7181AE8F84A003F7783 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradientView.swift; path = Framework/GradientView.swift; sourceTree = "<group>"; };
-		9EDED71B1AE911AB003F7783 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9EE1A4551AE63209001A7FF2 /* RAMReel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RAMReel.swift; path = Framework/RAMReel.swift; sourceTree = "<group>"; };
 		9EE3E52A1AE79BF8008F1136 /* RAMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RAMTextField.swift; path = Framework/RAMTextField.swift; sourceTree = "<group>"; };
 		9EEF41021AD94D5B0018E358 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = Framework/Theme.swift; sourceTree = "<group>"; };
@@ -69,7 +67,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EDED71C1AE911AB003F7783 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +84,6 @@
 		9E82B3721AD7EEAE0063F1B0 = {
 			isa = PBXGroup;
 			children = (
-				9EDED71B1AE911AB003F7783 /* QuartzCore.framework */,
 				9E82B37E1AD7EEAE0063F1B0 /* RAMReel */,
 				9E82B38B1AD7EEAE0063F1B0 /* RAMReelTests */,
 				9E82B37D1AD7EEAE0063F1B0 /* Products */,
