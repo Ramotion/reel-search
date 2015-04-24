@@ -8,18 +8,60 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MyCell: UICollectionViewCell, ConfigurableCell {
+    
+    
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBOutlet weak var textLabel: UILabel!
+    
+    func configureCell(s: (String, UIColor)) {
+        let (str, color) = s
+        
+        println(self.subviews)
+        
+        self.textLabel?.text = str
+        println(self.textLabel)
+        
+        self.backgroundColor = color
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
+class ViewController: UIViewController, FlowDataSource, FlowDataDestination, UITableViewDelegate {
+
+    @IBOutlet weak var textField: UITextField!
+    var reactorA: TextFieldReactor<ViewController, TableViewDataWrapper<(String, UIColor), MyCell>>!
+    var reactorB: TextFieldReactor<ViewController, ViewController>!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    var wrapper: TableViewDataWrapper<(String, UIColor), MyCell>!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        wrapper = TableViewDataWrapper(collectionView: collectionView, cellId: "The Cell")
+        
+        reactorA = textField &> self *> wrapper
+        reactorB = textField &> self *> self
+    }
+
+    private let data: [(String, UIColor)] = [
+        ("hello", UIColor.greenColor()),
+        ("hell", UIColor.redColor()),
+        ("world", UIColor.blueColor()),
+        ("war", UIColor.blackColor()),
+        ("bar", UIColor.purpleColor()),
+        ("baz", UIColor.yellowColor()),
+        ("boron", UIColor.orangeColor()),
+        ("bark", UIColor.brownColor())
+    ]
+    
+    func resultsForQuery(query: String) -> [(String, UIColor)] {
+        return data.filter({ $0.0.hasPrefix(query) })
+    }
+    
+    func processData(data: [(String, UIColor)]) {
+        println(data)
+    }
+    
+}

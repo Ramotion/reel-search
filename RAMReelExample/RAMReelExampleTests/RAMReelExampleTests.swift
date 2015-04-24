@@ -1,6 +1,6 @@
 //
-//  RAMReelTests.swift
-//  RAMReelTests
+//  RAMReelExampleTests.swift
+//  RAMReelExampleTests
 //
 //  Created by Mikhail Stepkin on 4/10/15.
 //  Copyright (c) 2015 Ramotion. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class RAMReelTests: XCTestCase {
+class RAMReelExampleTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
