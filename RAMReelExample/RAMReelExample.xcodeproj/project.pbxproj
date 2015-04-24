@@ -25,6 +25,20 @@
 			remoteGlobalIDString = 9E82B3B01AD7F35F0063F1B0;
 			remoteInfo = RAMReelExample;
 		};
+		9EE9DA581AEA670D00D878B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9EE9DA531AEA670D00D878B9 /* RAMReel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9E82B37C1AD7EEAE0063F1B0;
+			remoteInfo = RAMReel;
+		};
+		9EE9DA5A1AEA670D00D878B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9EE9DA531AEA670D00D878B9 /* RAMReel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9E82B3871AD7EEAE0063F1B0;
+			remoteInfo = RAMReelTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,6 +68,7 @@
 		9E82B3CC1AD7F35F0063F1B0 /* RAMReelExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMReelExampleTests.swift; sourceTree = "<group>"; };
 		9E82B3E11AD7FDD00063F1B0 /* RAMReel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RAMReel.framework; path = "../../build/Debug-iphoneos/RAMReel.framework"; sourceTree = "<group>"; };
 		9EDED71D1AE915DE003F7783 /* RAMReel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = RAMReel.framework; path = "/Users/mikhail.s/Library/Developer/Xcode/DerivedData/RAMReelExample-elrihllfdnflobbsyznwnrlhgice/Build/Products/Debug-iphoneos/RAMReel.framework"; sourceTree = "<absolute>"; };
+		9EE9DA531AEA670D00D878B9 /* RAMReel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RAMReel.xcodeproj; path = ../RAMReel.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +97,7 @@
 				9E82B3B31AD7F35F0063F1B0 /* RAMReelExample */,
 				9E82B3C91AD7F35F0063F1B0 /* RAMReelExampleTests */,
 				9E82B3B21AD7F35F0063F1B0 /* Products */,
+				9EE9DA531AEA670D00D878B9 /* RAMReel.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +147,15 @@
 				9E82B3CB1AD7F35F0063F1B0 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9EE9DA541AEA670D00D878B9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9EE9DA591AEA670D00D878B9 /* RAMReel.framework */,
+				9EE9DA5B1AEA670D00D878B9 /* RAMReelTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +226,12 @@
 			mainGroup = 9E82B3A81AD7F35F0063F1B0;
 			productRefGroup = 9E82B3B21AD7F35F0063F1B0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9EE9DA541AEA670D00D878B9 /* Products */;
+					ProjectRef = 9EE9DA531AEA670D00D878B9 /* RAMReel.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9E82B3B01AD7F35F0063F1B0 /* RAMReelExample */,
@@ -208,6 +239,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9EE9DA591AEA670D00D878B9 /* RAMReel.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RAMReel.framework;
+			remoteRef = 9EE9DA581AEA670D00D878B9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9EE9DA5B1AEA670D00D878B9 /* RAMReelTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RAMReelTests.xctest;
+			remoteRef = 9EE9DA5A1AEA670D00D878B9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9E82B3AF1AD7F35F0063F1B0 /* Resources */ = {
@@ -371,7 +419,7 @@
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/RAMReelExample-elrihllfdnflobbsyznwnrlhgice/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = RAMReelExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -388,7 +436,7 @@
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/RAMReelExample-elrihllfdnflobbsyznwnrlhgice/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = RAMReelExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
