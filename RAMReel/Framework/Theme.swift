@@ -11,14 +11,21 @@ import UIKit
 public protocol Theme {
 
     var font: UIFont { get }
+    var textColor: UIColor { get }
+    
+    var listBackgroundColor: UIColor { get }
     
 }
 
-struct ExampleTheme: Theme {
+struct RAMTheme: Theme {
     
-    static let sharedTheme = ExampleTheme()
+    static let sharedTheme = RAMTheme()
     
-    let isRobotoLoaded = ExampleTheme.loadRoboto()
+    let textColor = UIColor.blackColor()
+    
+    let listBackgroundColor = UIColor.whiteColor()
+    
+    let isRobotoLoaded = RAMTheme.loadRoboto()
     
     var font:UIFont {
         if self.isRobotoLoaded {

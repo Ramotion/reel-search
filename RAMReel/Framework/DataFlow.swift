@@ -62,26 +62,13 @@ public protocol FlowDataDestination {
 
 public struct SimplePrefixQueryDataSource: FlowDataSource {
     
-    let textColor     : UIColor
-    let grayedOutColor: UIColor
-    
     var data: [String]
-    public init(_ data: [String], textColor: UIColor = UIColor.blackColor()) {
+    public init(_ data: [String]) {
         self.data = data
-        
-        self.textColor      = textColor
-        self.grayedOutColor = textColor.colorWithAlphaComponent(0.3)
     }
     
-    public func resultsForQuery(query: String) -> [NSAttributedString] {
-        return data.filter{ $0.hasPrefix(query) }.map {
-            var attributedString = NSMutableAttributedString(string: $0, attributes: [NSForegroundColorAttributeName: self.grayedOutColor])
-            
-            let prefixRange = ($0 as NSString).rangeOfString(query)
-            attributedString.addAttribute(NSForegroundColorAttributeName, value: self.textColor, range: prefixRange)
-            
-            return attributedString
-        }
+    public func resultsForQuery(query: String) -> [String] {
+        return data.filter{ $0.hasPrefix(query) }
     }
     
 }

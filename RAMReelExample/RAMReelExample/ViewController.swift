@@ -9,30 +9,25 @@
 import UIKit
 import RAMReel
 
-class ViewController: UIViewController, FlowDataDestination, UICollectionViewDelegate {
+class ViewController: UIViewController, UICollectionViewDelegate {
 
-    @IBOutlet weak var textField: UITextField!
-    var reactorA: TextFieldReactor<SimplePrefixQueryDataSource, CollectionViewWrapper<NSAttributedString, ExampleCell>>!
-    var reactorB: TextFieldReactor<SimplePrefixQueryDataSource, ViewController>!
-    
-    @IBOutlet weak var collectionView: UICollectionView!
-    var wrapper: CollectionViewWrapper<NSAttributedString, ExampleCell>!
-    
-    var simpleDataSource: SimplePrefixQueryDataSource!
+    var dataSource: SimplePrefixQueryDataSource!
+    var ramReel: RAMReel<RAMCell, RAMTextField, SimplePrefixQueryDataSource>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        wrapper = CollectionViewWrapper(collectionView: collectionView, cellId: "ExampleCell")
         
-        collectionView.delegate = self
-        let scrollView = collectionView as UIScrollView
-        scrollView.delegate = self
+        dataSource = SimplePrefixQueryDataSource(data)
+        ramReel = RAMReel(frame: self.view.bounds, dataSource: dataSource, placeholder: "Need something?") {
+            println($0)
+        }
         
-        simpleDataSource = SimplePrefixQueryDataSource(data)
-        
-        reactorA = textField <&> simpleDataSource *> wrapper
-        reactorB = textField <&> simpleDataSource *> self
+        self.view.addSubview(ramReel.view)
+        ramReel.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     private let data: [String] = [
@@ -69,33 +64,5 @@ class ViewController: UIViewController, FlowDataDestination, UICollectionViewDel
         "boron",
         "bark",
     ]
-    
-    func processData(data: [NSAttributedString]) {
-//        println(data)
-    }
 
-}
-
-extension ViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        
-        let rect = scrollView.convertRect(textField.frame, fromView: textField.superview)
-        
-        let attrs = wrapper.cellAttributes(rect)
-        
-        let cells = attrs.map {
-            self.collectionView?.cellForItemAtIndexPath($0.indexPath)! as! ExampleCell
-        }
-        
-        if let firstCell = cells.first {
-            self.textField.text = firstCell.description
-        }
-        
-//        if let firstAttr = attrs.first {
-//            println(attrs)
-//        }
-        
-    }
-    
 }
