@@ -4,7 +4,4 @@
    <FileRef
       location = "group:RAMReelExample/RAMReelExample.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:RAMReel.xcodeproj">
-   </FileRef>
 </Workspace>
