@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/Ramotion/reel-search.git", :tag => "0.9.0" }
 
-  s.source_files = "RAMReel/Framework", "RAMReel/Framework/**/*.{h,m}"
+  s.source_files = "RAMReel/Framework", "RAMReel/Framework/**/*.{h,m,swift}"
 
   s.resources    = "RAMReel/Roboto/*.*"
 

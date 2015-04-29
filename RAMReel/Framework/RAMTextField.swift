@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+    Textfield with a line in the bottom
+*/
 public class RAMTextField: UITextField {
     
     var lineColor: UIColor = UIColor.blackColor().colorWithAlphaComponent(0.3)

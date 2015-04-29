@@ -18,6 +18,9 @@ protocol WrapperProtocol : class {
     
 }
 
+/**
+    Wraps collection view and set's collection view data source
+*/
 public class CollectionViewWrapper
     <
     DataType,
@@ -41,7 +44,7 @@ public class CollectionViewWrapper
     }
     
     let collectionView: UICollectionView
-    let cellId: String
+    let cellId: String = "ReelCell"
     
     let dataSource       = CollectionViewDataSource()
     let collectionLayout = RAMCollectionViewLayout()
@@ -50,9 +53,11 @@ public class CollectionViewWrapper
     let rotationWrapper = NotificationCallbackWrapper(name: UIDeviceOrientationDidChangeNotification, object: UIDevice.currentDevice())
     let keyboardWrapper = NotificationCallbackWrapper(name: UIKeyboardDidChangeFrameNotification)
     
-    public init(collectionView: UICollectionView, cellId: String) {
+    /**
+        :param: collectionView Collection view to wrap around
+    */
+    public init(collectionView: UICollectionView) {
         self.collectionView = collectionView
-        self.cellId         = cellId
         self.scrollDelegate = ScrollViewDelegate(itemHeight: collectionLayout.itemHeight)
         
         self.scrollDelegate.itemIndexChangeCallback = indexCallback
@@ -104,7 +109,7 @@ public class CollectionViewWrapper
         return data.count
     }
     
-    public func cellAttributes(rect: CGRect) -> [UICollectionViewLayoutAttributes] {
+    func cellAttributes(rect: CGRect) -> [UICollectionViewLayoutAttributes] {
         let layout     = collectionView.collectionViewLayout
         if
             let returns    = layout.layoutAttributesForElementsInRect(rect),
@@ -208,9 +213,12 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
             self.itemIndex = itemIndex
         }
         
-        let ε:CGFloat = 0.5
+        // Difference between actual and designated position in pixels
         let Δ = fabs(scrollView.contentOffset.y - adjestedOffsetY)
+        // Allowed differenct between actual and designated position in pixels
+        let ε:CGFloat = 0.5
         
+        // If difference is larger than allowed, then adjust position animated
         if Δ > ε {
             let topBorder   : CGFloat = 0                        // Zero offset means that we really have inset size padding at top
             let bottomBorder: CGFloat = scrollView.bounds.height // Max offset is scrollView height without vertical insets

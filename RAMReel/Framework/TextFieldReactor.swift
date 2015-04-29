@@ -11,6 +11,13 @@ import UIKit
 
 infix operator <&> { precedence 175 }
 
+/** Links text field to data flow
+    :param: left text field
+
+    :param: right DataFlow object
+
+    :returns: TextFieldReactor object
+*/
 public func <&>
     <
     DS: FlowDataSource,
@@ -24,6 +31,9 @@ public func <&>
     return TextFieldReactor(textField: left, dataFlow: right)
 }
 
+/**
+    Implements reactive handling text field editing and passes editing changes to data flow
+*/
 public class TextFieldReactor
     <
     DS: FlowDataSource,
@@ -33,6 +43,7 @@ public class TextFieldReactor
     DS.QueryType  == String
     >
 {
+    /// UI related parameter
     public var theme: Theme = RAMTheme.sharedTheme {
         didSet {
             updateFont()

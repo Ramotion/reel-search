@@ -8,10 +8,13 @@
 
 import UIKit
 
+/**
+  Example collection view layout
+*/
 @objc(RAMCollectionViewLayout)
-public class RAMCollectionViewLayout: UICollectionViewLayout {
+class RAMCollectionViewLayout: UICollectionViewLayout {
     
-    public override func prepareLayout() {
+    internal override func prepareLayout() {
         super.prepareLayout()
         
         updateInsets()
@@ -24,18 +27,18 @@ public class RAMCollectionViewLayout: UICollectionViewLayout {
         }
     }
     
-    public override func initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+    internal override func initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         return self.layoutAttributesForItemAtIndexPath(itemIndexPath)
     }
     
-    public override func layoutAttributesForItemAtIndexPath(indexPath:NSIndexPath) -> UICollectionViewLayoutAttributes {
+    internal override func layoutAttributesForItemAtIndexPath(indexPath:NSIndexPath) -> UICollectionViewLayoutAttributes {
         let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
         self.modifyLayoutAttributes(attributes)
         
         return attributes
     }
     
-    public override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject] {
+    internal override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject] {
         
         var allAttributesInRect = [(UICollectionViewLayoutAttributes, CGFloat)]()
         
@@ -85,7 +88,7 @@ public class RAMCollectionViewLayout: UICollectionViewLayout {
         
     }
     
-    public override func collectionViewContentSize() -> CGSize {
+    internal override func collectionViewContentSize() -> CGSize {
         
         if let collectionView = self.collectionView
         {

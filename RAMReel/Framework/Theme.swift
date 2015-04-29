@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+    Protocl that allows you change visual appearance a bit
+*/
 public protocol Theme {
 
     var font: UIFont { get }

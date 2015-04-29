@@ -24,6 +24,9 @@ extension String: Renderable {
     
 }
 
+/**
+    Reel class
+*/
 public final class RAMReel
     <
     CellClass: UICollectionViewCell,
@@ -56,13 +59,25 @@ public final class RAMReel
     let dataSource: DataSource
     
     // MARK: Selected Item
+    /**
+    Use this property to get which item was selected.
+    Value is nil, if data source output is empty.
+    */
     public var selectedItem: DataSource.ResultType? {
         return wrapper.selectedItem
     }
     
+    /**
+        Type of selected item change callback hook
+    */
+    public typealias HookType = (DataSource.ResultType) -> ()
+    /// This hooks that are called on selected item change
+    public var hooks: [HookType] = []
+    
     // MARK: Layout
     let layout: UICollectionViewLayout = RAMCollectionViewLayout()
     
+    /// Visual appearance theme
     public var theme:Theme = RAMTheme.sharedTheme {
         didSet {
             updateVisuals()
@@ -92,20 +107,27 @@ public final class RAMReel
     var bottomConstraints: [NSLayoutConstraint] = []
     let keyboardCallbackWrapper: NotificationCallbackWrapper
     
-    public typealias HookType = (DataSource.ResultType) -> ()
-    let hook: HookType?
+    /**
+        :param: frame Rect that Reel will occupy
     
+        :param: dataSource Object of type that implements FlowDataSource protocol
+    
+        :placeholder: Text field placeholder
+    */
     public init(frame: CGRect, dataSource: DataSource, placeholder: String = "", hook: HookType? = nil) {
         self.view = UIView(frame: frame)
         self.dataSource = dataSource
-        self.hook = hook
+        
+        if let h = hook {
+            self.hooks.append(h)
+        }
         
         // MARK: CollectionView
         self.collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         self.collectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.view.addSubview(self.collectionView)
         
-        self.wrapper = CollectionViewWrapper(collectionView: collectionView, cellId: "RAMCell")
+        self.wrapper = CollectionViewWrapper(collectionView: collectionView)
         
         // MARK: TextField
         self.textField = TextFieldClass()
@@ -134,12 +156,12 @@ public final class RAMReel
         
         returnTarget.beTargetFor(textField)
         returnTarget.hook = { _ -> () in
-            if
-                let hook = self.hook,
-                let selectedItem = self.selectedItem
+            if let selectedItem = self.selectedItem
             {
                 self.textField.text = selectedItem.render()
-                hook(selectedItem)
+                self.hooks.map { hook -> () in
+                    hook(selectedItem)
+                }
                 self.wrapper.data = []
             }
         }

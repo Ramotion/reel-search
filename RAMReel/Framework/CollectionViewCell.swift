@@ -8,21 +8,30 @@
 
 import UIKit
 
+/**
+    Type that implements this protocol allows configuration.
+    As type name hints this protocol primarily targeted to UITableView and UICollectionView cells
+*/
 public protocol ConfigurableCell {
     
     typealias DataType
     
+    /**
+        Implementing type should use data to fill own data fields
+    
+        :param: data Data to present in the cell
+    */
     func configureCell(data: DataType)
     
+    /// Visual appearance theme
     var theme: Theme { get set }
     
 }
 
+/**
+    Example configurable cell
+*/
 public class RAMCell: UICollectionViewCell, ConfigurableCell {
-    
-    public override var description: String {
-        return self.textLabel.text ?? ""
-    }
     
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -38,6 +47,7 @@ public class RAMCell: UICollectionViewCell, ConfigurableCell {
     
     var textLabel: UILabel!
     
+    /// Visual appearance theme
     public var theme: Theme = RAMTheme.sharedTheme {
         didSet {
             updateFont()
@@ -67,6 +77,7 @@ public class RAMCell: UICollectionViewCell, ConfigurableCell {
         updateFont()
     }
     
+    // Applies string data to the label text property
     public func configureCell(s: String) {
         
         self.textLabel.text = s
