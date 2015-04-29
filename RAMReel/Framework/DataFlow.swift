@@ -13,9 +13,11 @@ infix operator *> { precedence 180 }
 /**
     Creates data flow from compatatible data source to data destination
 
-    :param: left object of type, that comply to FlowDataSource protocol
+    :param: left Object of type that comply to FlowDataSource protocol
 
-    :param: right object of type, that comply to FlowDataDestination protocol
+    :param: right Object of type that comply to FlowDataDestination protocol
+
+    :returns: Data flow from source to destination
 */
 public func *>
     <
@@ -95,10 +97,12 @@ public protocol FlowDataDestination {
 public struct SimplePrefixQueryDataSource: FlowDataSource {
     
     var data: [String]
+    /// Creates data source with data array
     public init(_ data: [String]) {
         self.data = data
     }
     
+    /// Returns all the strings that starts with query string
     public func resultsForQuery(query: String) -> [String] {
         return data.filter{ $0.hasPrefix(query) }
     }

@@ -39,7 +39,7 @@ public class RAMCell: UICollectionViewCell, ConfigurableCell {
         setup()
     }
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         
         setup()
@@ -77,7 +77,7 @@ public class RAMCell: UICollectionViewCell, ConfigurableCell {
         updateFont()
     }
     
-    // Applies string data to the label text property
+    /// Applies string data to the label text property
     public func configureCell(s: String) {
         
         self.textLabel.text = s

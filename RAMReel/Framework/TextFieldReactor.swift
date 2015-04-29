@@ -11,7 +11,9 @@ import UIKit
 
 infix operator <&> { precedence 175 }
 
-/** Links text field to data flow
+/** 
+    Links text field to data flow
+
     :param: left text field
 
     :param: right DataFlow object

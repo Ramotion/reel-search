@@ -9,7 +9,7 @@
 import UIKit
 
 /**
-    Protocl that allows you change visual appearance a bit
+    Protocol that allows you change visual appearance a bit
 */
 public protocol Theme {
 

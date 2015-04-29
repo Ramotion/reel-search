@@ -8,15 +8,21 @@
 
 import UIKit
 
+/**
+    Types that implement this protocol are expected to have string representation.
+    This protocol is separated from Printable and it's description property on purpose.
+*/
 public protocol Renderable {
 
-    // Implement this method in order to be able to put data to textField field
-    // Simplest implementation may return object description
+    /** 
+        Implement this method in order to be able to put data to textField field
+        Simplest implementation may return just object description
+    */
     func render() -> String
     
 }
 
-extension String: Renderable {
+ extension String: Renderable {
     
     public func render() -> String {
         return self
@@ -67,6 +73,7 @@ public final class RAMReel
         return wrapper.selectedItem
     }
     
+    // MARK: Hooks
     /**
         Type of selected item change callback hook
     */
@@ -77,6 +84,7 @@ public final class RAMReel
     // MARK: Layout
     let layout: UICollectionViewLayout = RAMCollectionViewLayout()
     
+    // MARK: Theme
     /// Visual appearance theme
     public var theme:Theme = RAMTheme.sharedTheme {
         didSet {
@@ -107,12 +115,15 @@ public final class RAMReel
     var bottomConstraints: [NSLayoutConstraint] = []
     let keyboardCallbackWrapper: NotificationCallbackWrapper
     
+    // MARK: Initialization
     /**
         :param: frame Rect that Reel will occupy
     
         :param: dataSource Object of type that implements FlowDataSource protocol
     
-        :placeholder: Text field placeholder
+        :placeholder: Optional text field placeholder
+    
+        :hook: Optional initial value change hook
     */
     public init(frame: CGRect, dataSource: DataSource, placeholder: String = "", hook: HookType? = nil) {
         self.view = UIView(frame: frame)
