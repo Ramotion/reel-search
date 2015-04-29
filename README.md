@@ -1,1 +1,1 @@
-[Jazzy docs](docs/)
+[Jazzy docs](docs/index.html)
