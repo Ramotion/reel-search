@@ -22,6 +22,8 @@ public protocol Theme {
 
 struct RAMTheme: Theme {
     
+    private init() { }
+    
     static let sharedTheme = RAMTheme()
     
     let textColor = UIColor.blackColor()

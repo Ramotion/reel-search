@@ -13,8 +13,8 @@
 		9E82B3BE1AD7F35F0063F1B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E82B3BD1AD7F35F0063F1B0 /* Images.xcassets */; };
 		9E82B3C11AD7F35F0063F1B0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E82B3BF1AD7F35F0063F1B0 /* LaunchScreen.xib */; };
 		9E82B3CD1AD7F35F0063F1B0 /* RAMReelExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3CC1AD7F35F0063F1B0 /* RAMReelExampleTests.swift */; };
-		9EDED71E1AE915DE003F7783 /* RAMReel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDED71D1AE915DE003F7783 /* RAMReel.framework */; };
-		9EDED71F1AE915DE003F7783 /* RAMReel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDED71D1AE915DE003F7783 /* RAMReel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9EB2F3E01AFA4D080038C14E /* RAMReel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE9DA591AEA670D00D878B9 /* RAMReel.framework */; };
+		9EB2F3E11AFA4D080038C14E /* RAMReel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE9DA591AEA670D00D878B9 /* RAMReel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,6 +24,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9E82B3B01AD7F35F0063F1B0;
 			remoteInfo = RAMReelExample;
+		};
+		9EB2F3E21AFA4D080038C14E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9EE9DA531AEA670D00D878B9 /* RAMReel.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E82B37B1AD7EEAE0063F1B0;
+			remoteInfo = RAMReel;
 		};
 		9EE9DA581AEA670D00D878B9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -42,13 +49,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9EDED7201AE915DE003F7783 /* Embed Frameworks */ = {
+		9EB2F3E41AFA4D080038C14E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9EDED71F1AE915DE003F7783 /* RAMReel.framework in Embed Frameworks */,
+				9EB2F3E11AFA4D080038C14E /* RAMReel.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EDED71E1AE915DE003F7783 /* RAMReel.framework in Frameworks */,
+				9EB2F3E01AFA4D080038C14E /* RAMReel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,11 +175,12 @@
 				9E82B3AD1AD7F35F0063F1B0 /* Sources */,
 				9E82B3AE1AD7F35F0063F1B0 /* Frameworks */,
 				9E82B3AF1AD7F35F0063F1B0 /* Resources */,
-				9EDED7201AE915DE003F7783 /* Embed Frameworks */,
+				9EB2F3E41AFA4D080038C14E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9EB2F3E31AFA4D080038C14E /* PBXTargetDependency */,
 			);
 			name = RAMReelExample;
 			productName = RAMReelExample;
@@ -303,6 +311,11 @@
 			target = 9E82B3B01AD7F35F0063F1B0 /* RAMReelExample */;
 			targetProxy = 9E82B3C71AD7F35F0063F1B0 /* PBXContainerItemProxy */;
 		};
+		9EB2F3E31AFA4D080038C14E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RAMReel;
+			targetProxy = 9EB2F3E21AFA4D080038C14E /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -412,7 +425,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/mikhail.s/Projects/RAMReel/build/Debug-iphoneos",
@@ -429,7 +441,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/mikhail.s/Projects/RAMReel/build/Debug-iphoneos",
