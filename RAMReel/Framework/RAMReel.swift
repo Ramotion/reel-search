@@ -93,8 +93,9 @@ public final class RAMReel
     }
     
     func updateVisuals() {
-        self.reactor.theme      = theme
-        self.gradientView.theme = theme
+        self.textField.textColor = theme.textColor
+        self.textField.font = theme.font
+        self.gradientView.listBackgroundColor = theme.listBackgroundColor
         
         self.view.backgroundColor = UIColor.clearColor()
         

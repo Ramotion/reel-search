@@ -44,19 +44,7 @@ public class TextFieldReactor
     DS.ResultType == DD.DataType,
     DS.QueryType  == String
     >
-{
-    /// UI related parameter
-    public var theme: Theme = RAMTheme.sharedTheme {
-        didSet {
-            updateFont()
-        }
-    }
-    
-    func updateFont() {
-        self.textField.textColor = theme.textColor
-        self.textField.font = theme.font
-    }
-    
+{    
     let textField : UITextField
     let dataFlow  : DataFlow<DS, DD>
     
@@ -69,8 +57,6 @@ public class TextFieldReactor
         self.editingTarget = TextFieldTarget(controlEvents: UIControlEvents.EditingChanged) { dataFlow.transport($0.text) }
         
         self.editingTarget.beTargetFor(textField)
-        
-        updateFont()
     }
     
 }

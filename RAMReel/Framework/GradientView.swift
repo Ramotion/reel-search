@@ -13,15 +13,16 @@ class GradientView: UIView {
     
     var gradientLayer: CAGradientLayer!
     
-    var theme: Theme = RAMTheme.sharedTheme {
+    var listBackgroundColor: UIColor? {
         didSet {
             updateGradient()
         }
     }
     
     func updateGradient() {
-        let white = theme.listBackgroundColor.CGColor
-        let clear = theme.listBackgroundColor.colorWithAlphaComponent(0.0).CGColor
+        let color = listBackgroundColor ?? UIColor.whiteColor()
+        let white = color.CGColor
+        let clear = color.colorWithAlphaComponent(0.0).CGColor
         gradientLayer.colors = [white, clear, white]
     }
     
