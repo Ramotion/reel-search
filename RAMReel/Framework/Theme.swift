@@ -12,10 +12,21 @@ import UIKit
     Protocol that allows you change visual appearance a bit
 */
 public protocol Theme {
-
+    
+    /** 
+        Text font of both list labels and input textfield
+    */
     var font: UIFont { get }
+    /**
+        Color of textfield's text
+        
+        Suggestion list's text color is calculated using this color by changing alpha channel value to 0.3
+    */
     var textColor: UIColor { get }
     
+    /**
+        Color of list's background
+    */
     var listBackgroundColor: UIColor { get }
     
 }
