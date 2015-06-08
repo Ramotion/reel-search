@@ -97,6 +97,7 @@ public final class RAMReel
         self.textField.font = theme.font
         self.gradientView.listBackgroundColor = theme.listBackgroundColor
         
+        self.view.layer.mask = self.gradientView.layer
         self.view.backgroundColor = UIColor.clearColor()
         
         self.collectionView.backgroundColor = theme.listBackgroundColor
@@ -151,12 +152,10 @@ public final class RAMReel
         
         self.gradientView = GradientView(frame: view.bounds)
         self.gradientView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.view.insertSubview(gradientView, belowSubview: textField)
         
         views = [
             "collectionView": collectionView,
-            "textField": textField,
-            "gradientView": gradientView
+            "textField": textField
         ]
         
         self.keyboardCallbackWrapper = NotificationCallbackWrapper(name: UIKeyboardWillChangeFrameNotification)
@@ -197,9 +196,6 @@ public final class RAMReel
         
         let textFieldHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(20)-[textField]-(20)-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views) as! [NSLayoutConstraint]
         view.addConstraints(textFieldHConstraints)
-        
-        let gradientHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[gradientView]|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views) as! [NSLayoutConstraint]
-        view.addConstraints(gradientHConstraints)
     }
     
     func addVConstraints() {
@@ -213,13 +209,6 @@ public final class RAMReel
         
         let textFieldVConstraints = [NSLayoutConstraint(item: textField, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: collectionView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)] + NSLayoutConstraint.constraintsWithVisualFormat("V:[textField(>=44)]", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views) as! [NSLayoutConstraint]
         view.addConstraints(textFieldVConstraints)
-        
-        let gradientVConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[gradientView]|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views) as! [NSLayoutConstraint]
-        view.addConstraints(gradientVConstraints)
-        
-        if let bottomConstraint = gradientVConstraints.filter({ $0.firstAttribute == NSLayoutAttribute.Bottom }).first {
-            bottomConstraints.append(bottomConstraint)
-        }
     }
     
     func keyboard(notification: NSNotification) {

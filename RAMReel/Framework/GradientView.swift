@@ -21,9 +21,9 @@ class GradientView: UIView {
     
     func updateGradient() {
         let color = listBackgroundColor ?? UIColor.whiteColor()
-        let white = color.CGColor
+        let white = color.colorWithAlphaComponent(1.0).CGColor
         let clear = color.colorWithAlphaComponent(0.0).CGColor
-        gradientLayer.colors = [white, clear, white]
+        gradientLayer.colors = [clear, white, clear]
     }
     
     func setupGradientLayer() {
