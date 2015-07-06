@@ -231,6 +231,7 @@ public final class RAMReel
                 delay: 0.0,
                 options: animCurve,
                 animations: {
+                    self.gradientView.layer.frame.size.height = endFrame.origin.y
                     self.textField.layoutIfNeeded()
                 }, completion: nil)
         }
