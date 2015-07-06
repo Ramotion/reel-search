@@ -9,20 +9,20 @@
 import UIKit
 
 /**
-    Types that implement this protocol are expected to have string representation.
-    This protocol is separated from Printable and it's description property on purpose.
+Types that implement this protocol are expected to have string representation.
+This protocol is separated from Printable and it's description property on purpose.
 */
 public protocol Renderable {
-
-    /** 
-        Implement this method in order to be able to put data to textField field
-        Simplest implementation may return just object description
+    
+    /**
+    Implement this method in order to be able to put data to textField field
+    Simplest implementation may return just object description
     */
     func render() -> String
     
 }
 
- extension String: Renderable {
+extension String: Renderable {
     
     public func render() -> String {
         return self
@@ -31,7 +31,7 @@ public protocol Renderable {
 }
 
 /**
-    Reel class
+Reel class
 */
 public final class RAMReel
     <
@@ -75,7 +75,7 @@ public final class RAMReel
     
     // MARK: Hooks
     /**
-        Type of selected item change callback hook
+    Type of selected item change callback hook
     */
     public typealias HookType = (DataSource.ResultType) -> ()
     /// This hooks that are called on selected item change
@@ -92,7 +92,7 @@ public final class RAMReel
         }
     }
     
-    func updateVisuals() {
+    private func updateVisuals() {
         self.textField.textColor = theme.textColor
         self.textField.font = theme.font
         self.gradientView.listBackgroundColor = theme.listBackgroundColor
@@ -108,10 +108,26 @@ public final class RAMReel
         self.textField.autocorrectionType     = UITextAutocorrectionType.No
         self.textField.clearButtonMode        = UITextFieldViewMode.WhileEditing
         
+        self.updatePlaceholder(self.placeholder)
+        
+        self.wrapper.theme = self.theme
+        
         let visibleCells = self.collectionView.visibleCells() as! [CellClass]
         visibleCells.map { cell in
             cell.theme = self.theme
         }
+    }
+    
+    var placeholder: String = "" {
+        willSet {
+            updatePlaceholder(newValue)
+        }
+    }
+    
+    private func updatePlaceholder(placeholder:String) {
+        self.textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
+            NSForegroundColorAttributeName: self.theme.textColor.colorWithAlphaComponent(0.5)
+            ])
     }
     
     var bottomConstraints: [NSLayoutConstraint] = []
@@ -119,13 +135,13 @@ public final class RAMReel
     
     // MARK: Initialization
     /**
-        :param: frame Rect that Reel will occupy
+    :param: frame Rect that Reel will occupy
     
-        :param: dataSource Object of type that implements FlowDataSource protocol
+    :param: dataSource Object of type that implements FlowDataSource protocol
     
-        :placeholder: Optional text field placeholder
+    :placeholder: Optional text field placeholder
     
-        :hook: Optional initial value change hook
+    :hook: Optional initial value change hook
     */
     public init(frame: CGRect, dataSource: DataSource, placeholder: String = "", hook: HookType? = nil) {
         self.view = UIView(frame: frame)
@@ -140,13 +156,14 @@ public final class RAMReel
         self.collectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.view.addSubview(self.collectionView)
         
-        self.wrapper = CollectionViewWrapper(collectionView: collectionView)
+        self.wrapper = CollectionViewWrapper(collectionView: collectionView, theme: self.theme)
         
         // MARK: TextField
         self.textField = TextFieldClass()
         self.textField.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.textField.placeholder = placeholder
         self.view.addSubview(self.textField)
+        
+        self.placeholder = placeholder
         
         reactor = textField <&> dataSource *> wrapper
         
@@ -231,6 +248,7 @@ public final class RAMReel
                 delay: 0.0,
                 options: animCurve,
                 animations: {
+                    self.gradientView.layer.frame.size.height = endFrame.origin.y
                     self.textField.layoutIfNeeded()
                 }, completion: nil)
         }

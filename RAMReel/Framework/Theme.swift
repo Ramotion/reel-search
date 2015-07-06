@@ -9,47 +9,47 @@
 import UIKit
 
 /**
-    Protocol that allows you change visual appearance a bit
+Protocol that allows you change visual appearance a bit
 */
 public protocol Theme {
     
-    /** 
-        Text font of both list labels and input textfield
+    /**
+    Text font of both list labels and input textfield
     */
     var font: UIFont { get }
     /**
-        Color of textfield's text
-        
-        Suggestion list's text color is calculated using this color by changing alpha channel value to 0.3
+    Color of textfield's text
+    
+    Suggestion list's text color is calculated using this color by changing alpha channel value to 0.3
     */
     var textColor: UIColor { get }
     
     /**
-        Color of list's background
+    Color of list's background
     */
     var listBackgroundColor: UIColor { get }
     
 }
 
-struct RAMTheme: Theme {
+public struct RAMTheme: Theme {
     
-    private init() { }
+    public static let sharedTheme = RAMTheme()
     
-    static let sharedTheme = RAMTheme()
-    
-    let textColor = UIColor.blackColor()
-    
-    let listBackgroundColor = UIColor.whiteColor()
+    public let font: UIFont
+    public let textColor: UIColor
+    public let listBackgroundColor: UIColor
     
     let isRobotoLoaded = RAMTheme.loadRoboto()
     
-    var font:UIFont {
-        if self.isRobotoLoaded {
-            return UIFont(name: "Roboto-Light", size: 36)!
-        }
-        else {
-            return UIFont.systemFontOfSize(36, weight: UIFontWeightThin)
-        }
+    private init(
+        textColor: UIColor = UIColor.blackColor(),
+        listBackgroundColor: UIColor = UIColor.clearColor(),
+        font: UIFont = UIFont(name: "Roboto-Light", size: 36) ?? UIFont.systemFontOfSize(36, weight: UIFontWeightThin)
+        )
+    {
+        self.textColor = textColor
+        self.listBackgroundColor = listBackgroundColor
+        self.font = font
     }
     
     static private var loadToken = dispatch_once_t()
@@ -58,17 +58,10 @@ struct RAMTheme: Theme {
         var result: Bool?
         dispatch_once(&loadToken) {
             
-            let frameworks = NSBundle.allFrameworks() as! [NSBundle]
-            let paths = frameworks.map { (bundle: NSBundle) -> String? in
-                return bundle.pathForResource("Roboto-Light", ofType: "ttf")
-            }
-            
-            let theFirstPath = paths.filter { path in
-                return path != nil
-                }.map { $0! }.first
+            let bundle = NSBundle(identifier: "RAMReel")
             
             if
-                let fontPath = theFirstPath,
+                let fontPath = bundle?.pathForResource("Roboto-Light", ofType: "ttf"),
                 let inData = NSData(contentsOfFile: fontPath)
             {
                 let provider = CGDataProviderCreateWithCFData(inData)
@@ -89,4 +82,17 @@ struct RAMTheme: Theme {
         
         return result ?? true
     }
+    
+    public func textColor(textColor: UIColor) -> RAMTheme {
+        return RAMTheme(textColor: textColor, listBackgroundColor: self.listBackgroundColor, font: self.font)
+    }
+    
+    public func listBackgroundColor(listBackgroundColor: UIColor) -> RAMTheme {
+        return RAMTheme(textColor: self.textColor, listBackgroundColor: listBackgroundColor, font: self.font)
+    }
+    
+    public func font(font: UIFont) -> RAMTheme {
+        return RAMTheme(textColor: self.textColor, listBackgroundColor: self.listBackgroundColor, font: font)
+    }
+    
 }

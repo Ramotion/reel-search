@@ -53,11 +53,15 @@ public class CollectionViewWrapper
     let rotationWrapper = NotificationCallbackWrapper(name: UIDeviceOrientationDidChangeNotification, object: UIDevice.currentDevice())
     let keyboardWrapper = NotificationCallbackWrapper(name: UIKeyboardDidChangeFrameNotification)
     
+    var theme: Theme
+
     /**
         :param: collectionView Collection view to wrap around
     */
-    public init(collectionView: UICollectionView) {
+    public init(collectionView: UICollectionView, theme: Theme) {
         self.collectionView = collectionView
+        self.theme = theme
+        
         self.scrollDelegate = ScrollViewDelegate(itemHeight: collectionLayout.itemHeight)
         
         self.scrollDelegate.itemIndexChangeCallback = indexCallback
@@ -101,6 +105,7 @@ public class CollectionViewWrapper
         let dat  = self.data[row]
         
         cell.configureCell(dat)
+        cell.theme = self.theme
         
         return cell as UICollectionViewCell
     }
