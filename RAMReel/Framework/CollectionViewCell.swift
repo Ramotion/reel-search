@@ -71,7 +71,7 @@ public class RAMCell: UICollectionViewCell, ConfigurableCell {
         let textLabelHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(20)-[textLabel]-(20)-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views) as! [NSLayoutConstraint]
         self.addConstraints(textLabelHConstraints)
         
-        let textLabelVConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[textLabel]-|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views) as! [NSLayoutConstraint]
+        let textLabelVConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[textLabel]|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views) as! [NSLayoutConstraint]
         self.addConstraints(textLabelVConstraints)
         
         updateFont()
