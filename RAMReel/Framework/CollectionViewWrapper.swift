@@ -19,7 +19,7 @@ protocol WrapperProtocol : class {
 }
 
 /**
-    Wraps collection view and set's collection view data source
+Wraps collection view and set's collection view data source
 */
 public class CollectionViewWrapper
     <
@@ -54,9 +54,9 @@ public class CollectionViewWrapper
     let keyboardWrapper = NotificationCallbackWrapper(name: UIKeyboardDidChangeFrameNotification)
     
     var theme: Theme
-
+    
     /**
-        :param: collectionView Collection view to wrap around
+    :param: collectionView Collection view to wrap around
     */
     public init(collectionView: UICollectionView, theme: Theme) {
         self.collectionView = collectionView
@@ -85,16 +85,20 @@ public class CollectionViewWrapper
     }
     
     var selectedItem: DataType?
-    func indexCallback(index: Int) {
-        if 0 <= index && index < data.count {
-            let item = data[index]
-            selectedItem = item
-            
-            // TODO: Update cell appearance maybe?
-            // Toggle selected?
-            let indexPath = NSIndexPath(forItem: index, inSection: 0)
-            let cell = collectionView.cellForItemAtIndexPath(indexPath)
-            cell?.selected = true
+    func indexCallback(idx: Int?) {
+        if let index = idx
+            where 0 <= index && index < data.count {
+                let item = data[index]
+                selectedItem = item
+                
+                // TODO: Update cell appearance maybe?
+                // Toggle selected?
+                let indexPath = NSIndexPath(forItem: index, inSection: 0)
+                let cell = collectionView.cellForItemAtIndexPath(indexPath)
+                cell?.selected = true
+        }
+        else {
+            selectedItem = nil
         }
     }
     
@@ -177,16 +181,14 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
 
 class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
     
-    typealias ItemIndexChangeCallback = (Int) -> ()
+    typealias ItemIndexChangeCallback = (Int?) -> ()
     
     var itemIndexChangeCallback: ItemIndexChangeCallback?
     private(set) var itemIndex: Int? = nil {
         willSet (newIndex) {
-            if
-                let callback = itemIndexChangeCallback,
-                let index = newIndex
+            if let callback = itemIndexChangeCallback
             {
-                callback(index)
+                callback(newIndex)
             }
         }
     }
@@ -202,7 +204,7 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
         let inset           = scrollView.contentInset.top
         let currentOffsetY  = scrollView.contentOffset.y + inset
         let floatIndex      = currentOffsetY/itemHeight
-
+        
         let scrollDirection = ScrollDirection.scrolledWhere(scrollFrom, scrollTo)
         let itemIndex: Int
         if scrollDirection == .Up {
@@ -214,7 +216,7 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
         
         let adjestedOffsetY = CGFloat(itemIndex) * itemHeight - inset
         
-        if itemIndex > 0 {
+        if itemIndex >= 0 {
             self.itemIndex = itemIndex
         }
         
