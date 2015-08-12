@@ -160,6 +160,7 @@ public final class RAMReel
         
         // MARK: TextField
         self.textField = TextFieldClass()
+        self.textField.returnKeyType = UIReturnKeyType.Done
         self.textField.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.view.addSubview(self.textField)
         

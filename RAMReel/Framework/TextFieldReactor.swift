@@ -55,7 +55,6 @@ public class TextFieldReactor
         self.dataFlow  = dataFlow
         
         self.editingTarget = TextFieldTarget(controlEvents: UIControlEvents.EditingChanged) { dataFlow.transport($0.text) }
-        
         self.editingTarget.beTargetFor(textField)
     }
     
