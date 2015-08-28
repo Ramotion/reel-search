@@ -22,10 +22,29 @@ public protocol Renderable {
     
 }
 
+/**
+Types that implement this protocol are expected to be constructuble from string
+*/
+public protocol Parsable {
+    
+    /**
+    Implement this method in order to be able to construct your data from string
+    */
+    static func parse(string: String) -> Self?
+}
+
 extension String: Renderable {
     
     public func render() -> String {
         return self
+    }
+    
+}
+
+extension String: Parsable {
+    
+    public static func parse(string: String) -> String? {
+        return string
     }
     
 }
@@ -42,7 +61,8 @@ public final class RAMReel
     CellClass: ConfigurableCell,
     CellClass.DataType   == DataSource.ResultType,
     DataSource.QueryType == String,
-    DataSource.ResultType: Renderable
+    DataSource.ResultType: Renderable,
+    DataSource.ResultType: Parsable
 > {
     
     /// Container view
@@ -70,7 +90,7 @@ public final class RAMReel
     Value is nil, if data source output is empty.
     */
     public var selectedItem: DataSource.ResultType? {
-        return wrapper.selectedItem
+        return wrapper.selectedItem ?? flatMap(textField.text, DataSource.ResultType.parse)
     }
     
     // MARK: Hooks
