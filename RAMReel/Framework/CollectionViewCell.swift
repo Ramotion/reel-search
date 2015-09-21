@@ -31,6 +31,7 @@ public protocol ConfigurableCell {
 /**
     Example configurable cell
 */
+@available(iOS 8.2, *)
 public class RAMCell: UICollectionViewCell, ConfigurableCell {
     
     required public init?(coder aDecoder: NSCoder) {
@@ -55,6 +56,7 @@ public class RAMCell: UICollectionViewCell, ConfigurableCell {
     }
     
     func updateFont() {
+        let theme = self.theme
         textLabel.font = theme.font
         textLabel.textColor = theme.textColor.colorWithAlphaComponent(0.3)
     }

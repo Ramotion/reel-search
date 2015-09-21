@@ -52,6 +52,7 @@ extension String: Parsable {
 /**
 Reel class
 */
+@available(iOS 8.2, *)
 public final class RAMReel
     <
     CellClass: UICollectionViewCell,
@@ -90,14 +91,14 @@ public final class RAMReel
     Value is nil, if data source output is empty.
     */
     public var selectedItem: DataSource.ResultType? {
-        return wrapper.selectedItem ?? Optional(textField.text).flatMap(DataSource.ResultType.parse)
+        return wrapper.selectedItem ?? textField.text.flatMap(DataSource.ResultType.parse)
     }
 
     // MARK: Hooks
     /**
     Type of selected item change callback hook
     */
-    public typealias HookType = (DataSource.ResultType) -> ()
+    public typealias HookType = (DataSource.ResultType) -> Void
     /// This hooks that are called on selected item change
     public var hooks: [HookType] = []
 
@@ -113,6 +114,7 @@ public final class RAMReel
     }
 
     private func updateVisuals() {
+        let theme = self.theme
         self.textField.textColor = theme.textColor
         self.textField.font = theme.font
         self.gradientView.listBackgroundColor = theme.listBackgroundColor
@@ -133,7 +135,7 @@ public final class RAMReel
         self.wrapper.theme = self.theme
 
         let visibleCells = self.collectionView.visibleCells() as! [CellClass]
-        visibleCells.map { cell in
+        let _ = visibleCells.map { (var cell: CellClass) -> Void in
             cell.theme = self.theme
         }
     }
@@ -145,8 +147,9 @@ public final class RAMReel
     }
 
     private func updatePlaceholder(placeholder:String) {
+        let theme = self.theme
         self.textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
-            NSForegroundColorAttributeName: self.theme.textColor.colorWithAlphaComponent(0.5)
+            NSForegroundColorAttributeName: theme.textColor.colorWithAlphaComponent(0.5)
             ])
     }
 
@@ -204,11 +207,11 @@ public final class RAMReel
         self.keyboardCallbackWrapper.callback = keyboard
 
         returnTarget.beTargetFor(textField)
-        returnTarget.hook = { _ -> () in
+        returnTarget.hook = { _ -> Void in
             if let selectedItem = self.selectedItem
             {
                 self.textField.text = selectedItem.render()
-                self.hooks.map { hook -> () in
+                let _ = self.hooks.map { hook -> Void in
                     hook(selectedItem)
                 }
                 self.wrapper.data = []
@@ -253,7 +256,6 @@ public final class RAMReel
         if
             let userInfo = notification.userInfo as! [String: AnyObject]?,
 
-            let startFrame = userInfo[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue,
             let endFrame   = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue,
 
             let animDuration: NSTimeInterval = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue,
@@ -261,7 +263,7 @@ public final class RAMReel
         {
             let animCurve = UIViewAnimationOptions(rawValue: UInt(animCurveRaw))
 
-            self.bottomConstraints.map { (bottomConstraint: NSLayoutConstraint) -> () in
+            let _ = self.bottomConstraints.map { (bottomConstraint: NSLayoutConstraint) -> Void in
                 bottomConstraint.constant = self.view.frame.height - endFrame.origin.y
             }
 
@@ -283,7 +285,7 @@ class NotificationCallbackWrapper: NSObject {
         callback?(notification)
     }
 
-    typealias NotificationToVoid = (NSNotification) -> ()
+    typealias NotificationToVoid = (NSNotification) -> Void
     var callback: NotificationToVoid?
 
     init(name: String, object: AnyObject? = nil) {

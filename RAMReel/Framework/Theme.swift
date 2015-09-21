@@ -31,6 +31,7 @@ public protocol Theme {
     
 }
 
+@available(iOS 8.2, *)
 public struct RAMTheme: Theme {
     
     public static let sharedTheme = RAMTheme()
@@ -62,11 +63,10 @@ public struct RAMTheme: Theme {
             
             if
                 let fontPath = bundle?.pathForResource("Roboto-Light", ofType: "ttf"),
-                let inData = NSData(contentsOfFile: fontPath)
-            {
-                let provider = CGDataProviderCreateWithCFData(inData)
+                let inData = NSData(contentsOfFile: fontPath),
+                let provider = CGDataProviderCreateWithCFData(inData),
                 let font = CGFontCreateWithDataProvider(provider)
-                
+            {
                 var error: Unmanaged<CFErrorRef>? = nil
                 if CTFontManagerRegisterGraphicsFont(font, &error) {
                     result = true

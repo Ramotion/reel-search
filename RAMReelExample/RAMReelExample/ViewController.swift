@@ -9,6 +9,7 @@
 import UIKit
 import RAMReel
 
+@available(iOS 8.2, *)
 class ViewController: UIViewController, UICollectionViewDelegate {
 
     var dataSource: SimplePrefixQueryDataSource!

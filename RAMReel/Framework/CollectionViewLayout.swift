@@ -62,7 +62,7 @@ class RAMCollectionViewLayout: UICollectionViewLayout {
             return a1 > a2
         }
         
-        let attributes = allAttributesInRect.map ({ (attr: AnyObject, _) -> AnyObject in
+        let attributes = allAttributesInRect.map ({ (attr, _) -> UICollectionViewLayoutAttributes in
             attr
         })
 

@@ -54,7 +54,11 @@ public class TextFieldReactor
         self.textField = textField
         self.dataFlow  = dataFlow
         
-        self.editingTarget = TextFieldTarget(controlEvents: UIControlEvents.EditingChanged) { dataFlow.transport($0.text) }
+        self.editingTarget = TextFieldTarget(controlEvents: UIControlEvents.EditingChanged) {
+            let _ = $0.text.map {
+                dataFlow.transport($0)
+            }
+        }
         self.editingTarget.beTargetFor(textField)
     }
     
@@ -66,7 +70,7 @@ final class TextFieldTarget: NSObject {
     
     let controlEvents: UIControlEvents
     
-    typealias HookType = (UITextField) -> ()
+    typealias HookType = (UITextField) -> Void
     var hook: HookType?
     
     init(controlEvents:UIControlEvents, hook: HookType? = nil) {

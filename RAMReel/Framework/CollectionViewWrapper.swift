@@ -103,7 +103,7 @@ public class CollectionViewWrapper
     }
     
     func createCell(cv: UICollectionView, _ ip: NSIndexPath) -> UICollectionViewCell {
-        let cell = cv.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: ip) as! CellClass
+        var cell = cv.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: ip) as! CellClass
         
         let row  = ip.row
         let dat  = self.data[row]
@@ -120,10 +120,7 @@ public class CollectionViewWrapper
     
     func cellAttributes(rect: CGRect) -> [UICollectionViewLayoutAttributes] {
         let layout     = collectionView.collectionViewLayout
-        if
-            let returns    = layout.layoutAttributesForElementsInRect(rect),
-            let attributes = returns as? [UICollectionViewLayoutAttributes]
-        {
+        if let attributes    = layout.layoutAttributesForElementsInRect(rect) {
             return attributes
         }
         
@@ -181,7 +178,7 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
 
 class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
     
-    typealias ItemIndexChangeCallback = (Int?) -> ()
+    typealias ItemIndexChangeCallback = (Int?) -> Void
     
     var itemIndexChangeCallback: ItemIndexChangeCallback?
     private(set) var itemIndex: Int? = nil {
@@ -227,9 +224,6 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
         
         // If difference is larger than allowed, then adjust position animated
         if Δ > ε {
-            let topBorder   : CGFloat = 0                        // Zero offset means that we really have inset size padding at top
-            let bottomBorder: CGFloat = scrollView.bounds.height // Max offset is scrollView height without vertical insets
-            
             UIView.animateWithDuration(0.25,
                 delay: 0.0,
                 options: UIViewAnimationOptions.CurveEaseOut,
