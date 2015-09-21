@@ -75,9 +75,6 @@ class RAMCollectionViewLayout: UICollectionViewLayout {
         if
             let collectionView = self.collectionView
         {
-            let number = collectionView.numberOfItemsInSection(0)
-            let height = CGFloat(number) * itemHeight
-            
             var frame               = layoutattributes.frame
             frame.size.height       = itemHeight
             frame.size.width        = collectionView.bounds.width
