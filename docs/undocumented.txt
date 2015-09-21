@@ -1,5 +1,14 @@
 RAMReel.swift
 	public func render() -> String
+	public static func parse(string: String) -> String?
+	public let textField: TextFieldClass
+	public let collectionView: UICollectionView
+	public let dataSource: DataSource
+	public var placeholder: String = ""
+TextFieldReactor.swift
+	DS: FlowDataSource,
+DataFlow.swift
+	DS: FlowDataSource,
 Theme.swift
 	public struct RAMTheme: Theme
 	public static let sharedTheme = RAMTheme()
@@ -10,7 +19,7 @@ Theme.swift
 	public func listBackgroundColor(listBackgroundColor: UIColor) -> RAMTheme
 	public func font(font: UIFont) -> RAMTheme
 CollectionViewCell.swift
-	required public init(coder aDecoder: NSCoder)
+	required public init?(coder aDecoder: NSCoder)
 	public override init(frame: CGRect)
 RAMTextField.swift
 	override public func drawRect(rect: CGRect)

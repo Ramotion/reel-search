@@ -289,7 +289,7 @@ html.dash .main-content {
   width: 980px;
   margin-left: 0;
   border: none;
-  width: auto;
+  width: 100%;
   top: 0;
   padding-bottom: 0; }
 html.dash .height-container {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>RAMCell Class Reference</title>
+    <title>*&gt;(_:_:) Function Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -9,8 +9,8 @@
     <script src="../js/jazzy.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/RAMCell" class="dashAnchor"></a>
-    <a title="RAMCell Class Reference"></a>
+    <a name="//apple_ref/swift/Function/*&gt;(_:_:)" class="dashAnchor"></a>
+    <a title="*&gt;(_:_:) Function Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (64% documented)</p>
@@ -20,7 +20,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        RAMCell Class Reference
+        *&gt;(_:_:) Function Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -107,14 +107,20 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>RAMCell</h1>
+            <h1>*&gt;(_:_:)</h1>
               <div class="declaration">
                 <div class="Swift">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RAMCell</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span> <span class="kt">ConfigurableCell</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">*&gt;</span>
+    <span class="o">&lt;</span>
+    <span class="kt">DS</span><span class="p">:</span> <span class="kt">FlowDataSource</span><span class="p">,</span>
+    <span class="kt">DD</span><span class="p">:</span> <span class="kt">FlowDataDestination</span>
+    <span class="k">where</span> <span class="kt">DS</span><span class="o">.</span><span class="kt">ResultType</span> <span class="o">==</span> <span class="kt">DD</span><span class="o">.</span><span class="kt">DataType</span>
+    <span class="o">&gt;</span>
+    <span class="p">(</span><span class="nv">left</span><span class="p">:</span> <span class="kt">DS</span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="kt">DD</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">DataFlow</span><span class="o">&lt;</span><span class="kt">DS</span><span class="p">,</span> <span class="kt">DD</span><span class="o">&gt;</span></code></pre>
 
                 </div>
               </div>
-            <p>Example configurable cell</p>
+            <p>Creates data flow from compatatible data source to data destination</p>
 
           </section>
           <section class="section task-group-section">
@@ -123,9 +129,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7RAMReel7RAMCellcFMS0_FT5coderCSo7NSCoder_GSqS0__"></a>
-                    <a name="//apple_ref/swift/Method/init(coder:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7RAMReel7RAMCellcFMS0_FT5coderCSo7NSCoder_GSqS0__">init(coder:)</a>
+                    <a name="/s:FZF7RAMReeloi2mgu0_Rq_S_14FlowDataSourceq0_S_19FlowDataDestinationzqq_S0_10ResultTypeqq0_S1_8DataType_FTq_q0__GCS_8DataFlowq_q0__L_2DSMq_"></a>
+                    <a name="//apple_ref/swift/Parameter/DS" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FZF7RAMReeloi2mgu0_Rq_S_14FlowDataSourceq0_S_19FlowDataDestinationzqq_S0_10ResultTypeqq0_S1_8DataType_FTq_q0__GCS_8DataFlowq_q0__L_2DSMq_">DS</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -140,88 +146,13 @@
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RAMCell</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span> <span class="kt">ConfigurableCell</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC7RAMReel7RAMCellcFMS0_FT5frameVSC6CGRect_S0_"></a>
-                    <a name="//apple_ref/swift/Method/init(frame:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7RAMReel7RAMCellcFMS0_FT5frameVSC6CGRect_S0_">init(frame:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="Swift">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RAMCell</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span> <span class="kt">ConfigurableCell</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:vC7RAMReel7RAMCell5themePS_5Theme_"></a>
-                    <a name="//apple_ref/swift/Property/theme" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC7RAMReel7RAMCell5themePS_5Theme_">theme</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Visual appearance theme</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="Swift">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">theme</span><span class="p">:</span> <span class="kt">Theme</span> <span class="o">=</span> <span class="kt">RAMTheme</span><span class="o">.</span><span class="n">sharedTheme</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC7RAMReel7RAMCell13configureCellFS0_FSST_"></a>
-                    <a name="//apple_ref/swift/Method/configureCell(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7RAMReel7RAMCell13configureCellFS0_FSST_">configureCell(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Applies string data to the label text property</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="Swift">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">configureCell</span><span class="p">(</span><span class="nv">s</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">*&gt;</span>
+    <span class="o">&lt;</span>
+    <span class="kt">DS</span><span class="p">:</span> <span class="kt">FlowDataSource</span><span class="p">,</span>
+    <span class="kt">DD</span><span class="p">:</span> <span class="kt">FlowDataDestination</span>
+    <span class="k">where</span> <span class="kt">DS</span><span class="o">.</span><span class="kt">ResultType</span> <span class="o">==</span> <span class="kt">DD</span><span class="o">.</span><span class="kt">DataType</span>
+    <span class="o">&gt;</span>
+    <span class="p">(</span><span class="nv">left</span><span class="p">:</span> <span class="kt">DS</span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="kt">DD</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">DataFlow</span><span class="o">&lt;</span><span class="kt">DS</span><span class="p">,</span> <span class="kt">DD</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
