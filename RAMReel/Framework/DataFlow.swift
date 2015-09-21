@@ -13,11 +13,11 @@ infix operator *> { precedence 180 }
 /**
     Creates data flow from compatatible data source to data destination
 
-    :param: left Object of type that comply to FlowDataSource protocol
+    - parameter left: Object of type that comply to FlowDataSource protocol
 
-    :param: right Object of type that comply to FlowDataDestination protocol
+    - parameter right: Object of type that comply to FlowDataDestination protocol
 
-    :returns: Data flow from source to destination
+    - returns: Data flow from source to destination
 */
 public func *>
     <
@@ -65,9 +65,9 @@ public protocol FlowDataSource {
     /**
         Handles data query
         
-        :param: query Data query of generic data type
+        - parameter query: Data query of generic data type
         
-        :returns: Array of results
+        - returns: Array of results
     */
     func resultsForQuery(query: QueryType) -> [ResultType]
     
@@ -83,7 +83,7 @@ public protocol FlowDataDestination {
     /**
         Processed data, recieved from data source via data flow
     
-        :param: data Array to process
+        - parameter data: Array to process
     */
     func processData(data: [DataType])
     

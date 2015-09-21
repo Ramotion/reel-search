@@ -19,7 +19,7 @@ public protocol ConfigurableCell {
     /**
         Implementing type should use data to fill own data fields
     
-        :param: data Data to present in the cell
+        - parameter data: Data to present in the cell
     */
     func configureCell(data: DataType)
     
@@ -33,7 +33,7 @@ public protocol ConfigurableCell {
 */
 public class RAMCell: UICollectionViewCell, ConfigurableCell {
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         setup()
@@ -62,16 +62,16 @@ public class RAMCell: UICollectionViewCell, ConfigurableCell {
     private func setup() {
         let labelFrame = self.contentView.bounds
         textLabel = UILabel(frame: labelFrame)
-        textLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.contentView.addSubview(textLabel)
         
         let views = ["textLabel": textLabel]
         
-        let textLabelHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(20)-[textLabel]-(20)-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views) as! [NSLayoutConstraint]
+        let textLabelHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(20)-[textLabel]-(20)-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views) 
         self.addConstraints(textLabelHConstraints)
         
-        let textLabelVConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[textLabel]|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views) as! [NSLayoutConstraint]
+        let textLabelVConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[textLabel]|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views) 
         self.addConstraints(textLabelVConstraints)
         
         updateFont()

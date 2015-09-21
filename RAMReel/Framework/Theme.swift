@@ -73,7 +73,7 @@ public struct RAMTheme: Theme {
                     return
                 }
                 else {
-                    println("Failed to load Roboto font")
+                    print("Failed to load Roboto font")
                 }
             }
             

@@ -90,7 +90,7 @@ public final class RAMReel
     Value is nil, if data source output is empty.
     */
     public var selectedItem: DataSource.ResultType? {
-        return wrapper.selectedItem ?? flatMap(textField.text, DataSource.ResultType.parse)
+        return wrapper.selectedItem ?? Optional(textField.text).flatMap(DataSource.ResultType.parse)
     }
 
     // MARK: Hooks
@@ -155,9 +155,9 @@ public final class RAMReel
 
     // MARK: Initialization
     /**
-    :param: frame Rect that Reel will occupy
+    - parameter frame: Rect that Reel will occupy
 
-    :param: dataSource Object of type that implements FlowDataSource protocol
+    - parameter dataSource: Object of type that implements FlowDataSource protocol
 
     :placeholder: Optional text field placeholder
 
@@ -173,7 +173,7 @@ public final class RAMReel
 
         // MARK: CollectionView
         self.collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-        self.collectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.collectionView)
 
         self.wrapper = CollectionViewWrapper(collectionView: collectionView, theme: self.theme)
@@ -181,7 +181,7 @@ public final class RAMReel
         // MARK: TextField
         self.textField = TextFieldClass()
         self.textField.returnKeyType = UIReturnKeyType.Done
-        self.textField.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.textField.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.textField)
 
         self.placeholder = placeholder
@@ -189,7 +189,7 @@ public final class RAMReel
         reactor = textField <&> dataSource *> wrapper
 
         self.gradientView = GradientView(frame: view.bounds)
-        self.gradientView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.gradientView.translatesAutoresizingMaskIntoConstraints = false
 
         views = [
             "collectionView": collectionView,
@@ -229,23 +229,23 @@ public final class RAMReel
 
     func addHConstraints() {
         // Horisontal constraints
-        let collectionHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[collectionView]|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views) as! [NSLayoutConstraint]
+        let collectionHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[collectionView]|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views) 
         view.addConstraints(collectionHConstraints)
 
-        let textFieldHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(20)-[textField]-(20)-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views) as! [NSLayoutConstraint]
+        let textFieldHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(20)-[textField]-(20)-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views) 
         view.addConstraints(textFieldHConstraints)
     }
 
     func addVConstraints() {
         // Vertical constraints
-        let collectionVConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[collectionView]|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views) as! [NSLayoutConstraint]
+        let collectionVConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[collectionView]|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views) 
         view.addConstraints(collectionVConstraints)
 
         if let bottomConstraint = collectionVConstraints.filter({ $0.firstAttribute == NSLayoutAttribute.Bottom }).first {
             bottomConstraints.append(bottomConstraint)
         }
 
-        let textFieldVConstraints = [NSLayoutConstraint(item: textField, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: collectionView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)] + NSLayoutConstraint.constraintsWithVisualFormat("V:[textField(>=44)]", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views) as! [NSLayoutConstraint]
+        let textFieldVConstraints = [NSLayoutConstraint(item: textField, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: collectionView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)] + NSLayoutConstraint.constraintsWithVisualFormat("V:[textField(>=44)]", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views) 
         view.addConstraints(textFieldVConstraints)
     }
 
@@ -253,8 +253,8 @@ public final class RAMReel
         if
             let userInfo = notification.userInfo as! [String: AnyObject]?,
 
-            let startFrame = userInfo[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue(),
-            let endFrame   = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue(),
+            let startFrame = userInfo[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue,
+            let endFrame   = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue,
 
             let animDuration: NSTimeInterval = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue,
             let animCurveRaw = userInfo[UIKeyboardAnimationCurveUserInfoKey]?.unsignedIntegerValue

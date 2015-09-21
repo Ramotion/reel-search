@@ -211,6 +211,8 @@
 		9E82B3A91AD7F35F0063F1B0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Ramotion;
 				TargetAttributes = {

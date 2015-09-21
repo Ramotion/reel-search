@@ -19,16 +19,16 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         
         dataSource = SimplePrefixQueryDataSource(data)
         ramReel = RAMReel(frame: self.view.bounds, dataSource: dataSource, placeholder: "Need something?") {
-            println($0)
+            print($0)
         }
         ramReel.hooks.append {
-            let r = reverse($0)
+            let r = Array($0.characters.reverse())
             let j = String(r)
-            println(j)
+            print(j)
         }
         
         self.view.addSubview(ramReel.view)
-        ramReel.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        ramReel.view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
     }
     
     deinit {

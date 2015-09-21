@@ -14,11 +14,11 @@ infix operator <&> { precedence 175 }
 /** 
     Links text field to data flow
 
-    :param: left text field
+    - parameter left: text field
 
-    :param: right DataFlow object
+    - parameter right: DataFlow object
 
-    :returns: TextFieldReactor object
+    - returns: TextFieldReactor object
 */
 public func <&>
     <

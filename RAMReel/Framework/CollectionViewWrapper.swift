@@ -12,7 +12,7 @@ protocol WrapperProtocol : class {
     
     var numberOfCells: Int { get }
     
-    func createCell(UICollectionView, NSIndexPath) -> UICollectionViewCell
+    func createCell(_: UICollectionView, _: NSIndexPath) -> UICollectionViewCell
     
     func cellAttributes(rect: CGRect) -> [UICollectionViewLayoutAttributes]
     
@@ -56,7 +56,7 @@ public class CollectionViewWrapper
     var theme: Theme
     
     /**
-    :param: collectionView Collection view to wrap around
+    - parameter collectionView: Collection view to wrap around
     */
     public init(collectionView: UICollectionView, theme: Theme) {
         self.collectionView = collectionView
@@ -156,7 +156,7 @@ public class CollectionViewWrapper
     func adjustScroll(notification: NSNotification? = nil) {
         collectionView.contentInset = UIEdgeInsetsZero
         collectionLayout.updateInsets()
-        self.updateOffset(notification: notification)
+        self.updateOffset(notification)
     }
     
 }
