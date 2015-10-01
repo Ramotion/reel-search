@@ -157,7 +157,7 @@ public final class RAMReel
 
     private func updatePlaceholder(placeholder:String) {
         let themeFont = self.theme.font
-        let size = self.textField.textRectForBounds(textField.bounds).height * themeFont.pointSize / themeFont.lineHeight
+        let size = self.textField.textRectForBounds(textField.bounds).height * themeFont.pointSize / themeFont.lineHeight * 0.8
         let font = (size > 0) ? (UIFont(name: themeFont.fontName, size: size) ?? themeFont) : themeFont
         self.textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
             NSFontAttributeName: font,
