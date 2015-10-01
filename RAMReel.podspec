@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.author       = { "Mikhail Stepkin, Ramotion Inc." => "mikhail.s@ramotion.com" }
 
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "8.2"
 
   s.source       = { :git => "https://github.com/Ramotion/reel-search.git", :tag => "0.9.7" }
 
