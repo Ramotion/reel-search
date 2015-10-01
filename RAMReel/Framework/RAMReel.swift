@@ -73,9 +73,19 @@ public final class RAMReel
 
     // MARK: TextField
     let reactor: TextFieldReactor<DataSource, CollectionWrapperClass>
-    public let textField: TextFieldClass
+    let textField: TextFieldClass
     let returnTarget: TextFieldTarget
-
+    let dataFlow: DataFlow<DataSource, CollectionViewWrapper<CellClass.DataType, CellClass>>
+    
+    public var textFieldDelegate: UITextFieldDelegate? {
+        set { textField.delegate = newValue }
+        get { return textField.delegate }
+    }
+    
+    public func resignFirstResponder() {
+        self.textField.resignFirstResponder()
+    }
+    
     // MARK: CollectionView
     typealias CollectionWrapperClass = CollectionViewWrapper<DataSource.ResultType, CellClass>
     let wrapper: CollectionWrapperClass
@@ -147,7 +157,7 @@ public final class RAMReel
 
     private func updatePlaceholder(placeholder:String) {
         let themeFont = self.theme.font
-        let size = self.textField.textRectForBounds(textField.bounds).height * themeFont.pointSize / themeFont.lineHeight * 0.8
+        let size = self.textField.textRectForBounds(textField.bounds).height * themeFont.pointSize / themeFont.lineHeight
         let font = (size > 0) ? (UIFont(name: themeFont.fontName, size: size) ?? themeFont) : themeFont
         self.textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
             NSFontAttributeName: font,
@@ -191,7 +201,8 @@ public final class RAMReel
 
         self.placeholder = placeholder
 
-        reactor = textField <&> dataSource *> wrapper
+        dataFlow = dataSource *> wrapper
+        reactor = textField <&> dataFlow
 
         self.gradientView = GradientView(frame: view.bounds)
         self.gradientView.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -234,6 +245,11 @@ public final class RAMReel
         updatePlaceholder(self.placeholder)
     }
 
+    public func prepeareForReuse() {
+        self.textField.text = ""
+        self.dataFlow.transport("")
+    }
+    
     // MARK: Constraints
     private let views: [String: UIView]
 
