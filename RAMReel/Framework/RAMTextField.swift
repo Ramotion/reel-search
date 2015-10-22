@@ -13,13 +13,12 @@ import UIKit
 */
 public class RAMTextField: UITextField {
     
-    var lineColor: UIColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
-    
     override public func drawRect(rect: CGRect) {
         let rect = self.bounds
         let ctx = UIGraphicsGetCurrentContext()
         
-        self.lineColor.set()
+        let lineColor = self.tintColor.colorWithAlphaComponent(0.3)
+        lineColor.set()
         
         CGContextSetLineWidth(ctx, 1)
         
@@ -33,4 +32,51 @@ public class RAMTextField: UITextField {
         CGContextStrokePath(ctx)
     }
 
+}
+
+extension UITextField {
+    
+    public override var tintColor: UIColor! {
+        didSet {
+            let subviews = self.subviews as! [UIView]
+            for view in subviews {
+                if let button = view as? UIButton
+                {
+                    let states: [UIControlState] = [.Normal, .Highlighted]
+                    states.map { state -> Void in
+                        let image = button.imageForState(state)?.tintedImage(self.tintColor)
+                        button.setImage(image, forState: state)
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+extension UIImage {
+    
+    func tintedImage(color: UIColor) -> UIImage {
+        let size = self.size
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, self.scale)
+        let context = UIGraphicsGetCurrentContext()
+        self.drawAtPoint(CGPointZero, blendMode: kCGBlendModeNormal, alpha: 1.0)
+        
+        CGContextSetFillColorWithColor(context, color.CGColor)
+        CGContextSetBlendMode(context, kCGBlendModeSourceIn)
+        CGContextSetAlpha(context, 1.0)
+        
+        let rect = CGRectMake(
+            CGPointZero.x,
+            CGPointZero.y,
+            size.width,
+            size.height)
+        CGContextFillRect(UIGraphicsGetCurrentContext(), rect)
+        let tintedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return tintedImage ?? self
+    }
+    
 }

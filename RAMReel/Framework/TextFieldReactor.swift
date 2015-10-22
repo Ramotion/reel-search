@@ -48,14 +48,13 @@ public class TextFieldReactor
     let textField : UITextField
     let dataFlow  : DataFlow<DS, DD>
     
-    private let editingTarget:TextFieldTarget
+    private let editingTarget: TextFieldTarget
     
     private init(textField: UITextField, dataFlow: DataFlow<DS, DD>) {
         self.textField = textField
         self.dataFlow  = dataFlow
         
-        self.editingTarget = TextFieldTarget(controlEvents: UIControlEvents.EditingChanged) { dataFlow.transport($0.text) }
-        self.editingTarget.beTargetFor(textField)
+        self.editingTarget = TextFieldTarget(controlEvents: UIControlEvents.EditingChanged, textField: textField) { dataFlow.transport($0.text) }
     }
     
 }
@@ -64,29 +63,32 @@ final class TextFieldTarget: NSObject {
     
     static let actionSelector = Selector("action:")
     
-    let controlEvents: UIControlEvents
-    
     typealias HookType = (UITextField) -> ()
-    var hook: HookType?
-    
-    init(controlEvents:UIControlEvents, hook: HookType? = nil) {
-        self.controlEvents = controlEvents
-        self.hook = hook
-        
+
+    override init() {
         super.init()
     }
     
-    var textField: UITextField?
-    func beTargetFor(textField: UITextField) {
-        self.textField = textField
-        self.textField?.addTarget(self, action: TextFieldTarget.actionSelector, forControlEvents: controlEvents)
+    init(controlEvents:UIControlEvents, textField: UITextField, hook: HookType) {
+        super.init()
+        
+        self.beTargetFor(textField, controlEvents: controlEvents, hook: hook)
+    }
+    
+    var hooks: [UITextField: HookType] = [:]
+    func beTargetFor(textField: UITextField, controlEvents:UIControlEvents, hook: HookType) {
+        textField.addTarget(self, action: TextFieldTarget.actionSelector, forControlEvents: controlEvents)
+        hooks[textField] = hook
     }
     
     deinit {
-        textField?.removeTarget(self, action: TextFieldTarget.actionSelector, forControlEvents: controlEvents)
+        hooks.keys.map {
+            $0.removeTarget(self, action: TextFieldTarget.actionSelector, forControlEvents: UIControlEvents.AllEvents)
+        }.array
     }
     
     func action(textField: UITextField) {
+        let hook = hooks[textField]
         hook?(textField)
     }
 

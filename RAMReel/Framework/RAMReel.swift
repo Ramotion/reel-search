@@ -75,6 +75,7 @@ public final class RAMReel
     let reactor: TextFieldReactor<DataSource, CollectionWrapperClass>
     let textField: TextFieldClass
     let returnTarget: TextFieldTarget
+    let gestureTarget: GestureTarget
     let dataFlow: DataFlow<DataSource, CollectionViewWrapper<CellClass.DataType, CellClass>>
     
     public var textFieldDelegate: UITextFieldDelegate? {
@@ -124,8 +125,12 @@ public final class RAMReel
     }
 
     private func updateVisuals() {
-        self.textField.textColor = theme.textColor
+        self.view.tintColor = theme.textColor
+        
         self.textField.font = theme.font
+        self.textField.textColor = theme.textColor
+        self.textField.tintColor = theme.textColor
+        self.textField.keyboardAppearance = UIKeyboardAppearance.Dark
         self.gradientView.listBackgroundColor = theme.listBackgroundColor
 
         self.view.layer.mask = self.gradientView.layer
@@ -214,22 +219,34 @@ public final class RAMReel
 
         self.keyboardCallbackWrapper = NotificationCallbackWrapper(name: UIKeyboardWillChangeFrameNotification)
 
+        returnTarget  = TextFieldTarget()
+        gestureTarget = GestureTarget()
+        
         let controlEvents = UIControlEvents.EditingDidEndOnExit
-        returnTarget = TextFieldTarget(controlEvents: controlEvents)
-
-        self.keyboardCallbackWrapper.callback = keyboard
-
-        returnTarget.beTargetFor(textField)
-        returnTarget.hook = { _ -> () in
-            if let selectedItem = self.selectedItem
+        returnTarget.beTargetFor(textField, controlEvents: controlEvents) { textField -> () in
+            if
+                let text = textField.text,
+                let item = DataSource.ResultType.parse(text)
             {
-                self.textField.text = selectedItem.render()
                 self.hooks.map { hook -> () in
-                    hook(selectedItem)
+                    hook(item)
                 }
                 self.wrapper.data = []
             }
         }
+        
+        gestureTarget.recognizeFor(collectionView, type: GestureTarget.GestureType.Tap) { _ in
+            if let selectedItem = self.selectedItem {
+                self.textField.text = nil
+                self.textField.insertText(selectedItem.render())
+            }
+        }
+        
+        gestureTarget.recognizeFor(collectionView, type: GestureTarget.GestureType.Swipe) { _ in
+            
+        }
+        
+        self.keyboardCallbackWrapper.callback = keyboard
 
         updateVisuals()
         addHConstraints()
@@ -327,4 +344,62 @@ class NotificationCallbackWrapper: NSObject {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
+}
+
+final class GestureTarget: NSObject, UIGestureRecognizerDelegate {
+    
+    static let gestureSelector = Selector("gesture:")
+    
+    override init() {
+        super.init()
+    }
+    
+    init(type: GestureType, view: UIView, hook: HookType) {
+        super.init()
+        
+        recognizeFor(view, type: type, hook: hook)
+    }
+    
+    typealias HookType = (UIView, UIGestureRecognizer) -> ()
+    
+    enum GestureType {
+        case Tap
+        case LongPress
+        case Swipe
+    }
+    
+    var hooks: [UIGestureRecognizer: (UIView, HookType)] = [:]
+    func recognizeFor(view: UIView, type: GestureType, hook: HookType) {
+        let gestureRecognizer: UIGestureRecognizer
+        switch type {
+        case .Tap:
+            gestureRecognizer = UITapGestureRecognizer(target: self, action: GestureTarget.gestureSelector)
+        case .LongPress:
+            gestureRecognizer = UILongPressGestureRecognizer(target: self, action: GestureTarget.gestureSelector)
+        case .Swipe:
+            gestureRecognizer = UISwipeGestureRecognizer(target: self, action: GestureTarget.gestureSelector)
+        }
+        
+        gestureRecognizer.delegate = self
+        view.addGestureRecognizer(gestureRecognizer)
+        hooks[gestureRecognizer] = (view, hook)
+    }
+    
+    deinit {
+        for (recognizer, (view, _)) in hooks {
+            view.removeGestureRecognizer(recognizer)
+        }
+    }
+    
+    func gesture(gestureRecognizer: UIGestureRecognizer) {
+        if let (textField, hook) = hooks[gestureRecognizer] {
+            hook(textField, gestureRecognizer)
+        }
+    }
+    
+    // Gesture recognizer delegate
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOfGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
 }
