@@ -101,7 +101,7 @@ public final class RAMReel
     Value is nil, if data source output is empty.
     */
     public var selectedItem: DataSource.ResultType? {
-        return wrapper.selectedItem ?? flatMap(textField.text, DataSource.ResultType.parse)
+        return flatMap(textField.text, DataSource.ResultType.parse)
     }
 
     // MARK: Hooks
@@ -235,14 +235,14 @@ public final class RAMReel
             }
         }
         
-        gestureTarget.recognizeFor(collectionView, type: GestureTarget.GestureType.Tap) { _ in
-            if let selectedItem = self.selectedItem {
-                self.textField.text = nil
-                self.textField.insertText(selectedItem.render())
+        gestureTarget.recognizeFor(collectionView, type: GestureTarget.GestureType.Tap) { [weak self] _ in
+            if let selectedItem = self?.wrapper.selectedItem {
+                self?.textField.text = nil
+                self?.textField.insertText(selectedItem.render())
             }
         }
         
-        gestureTarget.recognizeFor(collectionView, type: GestureTarget.GestureType.Swipe) { _ in
+        gestureTarget.recognizeFor(collectionView, type: GestureTarget.GestureType.Swipe) { [weak self] _ in
             
         }
         

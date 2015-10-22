@@ -54,7 +54,9 @@ public class TextFieldReactor
         self.textField = textField
         self.dataFlow  = dataFlow
         
-        self.editingTarget = TextFieldTarget(controlEvents: UIControlEvents.EditingChanged, textField: textField) { dataFlow.transport($0.text) }
+        self.editingTarget = TextFieldTarget(controlEvents: UIControlEvents.EditingChanged, textField: textField) { [weak dataFlow] in
+            dataFlow?.transport($0.text)
+        }
     }
     
 }
