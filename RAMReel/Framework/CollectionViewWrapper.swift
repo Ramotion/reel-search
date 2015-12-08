@@ -12,7 +12,7 @@ protocol WrapperProtocol : class {
     
     var numberOfCells: Int { get }
     
-    func createCell(_: UICollectionView, _: NSIndexPath) -> UICollectionViewCell
+    func createCell(collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionViewCell
     
     func cellAttributes(rect: CGRect) -> [UICollectionViewLayoutAttributes]
     
@@ -56,7 +56,7 @@ public class CollectionViewWrapper
     var theme: Theme
     
     /**
-    - parameter collectionView: Collection view to wrap around
+    :param: collectionView Collection view to wrap around
     */
     public init(collectionView: UICollectionView, theme: Theme) {
         self.collectionView = collectionView
@@ -102,10 +102,10 @@ public class CollectionViewWrapper
         }
     }
     
-    func createCell(cv: UICollectionView, _ ip: NSIndexPath) -> UICollectionViewCell {
-        var cell = cv.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: ip) as! CellClass
+    func createCell(collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionViewCell {
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! CellClass
         
-        let row  = ip.row
+        let row  = indexPath.row
         let dat  = self.data[row]
         
         cell.configureCell(dat)
@@ -119,8 +119,9 @@ public class CollectionViewWrapper
     }
     
     func cellAttributes(rect: CGRect) -> [UICollectionViewLayoutAttributes] {
-        let layout     = collectionView.collectionViewLayout
-        if let attributes    = layout.layoutAttributesForElementsInRect(rect) {
+        let layout = collectionView.collectionViewLayout
+        if let attributes    = layout.layoutAttributesForElementsInRect(rect)
+        {
             return attributes
         }
         
@@ -169,7 +170,7 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = self.wrapper.createCell(collectionView, indexPath)
+        let cell = self.wrapper.createCell(collectionView, indexPath: indexPath)
         
         return cell
     }
@@ -178,7 +179,7 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
 
 class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
     
-    typealias ItemIndexChangeCallback = (Int?) -> Void
+    typealias ItemIndexChangeCallback = (Int?) -> ()
     
     var itemIndexChangeCallback: ItemIndexChangeCallback?
     private(set) var itemIndex: Int? = nil {
@@ -223,7 +224,7 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
         let ε:CGFloat = 0.5
         
         // If difference is larger than allowed, then adjust position animated
-        if Δ > ε {
+        if Δ > ε {            
             UIView.animateWithDuration(0.25,
                 delay: 0.0,
                 options: UIViewAnimationOptions.CurveEaseOut,

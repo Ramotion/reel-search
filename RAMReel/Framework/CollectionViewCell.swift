@@ -36,7 +36,7 @@ public class RAMCell: UICollectionViewCell, ConfigurableCell {
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+    
         setup()
     }
     

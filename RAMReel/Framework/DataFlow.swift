@@ -94,7 +94,7 @@ public protocol FlowDataDestination {
 /**
     Example data source, that performs string queries over string array data
 */
-public struct SimplePrefixQueryDataSource: FlowDataSource {
+public class SimplePrefixQueryDataSource: FlowDataSource {
     
     var data: [String]
     /// Creates data source with data array

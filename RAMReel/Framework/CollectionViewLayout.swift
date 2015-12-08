@@ -38,7 +38,7 @@ class RAMCollectionViewLayout: UICollectionViewLayout {
         return attributes
     }
     
-    internal override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes] {
+    internal override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
         var allAttributesInRect = [(UICollectionViewLayoutAttributes, CGFloat)]()
         
@@ -62,7 +62,7 @@ class RAMCollectionViewLayout: UICollectionViewLayout {
             return a1 > a2
         }
         
-        let attributes = allAttributesInRect.map ({ (attr, _) -> UICollectionViewLayoutAttributes in
+        let attributes = allAttributesInRect.map ({ (attr, _) in
             attr
         })
 
