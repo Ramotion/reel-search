@@ -31,7 +31,6 @@ public protocol Theme {
     
 }
 
-@available(iOS 8.2, *)
 public struct RAMTheme: Theme {
     
     public static let sharedTheme = RAMTheme()
@@ -45,7 +44,7 @@ public struct RAMTheme: Theme {
     private init(
         textColor: UIColor = UIColor.blackColor(),
         listBackgroundColor: UIColor = UIColor.clearColor(),
-        font: UIFont = UIFont(name: "Roboto-Light", size: 36) ?? UIFont.systemFontOfSize(36, weight: UIFontWeightThin)
+        font: UIFont = UIFont(name: "Roboto-Light", size: 36) ?? UIFont.systemFontOfSize(36)
         )
     {
         self.textColor = textColor
