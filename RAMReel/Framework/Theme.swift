@@ -41,10 +41,25 @@ public struct RAMTheme: Theme {
     
     let isRobotoLoaded = RAMTheme.loadRoboto()
     
+    private static var defaultFont: UIFont {
+        loadRoboto()
+        
+        let font: UIFont
+        if let roboto = UIFont(name: "Roboto-Light", size: 36) {
+            font = roboto
+        }
+        else if #available(iOS 8.2, *) {
+            font = UIFont.systemFontOfSize(36, weight: UIFontWeightThin)
+        } else {
+            font = UIFont.systemFontOfSize(36)
+        }
+        return font
+    }
+    
     private init(
         textColor: UIColor = UIColor.blackColor(),
         listBackgroundColor: UIColor = UIColor.clearColor(),
-        font: UIFont = UIFont(name: "Roboto-Light", size: 36) ?? UIFont.systemFontOfSize(36)
+        font: UIFont = RAMTheme.defaultFont
         )
     {
         self.textColor = textColor
@@ -57,7 +72,6 @@ public struct RAMTheme: Theme {
         
         var result: Bool?
         dispatch_once(&loadToken) {
-            
             let bundle = NSBundle(identifier: "RAMReel")
             
             if
