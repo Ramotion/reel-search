@@ -50,7 +50,7 @@ public class RAMCell: UICollectionViewCell, ConfigurableCell {
     /// Visual appearance theme
     public var theme: Theme = RAMTheme.sharedTheme {
         didSet {
-            if theme.font != oldValue.font && theme.textColor != oldValue.textColor {
+            if theme.font != oldValue.font || theme.textColor != oldValue.textColor {
                 updateFont()
             }
         }
