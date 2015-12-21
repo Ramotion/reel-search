@@ -67,33 +67,8 @@ public struct RAMTheme: Theme {
         self.font = font
     }
     
-    static private var loadToken = dispatch_once_t()
     static private func loadRoboto() -> Bool {
-        
-        var result: Bool?
-        dispatch_once(&loadToken) {
-            let bundle = NSBundle(identifier: "RAMReel")
-            
-            if
-                let fontPath = bundle?.pathForResource("Roboto-Light", ofType: "ttf"),
-                let inData = NSData(contentsOfFile: fontPath),
-                let provider = CGDataProviderCreateWithCFData(inData),
-                let font = CGFontCreateWithDataProvider(provider)
-            {
-                var error: Unmanaged<CFErrorRef>? = nil
-                if CTFontManagerRegisterGraphicsFont(font, &error) {
-                    result = true
-                    return
-                }
-                else {
-                    print("Failed to load Roboto font")
-                }
-            }
-            
-            result = false
-        }
-        
-        return result ?? true
+        return FontLoader.robotoLight != nil
     }
     
     public func textColor(textColor: UIColor) -> RAMTheme {
@@ -106,6 +81,35 @@ public struct RAMTheme: Theme {
     
     public func font(font: UIFont) -> RAMTheme {
         return RAMTheme(textColor: self.textColor, listBackgroundColor: self.listBackgroundColor, font: font)
+    }
+    
+}
+
+class FontLoader {
+    
+    enum Error: ErrorType {
+        case FailedToLoadFont(String)
+    }
+    
+    static let robotoLight: FontLoader? = try? FontLoader(name: "Roboto-Light", type: "ttf")
+    
+    private init(name: String, type: String) throws {
+        let bundle = NSBundle(forClass: self.dynamicType as AnyClass)
+
+        var error: Unmanaged<CFErrorRef>? = nil
+        if
+            let fontPath = bundle.pathForResource(name, ofType: type),
+            let inData = NSData(contentsOfFile: fontPath),
+            let provider = CGDataProviderCreateWithCFData(inData),
+            let font = CGFontCreateWithDataProvider(provider)
+            where CTFontManagerRegisterGraphicsFont(font, &error)
+        {
+            return
+        }
+        else {
+            print(error)
+            throw Error.FailedToLoadFont(name)
+        }
     }
     
 }
