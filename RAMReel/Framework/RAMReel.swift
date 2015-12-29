@@ -237,9 +237,13 @@ public final class RAMReel
         }
         
         gestureTarget.recognizeFor(collectionView, type: GestureTarget.GestureType.Tap) { [weak self] _ in
-            if let selectedItem = self?.wrapper.selectedItem {
-                self?.textField.text = nil
-                self?.textField.insertText(selectedItem.render())
+            if
+                let `self` = self,
+                let selectedItem = self.wrapper.selectedItem
+            {
+                self.textField.becomeFirstResponder()
+                self.textField.text = nil
+                self.textField.insertText(selectedItem.render())
             }
         }
         
