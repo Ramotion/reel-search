@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Theme Protocol Reference</title>
+    <title>UITextField Extension Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Protocol/Theme" class="dashAnchor"></a>
-    <a title="Theme Protocol Reference"></a>
+    <a name="//apple_ref/swift/Extension/UITextField" class="dashAnchor"></a>
+    <a title="UITextField Extension Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">RAMReel Docs</a> (61% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">RAMReel Reference</a>
         <img id="carat" src="../img/carat.png" />
-        Theme Protocol Reference
+        UITextField Extension Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -111,15 +111,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Theme</h1>
+            <h1>UITextField</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Theme</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">class</span> <span class="kt">UITextField</span> <span class="p">:</span> <span class="kt">UIControl</span><span class="p">,</span> <span class="kt">UITextInput</span><span class="p">,</span> <span class="kt">NSCoding</span></code></pre>
 
                 </div>
               </div>
-            <p>Protocol that allows you change visual appearance a bit</p>
-
+            
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -127,9 +126,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vP7RAMReel5Theme4fontCSo6UIFont"></a>
-                    <a name="//apple_ref/swift/Property/font" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vP7RAMReel5Theme4fontCSo6UIFont">font</a>
+                    <a name="/s:vE7RAMReelCSo11UITextField9tintColorGSQCSo7UIColor_"></a>
+                    <a name="//apple_ref/swift/Property/tintColor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE7RAMReelCSo11UITextField9tintColorGSQCSo7UIColor_">tintColor</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -137,70 +136,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Text font of both list labels and input textfield</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">font</span><span class="p">:</span> <span class="kt">UIFont</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:vP7RAMReel5Theme9textColorCSo7UIColor"></a>
-                    <a name="//apple_ref/swift/Property/textColor" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vP7RAMReel5Theme9textColorCSo7UIColor">textColor</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Color of textfield&rsquo;s text</p>
-
-<p>Suggestion list&rsquo;s text color is calculated using this color by changing alpha channel value to 0.3</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">textColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:vP7RAMReel5Theme19listBackgroundColorCSo7UIColor"></a>
-                    <a name="//apple_ref/swift/Property/listBackgroundColor" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vP7RAMReel5Theme19listBackgroundColorCSo7UIColor">listBackgroundColor</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Color of list&rsquo;s background</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">listBackgroundColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">UITextField</span> <span class="p">:</span> <span class="kt">UIControl</span><span class="p">,</span> <span class="kt">UITextInput</span><span class="p">,</span> <span class="kt">NSCoding</span></code></pre>
 
                         </div>
                       </div>
