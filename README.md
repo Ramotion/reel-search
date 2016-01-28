@@ -1,6 +1,6 @@
 # RAMReel
 
-Controller that allows you to choose options from the list. 
+Controller that allows you to choose options from the list.
 
 ## Requirements
 
@@ -55,14 +55,14 @@ ramReel.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
 yourView.addSubview(ramReel.view)
 ~~~
 
-In case of visual problems you may call [`prepeareForViewing`](https://rawgit.com/Ramotion/reel-search/master/docs/Classes/RAMReel.html#/s:FC7RAMReel7RAMReel18prepeareForViewingu1_Rdq_CSo20UICollectionViewCellq_S_16ConfigurableCelldq0_CSo11UITextFieldq1_S_14FlowDataSourceqq_S2_8DataTypeS_8Parsableqq_S2_8DataTypeS_10Renderablezqq_S2_8DataTypeqq1_S4_10ResultTypezqq1_S4_9QueryTypeSS_FGS0_q_q0_q1__FT_T_) before showing your view.
+If you have visual problems, try calling  [`prepareForViewing`](https://rawgit.com/Ramotion/reel-search/docs/Classes/RAMReel.html#/s:FC7RAMReel7RAMReel17prepareForViewingu1_Rdq_CSo20UICollectionViewCellq_S_16ConfigurableCelldq0_CSo11UITextFieldq1_S_14FlowDataSourceqq_S2_8DataTypeS_8Parsableqq_S2_8DataTypeS_10Renderablezqq_S2_8DataTypeqq1_S4_10ResultTypezqq1_S4_9QueryTypeSS_FGS0_q_q0_q1__FT_T_) before showing your view.
 
 Like this:
 
 ~~~swift
 override func viewDidLayoutSubviews() {
 	super.viewDidLayoutSubviews()
-	ramReel.prepeareForViewing()
+	ramReel.prepareForViewing()
 }
 ~~~
 

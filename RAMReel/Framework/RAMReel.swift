@@ -289,13 +289,13 @@ public class RAMReel
     }
     
     /// Call this method to update `RAMReel` visuals before showing it.
-    public func prepeareForViewing() {
+    public func prepareForViewing() {
         updateVisuals()
         updatePlaceholder(self.placeholder)
     }
     
     /// If you use `RAMReel` to enter set of values from the list call this method before each input.
-    public func prepeareForReuse() {
+    public func prepareForReuse() {
         self.textField.text = ""
         self.dataFlow.transport("")
     }
