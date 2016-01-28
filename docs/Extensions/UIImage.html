@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>*&gt;(_:_:) Function Reference</title>
+    <title>UIImage Extension Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Function/*&gt;(_:_:)" class="dashAnchor"></a>
-    <a title="*&gt;(_:_:) Function Reference"></a>
+    <a name="//apple_ref/swift/Extension/UIImage" class="dashAnchor"></a>
+    <a title="UIImage Extension Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">RAMReel Docs</a> (96% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">RAMReel Reference</a>
         <img id="carat" src="../img/carat.png" />
-        *&gt;(_:_:) Function Reference
+        UIImage Extension Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -114,21 +114,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>*&gt;(_:_:)</h1>
+            <h1>UIImage</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">*&gt;</span>
-    <span class="o">&lt;</span>
-    <span class="kt">DS</span><span class="p">:</span> <span class="kt">FlowDataSource</span><span class="p">,</span>
-    <span class="kt">DD</span><span class="p">:</span> <span class="kt">FlowDataDestination</span>
-    <span class="k">where</span> <span class="kt">DS</span><span class="o">.</span><span class="kt">ResultType</span> <span class="o">==</span> <span class="kt">DD</span><span class="o">.</span><span class="kt">DataType</span>
-    <span class="o">&gt;</span>
-    <span class="p">(</span><span class="nv">left</span><span class="p">:</span> <span class="kt">DS</span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="kt">DD</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">DataFlow</span><span class="o">&lt;</span><span class="kt">DS</span><span class="p">,</span> <span class="kt">DD</span><span class="o">&gt;</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">class</span> <span class="kt">UIImage</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSSecureCoding</span></code></pre>
 
                 </div>
               </div>
-            <p>Creates data flow from compatatible data source to data destination</p>
-
+            
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -136,9 +129,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:tZF7RAMReeloi2mgu0_Rq_S_14FlowDataSourceq0_S_19FlowDataDestinationzqq_S0_10ResultTypeqq0_S1_8DataType_FTq_q0__GVS_8DataFlowq_q0__L_2DSMq_"></a>
-                    <a name="//apple_ref/swift/Parameter/DS" class="dashAnchor"></a>
-                    <a class="token" href="#/s:tZF7RAMReeloi2mgu0_Rq_S_14FlowDataSourceq0_S_19FlowDataDestinationzqq_S0_10ResultTypeqq0_S1_8DataType_FTq_q0__GVS_8DataFlowq_q0__L_2DSMq_">DS</a>
+                    <a name="/s:FE7RAMReelCSo7UIImage11tintedImageFS0_FCSo7UIColorS0_"></a>
+                    <a name="//apple_ref/swift/Method/tintedImage(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE7RAMReelCSo7UIImage11tintedImageFS0_FCSo7UIColorS0_">tintedImage(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -146,22 +139,36 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create new image by applying a tint.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">*&gt;</span>
-    <span class="o">&lt;</span>
-    <span class="kt">DS</span><span class="p">:</span> <span class="kt">FlowDataSource</span><span class="p">,</span>
-    <span class="kt">DD</span><span class="p">:</span> <span class="kt">FlowDataDestination</span>
-    <span class="k">where</span> <span class="kt">DS</span><span class="o">.</span><span class="kt">ResultType</span> <span class="o">==</span> <span class="kt">DD</span><span class="o">.</span><span class="kt">DataType</span>
-    <span class="o">&gt;</span>
-    <span class="p">(</span><span class="nv">left</span><span class="p">:</span> <span class="kt">DS</span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="kt">DD</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">DataFlow</span><span class="o">&lt;</span><span class="kt">DS</span><span class="p">,</span> <span class="kt">DD</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">tintedImage</span><span class="p">(</span><span class="nv">color</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>color</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>New image tint color.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>

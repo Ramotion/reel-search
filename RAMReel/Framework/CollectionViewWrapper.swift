@@ -8,18 +8,44 @@
 
 import UIKit
 
+// MARK: - Collection view wrapper
+
+/**
+ WrapperProtocol
+ --
+ 
+ Helper protocol for CollectionViewWrapper.
+*/
 protocol WrapperProtocol : class {
     
+    /// Number of cells in collection
     var numberOfCells: Int { get }
     
+    /**
+     Cell constructor, replaces standard Apple way of doing it.
+     
+     - parameters: 
+        - collectionView `UICollectionView` instance in which cell should be created.
+        - indexPath `NSIndexPath` where to put cell to.
+     
+     - returns: Fresh (or reused) cell.
+     */
     func createCell(collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionViewCell
     
+    /**
+     Attributes of cells in some rect.
+     
+     - parameter rect Area in which you want to probe for attributes.
+    */
     func cellAttributes(rect: CGRect) -> [UICollectionViewLayoutAttributes]
     
 }
 
 /**
-Wraps collection view and set's collection view data source
+ CollectionViewWrapper
+ --
+ 
+ Wraps collection view and set's collection view data source.
 */
 public class CollectionViewWrapper
     <
@@ -39,6 +65,15 @@ public class CollectionViewWrapper
         }
     }
     
+    /**
+     FlowDataDestination protocol implementation method.
+     
+     - seealso: FlowDataDestination
+     
+     This method processes data from data flow.
+     
+     - parameter data: Data array to process.
+    */
     public func processData(data: [DataType]) {
         self.data = data
     }
@@ -56,7 +91,9 @@ public class CollectionViewWrapper
     var theme: Theme
     
     /**
-    :param: collectionView Collection view to wrap around
+     - parameters:
+        - collectionView: Collection view to wrap around.
+        - theme: Visual theme of collection view.
     */
     public init(collectionView: UICollectionView, theme: Theme) {
         self.collectionView = collectionView
@@ -102,6 +139,8 @@ public class CollectionViewWrapper
         }
     }
     
+    // MARK Implementation of WrapperProtocol
+    
     func createCell(collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! CellClass
         
@@ -128,7 +167,7 @@ public class CollectionViewWrapper
         return []
     }
     
-    // MARK: — Update & Adjust
+    // MARK: Update & Adjust
     
     func updateOffset(notification: NSNotification? = nil) {
         collectionView.reloadData()

@@ -9,16 +9,18 @@
 import Foundation
 import UIKit
 
+// MARK: -  Text field reactor operators
+
 infix operator <&> { precedence 175 }
 
 /**
  Links text field to data flow
  
- :param: left text field
+ - parameters:
+    - left: Text field.
+    - right: `DataFlow` object.
  
- :param: right DataFlow object
- 
- :returns: TextFieldReactor object
+ - returns: `TextFieldReactor` object
  */
 public func <&>
     <
@@ -33,10 +35,15 @@ public func <&>
     return TextFieldReactor(textField: left, dataFlow: right)
 }
 
+// MARK: - Text field reactor
+
 /**
+ TextFieldReactor
+ --
+ 
  Implements reactive handling text field editing and passes editing changes to data flow
  */
-public class TextFieldReactor
+public struct TextFieldReactor
     <
     DS: FlowDataSource,
     DD: FlowDataDestination
@@ -54,9 +61,9 @@ public class TextFieldReactor
         self.textField = textField
         self.dataFlow  = dataFlow
         
-        self.editingTarget = TextFieldTarget(controlEvents: UIControlEvents.EditingChanged, textField: textField) { [weak dataFlow] in
+        self.editingTarget = TextFieldTarget(controlEvents: UIControlEvents.EditingChanged, textField: textField) {
             if let text = $0.text {
-                dataFlow?.transport(text)
+                dataFlow.transport(text)
             }
         }
     }

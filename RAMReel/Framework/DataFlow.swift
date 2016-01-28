@@ -8,16 +8,17 @@
 
 import UIKit
 
+// MARK: - Data flow operators
+
 infix operator *> { precedence 180 }
 
 /**
     Creates data flow from compatatible data source to data destination
 
-    - parameter left: Object of type that comply to FlowDataSource protocol
+    - parameter left: Object of type that comply to FlowDataSource protocol.
+    - parameter right: Object of type that comply to FlowDataDestination protocol.
 
-    - parameter right: Object of type that comply to FlowDataDestination protocol
-
-    - returns: Data flow from source to destination
+    - returns: `DataFlow` from source to destination.
 */
 public func *>
     <
@@ -30,10 +31,15 @@ public func *>
     return DataFlow(from: left, to: right)
 }
 
+// MARK: - Data flow
+
 /**
-    Represent queried data flow
+ DataFlow
+ --
+ 
+ Represent queried data flow
 */
-public final class DataFlow
+public struct DataFlow
     <
     DS: FlowDataSource,
     DD: FlowDataDestination
@@ -89,12 +95,12 @@ public protocol FlowDataDestination {
     
 }
 
-// MARK: - Example types
+// MARK: - Simple data source
 
 /**
     Example data source, that performs string queries over string array data
 */
-public class SimplePrefixQueryDataSource: FlowDataSource {
+public struct SimplePrefixQueryDataSource: FlowDataSource {
     
     var data: [String]
     /// Creates data source with data array

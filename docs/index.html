@@ -13,7 +13,7 @@
     <a title="RAMReel  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">RAMReel Docs</a> (61% documented)</p>
+        <p><a href="index.html">RAMReel Docs</a> (96% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -33,9 +33,6 @@
                 <a href="Classes/CollectionViewWrapper.html">CollectionViewWrapper</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes.html#/s:C7RAMReel8DataFlow">DataFlow</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Classes/RAMCell.html">RAMCell</a>
               </li>
               <li class="nav-group-task">
@@ -44,12 +41,6 @@
               <li class="nav-group-task">
                 <a href="Classes/RAMTextField.html">RAMTextField</a>
               </li>
-              <li class="nav-group-task">
-                <a href="Classes/SimplePrefixQueryDataSource.html">SimplePrefixQueryDataSource</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes.html#/s:C7RAMReel16TextFieldReactor">TextFieldReactor</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -57,6 +48,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIImage.html">UIImage</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/UITextField.html">UITextField</a>
@@ -101,7 +95,16 @@
             <a href="Structs.html">Structs</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Structs.html#/s:V7RAMReel8DataFlow">DataFlow</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/RAMTheme.html">RAMTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SimplePrefixQueryDataSource.html">SimplePrefixQueryDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs.html#/s:V7RAMReel16TextFieldReactor">TextFieldReactor</a>
               </li>
             </ul>
           </li>
@@ -111,12 +114,79 @@
         <section>
           <section class="section">
             
-            <p><a href="https://rawgit.com/Ramotion/reel-search/master/docs/index.html">Jazzy docs</a></p>
+            <a href='#ramreel' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='ramreel'>RAMReel</h1>
+<a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
+
+<ul>
+<li>iOS 8.0+</li>
+<li>Swift 2.1</li>
+</ul>
+<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
+
+<p>We recommend using <strong><a href="https://cocoapods.org/">CocoaPods</a></strong> to install our library.</p>
+
+<p>Just put this in your <code>Podfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'RAMReel'</span>
+</code></pre>
+<a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='usage'>Usage</h2>
+
+<p>In order to use our control you need to implement the following:</p>
+<a href='#types' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='types'>Types</h3>
+
+<ul>
+<li><strong><code>CellClass</code></strong>: Your cell class must inherit from <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionViewCell_class/"><code>UICollectionViewCell</code></a> and implement the <a href="https://rawgit.com/Ramotion/reel-search/master/docs/Protocols/ConfigurableCell.html"><code>ConfigurableCell</code></a> protocol. Or you can just use our predefined class <a href="https://rawgit.com/Ramotion/reel-search/master/docs/Classes/RAMCell.html"><code>RAMCell</code></a>.</li>
+<li><strong><code>TextFieldClass</code></strong>: Any subclass of <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITextField_Class/"><code>UITextField</code></a> will do.</li>
+<li><strong><code>DataSource</code></strong>: Your type must implement the <a href="https://rawgit.com/Ramotion/reel-search/master/docs/Protocols/FlowDataSource.html"><code>FlowDataSource</code></a> protocol, with <code>QueryType</code> being <code>String</code> and <code>ResultType</code> being <a href="https://rawgit.com/Ramotion/reel-search/master/docs/Protocols/Renderable.html"><code>Renderable</code></a> and <a href="https://rawgit.com/Ramotion/reel-search/master/docs/Protocols/Parsable.html"><code>Parsable</code></a>. Or you can just use our predefined class <a href="https://rawgit.com/Ramotion/reel-search/master/docs/Structs/SimplePrefixQueryDataSource.html"><code>SimplePrefixQueryDataSource</code></a>, which has its <code>ResultType</code> set to <code>String</code>.</li>
+</ul>
+
+<p>Now you can use those types as generic parameters of type declaration of <code>RAMReel</code>:</p>
+<pre class="highlight swift"><code><span class="kt">RAMReel</span><span class="o">&lt;</span><span class="kt">CellClass</span><span class="p">,</span> <span class="kt">TextFieldClass</span><span class="p">,</span> <span class="kt">DataSource</span><span class="o">&gt;</span>
+</code></pre>
+<a href='#values' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='values'>Values</h3>
+
+<p>Next you need to create an instance of <code>RAMReel</code>, and for that you need the following:</p>
+
+<ul>
+<li><strong><code>frame: CGRect</code></strong>: Rect, specifying where you want to put the control.</li>
+<li><strong><code>dataSource: DataSource</code></strong>: the source of data for the reel.</li>
+<li><strong><code>placeholder: String</code></strong> (<em>optional</em>): Placeholder text; by default, an empty string is used.</li>
+<li><strong><code>hook: DataSource.ResultType -&gt; Void</code></strong> (<em>optional</em>): Action to perform on element selection, <code>nil</code> by default. You can add additional hooks later, if you need multiple actions performed.</li>
+</ul>
+
+<p>Let&rsquo;s use it to create an instance of <code>RAMReel</code>:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">ramReel</span> <span class="o">=</span> <span class="kt">RAMReel</span><span class="o">&lt;</span><span class="kt">CellClass</span><span class="p">,</span> <span class="kt">TextFieldClass</span><span class="p">,</span> <span class="kt">DataSource</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="n">frame</span><span class="p">,</span> <span class="nv">dataSource</span><span class="p">:</span> <span class="n">dataSource</span><span class="p">,</span> <span class="nv">placeholder</span><span class="p">:</span> <span class="n">placeholder</span><span class="p">,</span> <span class="nv">hook</span><span class="p">:</span> <span class="n">hook</span><span class="p">)</span>
+</code></pre>
+<a href='#putting_on_the_view' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='putting_on_the_view'>Putting on the view</h3>
+
+<p>And the final step, showing <code>RAMReel</code> on your view:</p>
+<pre class="highlight swift"><code><span class="n">ramReel</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">autoresizingMask</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="kt">FlexibleWidth</span><span class="p">,</span> <span class="o">.</span><span class="kt">FlexibleHeight</span><span class="p">]</span>
+<span class="n">yourView</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">ramReel</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
+</code></pre>
+<a href='#theming' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='theming'>Theming</h3>
+
+<p>If you want to change <code>RAMReel</code> look and feel, you can use theming.</p>
+
+<p>To do so, you just to have to implement the <a href="https://rawgit.com/Ramotion/reel-search/master/docs/Protocols/Theme.html"><code>Theme</code></a> protocol in your class/structure and set your <code>RAMReel</code> object&rsquo;s <code>theme</code> property to your theme.</p>
+
+<p>Or you can just use the predefined instance of type <a href="https://rawgit.com/Ramotion/reel-search/master/docs/Structs/RAMTheme.html"><code>RAMTheme</code></a>.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">textColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+<span class="k">let</span> <span class="nv">listBackgroundColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+<span class="k">let</span> <span class="nv">font</span><span class="p">:</span> <span class="kt">UIFont</span>
+
+<span class="k">let</span> <span class="nv">theme</span> <span class="o">=</span> <span class="kt">RAMTheme</span><span class="p">(</span><span class="nv">textColor</span><span class="p">:</span> <span class="n">textColor</span><span class="p">,</span> <span class="nv">listBackgroundColor</span><span class="p">:</span> <span class="n">listBackgroundColor</span><span class="p">,</span> <span class="nv">font</span><span class="p">:</span> <span class="n">font</span><span class="p">)</span>
+</code></pre>
+
+<p><code>Temp link to full docs</code>: <a href="https://rawgit.com/Ramotion/reel-search/master/docs/index.html">Jazzy docs</a></p>
+<a href='#developer_information' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='developer_information'>Developer Information</h2>
+
+<p>Designed &amp; Developed at <a href="http://ramotion.com">Ramotion - Digital Design Agency</a></p>
+
+<p>Follow us on <a href="http://twitter.com/ramotion">Twitter</a>.</p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.com/Ramotion/reel-search" target="_blank" rel="external">Mikhail Stepkin, Ramotion Inc.</a>. All rights reserved. (Last updated: 2016-01-27)</p>
+          <p>&copy; 2016 <a class="link" href="https://github.com/Ramotion/reel-search" target="_blank" rel="external">Mikhail Stepkin, Ramotion Inc.</a>. All rights reserved. (Last updated: 2016-01-28)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

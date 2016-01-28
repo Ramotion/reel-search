@@ -29,7 +29,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         }
         
         self.view.addSubview(ramReel.view)
-        ramReel.view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        ramReel.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
     }
     
     deinit {

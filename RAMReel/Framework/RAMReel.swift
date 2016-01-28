@@ -8,7 +8,12 @@
 
 import UIKit
 
+// MARK: - String conversions
+
 /**
+ Renderable
+ --
+ 
  Types that implement this protocol are expected to have string representation.
  This protocol is separated from Printable and it's description property on purpose.
  */
@@ -22,37 +27,55 @@ public protocol Renderable {
     
 }
 
-/**
- Types that implement this protocol are expected to be constructuble from string
- */
-public protocol Parsable {
-    
-    /**
-     Implement this method in order to be able to construct your data from string
-     */
-    static func parse(string: String) -> Self?
-}
-
 extension String: Renderable {
     
+    /// String is trivially renderable: it renders to itself.
     public func render() -> String {
         return self
     }
     
 }
 
+/**
+ Parsable
+ --
+ 
+ Types that implement this protocol are expected to be constructible from string
+ */
+public protocol Parsable {
+    
+    /**
+     Implement this method in order to be able to construct your data from string
+     
+     - parameter string: String to parse.
+     - returns: Value of type, implementing this protocol if successful, `nil` otherwise.
+     */
+    static func parse(string: String) -> Self?
+}
+
 extension String: Parsable {
     
+    /** 
+    String is trivially parsable: it parses to itself.
+     
+    - parameter string: String to parse.
+    - returns: `string` parameter value.
+    */
     public static func parse(string: String) -> String? {
         return string
     }
     
 }
 
+// MARK: - Library root class
+
 /**
+ RAMReel
+ --
+ 
  Reel class
  */
-public final class RAMReel
+public class RAMReel
     <
     CellClass: UICollectionViewCell,
     TextFieldClass: UITextField,
@@ -77,11 +100,13 @@ public final class RAMReel
     let gestureTarget: GestureTarget
     let dataFlow: DataFlow<DataSource, CollectionViewWrapper<CellClass.DataType, CellClass>>
     
+    /// Delegate of text field, is used for extra control over text field.
     public var textFieldDelegate: UITextFieldDelegate? {
         set { textField.delegate = newValue }
         get { return textField.delegate }
     }
     
+    /// Use this method when you want textField release input focus.
     public func resignFirstResponder() {
         self.textField.resignFirstResponder()
     }
@@ -89,9 +114,11 @@ public final class RAMReel
     // MARK: CollectionView
     typealias CollectionWrapperClass = CollectionViewWrapper<DataSource.ResultType, CellClass>
     let wrapper: CollectionWrapperClass
+    /// Collection view with data items.
     public let collectionView: UICollectionView
     
     // MARK: Data Source
+    /// Data source of RAMReel
     public let dataSource: DataSource
     
     // MARK: Selected Item
@@ -150,11 +177,12 @@ public final class RAMReel
         self.wrapper.theme = self.theme
         
         let visibleCells: [CellClass] = self.collectionView.visibleCells() as! [CellClass]
-        let _ = visibleCells.map { (var cell: CellClass) -> Void in
+        visibleCells.forEach { (var cell: CellClass) -> Void in
             cell.theme = self.theme
         }
     }
     
+    /// Placeholder in text field.
     public var placeholder: String = "" {
         willSet {
             updatePlaceholder(newValue)
@@ -176,13 +204,11 @@ public final class RAMReel
     
     // MARK: Initialization
     /**
-    :param: frame Rect that Reel will occupy
-    
-    :param: dataSource Object of type that implements FlowDataSource protocol
-    
-    :placeholder: Optional text field placeholder
-    
-    :hook: Optional initial value change hook
+    - parameters:
+        - frame: Rect that Reel will occupy
+        - dataSource: Object of type that implements FlowDataSource protocol
+        - placeholder: Optional text field placeholder
+        - hook: Optional initial value change hook
     */
     public init(frame: CGRect, dataSource: DataSource, placeholder: String = "", hook: HookType? = nil) {
         self.view = UIView(frame: frame)
@@ -260,11 +286,13 @@ public final class RAMReel
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    /// Call this method to update `RAMReel` visuals before showing it.
     public func prepeareForViewing() {
         updateVisuals()
         updatePlaceholder(self.placeholder)
     }
     
+    /// If you use `RAMReel` to enter set of values from the list call this method before each input.
     public func prepeareForReuse() {
         self.textField.text = ""
         self.dataFlow.transport("")
@@ -321,6 +349,8 @@ public final class RAMReel
     }
     
 }
+
+// MARK: - Helpers
 
 class NotificationCallbackWrapper: NSObject {
     

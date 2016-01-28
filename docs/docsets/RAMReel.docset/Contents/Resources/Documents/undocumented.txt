@@ -1,31 +1,4 @@
-RAMReel.swift
-	public func render() -> String
-	public static func parse(string: String) -> String?
-	public var textFieldDelegate: UITextFieldDelegate?
-	public func resignFirstResponder()
-	public let collectionView: UICollectionView
-	public let dataSource: DataSource
-	public var placeholder: String = ""
-	public func prepeareForViewing()
-	public func prepeareForReuse()
 TextFieldReactor.swift
 	DS: FlowDataSource,
 DataFlow.swift
 	DS: FlowDataSource,
-Theme.swift
-	public struct RAMTheme: Theme
-	public static let sharedTheme = RAMTheme()
-	public let font: UIFont
-	public let textColor: UIColor
-	public let listBackgroundColor: UIColor
-	public func textColor(textColor: UIColor) -> RAMTheme
-	public func listBackgroundColor(listBackgroundColor: UIColor) -> RAMTheme
-	public func font(font: UIFont) -> RAMTheme
-CollectionViewCell.swift
-	required public init?(coder aDecoder: NSCoder)
-	public override init(frame: CGRect)
-RAMTextField.swift
-	override public func drawRect(rect: CGRect)
-	public override var tintColor: UIColor!
-CollectionViewWrapper.swift
-	public func processData(data: [DataType])

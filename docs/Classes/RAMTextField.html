@@ -14,7 +14,7 @@
     <a title="RAMTextField Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">RAMReel Docs</a> (61% documented)</p>
+        <p><a href="../index.html">RAMReel Docs</a> (96% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -34,9 +34,6 @@
                 <a href="../Classes/CollectionViewWrapper.html">CollectionViewWrapper</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes.html#/s:C7RAMReel8DataFlow">DataFlow</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/RAMCell.html">RAMCell</a>
               </li>
               <li class="nav-group-task">
@@ -45,12 +42,6 @@
               <li class="nav-group-task">
                 <a href="../Classes/RAMTextField.html">RAMTextField</a>
               </li>
-              <li class="nav-group-task">
-                <a href="../Classes/SimplePrefixQueryDataSource.html">SimplePrefixQueryDataSource</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes.html#/s:C7RAMReel16TextFieldReactor">TextFieldReactor</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -58,6 +49,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIImage.html">UIImage</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UITextField.html">UITextField</a>
@@ -102,7 +96,16 @@
             <a href="../Structs.html">Structs</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Structs.html#/s:V7RAMReel8DataFlow">DataFlow</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/RAMTheme.html">RAMTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SimplePrefixQueryDataSource.html">SimplePrefixQueryDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V7RAMReel16TextFieldReactor">TextFieldReactor</a>
               </li>
             </ul>
           </li>
@@ -118,7 +121,9 @@
 
                 </div>
               </div>
-            <p>Textfield with a line in the bottom</p>
+            <p><a href='#ramtextfield' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='ramtextfield'>RAMTextField</h2></p>
+
+<p>Textfield with a line in the bottom</p>
 
           </section>
           <section class="section task-group-section">
@@ -137,16 +142,36 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Overriding UIView&rsquo;s drawRect method to add line in the bottom of the Text Field</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RAMTextField</span><span class="p">:</span> <span class="kt">UITextField</span></code></pre>
+                          <pre class="highlight"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">drawRect</span><span class="p">(</span><span class="nv">rect</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rect</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Rect that should be updated. This override ignores this parameter and redraws all text field</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -156,7 +181,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.com/Ramotion/reel-search" target="_blank" rel="external">Mikhail Stepkin, Ramotion Inc.</a>. All rights reserved. (Last updated: 2016-01-27)</p>
+          <p>&copy; 2016 <a class="link" href="https://github.com/Ramotion/reel-search" target="_blank" rel="external">Mikhail Stepkin, Ramotion Inc.</a>. All rights reserved. (Last updated: 2016-01-28)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

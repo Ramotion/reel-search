@@ -13,7 +13,7 @@
     <a title="Structs  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">RAMReel Docs</a> (61% documented)</p>
+        <p><a href="index.html">RAMReel Docs</a> (96% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -33,9 +33,6 @@
                 <a href="Classes/CollectionViewWrapper.html">CollectionViewWrapper</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes.html#/s:C7RAMReel8DataFlow">DataFlow</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Classes/RAMCell.html">RAMCell</a>
               </li>
               <li class="nav-group-task">
@@ -44,12 +41,6 @@
               <li class="nav-group-task">
                 <a href="Classes/RAMTextField.html">RAMTextField</a>
               </li>
-              <li class="nav-group-task">
-                <a href="Classes/SimplePrefixQueryDataSource.html">SimplePrefixQueryDataSource</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes.html#/s:C7RAMReel16TextFieldReactor">TextFieldReactor</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -57,6 +48,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIImage.html">UIImage</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/UITextField.html">UITextField</a>
@@ -101,7 +95,16 @@
             <a href="Structs.html">Structs</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Structs.html#/s:V7RAMReel8DataFlow">DataFlow</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/RAMTheme.html">RAMTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SimplePrefixQueryDataSource.html">SimplePrefixQueryDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs.html#/s:V7RAMReel16TextFieldReactor">TextFieldReactor</a>
               </li>
             </ul>
           </li>
@@ -116,6 +119,144 @@
           </section>
           <section class="section task-group-section">
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Text%20field%20reactor"></a>
+                <a name="//apple_ref/swift/Section/Text field reactor" class="dashAnchor"></a>
+                <a href="#/Text%20field%20reactor">
+                  <h3 class="section-name">Text field reactor</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V7RAMReel16TextFieldReactor"></a>
+                    <a name="//apple_ref/swift/Struct/TextFieldReactor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V7RAMReel16TextFieldReactor">TextFieldReactor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#textfieldreactor' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='textfieldreactor'>TextFieldReactor</h2></p>
+
+<p>Implements reactive handling text field editing and passes editing changes to data flow</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">TextFieldReactor</span>
+    <span class="o">&lt;</span>
+    <span class="kt">DS</span><span class="p">:</span> <span class="kt">FlowDataSource</span><span class="p">,</span>
+    <span class="kt">DD</span><span class="p">:</span> <span class="kt">FlowDataDestination</span>
+    <span class="k">where</span>
+    <span class="kt">DS</span><span class="o">.</span><span class="kt">ResultType</span> <span class="o">==</span> <span class="kt">DD</span><span class="o">.</span><span class="kt">DataType</span><span class="p">,</span>
+    <span class="kt">DS</span><span class="o">.</span><span class="kt">QueryType</span>  <span class="o">==</span> <span class="kt">String</span>
+    <span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Data%20flow"></a>
+                <a name="//apple_ref/swift/Section/Data flow" class="dashAnchor"></a>
+                <a href="#/Data%20flow">
+                  <h3 class="section-name">Data flow</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V7RAMReel8DataFlow"></a>
+                    <a name="//apple_ref/swift/Struct/DataFlow" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V7RAMReel8DataFlow">DataFlow</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><a href='#dataflow' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='dataflow'>DataFlow</h2></p>
+
+<p>Represent queried data flow</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DataFlow</span>
+    <span class="o">&lt;</span>
+    <span class="kt">DS</span><span class="p">:</span> <span class="kt">FlowDataSource</span><span class="p">,</span>
+    <span class="kt">DD</span><span class="p">:</span> <span class="kt">FlowDataDestination</span>
+    <span class="k">where</span> <span class="kt">DS</span><span class="o">.</span><span class="kt">ResultType</span> <span class="o">==</span> <span class="kt">DD</span><span class="o">.</span><span class="kt">DataType</span>
+    <span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Simple%20data%20source"></a>
+                <a name="//apple_ref/swift/Section/Simple data source" class="dashAnchor"></a>
+                <a href="#/Simple%20data%20source">
+                  <h3 class="section-name">Simple data source</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V7RAMReel27SimplePrefixQueryDataSource"></a>
+                    <a name="//apple_ref/swift/Struct/SimplePrefixQueryDataSource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V7RAMReel27SimplePrefixQueryDataSource">SimplePrefixQueryDataSource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Example data source, that performs string queries over string array data</p>
+
+                        <a href="Structs/SimplePrefixQueryDataSource.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">SimplePrefixQueryDataSource</span><span class="p">:</span> <span class="kt">FlowDataSource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Theme"></a>
+                <a name="//apple_ref/swift/Section/Theme" class="dashAnchor"></a>
+                <a href="#/Theme">
+                  <h3 class="section-name">Theme</h3>
+                </a>
+              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -130,9 +271,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><a href='#ramtheme' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='ramtheme'>RAMTheme</h2></p>
+
+<p>Theme prefab.</p>
 
                         <a href="Structs/RAMTheme.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RAMTheme</span><span class="p">:</span> <span class="kt">Theme</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -142,7 +293,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.com/Ramotion/reel-search" target="_blank" rel="external">Mikhail Stepkin, Ramotion Inc.</a>. All rights reserved. (Last updated: 2016-01-27)</p>
+          <p>&copy; 2016 <a class="link" href="https://github.com/Ramotion/reel-search" target="_blank" rel="external">Mikhail Stepkin, Ramotion Inc.</a>. All rights reserved. (Last updated: 2016-01-28)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

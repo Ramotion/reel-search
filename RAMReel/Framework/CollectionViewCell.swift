@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - Collection view cells
 /**
     Type that implements this protocol allows configuration.
     As type name hints this protocol primarily targeted to UITableView and UICollectionView cells
@@ -29,16 +30,29 @@ public protocol ConfigurableCell {
 }
 
 /**
-    Example configurable cell
+ RAMCell
+ --
+ 
+ Example configurable cell
 */
 public class RAMCell: UICollectionViewCell, ConfigurableCell {
     
+    /**
+    Proxy call to superclass init.
+     
+    - parameter coder: `NSCoder` instance proxied to superview.
+    */
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     
         setup()
     }
     
+    /**
+    Proxy call to superclass init.
+     
+    - parameter frame: Rect of cell, proxied to superview.
+    */
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -80,10 +94,14 @@ public class RAMCell: UICollectionViewCell, ConfigurableCell {
         updateFont()
     }
     
-    /// Applies string data to the label text property
-    public func configureCell(s: String) {
+    /** 
+    Applies string data to the label text property
+     
+    - parameter string: String to show in the cell
+    */
+    public func configureCell(string: String) {
         
-        self.textLabel.text = s
+        self.textLabel.text = string
     
     }
     

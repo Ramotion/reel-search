@@ -8,11 +8,21 @@
 
 import UIKit
 
+// MARK: - RAMTextField
+
 /**
+ RAMTextField
+ --
+ 
  Textfield with a line in the bottom
  */
 public class RAMTextField: UITextField {
     
+    /**
+     Overriding UIView's drawRect method to add line in the bottom of the Text Field
+     
+     - parameter rect: Rect that should be updated. This override ignores this parameter and redraws all text field
+    */
     override public func drawRect(rect: CGRect) {
         let rect = self.bounds
         let ctx = UIGraphicsGetCurrentContext()
@@ -34,8 +44,13 @@ public class RAMTextField: UITextField {
     
 }
 
+// MARK: - UITextField extensions
+
 extension UITextField {
     
+    /**
+     Overriding `UITextField` `tintColor` property to make it affect close image tint color.
+    */
     public override var tintColor: UIColor! {
         get {
             return super.tintColor
@@ -49,7 +64,7 @@ extension UITextField {
                 if let button = view as? UIButton
                 {
                     let states: [UIControlState] = [.Normal, .Highlighted]
-                    let _ = states.map { state -> Void in
+                    states.forEach { state -> Void in
                         let image = button.imageForState(state)?.tintedImage(self.tintColor)
                         button.setImage(image, forState: state)
                     }
@@ -60,9 +75,16 @@ extension UITextField {
     
 }
 
+// MARK: - UIImage extensions
+
 extension UIImage {
     
-    func tintedImage(color: UIColor) -> UIImage {
+    /**
+     Create new image by applying a tint.
+     
+     - parameter color: New image tint color.
+    */
+    public func tintedImage(color: UIColor) -> UIImage {
         let size = self.size
         
         UIGraphicsBeginImageContextWithOptions(size, false, self.scale)

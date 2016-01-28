@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>*&gt;(_:_:) Function Reference</title>
+    <title>*&amp;*(_:_:) Function Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,18 +10,18 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Function/*&gt;(_:_:)" class="dashAnchor"></a>
-    <a title="*&gt;(_:_:) Function Reference"></a>
+    <a name="//apple_ref/swift/Function/*&amp;*(_:_:)" class="dashAnchor"></a>
+    <a title="*&amp;*(_:_:) Function Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">RAMReel Docs</a> (96% documented)</p>
+        <p><a href="../index.html">RAMReel Docs</a> (83% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
         <a href="../index.html">RAMReel Reference</a>
         <img id="carat" src="../img/carat.png" />
-        *&gt;(_:_:) Function Reference
+        *&amp;*(_:_:) Function Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -51,9 +51,6 @@
                 <a href="../Extensions/String.html">String</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/UIImage.html">UIImage</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Extensions/UITextField.html">UITextField</a>
               </li>
             </ul>
@@ -62,10 +59,10 @@
             <a href="../Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Functions/*&gt;(_:_:).html">*&gt;(_:_:)</a>
+                <a href="../Functions/*&amp;*(_:_:).html">*&amp;*(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions/&lt;&amp;&gt;(_:_:).html">&lt;&amp;&gt;(_:_:)</a>
+                <a href="../Functions/*&gt;(_:_:).html">*&gt;(_:_:)</a>
               </li>
             </ul>
           </li>
@@ -114,20 +111,23 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>*&gt;(_:_:)</h1>
+            <h1>*&amp;*(_:_:)</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">*&gt;</span>
-    <span class="o">&lt;</span>
-    <span class="kt">DS</span><span class="p">:</span> <span class="kt">FlowDataSource</span><span class="p">,</span>
-    <span class="kt">DD</span><span class="p">:</span> <span class="kt">FlowDataDestination</span>
-    <span class="k">where</span> <span class="kt">DS</span><span class="o">.</span><span class="kt">ResultType</span> <span class="o">==</span> <span class="kt">DD</span><span class="o">.</span><span class="kt">DataType</span>
-    <span class="o">&gt;</span>
-    <span class="p">(</span><span class="nv">left</span><span class="p">:</span> <span class="kt">DS</span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="kt">DD</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">DataFlow</span><span class="o">&lt;</span><span class="kt">DS</span><span class="p">,</span> <span class="kt">DD</span><span class="o">&gt;</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">*&amp;*</span> <span class="o">&lt;</span><span class="kt">DS</span><span class="p">:</span> <span class="kt">FlowDataSource</span><span class="p">,</span> <span class="kt">DD</span><span class="p">:</span> <span class="kt">FlowDataDestination</span> <span class="k">where</span> <span class="kt">DS</span><span class="o">.</span><span class="kt">ResultType</span> <span class="o">==</span> <span class="kt">DD</span><span class="o">.</span><span class="kt">DataType</span><span class="p">,</span> <span class="kt">DS</span><span class="o">.</span><span class="kt">QueryType</span>  <span class="o">==</span> <span class="kt">String</span><span class="o">&gt;</span> <span class="p">(</span><span class="nv">left</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="kt">DataFlow</span><span class="o">&lt;</span><span class="kt">DS</span><span class="p">,</span> <span class="kt">DD</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">TextFieldReactor</span><span class="o">&lt;</span><span class="kt">DS</span><span class="p">,</span> <span class="kt">DD</span><span class="o">&gt;</span></code></pre>
 
                 </div>
               </div>
-            <p>Creates data flow from compatatible data source to data destination</p>
+            <p>Links text field to data flow</p>
+
+<ul>
+<li><p>parameters:</p>
+
+<ul>
+<li>left: Text field.</li>
+<li>right: DataFlow object.</li>
+</ul></li>
+</ul>
 
           </section>
           <section class="section task-group-section">
@@ -136,9 +136,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:tZF7RAMReeloi2mgu0_Rq_S_14FlowDataSourceq0_S_19FlowDataDestinationzqq_S0_10ResultTypeqq0_S1_8DataType_FTq_q0__GVS_8DataFlowq_q0__L_2DSMq_"></a>
+                    <a name="/s:tZF7RAMReeloi3mamu0_Rq_S_14FlowDataSourceq0_S_19FlowDataDestinationzqq_S0_9QueryTypeSSzqq_S0_10ResultTypeqq0_S1_8DataType_FTCSo11UITextFieldGVS_8DataFlowq_q0___GVS_16TextFieldReactorq_q0__L_2DSMq_"></a>
                     <a name="//apple_ref/swift/Parameter/DS" class="dashAnchor"></a>
-                    <a class="token" href="#/s:tZF7RAMReeloi2mgu0_Rq_S_14FlowDataSourceq0_S_19FlowDataDestinationzqq_S0_10ResultTypeqq0_S1_8DataType_FTq_q0__GVS_8DataFlowq_q0__L_2DSMq_">DS</a>
+                    <a class="token" href="#/s:tZF7RAMReeloi3mamu0_Rq_S_14FlowDataSourceq0_S_19FlowDataDestinationzqq_S0_9QueryTypeSSzqq_S0_10ResultTypeqq0_S1_8DataType_FTCSo11UITextFieldGVS_8DataFlowq_q0___GVS_16TextFieldReactorq_q0__L_2DSMq_">DS</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -153,13 +153,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">*&gt;</span>
-    <span class="o">&lt;</span>
-    <span class="kt">DS</span><span class="p">:</span> <span class="kt">FlowDataSource</span><span class="p">,</span>
-    <span class="kt">DD</span><span class="p">:</span> <span class="kt">FlowDataDestination</span>
-    <span class="k">where</span> <span class="kt">DS</span><span class="o">.</span><span class="kt">ResultType</span> <span class="o">==</span> <span class="kt">DD</span><span class="o">.</span><span class="kt">DataType</span>
-    <span class="o">&gt;</span>
-    <span class="p">(</span><span class="nv">left</span><span class="p">:</span> <span class="kt">DS</span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="kt">DD</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">DataFlow</span><span class="o">&lt;</span><span class="kt">DS</span><span class="p">,</span> <span class="kt">DD</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">*&amp;*</span> <span class="o">&lt;</span><span class="kt">DS</span><span class="p">:</span> <span class="kt">FlowDataSource</span><span class="p">,</span> <span class="kt">DD</span><span class="p">:</span> <span class="kt">FlowDataDestination</span> <span class="k">where</span> <span class="kt">DS</span><span class="o">.</span><span class="kt">ResultType</span> <span class="o">==</span> <span class="kt">DD</span><span class="o">.</span><span class="kt">DataType</span><span class="p">,</span> <span class="kt">DS</span><span class="o">.</span><span class="kt">QueryType</span>  <span class="o">==</span> <span class="kt">String</span><span class="o">&gt;</span> <span class="p">(</span><span class="nv">left</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="kt">DataFlow</span><span class="o">&lt;</span><span class="kt">DS</span><span class="p">,</span> <span class="kt">DD</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">TextFieldReactor</span><span class="o">&lt;</span><span class="kt">DS</span><span class="p">,</span> <span class="kt">DD</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>

@@ -14,7 +14,7 @@
     <a title="RAMReel Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">RAMReel Docs</a> (61% documented)</p>
+        <p><a href="../index.html">RAMReel Docs</a> (96% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -34,9 +34,6 @@
                 <a href="../Classes/CollectionViewWrapper.html">CollectionViewWrapper</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes.html#/s:C7RAMReel8DataFlow">DataFlow</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/RAMCell.html">RAMCell</a>
               </li>
               <li class="nav-group-task">
@@ -45,12 +42,6 @@
               <li class="nav-group-task">
                 <a href="../Classes/RAMTextField.html">RAMTextField</a>
               </li>
-              <li class="nav-group-task">
-                <a href="../Classes/SimplePrefixQueryDataSource.html">SimplePrefixQueryDataSource</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes.html#/s:C7RAMReel16TextFieldReactor">TextFieldReactor</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -58,6 +49,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIImage.html">UIImage</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UITextField.html">UITextField</a>
@@ -102,7 +96,16 @@
             <a href="../Structs.html">Structs</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Structs.html#/s:V7RAMReel8DataFlow">DataFlow</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/RAMTheme.html">RAMTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SimplePrefixQueryDataSource.html">SimplePrefixQueryDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V7RAMReel16TextFieldReactor">TextFieldReactor</a>
               </li>
             </ul>
           </li>
@@ -114,7 +117,7 @@
             <h1>RAMReel</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">RAMReel</span>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RAMReel</span>
     <span class="o">&lt;</span>
     <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span>
     <span class="kt">TextFieldClass</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">,</span>
@@ -129,7 +132,9 @@
 
                 </div>
               </div>
-            <p>Reel class</p>
+            <p><a href='#ramreel' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='ramreel'>RAMReel</h2></p>
+
+<p>Reel class</p>
 
           </section>
           <section class="section task-group-section">
@@ -213,25 +218,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Delegate of text field, is used for extra control over text field.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">RAMReel</span>
-    <span class="o">&lt;</span>
-    <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span>
-    <span class="kt">TextFieldClass</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="p">:</span> <span class="kt">FlowDataSource</span>
-    <span class="k">where</span>
-    <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">ConfigurableCell</span><span class="p">,</span>
-    <span class="kt">CellClass</span><span class="o">.</span><span class="kt">DataType</span>   <span class="o">==</span> <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">QueryType</span> <span class="o">==</span> <span class="kt">String</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">:</span> <span class="kt">Renderable</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">:</span> <span class="kt">Parsable</span>
-<span class="o">&gt;</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">textFieldDelegate</span><span class="p">:</span> <span class="kt">UITextFieldDelegate</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -251,25 +245,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Use this method when you want textField release input focus.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">RAMReel</span>
-    <span class="o">&lt;</span>
-    <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span>
-    <span class="kt">TextFieldClass</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="p">:</span> <span class="kt">FlowDataSource</span>
-    <span class="k">where</span>
-    <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">ConfigurableCell</span><span class="p">,</span>
-    <span class="kt">CellClass</span><span class="o">.</span><span class="kt">DataType</span>   <span class="o">==</span> <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">QueryType</span> <span class="o">==</span> <span class="kt">String</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">:</span> <span class="kt">Renderable</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">:</span> <span class="kt">Parsable</span>
-<span class="o">&gt;</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">resignFirstResponder</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -300,25 +283,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Collection view with data items.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">RAMReel</span>
-    <span class="o">&lt;</span>
-    <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span>
-    <span class="kt">TextFieldClass</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="p">:</span> <span class="kt">FlowDataSource</span>
-    <span class="k">where</span>
-    <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">ConfigurableCell</span><span class="p">,</span>
-    <span class="kt">CellClass</span><span class="o">.</span><span class="kt">DataType</span>   <span class="o">==</span> <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">QueryType</span> <span class="o">==</span> <span class="kt">String</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">:</span> <span class="kt">Renderable</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">:</span> <span class="kt">Parsable</span>
-<span class="o">&gt;</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">collectionView</span><span class="p">:</span> <span class="kt">UICollectionView</span></code></pre>
 
                         </div>
                       </div>
@@ -349,25 +321,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Data source of RAMReel</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">RAMReel</span>
-    <span class="o">&lt;</span>
-    <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span>
-    <span class="kt">TextFieldClass</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="p">:</span> <span class="kt">FlowDataSource</span>
-    <span class="k">where</span>
-    <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">ConfigurableCell</span><span class="p">,</span>
-    <span class="kt">CellClass</span><span class="o">.</span><span class="kt">DataType</span>   <span class="o">==</span> <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">QueryType</span> <span class="o">==</span> <span class="kt">String</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">:</span> <span class="kt">Renderable</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">:</span> <span class="kt">Parsable</span>
-<span class="o">&gt;</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">dataSource</span><span class="p">:</span> <span class="kt">DataSource</span></code></pre>
 
                         </div>
                       </div>
@@ -502,25 +463,14 @@ Value is nil, if data source output is empty.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Placeholder in text field.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">RAMReel</span>
-    <span class="o">&lt;</span>
-    <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span>
-    <span class="kt">TextFieldClass</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="p">:</span> <span class="kt">FlowDataSource</span>
-    <span class="k">where</span>
-    <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">ConfigurableCell</span><span class="p">,</span>
-    <span class="kt">CellClass</span><span class="o">.</span><span class="kt">DataType</span>   <span class="o">==</span> <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">QueryType</span> <span class="o">==</span> <span class="kt">String</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">:</span> <span class="kt">Renderable</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">:</span> <span class="kt">Parsable</span>
-<span class="o">&gt;</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">placeholder</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span></code></pre>
 
                         </div>
                       </div>
@@ -551,13 +501,16 @@ Value is nil, if data source output is empty.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>:param: frame Rect that Reel will occupy</p>
+                        <ul>
+<li>parameters:
 
-<p>:param: dataSource Object of type that implements FlowDataSource protocol</p>
-
-<p>:placeholder: Optional text field placeholder</p>
-
-<p>:hook: Optional initial value change hook</p>
+<ul>
+<li>frame: Rect that Reel will occupy</li>
+<li>dataSource: Object of type that implements FlowDataSource protocol</li>
+<li>placeholder: Optional text field placeholder</li>
+<li>hook: Optional initial value change hook</li>
+</ul></li>
+</ul>
 
                       </div>
                       <div class="declaration">
@@ -567,6 +520,65 @@ Value is nil, if data source output is empty.</p>
                           <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">,</span> <span class="nv">dataSource</span><span class="p">:</span> <span class="kt">DataSource</span><span class="p">,</span> <span class="nv">placeholder</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span><span class="p">,</span> <span class="nv">hook</span><span class="p">:</span> <span class="kt">HookType</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>frame</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Rect that Reel will occupy</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dataSource</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Object of type that implements FlowDataSource protocol</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>placeholder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional text field placeholder</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hook</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional initial value change hook</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -584,25 +596,14 @@ Value is nil, if data source output is empty.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Call this method to update <code><a href="../Classes/RAMReel.html">RAMReel</a></code> visuals before showing it.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">RAMReel</span>
-    <span class="o">&lt;</span>
-    <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span>
-    <span class="kt">TextFieldClass</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="p">:</span> <span class="kt">FlowDataSource</span>
-    <span class="k">where</span>
-    <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">ConfigurableCell</span><span class="p">,</span>
-    <span class="kt">CellClass</span><span class="o">.</span><span class="kt">DataType</span>   <span class="o">==</span> <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">QueryType</span> <span class="o">==</span> <span class="kt">String</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">:</span> <span class="kt">Renderable</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">:</span> <span class="kt">Parsable</span>
-<span class="o">&gt;</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">prepeareForViewing</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -622,25 +623,14 @@ Value is nil, if data source output is empty.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>If you use <code><a href="../Classes/RAMReel.html">RAMReel</a></code> to enter set of values from the list call this method before each input.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">RAMReel</span>
-    <span class="o">&lt;</span>
-    <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span>
-    <span class="kt">TextFieldClass</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="p">:</span> <span class="kt">FlowDataSource</span>
-    <span class="k">where</span>
-    <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">ConfigurableCell</span><span class="p">,</span>
-    <span class="kt">CellClass</span><span class="o">.</span><span class="kt">DataType</span>   <span class="o">==</span> <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">QueryType</span> <span class="o">==</span> <span class="kt">String</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">:</span> <span class="kt">Renderable</span><span class="p">,</span>
-    <span class="kt">DataSource</span><span class="o">.</span><span class="kt">ResultType</span><span class="p">:</span> <span class="kt">Parsable</span>
-<span class="o">&gt;</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">prepeareForReuse</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -652,7 +642,7 @@ Value is nil, if data source output is empty.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.com/Ramotion/reel-search" target="_blank" rel="external">Mikhail Stepkin, Ramotion Inc.</a>. All rights reserved. (Last updated: 2016-01-27)</p>
+          <p>&copy; 2016 <a class="link" href="https://github.com/Ramotion/reel-search" target="_blank" rel="external">Mikhail Stepkin, Ramotion Inc.</a>. All rights reserved. (Last updated: 2016-01-28)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

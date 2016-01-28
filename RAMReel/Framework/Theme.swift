@@ -8,9 +8,13 @@
 
 import UIKit
 
+// MARK: Theme
 /**
- Protocol that allows you change visual appearance a bit
- */
+Theme
+--
+
+Protocol that allows you change visual appearance a bit
+*/
 public protocol Theme {
     
     /**
@@ -31,30 +35,23 @@ public protocol Theme {
     
 }
 
+/**
+ RAMTheme
+ --
+ 
+ Theme prefab.
+*/
 public struct RAMTheme: Theme {
     
+    /// Shared theme with default settings.
     public static let sharedTheme = RAMTheme()
     
+    /// Theme font.
     public let font: UIFont
+    /// Theme text color.
     public let textColor: UIColor
+    /// Theme background color.
     public let listBackgroundColor: UIColor
-    
-    let isRobotoLoaded = RAMTheme.loadRoboto()
-    
-    private static var defaultFont: UIFont {
-        loadRoboto()
-        
-        let font: UIFont
-        if let roboto = UIFont(name: "Roboto-Light", size: 36) {
-            font = roboto
-        }
-        else if #available(iOS 8.2, *) {
-            font = UIFont.systemFontOfSize(36, weight: UIFontWeightThin)
-        } else {
-            font = UIFont.systemFontOfSize(36)
-        }
-        return font
-    }
     
     private init(
         textColor: UIColor = UIColor.blackColor(),
@@ -67,49 +64,106 @@ public struct RAMTheme: Theme {
         self.font = font
     }
     
-    static private func loadRoboto() -> Bool {
-        return FontLoader.robotoLight != nil
+    private static var defaultFont: UIFont = RAMTheme.initDefaultFont()
+    
+    private static func initDefaultFont() -> UIFont {
+        do {
+            try FontLoader.loadRobotoLight()
+        } catch (let error) {
+            print(error)
+        }
+            
+        let font: UIFont
+        if
+            let robotoLoaded = FontLoader.robotoLight,
+            let roboto = UIFont(name: robotoLoaded.name, size: 36)
+        {
+            font = roboto
+        } else if #available(iOS 8.2, *) {
+            font = UIFont.systemFontOfSize(36, weight: UIFontWeightThin)
+        } else {
+            font = UIFont.systemFontOfSize(36)
+        }
+        return font
     }
     
+    /** 
+    Creates new theme with new text color.
+     
+    - parameter textColor: New text color.
+    - returns: New `RAMTheme` instance.
+     */
     public func textColor(textColor: UIColor) -> RAMTheme {
         return RAMTheme(textColor: textColor, listBackgroundColor: self.listBackgroundColor, font: self.font)
     }
     
+    /**
+     Creates new theme with new background color.
+     
+     - parameter listBackgroundColor: New background color.
+     - returns: New `RAMTheme` instance.
+     */
     public func listBackgroundColor(listBackgroundColor: UIColor) -> RAMTheme {
         return RAMTheme(textColor: self.textColor, listBackgroundColor: listBackgroundColor, font: self.font)
     }
     
+    /**
+     Creates new theme with new font.
+     
+     - parameter font: New font.
+     - returns: New `RAMTheme` instance.
+     */
     public func font(font: UIFont) -> RAMTheme {
         return RAMTheme(textColor: self.textColor, listBackgroundColor: self.listBackgroundColor, font: font)
     }
     
 }
 
-class FontLoader {
+// MARK: - Font loader
+
+/**
+FontLoader
+--
+*/
+final class FontLoader {
     
     enum Error: ErrorType {
         case FailedToLoadFont(String)
     }
     
-    static let robotoLight: FontLoader? = try? FontLoader(name: "Roboto-Light", type: "ttf")
+    static let robotoLight: FontLoader? = try? FontLoader.loadRobotoLight()
+    
+    static func loadRobotoLight() throws -> FontLoader {
+        return try FontLoader(name: "Roboto-Light", type: "ttf")
+    }
+    
+    let name: String
+    let type: String
     
     private init(name: String, type: String) throws {
+        self.name = name
+        self.type = type
+        
+        guard FontLoader.loadedFonts[name] == nil else {
+            return
+        }
+        
         let bundle = NSBundle(forClass: self.dynamicType as AnyClass)
 
-        var error: Unmanaged<CFErrorRef>? = nil
         if
             let fontPath = bundle.pathForResource(name, ofType: type),
             let inData = NSData(contentsOfFile: fontPath),
             let provider = CGDataProviderCreateWithCFData(inData),
             let font = CGFontCreateWithDataProvider(provider)
-            where CTFontManagerRegisterGraphicsFont(font, &error)
+            where CTFontManagerRegisterGraphicsFont(font, nil)
         {
+            FontLoader.loadedFonts[self.name] = self
             return
-        }
-        else {
-            print(error)
+        } else {
             throw Error.FailedToLoadFont(name)
         }
     }
+    
+    private static var loadedFonts: [String: FontLoader] = [:]
     
 }

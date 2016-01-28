@@ -13,7 +13,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">RAMReel Docs</a> (61% documented)</p>
+        <p><a href="index.html">RAMReel Docs</a> (96% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -33,9 +33,6 @@
                 <a href="Classes/CollectionViewWrapper.html">CollectionViewWrapper</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes.html#/s:C7RAMReel8DataFlow">DataFlow</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Classes/RAMCell.html">RAMCell</a>
               </li>
               <li class="nav-group-task">
@@ -44,12 +41,6 @@
               <li class="nav-group-task">
                 <a href="Classes/RAMTextField.html">RAMTextField</a>
               </li>
-              <li class="nav-group-task">
-                <a href="Classes/SimplePrefixQueryDataSource.html">SimplePrefixQueryDataSource</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes.html#/s:C7RAMReel16TextFieldReactor">TextFieldReactor</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -57,6 +48,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIImage.html">UIImage</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/UITextField.html">UITextField</a>
@@ -101,7 +95,16 @@
             <a href="Structs.html">Structs</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Structs.html#/s:V7RAMReel8DataFlow">DataFlow</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/RAMTheme.html">RAMTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SimplePrefixQueryDataSource.html">SimplePrefixQueryDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs.html#/s:V7RAMReel16TextFieldReactor">TextFieldReactor</a>
               </li>
             </ul>
           </li>
@@ -116,6 +119,13 @@
           </section>
           <section class="section task-group-section">
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Library%20root%20class"></a>
+                <a name="//apple_ref/swift/Section/Library root class" class="dashAnchor"></a>
+                <a href="#/Library%20root%20class">
+                  <h3 class="section-name">Library root class</h3>
+                </a>
+              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -130,7 +140,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Reel class</p>
+                        <p><a href='#ramreel' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='ramreel'>RAMReel</h2></p>
+
+<p>Reel class</p>
 
                         <a href="Classes/RAMReel.html" class="slightly-smaller">See more</a>
                       </div>
@@ -138,7 +150,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">RAMReel</span>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RAMReel</span>
     <span class="o">&lt;</span>
     <span class="kt">CellClass</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span>
     <span class="kt">TextFieldClass</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">,</span>
@@ -159,119 +171,13 @@
               </ul>
             </div>
             <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C7RAMReel16TextFieldReactor"></a>
-                    <a name="//apple_ref/swift/Class/TextFieldReactor" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7RAMReel16TextFieldReactor">TextFieldReactor</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Implements reactive handling text field editing and passes editing changes to data flow</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">TextFieldReactor</span>
-    <span class="o">&lt;</span>
-    <span class="kt">DS</span><span class="p">:</span> <span class="kt">FlowDataSource</span><span class="p">,</span>
-    <span class="kt">DD</span><span class="p">:</span> <span class="kt">FlowDataDestination</span>
-    <span class="k">where</span>
-    <span class="kt">DS</span><span class="o">.</span><span class="kt">ResultType</span> <span class="o">==</span> <span class="kt">DD</span><span class="o">.</span><span class="kt">DataType</span><span class="p">,</span>
-    <span class="kt">DS</span><span class="o">.</span><span class="kt">QueryType</span>  <span class="o">==</span> <span class="kt">String</span>
-    <span class="o">&gt;</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C7RAMReel8DataFlow"></a>
-                    <a name="//apple_ref/swift/Class/DataFlow" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7RAMReel8DataFlow">DataFlow</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Represent queried data flow</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">DataFlow</span>
-    <span class="o">&lt;</span>
-    <span class="kt">DS</span><span class="p">:</span> <span class="kt">FlowDataSource</span><span class="p">,</span>
-    <span class="kt">DD</span><span class="p">:</span> <span class="kt">FlowDataDestination</span>
-    <span class="k">where</span> <span class="kt">DS</span><span class="o">.</span><span class="kt">ResultType</span> <span class="o">==</span> <span class="kt">DD</span><span class="o">.</span><span class="kt">DataType</span>
-    <span class="o">&gt;</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
               <div class="task-name-container">
-                <a name="/Example%20types"></a>
-                <a name="//apple_ref/swift/Section/Example types" class="dashAnchor"></a>
-                <a href="#/Example%20types">
-                  <h3 class="section-name">Example types</h3>
+                <a name="/Collection%20view%20cells"></a>
+                <a name="//apple_ref/swift/Section/Collection view cells" class="dashAnchor"></a>
+                <a href="#/Collection%20view%20cells">
+                  <h3 class="section-name">Collection view cells</h3>
                 </a>
               </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C7RAMReel27SimplePrefixQueryDataSource"></a>
-                    <a name="//apple_ref/swift/Class/SimplePrefixQueryDataSource" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7RAMReel27SimplePrefixQueryDataSource">SimplePrefixQueryDataSource</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Example data source, that performs string queries over string array data</p>
-
-                        <a href="Classes/SimplePrefixQueryDataSource.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SimplePrefixQueryDataSource</span><span class="p">:</span> <span class="kt">FlowDataSource</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
               <ul>
                 <li class="item">
                   <div>
@@ -286,7 +192,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Example configurable cell</p>
+                        <p><a href='#ramcell' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='ramcell'>RAMCell</h2></p>
+
+<p>Example configurable cell</p>
 
                         <a href="Classes/RAMCell.html" class="slightly-smaller">See more</a>
                       </div>
@@ -304,6 +212,13 @@
               </ul>
             </div>
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/RAMTextField"></a>
+                <a name="//apple_ref/swift/Section/RAMTextField" class="dashAnchor"></a>
+                <a href="#/RAMTextField">
+                  <h3 class="section-name">RAMTextField</h3>
+                </a>
+              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -318,7 +233,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Textfield with a line in the bottom</p>
+                        <p><a href='#ramtextfield' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='ramtextfield'>RAMTextField</h2></p>
+
+<p>Textfield with a line in the bottom</p>
 
                         <a href="Classes/RAMTextField.html" class="slightly-smaller">See more</a>
                       </div>
@@ -336,6 +253,13 @@
               </ul>
             </div>
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Collection%20view%20wrapper"></a>
+                <a name="//apple_ref/swift/Section/Collection view wrapper" class="dashAnchor"></a>
+                <a href="#/Collection%20view%20wrapper">
+                  <h3 class="section-name">Collection view wrapper</h3>
+                </a>
+              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -350,7 +274,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Wraps collection view and set&rsquo;s collection view data source</p>
+                        <p><a href='#collectionviewwrapper' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='collectionviewwrapper'>CollectionViewWrapper</h2></p>
+
+<p>Wraps collection view and set&rsquo;s collection view data source.</p>
 
                         <a href="Classes/CollectionViewWrapper.html" class="slightly-smaller">See more</a>
                       </div>
@@ -377,7 +303,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.com/Ramotion/reel-search" target="_blank" rel="external">Mikhail Stepkin, Ramotion Inc.</a>. All rights reserved. (Last updated: 2016-01-27)</p>
+          <p>&copy; 2016 <a class="link" href="https://github.com/Ramotion/reel-search" target="_blank" rel="external">Mikhail Stepkin, Ramotion Inc.</a>. All rights reserved. (Last updated: 2016-01-28)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
