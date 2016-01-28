@@ -162,6 +162,15 @@
 <pre class="highlight swift"><code><span class="n">ramReel</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">autoresizingMask</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="kt">FlexibleWidth</span><span class="p">,</span> <span class="o">.</span><span class="kt">FlexibleHeight</span><span class="p">]</span>
 <span class="n">yourView</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">ramReel</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
 </code></pre>
+
+<p>In case of visual problems you may call <a href="https://rawgit.com/Ramotion/reel-search/master/docs/Classes/RAMReel.html#/s:FC7RAMReel7RAMReel18prepeareForViewingu1_Rdq_CSo20UICollectionViewCellq_S_16ConfigurableCelldq0_CSo11UITextFieldq1_S_14FlowDataSourceqq_S2_8DataTypeS_8Parsableqq_S2_8DataTypeS_10Renderablezqq_S2_8DataTypeqq1_S4_10ResultTypezqq1_S4_9QueryTypeSS_FGS0_q_q0_q1__FT_T_"><code>prepeareForViewing</code></a> before showing your view.</p>
+
+<p>Like this:</p>
+<pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLayoutSubviews</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLayoutSubviews</span><span class="p">()</span>
+    <span class="n">ramReel</span><span class="o">.</span><span class="nf">prepeareForViewing</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre>
 <a href='#theming' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='theming'>Theming</h3>
 
 <p>If you want to change <code>RAMReel</code> look and feel, you can use theming.</p>
@@ -175,13 +184,15 @@
 
 <span class="k">let</span> <span class="nv">theme</span> <span class="o">=</span> <span class="kt">RAMTheme</span><span class="p">(</span><span class="nv">textColor</span><span class="p">:</span> <span class="n">textColor</span><span class="p">,</span> <span class="nv">listBackgroundColor</span><span class="p">:</span> <span class="n">listBackgroundColor</span><span class="p">,</span> <span class="nv">font</span><span class="p">:</span> <span class="n">font</span><span class="p">)</span>
 </code></pre>
-
-<p><code>Temp link to full docs</code>: <a href="https://rawgit.com/Ramotion/reel-search/master/docs/index.html">Jazzy docs</a></p>
 <a href='#developer_information' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='developer_information'>Developer Information</h2>
 
 <p>Designed &amp; Developed at <a href="http://ramotion.com">Ramotion - Digital Design Agency</a></p>
 
 <p>Follow us on <a href="http://twitter.com/ramotion">Twitter</a>.</p>
+
+<p>&ndash;</p>
+
+<p><a href="https://rawgit.com/Ramotion/reel-search/master/docs/index.html">Jazzy docs</a></p>
 
           </section>
         </section>

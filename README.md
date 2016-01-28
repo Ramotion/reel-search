@@ -53,6 +53,17 @@ ramReel.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
 yourView.addSubview(ramReel.view)
 ~~~
 
+In case of visual problems you may call [`prepeareForViewing`](https://rawgit.com/Ramotion/reel-search/master/docs/Classes/RAMReel.html#/s:FC7RAMReel7RAMReel18prepeareForViewingu1_Rdq_CSo20UICollectionViewCellq_S_16ConfigurableCelldq0_CSo11UITextFieldq1_S_14FlowDataSourceqq_S2_8DataTypeS_8Parsableqq_S2_8DataTypeS_10Renderablezqq_S2_8DataTypeqq1_S4_10ResultTypezqq1_S4_9QueryTypeSS_FGS0_q_q0_q1__FT_T_) before showing your view.
+
+Like this:
+
+~~~swift
+override func viewDidLayoutSubviews() {
+	super.viewDidLayoutSubviews()
+	ramReel.prepeareForViewing()
+}
+~~~
+
 ### Theming
 
 If you want to change `RAMReel` look and feel, you can use theming.
@@ -69,10 +80,12 @@ let font: UIFont
 let theme = RAMTheme(textColor: textColor, listBackgroundColor: listBackgroundColor, font: font)
 ~~~
 
-`Temp link to full docs`: [Jazzy docs](https://rawgit.com/Ramotion/reel-search/master/docs/index.html)
-
 ## Developer Information
 
 Designed & Developed at [Ramotion - Digital Design Agency](http://ramotion.com)
 
 Follow us on [Twitter](http://twitter.com/ramotion).
+
+--
+
+[Jazzy docs](https://rawgit.com/Ramotion/reel-search/master/docs/index.html)

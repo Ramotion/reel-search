@@ -204,6 +204,8 @@ public class RAMReel
     
     // MARK: Initialization
     /**
+    Creates new `RAMReel` instance.
+    
     - parameters:
         - frame: Rect that Reel will occupy
         - dataSource: Object of type that implements FlowDataSource protocol
