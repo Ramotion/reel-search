@@ -1,5 +1,7 @@
 # RAMReel
 
+Controller that allow you to choose options from the list. 
+
 ## Requirements
 
 - iOS 8.0+
