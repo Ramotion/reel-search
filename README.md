@@ -1,6 +1,6 @@
 # RAMReel
 
-Controller that allow you to choose options from the list. 
+Controller that allows you to choose options from the list. 
 
 ## Requirements
 
