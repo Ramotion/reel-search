@@ -88,12 +88,14 @@ let font: UIFont
 let theme = RAMTheme(textColor: textColor, listBackgroundColor: listBackgroundColor, font: font)
 ~~~
 
+See more at [RAMReel docs](https://rawgit.com/Ramotion/reel-search/master/docs/index.html)
+
 ## About
 The project maintained by [app development agency](http://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search) [Ramotion Inc.](http://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search)
 See our other [open-source projects](https://github.com/ramotion) or [hire](http://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search) us to design, develop, and grow your product.
 
 [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/ramotion/reel-search)
 [![Twitter Follow](https://img.shields.io/twitter/follow/ramotion.svg?style=social)](https://twitter.com/ramotion)
---
 
-[Jazzy docs](https://rawgit.com/Ramotion/reel-search/master/docs/index.html)
+
+
