@@ -88,6 +88,8 @@ let font: UIFont
 let theme = RAMTheme(textColor: textColor, listBackgroundColor: listBackgroundColor, font: font)
 ~~~
 
+--
+
 See more at [RAMReel docs](https://rawgit.com/Ramotion/reel-search/master/docs/index.html)
 
 ## About
