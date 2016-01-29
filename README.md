@@ -1,6 +1,12 @@
 # RAMReel
+[![CocoaPods](https://img.shields.io/cocoapods/p/RAMReel.svg)](https://cocoapods.org/pods/RAMReel)
+[![CocoaPods](https://img.shields.io/cocoapods/v/RAMReel.svg)](http://cocoapods.org/pods/RAMReel)
+[![Swift 2.1](https://img.shields.io/badge/Swift-2.1-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
+[![Travis](https://img.shields.io/travis/Ramotion/reel-search.svg)](https://travis-ci.org/Ramotion/reel-search)
 
 Controller that allows you to choose options from the list.
+![animated](/Users/juriv/tmp/reel-search/reel-search.gif)
 
 ## Requirements
 
@@ -82,12 +88,11 @@ let font: UIFont
 let theme = RAMTheme(textColor: textColor, listBackgroundColor: listBackgroundColor, font: font)
 ~~~
 
-## Developer Information
+## About
+The project maintained by [app development agency](http://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search) [Ramotion Inc.](http://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search)See our other [open-source projects](https://github.com/ramotion) or [hire](http://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search) us to design, develop, and grow your product.
 
-Designed & Developed at [Ramotion - Digital Design Agency](http://ramotion.com)
-
-Follow us on [Twitter](http://twitter.com/ramotion).
-
+[![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/ramotion/reel-search)
+[![Twitter Follow](https://img.shields.io/twitter/follow/ramotion.svg?style=social)](https://twitter.com/ramotion)
 --
 
 [Jazzy docs](https://rawgit.com/Ramotion/reel-search/master/docs/index.html)
