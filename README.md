@@ -6,7 +6,7 @@
 [![Travis](https://img.shields.io/travis/Ramotion/reel-search.svg)](https://travis-ci.org/Ramotion/reel-search)
 
 Controller that allows you to choose options from the list.
-![animated](./reel-search.gif)
+![animated](https://raw.githubusercontent.com/Ramotion/reel-search/master/reel-search.gif)
 
 ## Requirements
 
@@ -98,6 +98,3 @@ See our other [open-source projects](https://github.com/ramotion) or [hire](http
 
 [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/ramotion/reel-search)
 [![Twitter Follow](https://img.shields.io/twitter/follow/ramotion.svg?style=social)](https://twitter.com/ramotion)
-
-
-
