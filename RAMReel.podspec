@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name              = "RAMReel"
-  s.version           = "1.0.1"
+  s.version           = "1.0.2"
   s.summary           = "Live search control with reel of suggestions"
 
   s.homepage          = "https://github.com/Ramotion/reel-search"
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
   s.platform          = :ios, "8.0"
 
-  s.source            = { :git => "https://github.com/Ramotion/reel-search.git", :tag => "1.0.1" }
+  s.source            = { :git => "https://github.com/Ramotion/reel-search.git", :tag => "1.0.2" }
 
   s.source_files      = "RAMReel/Framework", "RAMReel/Framework/**/*.{h,m,swift}"
 
