@@ -7,47 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9E82B3881AD7EEAE0063F1B0 /* RAMReel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E82B37C1AD7EEAE0063F1B0 /* RAMReel.framework */; };
-		9E82B38F1AD7EEAE0063F1B0 /* RAMReelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B38E1AD7EEAE0063F1B0 /* RAMReelTests.swift */; };
-		9E82B3ED1AD810460063F1B0 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9E82B3EA1AD810460063F1B0 /* Apache License.txt */; };
 		9E82B3EE1AD810460063F1B0 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E82B3EB1AD810460063F1B0 /* Roboto-Light.ttf */; };
-		9E82B3EF1AD810460063F1B0 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E82B3EB1AD810460063F1B0 /* Roboto-Light.ttf */; };
 		9E82B3F61AD810B50063F1B0 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F01AD810B50063F1B0 /* CollectionViewLayout.swift */; };
-		9E82B3F71AD810B50063F1B0 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F01AD810B50063F1B0 /* CollectionViewLayout.swift */; };
 		9E82B3F81AD810B50063F1B0 /* CollectionViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F11AD810B50063F1B0 /* CollectionViewWrapper.swift */; };
-		9E82B3F91AD810B50063F1B0 /* CollectionViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F11AD810B50063F1B0 /* CollectionViewWrapper.swift */; };
 		9E82B3FA1AD810B50063F1B0 /* DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F21AD810B50063F1B0 /* DataFlow.swift */; };
-		9E82B3FB1AD810B50063F1B0 /* DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F21AD810B50063F1B0 /* DataFlow.swift */; };
 		9E82B3FC1AD810B50063F1B0 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F31AD810B50063F1B0 /* CollectionViewCell.swift */; };
-		9E82B3FD1AD810B50063F1B0 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F31AD810B50063F1B0 /* CollectionViewCell.swift */; };
 		9E82B3FF1AD810B50063F1B0 /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F51AD810B50063F1B0 /* TextFieldReactor.swift */; };
-		9E82B4001AD810B50063F1B0 /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F51AD810B50063F1B0 /* TextFieldReactor.swift */; };
 		9EDED7191AE8F84A003F7783 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDED7181AE8F84A003F7783 /* GradientView.swift */; };
-		9EDED71A1AE8F84A003F7783 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDED7181AE8F84A003F7783 /* GradientView.swift */; };
 		9EE1A4561AE63209001A7FF2 /* RAMReel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1A4551AE63209001A7FF2 /* RAMReel.swift */; };
-		9EE1A4571AE63209001A7FF2 /* RAMReel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1A4551AE63209001A7FF2 /* RAMReel.swift */; };
 		9EE3E52B1AE79BF8008F1136 /* RAMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3E52A1AE79BF8008F1136 /* RAMTextField.swift */; };
-		9EE3E52C1AE79BF8008F1136 /* RAMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3E52A1AE79BF8008F1136 /* RAMTextField.swift */; };
 		9EEF41031AD94D5B0018E358 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEF41021AD94D5B0018E358 /* Theme.swift */; };
-		9EEF41041AD94D5B0018E358 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEF41021AD94D5B0018E358 /* Theme.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9E82B3891AD7EEAE0063F1B0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9E82B3731AD7EEAE0063F1B0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9E82B37B1AD7EEAE0063F1B0;
-			remoteInfo = RAMReel;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		9E82B37C1AD7EEAE0063F1B0 /* RAMReel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RAMReel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E82B3801AD7EEAE0063F1B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9E82B3871AD7EEAE0063F1B0 /* RAMReelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RAMReelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9E82B38D1AD7EEAE0063F1B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9E82B38E1AD7EEAE0063F1B0 /* RAMReelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMReelTests.swift; sourceTree = "<group>"; };
 		9E82B3EA1AD810460063F1B0 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Apache License.txt"; path = "Roboto/Apache License.txt"; sourceTree = "<group>"; };
 		9E82B3EB1AD810460063F1B0 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Light.ttf"; path = "Roboto/Roboto-Light.ttf"; sourceTree = "<group>"; };
 		9E82B3F01AD810B50063F1B0 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewLayout.swift; path = Framework/CollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -70,14 +44,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E82B3841AD7EEAE0063F1B0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9E82B3881AD7EEAE0063F1B0 /* RAMReel.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -85,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				9E82B37E1AD7EEAE0063F1B0 /* RAMReel */,
-				9E82B38B1AD7EEAE0063F1B0 /* RAMReelTests */,
 				9E82B37D1AD7EEAE0063F1B0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				9E82B37C1AD7EEAE0063F1B0 /* RAMReel.framework */,
-				9E82B3871AD7EEAE0063F1B0 /* RAMReelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,23 +78,6 @@
 			children = (
 				9E82B3E91AD810250063F1B0 /* Roboto */,
 				9E82B3801AD7EEAE0063F1B0 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9E82B38B1AD7EEAE0063F1B0 /* RAMReelTests */ = {
-			isa = PBXGroup;
-			children = (
-				9E82B38E1AD7EEAE0063F1B0 /* RAMReelTests.swift */,
-				9E82B38C1AD7EEAE0063F1B0 /* Supporting Files */,
-			);
-			path = RAMReelTests;
-			sourceTree = "<group>";
-		};
-		9E82B38C1AD7EEAE0063F1B0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9E82B38D1AD7EEAE0063F1B0 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -223,24 +170,6 @@
 			productReference = 9E82B37C1AD7EEAE0063F1B0 /* RAMReel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		9E82B3861AD7EEAE0063F1B0 /* RAMReelTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9E82B3951AD7EEAE0063F1B0 /* Build configuration list for PBXNativeTarget "RAMReelTests" */;
-			buildPhases = (
-				9E82B3831AD7EEAE0063F1B0 /* Sources */,
-				9E82B3841AD7EEAE0063F1B0 /* Frameworks */,
-				9E82B3851AD7EEAE0063F1B0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9E82B38A1AD7EEAE0063F1B0 /* PBXTargetDependency */,
-			);
-			name = RAMReelTests;
-			productName = RAMReelTests;
-			productReference = 9E82B3871AD7EEAE0063F1B0 /* RAMReelTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -253,9 +182,6 @@
 				ORGANIZATIONNAME = Ramotion;
 				TargetAttributes = {
 					9E82B37B1AD7EEAE0063F1B0 = {
-						CreatedOnToolsVersion = 6.3;
-					};
-					9E82B3861AD7EEAE0063F1B0 = {
 						CreatedOnToolsVersion = 6.3;
 					};
 				};
@@ -273,7 +199,6 @@
 			projectRoot = "";
 			targets = (
 				9E82B37B1AD7EEAE0063F1B0 /* RAMReel */,
-				9E82B3861AD7EEAE0063F1B0 /* RAMReelTests */,
 			);
 		};
 /* End PBXProject section */
@@ -284,15 +209,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E82B3EE1AD810460063F1B0 /* Roboto-Light.ttf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9E82B3851AD7EEAE0063F1B0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9E82B3ED1AD810460063F1B0 /* Apache License.txt in Resources */,
-				9E82B3EF1AD810460063F1B0 /* Roboto-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,32 +231,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E82B3831AD7EEAE0063F1B0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9EDED71A1AE8F84A003F7783 /* GradientView.swift in Sources */,
-				9EE1A4571AE63209001A7FF2 /* RAMReel.swift in Sources */,
-				9E82B3F71AD810B50063F1B0 /* CollectionViewLayout.swift in Sources */,
-				9E82B3FB1AD810B50063F1B0 /* DataFlow.swift in Sources */,
-				9E82B3FD1AD810B50063F1B0 /* CollectionViewCell.swift in Sources */,
-				9E82B38F1AD7EEAE0063F1B0 /* RAMReelTests.swift in Sources */,
-				9E82B3F91AD810B50063F1B0 /* CollectionViewWrapper.swift in Sources */,
-				9E82B4001AD810B50063F1B0 /* TextFieldReactor.swift in Sources */,
-				9EE3E52C1AE79BF8008F1136 /* RAMTextField.swift in Sources */,
-				9EEF41041AD94D5B0018E358 /* Theme.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9E82B38A1AD7EEAE0063F1B0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9E82B37B1AD7EEAE0063F1B0 /* RAMReel */;
-			targetProxy = 9E82B3891AD7EEAE0063F1B0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		9E82B3901AD7EEAE0063F1B0 /* Debug */ = {
@@ -381,7 +272,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -423,7 +314,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -470,38 +361,6 @@
 			};
 			name = Release;
 		};
-		9E82B3961AD7EEAE0063F1B0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = RAMReelTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ramotion.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		9E82B3971AD7EEAE0063F1B0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = RAMReelTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ramotion.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -519,15 +378,6 @@
 			buildConfigurations = (
 				9E82B3931AD7EEAE0063F1B0 /* Debug */,
 				9E82B3941AD7EEAE0063F1B0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9E82B3951AD7EEAE0063F1B0 /* Build configuration list for PBXNativeTarget "RAMReelTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9E82B3961AD7EEAE0063F1B0 /* Debug */,
-				9E82B3971AD7EEAE0063F1B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
