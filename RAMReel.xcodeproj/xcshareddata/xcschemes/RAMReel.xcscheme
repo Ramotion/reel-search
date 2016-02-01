@@ -20,20 +20,6 @@
                ReferencedContainer = "container:RAMReel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9E82B3861AD7EEAE0063F1B0"
-               BuildableName = "RAMReelTests.xctest"
-               BlueprintName = "RAMReelTests"
-               ReferencedContainer = "container:RAMReel.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -43,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9E82B37B1AD7EEAE0063F1B0"
-            BuildableName = "RAMReel.framework"
-            BlueprintName = "RAMReel"
-            ReferencedContainer = "container:RAMReel.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
