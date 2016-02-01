@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98F412431C5F617E0071AB8E /* WordReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F412421C5F617E0071AB8E /* WordReader.swift */; };
+		98F412451C5F66BD0071AB8E /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 98F412441C5F66BD0071AB8E /* data.txt */; };
 		9E82B3B71AD7F35F0063F1B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3B61AD7F35F0063F1B0 /* AppDelegate.swift */; };
 		9E82B3B91AD7F35F0063F1B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3B81AD7F35F0063F1B0 /* ViewController.swift */; };
 		9E82B3BC1AD7F35F0063F1B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E82B3BA1AD7F35F0063F1B0 /* Main.storyboard */; };
@@ -63,6 +65,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		98F412421C5F617E0071AB8E /* WordReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordReader.swift; sourceTree = "<group>"; };
+		98F412441C5F66BD0071AB8E /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
 		9E82B3B11AD7F35F0063F1B0 /* RAMReelExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RAMReelExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E82B3B51AD7F35F0063F1B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E82B3B61AD7F35F0063F1B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,7 +78,6 @@
 		9E82B3CB1AD7F35F0063F1B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E82B3CC1AD7F35F0063F1B0 /* RAMReelExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMReelExampleTests.swift; sourceTree = "<group>"; };
 		9E82B3E11AD7FDD00063F1B0 /* RAMReel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RAMReel.framework; path = "../../build/Debug-iphoneos/RAMReel.framework"; sourceTree = "<group>"; };
-		9EDED71D1AE915DE003F7783 /* RAMReel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = RAMReel.framework; path = "/Users/mikhail.s/Library/Developer/Xcode/DerivedData/RAMReelExample-elrihllfdnflobbsyznwnrlhgice/Build/Products/Debug-iphoneos/RAMReel.framework"; sourceTree = "<absolute>"; };
 		9EE9DA531AEA670D00D878B9 /* RAMReel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RAMReel.xcodeproj; path = ../RAMReel.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,7 +103,6 @@
 		9E82B3A81AD7F35F0063F1B0 = {
 			isa = PBXGroup;
 			children = (
-				9EDED71D1AE915DE003F7783 /* RAMReel.framework */,
 				9E82B3B31AD7F35F0063F1B0 /* RAMReelExample */,
 				9E82B3C91AD7F35F0063F1B0 /* RAMReelExampleTests */,
 				9E82B3B21AD7F35F0063F1B0 /* Products */,
@@ -122,6 +124,7 @@
 			children = (
 				9E82B3B61AD7F35F0063F1B0 /* AppDelegate.swift */,
 				9E82B3B81AD7F35F0063F1B0 /* ViewController.swift */,
+				98F412421C5F617E0071AB8E /* WordReader.swift */,
 				9E82B3BA1AD7F35F0063F1B0 /* Main.storyboard */,
 				9E82B3BD1AD7F35F0063F1B0 /* Images.xcassets */,
 				9E82B3BF1AD7F35F0063F1B0 /* LaunchScreen.xib */,
@@ -133,6 +136,7 @@
 		9E82B3B41AD7F35F0063F1B0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				98F412441C5F66BD0071AB8E /* data.txt */,
 				9E82B3E11AD7FDD00063F1B0 /* RAMReel.framework */,
 				9E82B3B51AD7F35F0063F1B0 /* Info.plist */,
 			);
@@ -272,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98F412451C5F66BD0071AB8E /* data.txt in Resources */,
 				9E82B3BC1AD7F35F0063F1B0 /* Main.storyboard in Resources */,
 				9E82B3C11AD7F35F0063F1B0 /* LaunchScreen.xib in Resources */,
 				9E82B3BE1AD7F35F0063F1B0 /* Images.xcassets in Resources */,
@@ -294,6 +299,7 @@
 			files = (
 				9E82B3B91AD7F35F0063F1B0 /* ViewController.swift in Sources */,
 				9E82B3B71AD7F35F0063F1B0 /* AppDelegate.swift in Sources */,
+				98F412431C5F617E0071AB8E /* WordReader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
