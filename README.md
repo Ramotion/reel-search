@@ -1,7 +1,8 @@
 # RAMReel
+[![Swift 2.1](https://img.shields.io/badge/Swift-2.1-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![GitHub license](https://img.shields.io/github/license/Ramotion/RAMReel.svg)](https://github.com/Ramotion/reel-search/blob/master/LICENSE)
 [![CocoaPods](https://img.shields.io/cocoapods/p/RAMReel.svg)](https://cocoapods.org/pods/RAMReel)
 [![CocoaPods](https://img.shields.io/cocoapods/v/RAMReel.svg)](http://cocoapods.org/pods/RAMReel)
-[![Swift 2.1](https://img.shields.io/badge/Swift-2.1-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
 [![Travis](https://img.shields.io/travis/Ramotion/reel-search.svg)](https://travis-ci.org/Ramotion/reel-search)
 
@@ -88,7 +89,9 @@ let font: UIFont
 let theme = RAMTheme(textColor: textColor, listBackgroundColor: listBackgroundColor, font: font)
 ~~~
 
---
+### Docs
+
+[![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/RAMReel.svg)](https://rawgit.com/Ramotion/reel-search/master/docs/index.html)
 
 See more at [RAMReel docs](https://rawgit.com/Ramotion/reel-search/master/docs/index.html)
 
