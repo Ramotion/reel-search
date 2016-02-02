@@ -1,6 +1,5 @@
 # RAMReel
 [![Swift 2.1](https://img.shields.io/badge/Swift-2.1-orange.svg?style=flat)](https://developer.apple.com/swift/)
-[![GitHub license](https://img.shields.io/github/license/Ramotion/RAMReel.svg)](https://github.com/Ramotion/reel-search/blob/master/LICENSE)
 [![CocoaPods](https://img.shields.io/cocoapods/p/RAMReel.svg)](https://cocoapods.org/pods/RAMReel)
 [![CocoaPods](https://img.shields.io/cocoapods/v/RAMReel.svg)](http://cocoapods.org/pods/RAMReel)
 [![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
