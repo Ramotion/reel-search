@@ -5,7 +5,7 @@
 [![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
 [![Travis](https://img.shields.io/travis/Ramotion/reel-search.svg)](https://travis-ci.org/Ramotion/reel-search)
 
-Controller that allows you to choose options from the list.
+Controller that allows you to choose options from a list, like in our [shot on dribble](https://dribbble.com/shots/2516684-Doctor-On-Demand-iOS-App)
 ![animated](https://raw.githubusercontent.com/Ramotion/reel-search/master/reel-search.gif)
 
 ## Requirements
