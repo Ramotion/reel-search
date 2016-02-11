@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.0.5](https://github.com/Ramotion/reel-search/tree/1.0.5) (2016-02-11)
+[Full Changelog](https://github.com/Ramotion/reel-search/compare/1.0.4...1.0.5)
+
 ## [1.0.4](https://github.com/Ramotion/reel-search/tree/1.0.4) (2016-02-01)
 [Full Changelog](https://github.com/Ramotion/reel-search/compare/1.0.3...1.0.4)
 
