@@ -1,4 +1,4 @@
-![header](./header.png)
+![header](https://raw.githubusercontent.com/Ramotion/reel-search/master/header.png)
 # RAMReel
 [![Swift 2.1](https://img.shields.io/badge/Swift-2.1-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![CocoaPods](https://img.shields.io/cocoapods/p/RAMReel.svg)](https://cocoapods.org/pods/RAMReel)
