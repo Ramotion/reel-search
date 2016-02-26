@@ -9,6 +9,8 @@
 Controller that allows you to choose options from a list, like in our [shot on dribble](https://dribbble.com/shots/2516684-Doctor-On-Demand-iOS-App)
 ![animated](https://raw.githubusercontent.com/Ramotion/reel-search/master/reel-search.gif)
 
+The [iPhone mockup](https://store.ramotion.com/product/iphone-6-mockups?utm_source=gthb&utm_medium=special&utm_campaign=animated-tab-bar) available [here](https://store.ramotion.com/product/iphone-6-mockups?utm_source=gthb&utm_medium=special&utm_campaign=animated-tab-bar).
+
 ## Requirements
 
 - iOS 8.0+
