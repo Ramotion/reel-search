@@ -65,8 +65,8 @@ public struct DataFlow
 */
 public protocol FlowDataSource {
 
-    typealias QueryType = String
-    typealias ResultType
+    associatedtype QueryType = String
+    associatedtype ResultType
     
     /**
         Handles data query
@@ -84,7 +84,7 @@ public protocol FlowDataSource {
 */
 public protocol FlowDataDestination {
     
-    typealias DataType
+    associatedtype DataType
     
     /**
         Processed data, recieved from data source via data flow

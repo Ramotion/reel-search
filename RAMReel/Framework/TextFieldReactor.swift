@@ -72,7 +72,7 @@ public struct TextFieldReactor
 
 final class TextFieldTarget: NSObject {
     
-    static let actionSelector = Selector("action:")
+    static let actionSelector = #selector(TextFieldTarget.action(_:))
     
     typealias HookType = (UITextField) -> ()
     

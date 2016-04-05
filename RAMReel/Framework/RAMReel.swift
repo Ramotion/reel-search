@@ -177,7 +177,8 @@ public class RAMReel
         self.wrapper.theme = self.theme
         
         let visibleCells: [CellClass] = self.collectionView.visibleCells() as! [CellClass]
-        visibleCells.forEach { (var cell: CellClass) -> Void in
+        visibleCells.forEach { (cell: CellClass) -> Void in
+            var cell = cell
             cell.theme = self.theme
         }
     }
@@ -368,7 +369,7 @@ class NotificationCallbackWrapper: NSObject {
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: Selector("callItBack:"),
+            selector: #selector(NotificationCallbackWrapper.callItBack(_:)),
             name: name,
             object: object
         )
@@ -382,7 +383,7 @@ class NotificationCallbackWrapper: NSObject {
 
 final class GestureTarget: NSObject, UIGestureRecognizerDelegate {
     
-    static let gestureSelector = Selector("gesture:")
+    static let gestureSelector = #selector(GestureTarget.gesture(_:))
     
     override init() {
         super.init()

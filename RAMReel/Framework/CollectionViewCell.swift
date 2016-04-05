@@ -15,7 +15,7 @@ import UIKit
 */
 public protocol ConfigurableCell {
     
-    typealias DataType
+    associatedtype DataType
     
     /**
         Implementing type should use data to fill own data fields
