@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/Ramotion/reel-search/tree/HEAD)
-
-[Full Changelog](https://github.com/Ramotion/reel-search/compare/1.2.0...HEAD)
+## [1.2.1](https://github.com/Ramotion/reel-search/tree/1.2.1) (2016-05-04)
+[Full Changelog](https://github.com/Ramotion/reel-search/compare/1.2.0...1.2.1)
 
 **Closed issues:**
 
