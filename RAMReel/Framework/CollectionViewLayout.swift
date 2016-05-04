@@ -87,16 +87,15 @@ class RAMCollectionViewLayout: UICollectionViewLayout {
     
     internal override func collectionViewContentSize() -> CGSize {
         
-        if let collectionView = self.collectionView
-        {
-            let number = collectionView.numberOfItemsInSection(0)
-            let height = CGFloat(number) * itemHeight
-            
-            let size = CGSize(width: collectionView.bounds.width, height: height)
-            return size
+        guard let collectionView = self.collectionView else {
+            return CGSize.zero
         }
         
-        return CGSizeZero
+        let number = collectionView.numberOfItemsInSection(0)
+        let height = CGFloat(number) * itemHeight
+        
+        let size = CGSize(width: collectionView.bounds.width, height: height)
+        return size
         
     }
 }

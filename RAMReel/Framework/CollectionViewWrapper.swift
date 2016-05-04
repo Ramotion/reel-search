@@ -147,20 +147,19 @@ public class CollectionViewWrapper
     
     var selectedItem: DataType?
     func indexCallback(idx: Int?) {
-        if let index = idx
-            where 0 <= index && index < data.count {
-                let item = data[index]
-                selectedItem = item
-                
-                // TODO: Update cell appearance maybe?
-                // Toggle selected?
-                let indexPath = NSIndexPath(forItem: index, inSection: 0)
-                let cell = collectionView.cellForItemAtIndexPath(indexPath)
-                cell?.selected = true
-        }
-        else {
+        guard let index = idx where 0 <= index && index < data.count else {
             selectedItem = nil
+            return
         }
+        
+        let item = data[index]
+        selectedItem = item
+        
+        // TODO: Update cell appearance maybe?
+        // Toggle selected?
+        let indexPath = NSIndexPath(forItem: index, inSection: 0)
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        cell?.selected = true
     }
     
     // MARK Implementation of WrapperProtocol
@@ -183,12 +182,11 @@ public class CollectionViewWrapper
     
     func cellAttributes(rect: CGRect) -> [UICollectionViewLayoutAttributes] {
         let layout = collectionView.collectionViewLayout
-        if let attributes    = layout.layoutAttributesForElementsInRect(rect)
-        {
-            return attributes
+        guard let attributes = layout.layoutAttributesForElementsInRect(rect) else {
+            return []
         }
         
-        return []
+        return attributes
     }
     
     // MARK: Update & Adjust
@@ -201,13 +199,15 @@ public class CollectionViewWrapper
             let number    = self.collectionView.numberOfItemsInSection(0)
             let itemIndex = self.scrollDelegate.itemIndex ?? number/2
             
-            if itemIndex > 0 {
-                let inset      = self.collectionView.contentInset.top
-                let itemHeight = self.collectionLayout.itemHeight
-                let offset     = CGPoint(x: 0, y: CGFloat(itemIndex) * itemHeight - inset)
-                
-                self.collectionView.contentOffset = offset
+            guard itemIndex > 0 else {
+                return
             }
+            
+            let inset      = self.collectionView.contentInset.top
+            let itemHeight = self.collectionLayout.itemHeight
+            let offset     = CGPoint(x: 0, y: CGFloat(itemIndex) * itemHeight - inset)
+            
+            self.collectionView.contentOffset = offset
         }
     }
     
@@ -244,8 +244,7 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
     var itemIndexChangeCallback: ItemIndexChangeCallback?
     private(set) var itemIndex: Int? = nil {
         willSet (newIndex) {
-            if let callback = itemIndexChangeCallback
-            {
+            if let callback = itemIndexChangeCallback {
                 callback(newIndex)
             }
         }

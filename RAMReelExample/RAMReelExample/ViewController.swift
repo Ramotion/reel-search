@@ -38,12 +38,12 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     
     private let data: [String] = {
         do {
-            if let dataPath = NSBundle.mainBundle().pathForResource("data", ofType: "txt") {
-                let data = try WordReader(filepath: dataPath)
-                return data.words
-            } else {
+            guard let dataPath = NSBundle.mainBundle().pathForResource("data", ofType: "txt") else {
                 return []
             }
+            
+            let data = try WordReader(filepath: dataPath)
+            return data.words
         }
         catch let error {
             print(error)

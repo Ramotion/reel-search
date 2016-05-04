@@ -145,10 +145,17 @@ public class RAMReel
     /// Visual appearance theme
     public var theme: Theme = RAMTheme.sharedTheme {
         didSet {
-            if theme.font != oldValue.font || theme.listBackgroundColor != oldValue.listBackgroundColor || theme.textColor != oldValue.textColor {
-                updateVisuals()
-                updatePlaceholder(self.placeholder)
+            guard theme.font != oldValue.font
+                    ||
+                    theme.listBackgroundColor != oldValue.listBackgroundColor
+                    ||
+                    theme.textColor != oldValue.textColor
+                else {
+                    return
             }
+            
+            updateVisuals()
+            updatePlaceholder(self.placeholder)
         }
     }
     
