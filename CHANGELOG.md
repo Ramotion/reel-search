@@ -1,5 +1,33 @@
 # Change Log
 
+## [Unreleased](https://github.com/Ramotion/reel-search/tree/HEAD)
+
+[Full Changelog](https://github.com/Ramotion/reel-search/compare/1.2.0...HEAD)
+
+**Closed issues:**
+
+- ui blocking on textfield entry defects [\#5](https://github.com/Ramotion/reel-search/issues/5)
+
+## [1.2.0](https://github.com/Ramotion/reel-search/tree/1.2.0) (2016-05-04)
+[Full Changelog](https://github.com/Ramotion/reel-search/compare/1.1.1...1.2.0)
+
+## [1.1.1](https://github.com/Ramotion/reel-search/tree/1.1.1) (2016-04-06)
+[Full Changelog](https://github.com/Ramotion/reel-search/compare/1.1.0...1.1.1)
+
+## [1.1.0](https://github.com/Ramotion/reel-search/tree/1.1.0) (2016-04-06)
+[Full Changelog](https://github.com/Ramotion/reel-search/compare/1.0.6...1.1.0)
+
+## [1.0.6](https://github.com/Ramotion/reel-search/tree/1.0.6) (2016-02-26)
+[Full Changelog](https://github.com/Ramotion/reel-search/compare/1.0.5...1.0.6)
+
+**Closed issues:**
+
+- How did you make the demo gif? [\#3](https://github.com/Ramotion/reel-search/issues/3)
+
+**Merged pull requests:**
+
+- update doc [\#4](https://github.com/Ramotion/reel-search/pull/4) ([ArtemKyslicyn](https://github.com/ArtemKyslicyn))
+
 ## [1.0.5](https://github.com/Ramotion/reel-search/tree/1.0.5) (2016-02-11)
 [Full Changelog](https://github.com/Ramotion/reel-search/compare/1.0.4...1.0.5)
 
