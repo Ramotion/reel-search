@@ -15,7 +15,7 @@ import UIKit
 */
 public protocol ConfigurableCell {
     
-    associatedtype DataType
+    associatedtype DataType: Equatable
     
     /**
         Implementing type should use data to fill own data fields

@@ -55,8 +55,10 @@ public struct DataFlow
     }
     
     func transport(query: DS.QueryType) {
-        let results = from.resultsForQuery(query)
-        to.processData(results)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            let results = self.from.resultsForQuery(query)
+            self.to.processData(results)
+        }
     }
 }
 

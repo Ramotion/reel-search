@@ -17,6 +17,10 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         dataSource = SimplePrefixQueryDataSource(data)
         ramReel = RAMReel(frame: self.view.bounds, dataSource: dataSource, placeholder: "Start by typing…") {
@@ -46,5 +50,4 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             return []
         }
     }()
-    
 }

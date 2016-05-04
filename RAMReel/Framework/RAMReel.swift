@@ -215,6 +215,8 @@ public class RAMReel
     */
     public init(frame: CGRect, dataSource: DataSource, placeholder: String = "", hook: HookType? = nil) {
         self.view = UIView(frame: frame)
+        self.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        self.view.translatesAutoresizingMaskIntoConstraints = true
         self.dataSource = dataSource
         
         if let h = hook {
@@ -240,7 +242,9 @@ public class RAMReel
         reactor = textField <&> dataFlow
         
         self.gradientView = GradientView(frame: view.bounds)
-        self.gradientView.translatesAutoresizingMaskIntoConstraints = false
+        self.gradientView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+        self.gradientView.translatesAutoresizingMaskIntoConstraints = true
+        self.view.insertSubview(self.gradientView, atIndex: 0)
         
         views = [
             "collectionView": collectionView,

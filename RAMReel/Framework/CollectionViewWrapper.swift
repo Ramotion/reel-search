@@ -49,7 +49,7 @@ protocol WrapperProtocol : class {
 */
 public class CollectionViewWrapper
     <
-    DataType,
+    DataType: Equatable,
     CellClass: UICollectionViewCell
     where
     CellClass: ConfigurableCell,
@@ -58,10 +58,21 @@ public class CollectionViewWrapper
     
     var data: [DataType] = [] {
         didSet {
-            scrollDelegate.itemIndex = nil
-            updateOffset()
+            guard data != oldValue else {
+                return
+            }
             
-            scrollDelegate.adjustScroll(collectionView)
+            dispatch_async(dispatch_get_main_queue()) { [weak self] in
+                guard let `self` = self else {
+                    return
+                }
+                
+                self.scrollDelegate.itemIndex = nil
+                
+                self.collectionView.reloadData()
+                self.updateOffset()
+                self.scrollDelegate.adjustScroll(self.collectionView)
+            }
         }
     }
     
@@ -113,8 +124,21 @@ public class CollectionViewWrapper
         let scrollView = collectionView as UIScrollView
         scrollView.delegate = scrollDelegate
         
-        rotationWrapper.callback = updateOffset
-        keyboardWrapper.callback = adjustScroll
+        rotationWrapper.callback = { [weak self] notification in
+            guard let `self` = self else {
+                return
+            }
+            
+            self.adjustScroll(notification)
+        }
+        
+        keyboardWrapper.callback = { [weak self] notification in
+            guard let `self` = self else {
+                return
+            }
+            
+            self.adjustScroll(notification)
+        }
     }
     
     deinit {
@@ -170,9 +194,6 @@ public class CollectionViewWrapper
     // MARK: Update & Adjust
     
     func updateOffset(notification: NSNotification? = nil) {
-        collectionView.reloadData()
-        collectionView.layoutIfNeeded()
-        
         let durationNumber = notification?.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
         let duration = durationNumber?.doubleValue ?? 0.1
         
