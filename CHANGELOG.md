@@ -1,5 +1,19 @@
 # Change Log
 
+## [Unreleased](https://github.com/Ramotion/reel-search/tree/HEAD)
+
+[Full Changelog](https://github.com/Ramotion/reel-search/compare/1.2.4...HEAD)
+
+**Closed issues:**
+
+- Actions when something from the list is selected. [\#7](https://github.com/Ramotion/reel-search/issues/7)
+
+## [1.2.4](https://github.com/Ramotion/reel-search/tree/1.2.4) (2016-05-30)
+[Full Changelog](https://github.com/Ramotion/reel-search/compare/1.2.3...1.2.4)
+
+## [1.2.3](https://github.com/Ramotion/reel-search/tree/1.2.3) (2016-05-19)
+[Full Changelog](https://github.com/Ramotion/reel-search/compare/1.2.2...1.2.3)
+
 ## [1.2.2](https://github.com/Ramotion/reel-search/tree/1.2.2) (2016-05-04)
 [Full Changelog](https://github.com/Ramotion/reel-search/compare/1.2.1...1.2.2)
 
