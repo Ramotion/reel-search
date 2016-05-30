@@ -1,6 +1,6 @@
 ![header](https://raw.githubusercontent.com/Ramotion/reel-search/master/header.png)
 # RAMReel
-[![Swift 2.1](https://img.shields.io/badge/Swift-2.2-green.svg?style=flat)](https://developer.apple.com/swift/)
+[![Swift 2.2](https://img.shields.io/badge/Swift-2.2-green.svg?style=flat)](https://developer.apple.com/swift/)
 [![CocoaPods](https://img.shields.io/cocoapods/p/RAMReel.svg)](https://cocoapods.org/pods/RAMReel)
 [![CocoaPods](https://img.shields.io/cocoapods/v/RAMReel.svg)](http://cocoapods.org/pods/RAMReel)
 
@@ -57,6 +57,16 @@ Let's use it to create an instance of `RAMReel`:
 
 ~~~swift
 let ramReel = RAMReel<CellClass, TextFieldClass, DataSource>(frame: frame, dataSource: dataSource, placeholder: placeholder, hook: hook)
+~~~
+
+### Adding action hooks
+
+To add extra actions you may append `DataSource.ResultType -> Void` functions to `RAMReel` object property `hooks`:
+
+~~~swift
+ramReel.hooks.append { data in
+	// your code goes here
+}
 ~~~
 
 ### Putting on the view
