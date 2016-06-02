@@ -3,7 +3,7 @@
 [![Swift 2.2](https://img.shields.io/badge/Swift-2.2-green.svg?style=flat)](https://developer.apple.com/swift/)
 [![CocoaPods](https://img.shields.io/cocoapods/p/RAMReel.svg)](https://cocoapods.org/pods/RAMReel)
 [![CocoaPods](https://img.shields.io/cocoapods/v/RAMReel.svg)](http://cocoapods.org/pods/RAMReel)
-
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Ramotion/reel-search)
 [![codebeat badge](https://codebeat.co/badges/a591dc07-0f55-4321-929b-b33904c3dca8)](https://codebeat.co/projects/github-com-ramotion-reel-search)
 [![Travis](https://img.shields.io/travis/Ramotion/reel-search.svg)](https://travis-ci.org/Ramotion/reel-search)
 
@@ -29,6 +29,11 @@ Just put this in your `Podfile`:
 ~~~ruby
 pod 'RAMReel'
 ~~~
+
+or [Carthage](https://github.com/Carthage/Carthage) users can simply add Mantle to their `Cartfile`:
+```
+github "Ramotion/reel-search"
+```
 
 ## Usage
 
