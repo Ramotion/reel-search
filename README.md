@@ -1,4 +1,4 @@
-![header](https://raw.githubusercontent.com/Ramotion/reel-search/master/header.png)
+[![header](https://raw.githubusercontent.com/Ramotion/reel-search/master/header.png)](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search-logo)
 # RAMReel
 [![Swift 2.2](https://img.shields.io/badge/Swift-2.2-green.svg?style=flat)](https://developer.apple.com/swift/)
 [![CocoaPods](https://img.shields.io/cocoapods/p/RAMReel.svg)](https://cocoapods.org/pods/RAMReel)
@@ -9,7 +9,9 @@
 
 [![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
 
-Controller that allows you to choose options from a list, like in our [shot on dribble](https://dribbble.com/shots/2516684-Doctor-On-Demand-iOS-App)
+## About
+This project is maintained by Ramotion, an agency specialized in building dedicated engineering teams and developing custom software.<br><br> [Contact our team](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search-contact-us) and we’ll help you work with the best engineers from Eastern Europe.
+
 ![animated](https://raw.githubusercontent.com/Ramotion/reel-search/master/reel-search.gif)
 
 
@@ -116,9 +118,7 @@ let theme = RAMTheme(textColor: textColor, listBackgroundColor: listBackgroundCo
 
 See more at [RAMReel docs](https://rawgit.com/Ramotion/reel-search/master/docs/index.html)
 
-## About
-The project maintained by [app development agency](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search) [Ramotion Inc.](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search)
-See our other [open-source projects](https://github.com/ramotion) or [hire](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search) us to design, develop, and grow your product.
+## Follow Us
 
 [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/ramotion/reel-search)
 [![Twitter Follow](https://img.shields.io/twitter/follow/ramotion.svg?style=social)](https://twitter.com/ramotion)
