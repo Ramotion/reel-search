@@ -1,4 +1,4 @@
-[![header](https://raw.githubusercontent.com/Ramotion/reel-search/master/header.png)](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search-logo)
+[![header](https://raw.githubusercontent.com/Ramotion/reel-search/master/header.png)](https://business.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search-logo)
 # RAMReel
 [![Swift 2.2](https://img.shields.io/badge/Swift-2.2-green.svg?style=flat)](https://developer.apple.com/swift/)
 [![CocoaPods](https://img.shields.io/cocoapods/p/RAMReel.svg)](https://cocoapods.org/pods/RAMReel)
@@ -10,7 +10,7 @@
 [![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
 
 ## About
-This project is maintained by Ramotion, an agency specialized in building dedicated engineering teams and developing custom software.<br><br> [Contact our team](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search-contact-us) and we’ll help you work with the best engineers from Eastern Europe.
+This project is maintained by Ramotion, an agency specialized in building dedicated engineering teams and developing custom software.<br><br> [Contact our team](https://business.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search-contact-us) and we’ll help you work with the best engineers from Eastern Europe.
 
 ![animated](https://raw.githubusercontent.com/Ramotion/reel-search/master/reel-search.gif)
 
