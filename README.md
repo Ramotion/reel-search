@@ -12,7 +12,7 @@
 ## About
 This project is maintained by Ramotion, an agency specialized in building dedicated engineering teams and developing custom software.<br><br> [Contact our team](https://business.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search-contact-us) and we’ll help you work with the best engineers from Eastern Europe.
 
-![animated](https://raw.githubusercontent.com/Ramotion/reel-search/master/reel-search.gif)
+[![animated](https://raw.githubusercontent.com/Ramotion/reel-search/master/reel-search.gif)](https://dribbble.com/shots/2516684-Telemedicine-iOS-App-Swift-Open-Source)
 
 
 The [iPhone mockup](https://store.ramotion.com/product/iphone-6-mockups?utm_source=gthb&utm_medium=special&utm_campaign=reel-search) available [here](https://store.ramotion.com/product/iphone-6-mockups?utm_source=gthb&utm_medium=special&utm_campaign=reel-search).
