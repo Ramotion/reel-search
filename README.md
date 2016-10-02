@@ -20,7 +20,7 @@ The [iPhone mockup](https://store.ramotion.com/product/iphone-6-mockups?utm_sour
 ## Requirements
 
 - iOS 8.0+
-- Swift 2.2
+- Swift 3.0
 
 ## Installation
 

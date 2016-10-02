@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RAMReel"
-  s.version      = "1.2.4"
+  s.version      = "2.0.0"
   s.summary      = "Live search control with reel of suggestions"
   s.screenshots  = "https://raw.githubusercontent.com/Ramotion/reel-search/master/reel-search.gif"
 
@@ -19,7 +19,5 @@ Pod::Spec.new do |s|
   s.source_files = "RAMReel/Framework", "RAMReel/Framework/**/*.{h,m,swift}"
 
   s.resources    = "RAMReel/Roboto/*.*"
-
-  s.requires_arc = true
 
 end
