@@ -10,8 +10,11 @@ import Foundation
 import UIKit
 
 // MARK: -  Text field reactor operators
+precedencegroup ComparisonPrecedence {
+  higherThan: LogicalConjunctionPrecedence
+}
 
-infix operator <&> { precedence 175 }
+infix operator <&> : ComparisonPrecedence
 
 /**
  Links text field to data flow

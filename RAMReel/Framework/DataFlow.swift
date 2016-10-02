@@ -9,8 +9,11 @@
 import UIKit
 
 // MARK: - Data flow operators
+precedencegroup ComparisonPrecedence {
+  higherThan: LogicalConjunctionPrecedence
+}
 
-infix operator *> { precedence 180 }
+infix operator *> : ComparisonPrecedence
 
 /**
     Creates data flow from compatatible data source to data destination
@@ -55,7 +58,7 @@ public struct DataFlow
     }
     
     func transport(_ query: DS.QueryType) {
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
+        DispatchQueue.global().async {
             let results = self.from.resultsForQuery(query)
             self.to.processData(results)
         }

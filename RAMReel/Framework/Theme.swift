@@ -68,7 +68,7 @@ public struct RAMTheme: Theme {
     
     fileprivate static func initDefaultFont() -> UIFont {
         do {
-            try FontLoader.loadRobotoLight()
+            let _ = try FontLoader.loadRobotoLight()
         } catch (let error) {
             print(error)
         }
