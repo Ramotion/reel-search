@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RAMReel"
-  s.version      = "2.0.0"
+  s.version      = "2.0.1"
   s.summary      = "Live search control with reel of suggestions"
   s.screenshots  = "https://raw.githubusercontent.com/Ramotion/reel-search/master/reel-search.gif"
 
