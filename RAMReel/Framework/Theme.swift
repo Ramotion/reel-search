@@ -53,9 +53,9 @@ public struct RAMTheme: Theme {
     /// Theme background color.
     public let listBackgroundColor: UIColor
     
-    private init(
-        textColor: UIColor = UIColor.blackColor(),
-        listBackgroundColor: UIColor = UIColor.clearColor(),
+    fileprivate init(
+        textColor: UIColor = UIColor.black,
+        listBackgroundColor: UIColor = UIColor.clear,
         font: UIFont = RAMTheme.defaultFont
         )
     {
@@ -64,9 +64,9 @@ public struct RAMTheme: Theme {
         self.font = font
     }
     
-    private static var defaultFont: UIFont = RAMTheme.initDefaultFont()
+    fileprivate static var defaultFont: UIFont = RAMTheme.initDefaultFont()
     
-    private static func initDefaultFont() -> UIFont {
+    fileprivate static func initDefaultFont() -> UIFont {
         do {
             try FontLoader.loadRobotoLight()
         } catch (let error) {
@@ -80,9 +80,9 @@ public struct RAMTheme: Theme {
         {
             font = roboto
         } else if #available(iOS 8.2, *) {
-            font = UIFont.systemFontOfSize(36, weight: UIFontWeightThin)
+            font = UIFont.systemFont(ofSize: 36, weight: UIFontWeightThin)
         } else {
-            font = UIFont.systemFontOfSize(36)
+            font = UIFont.systemFont(ofSize: 36)
         }
         return font
     }
@@ -93,7 +93,7 @@ public struct RAMTheme: Theme {
     - parameter textColor: New text color.
     - returns: New `RAMTheme` instance.
      */
-    public func textColor(textColor: UIColor) -> RAMTheme {
+    public func textColor(_ textColor: UIColor) -> RAMTheme {
         return RAMTheme(textColor: textColor, listBackgroundColor: self.listBackgroundColor, font: self.font)
     }
     
@@ -103,7 +103,7 @@ public struct RAMTheme: Theme {
      - parameter listBackgroundColor: New background color.
      - returns: New `RAMTheme` instance.
      */
-    public func listBackgroundColor(listBackgroundColor: UIColor) -> RAMTheme {
+    public func listBackgroundColor(_ listBackgroundColor: UIColor) -> RAMTheme {
         return RAMTheme(textColor: self.textColor, listBackgroundColor: listBackgroundColor, font: self.font)
     }
     
@@ -113,7 +113,7 @@ public struct RAMTheme: Theme {
      - parameter font: New font.
      - returns: New `RAMTheme` instance.
      */
-    public func font(font: UIFont) -> RAMTheme {
+    public func font(_ font: UIFont) -> RAMTheme {
         return RAMTheme(textColor: self.textColor, listBackgroundColor: self.listBackgroundColor, font: font)
     }
     
@@ -127,8 +127,8 @@ FontLoader
 */
 final class FontLoader {
     
-    enum Error: ErrorType {
-        case FailedToLoadFont(String)
+    enum AnError: Error {
+        case failedToLoadFont(String)
     }
     
     static let robotoLight: FontLoader? = try? FontLoader.loadRobotoLight()
@@ -140,7 +140,7 @@ final class FontLoader {
     let name: String
     let type: String
     
-    private init(name: String, type: String) throws {
+    fileprivate init(name: String, type: String) throws {
         self.name = name
         self.type = type
         
@@ -148,22 +148,22 @@ final class FontLoader {
             return
         }
         
-        let bundle = NSBundle(forClass: self.dynamicType as AnyClass)
+        let bundle = Bundle(for: type(of: self) as AnyClass)
 
         if
-            let fontPath = bundle.pathForResource(name, ofType: type),
-            let inData = NSData(contentsOfFile: fontPath),
-            let provider = CGDataProviderCreateWithCFData(inData),
-            let font = CGFontCreateWithDataProvider(provider)
-            where CTFontManagerRegisterGraphicsFont(font, nil)
+            let fontPath = bundle.path(forResource: name, ofType: type),
+            let inData = try? Data(contentsOf: URL(fileURLWithPath: fontPath)),
+            let provider = CGDataProvider(data: inData as CFData)
         {
-            FontLoader.loadedFonts[self.name] = self
+          let font = CGFont(provider)
+          CTFontManagerRegisterGraphicsFont(font, nil)
+          FontLoader.loadedFonts[self.name] = self
             return
         } else {
-            throw Error.FailedToLoadFont(name)
+            throw AnError.failedToLoadFont(name)
         }
     }
     
-    private static var loadedFonts: [String: FontLoader] = [:]
+    fileprivate static var loadedFonts: [String: FontLoader] = [:]
     
 }

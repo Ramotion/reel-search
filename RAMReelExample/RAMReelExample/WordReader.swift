@@ -10,33 +10,33 @@ import Foundation
 
 public final class WordReader {
     
-    private(set) public var words: [String] = []
+    fileprivate(set) public var words: [String] = []
     
     init (filepath: String) throws {
-        let fileManager = NSFileManager.defaultManager()
+        let fileManager = FileManager.default
         
-        guard fileManager.fileExistsAtPath(filepath) else {
-            throw Error.FileDoesntExist(filepath)
+        guard fileManager.fileExists(atPath: filepath) else {
+            throw AnError.fileDoesntExist(filepath)
         }
         
-        guard fileManager.isReadableFileAtPath(filepath) else {
-            throw Error.FileIsNotReadable(filepath)
+        guard fileManager.isReadableFile(atPath: filepath) else {
+            throw AnError.fileIsNotReadable(filepath)
         }
         
         let contents = try String(contentsOfFile: filepath)
         
         guard !contents.isEmpty else {
-            throw Error.FileIsEmpty(filepath)
+            throw AnError.fileIsEmpty(filepath)
         }
         
-        let words = contents.characters.split("\n")
+        let words = contents.characters.split(separator: "\n")
         self.words = words.map(String.init)
     }
     
-    enum Error: ErrorType {
-        case FileDoesntExist(String)
-        case FileIsNotReadable(String)
-        case FileIsEmpty(String)
+    enum AnError: Error {
+        case fileDoesntExist(String)
+        case fileIsNotReadable(String)
+        case fileIsEmpty(String)
     }
     
 }

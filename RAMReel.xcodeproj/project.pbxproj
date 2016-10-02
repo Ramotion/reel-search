@@ -11,12 +11,12 @@
 		9E82B3F61AD810B50063F1B0 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F01AD810B50063F1B0 /* CollectionViewLayout.swift */; };
 		9E82B3F81AD810B50063F1B0 /* CollectionViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F11AD810B50063F1B0 /* CollectionViewWrapper.swift */; };
 		9E82B3FA1AD810B50063F1B0 /* DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F21AD810B50063F1B0 /* DataFlow.swift */; };
-		9E82B3FC1AD810B50063F1B0 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F31AD810B50063F1B0 /* CollectionViewCell.swift */; };
 		9E82B3FF1AD810B50063F1B0 /* TextFieldReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F51AD810B50063F1B0 /* TextFieldReactor.swift */; };
 		9EDED7191AE8F84A003F7783 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDED7181AE8F84A003F7783 /* GradientView.swift */; };
 		9EE1A4561AE63209001A7FF2 /* RAMReel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1A4551AE63209001A7FF2 /* RAMReel.swift */; };
 		9EE3E52B1AE79BF8008F1136 /* RAMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3E52A1AE79BF8008F1136 /* RAMTextField.swift */; };
 		9EEF41031AD94D5B0018E358 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEF41021AD94D5B0018E358 /* Theme.swift */; };
+		FADD8F1D1DA18A3600E3D6B3 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3F31AD810B50063F1B0 /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -178,11 +178,12 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Ramotion;
 				TargetAttributes = {
 					9E82B37B1AD7EEAE0063F1B0 = {
 						CreatedOnToolsVersion = 6.3;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -221,11 +222,11 @@
 			files = (
 				9EE1A4561AE63209001A7FF2 /* RAMReel.swift in Sources */,
 				9E82B3FF1AD810B50063F1B0 /* TextFieldReactor.swift in Sources */,
+				FADD8F1D1DA18A3600E3D6B3 /* CollectionViewCell.swift in Sources */,
 				9EDED7191AE8F84A003F7783 /* GradientView.swift in Sources */,
 				9E82B3F61AD810B50063F1B0 /* CollectionViewLayout.swift in Sources */,
 				9E82B3FA1AD810B50063F1B0 /* DataFlow.swift in Sources */,
 				9EEF41031AD94D5B0018E358 /* Theme.swift in Sources */,
-				9E82B3FC1AD810B50063F1B0 /* CollectionViewCell.swift in Sources */,
 				9EE3E52B1AE79BF8008F1136 /* RAMTextField.swift in Sources */,
 				9E82B3F81AD810B50063F1B0 /* CollectionViewWrapper.swift in Sources */,
 			);
@@ -247,8 +248,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -296,8 +299,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -317,6 +322,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -328,6 +334,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -340,6 +347,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -347,6 +355,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -358,6 +367,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ramotion.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

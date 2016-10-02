@@ -50,7 +50,7 @@ public protocol Parsable {
      - parameter string: String to parse.
      - returns: Value of type, implementing this protocol if successful, `nil` otherwise.
      */
-    static func parse(string: String) -> Self?
+    static func parse(_ string: String) -> Self?
 }
 
 extension String: Parsable {
@@ -61,7 +61,7 @@ extension String: Parsable {
     - parameter string: String to parse.
     - returns: `string` parameter value.
     */
-    public static func parse(string: String) -> String? {
+    public static func parse(_ string: String) -> String? {
         return string
     }
     
@@ -75,20 +75,20 @@ extension String: Parsable {
  
  Reel class
  */
-public class RAMReel
+open class RAMReel
     <
     CellClass: UICollectionViewCell,
     TextFieldClass: UITextField,
-    DataSource: FlowDataSource
+    DataSource: FlowDataSource>
     where
     CellClass: ConfigurableCell,
     CellClass.DataType   == DataSource.ResultType,
     DataSource.QueryType == String,
     DataSource.ResultType: Renderable,
     DataSource.ResultType: Parsable
-> {
+ {
     /// Container view
-    public let view: UIView
+    open let view: UIView
     
     /// Gradient View
     let gradientView: GradientView
@@ -101,13 +101,13 @@ public class RAMReel
     let dataFlow: DataFlow<DataSource, CollectionViewWrapper<CellClass.DataType, CellClass>>
     
     /// Delegate of text field, is used for extra control over text field.
-    public var textFieldDelegate: UITextFieldDelegate? {
+    open var textFieldDelegate: UITextFieldDelegate? {
         set { textField.delegate = newValue }
         get { return textField.delegate }
     }
     
     /// Use this method when you want textField release input focus.
-    public func resignFirstResponder() {
+    open func resignFirstResponder() {
         self.textField.resignFirstResponder()
     }
     
@@ -115,18 +115,18 @@ public class RAMReel
     typealias CollectionWrapperClass = CollectionViewWrapper<DataSource.ResultType, CellClass>
     let wrapper: CollectionWrapperClass
     /// Collection view with data items.
-    public let collectionView: UICollectionView
+    open let collectionView: UICollectionView
     
     // MARK: Data Source
     /// Data source of RAMReel
-    public let dataSource: DataSource
+    open let dataSource: DataSource
     
     // MARK: Selected Item
     /**
     Use this property to get which item was selected.
     Value is nil, if data source output is empty.
     */
-    public var selectedItem: DataSource.ResultType? {
+    open var selectedItem: DataSource.ResultType? {
         return textField.text.flatMap(DataSource.ResultType.parse)
     }
     
@@ -136,14 +136,14 @@ public class RAMReel
     */
     public typealias HookType = (DataSource.ResultType) -> ()
     /// This hooks that are called on selected item change
-    public var hooks: [HookType] = []
+    open var hooks: [HookType] = []
     
     // MARK: Layout
     let layout: UICollectionViewLayout = RAMCollectionViewLayout()
     
     // MARK: Theme
     /// Visual appearance theme
-    public var theme: Theme = RAMTheme.sharedTheme {
+    open var theme: Theme = RAMTheme.sharedTheme {
         didSet {
             guard theme.font != oldValue.font
                     ||
@@ -159,31 +159,31 @@ public class RAMReel
         }
     }
     
-    private func updateVisuals() {
+    fileprivate func updateVisuals() {
         self.view.tintColor = theme.textColor
         
         self.textField.font = theme.font
         self.textField.textColor = theme.textColor
         (self.textField as UITextField).tintColor = theme.textColor
-        self.textField.keyboardAppearance = UIKeyboardAppearance.Dark
+        self.textField.keyboardAppearance = UIKeyboardAppearance.dark
         self.gradientView.listBackgroundColor = theme.listBackgroundColor
         
         self.view.layer.mask = self.gradientView.layer
-        self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor.clear
         
         self.collectionView.backgroundColor = theme.listBackgroundColor
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.showsVerticalScrollIndicator   = false
         
-        self.textField.autocapitalizationType = UITextAutocapitalizationType.None
-        self.textField.autocorrectionType     = UITextAutocorrectionType.No
-        self.textField.clearButtonMode        = UITextFieldViewMode.WhileEditing
+        self.textField.autocapitalizationType = UITextAutocapitalizationType.none
+        self.textField.autocorrectionType     = UITextAutocorrectionType.no
+        self.textField.clearButtonMode        = UITextFieldViewMode.whileEditing
         
         self.updatePlaceholder(self.placeholder)
         
         self.wrapper.theme = self.theme
         
-        let visibleCells: [CellClass] = self.collectionView.visibleCells() as! [CellClass]
+        let visibleCells: [CellClass] = self.collectionView.visibleCells as! [CellClass]
         visibleCells.forEach { (cell: CellClass) -> Void in
             var cell = cell
             cell.theme = self.theme
@@ -191,19 +191,19 @@ public class RAMReel
     }
     
     /// Placeholder in text field.
-    public var placeholder: String = "" {
+    open var placeholder: String = "" {
         willSet {
             updatePlaceholder(newValue)
         }
     }
     
-    private func updatePlaceholder(placeholder:String) {
+    fileprivate func updatePlaceholder(_ placeholder:String) {
         let themeFont = self.theme.font
-        let size = self.textField.textRectForBounds(textField.bounds).height * themeFont.pointSize / themeFont.lineHeight * 0.8
+        let size = self.textField.textRect(forBounds: textField.bounds).height * themeFont.pointSize / themeFont.lineHeight * 0.8
         let font = (size > 0) ? (UIFont(name: themeFont.fontName, size: size) ?? themeFont) : themeFont
         self.textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
             NSFontAttributeName: font,
-            NSForegroundColorAttributeName: self.theme.textColor.colorWithAlphaComponent(0.5)
+            NSForegroundColorAttributeName: self.theme.textColor.withAlphaComponent(0.5)
             ])
     }
     
@@ -222,7 +222,7 @@ public class RAMReel
     */
     public init(frame: CGRect, dataSource: DataSource, placeholder: String = "", hook: HookType? = nil) {
         self.view = UIView(frame: frame)
-        self.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        self.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.translatesAutoresizingMaskIntoConstraints = true
         self.dataSource = dataSource
         
@@ -239,7 +239,7 @@ public class RAMReel
         
         // MARK: TextField
         self.textField = TextFieldClass()
-        self.textField.returnKeyType = UIReturnKeyType.Done
+        self.textField.returnKeyType = UIReturnKeyType.done
         self.textField.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.textField)
         
@@ -249,21 +249,21 @@ public class RAMReel
         reactor = textField <&> dataFlow
         
         self.gradientView = GradientView(frame: view.bounds)
-        self.gradientView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+        self.gradientView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.gradientView.translatesAutoresizingMaskIntoConstraints = true
-        self.view.insertSubview(self.gradientView, atIndex: 0)
+        self.view.insertSubview(self.gradientView, at: 0)
         
         views = [
             "collectionView": collectionView,
             "textField": textField
         ]
         
-        self.keyboardCallbackWrapper = NotificationCallbackWrapper(name: UIKeyboardWillChangeFrameNotification)
+        self.keyboardCallbackWrapper = NotificationCallbackWrapper(name: NSNotification.Name.UIKeyboardWillChangeFrame.rawValue)
         
         returnTarget  = TextFieldTarget()
         gestureTarget = GestureTarget()
         
-        let controlEvents = UIControlEvents.EditingDidEndOnExit
+        let controlEvents = UIControlEvents.editingDidEndOnExit
         returnTarget.beTargetFor(textField, controlEvents: controlEvents) { textField -> () in
             if
                 let text = textField.text,
@@ -276,7 +276,7 @@ public class RAMReel
             }
         }
         
-        gestureTarget.recognizeFor(collectionView, type: GestureTarget.GestureType.Tap) { [weak self] _ in
+        gestureTarget.recognizeFor(collectionView, type: GestureTarget.GestureType.tap) { [weak self] _ in
             if
                 let `self` = self,
                 let selectedItem = self.wrapper.selectedItem
@@ -287,7 +287,7 @@ public class RAMReel
             }
         }
         
-        gestureTarget.recognizeFor(collectionView, type: GestureTarget.GestureType.Swipe) { _,_ in }
+        gestureTarget.recognizeFor(collectionView, type: GestureTarget.GestureType.swipe) { _,_ in }
         
         self.keyboardCallbackWrapper.callback = keyboard
         
@@ -297,54 +297,54 @@ public class RAMReel
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     /// Call this method to update `RAMReel` visuals before showing it.
-    public func prepareForViewing() {
+    open func prepareForViewing() {
         updateVisuals()
         updatePlaceholder(self.placeholder)
     }
     
     /// If you use `RAMReel` to enter set of values from the list call this method before each input.
-    public func prepareForReuse() {
+    open func prepareForReuse() {
         self.textField.text = ""
         self.dataFlow.transport("")
     }
     
     // MARK: Constraints
-    private let views: [String: UIView]
+    fileprivate let views: [String: UIView]
     
     func addHConstraints() {
         // Horisontal constraints
-        let collectionHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[collectionView]|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
+        let collectionHConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: views)
         view.addConstraints(collectionHConstraints)
         
-        let textFieldHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(20)-[textField]-(20)-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
+        let textFieldHConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(20)-[textField]-(20)-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: views)
         view.addConstraints(textFieldHConstraints)
     }
     
     func addVConstraints() {
         // Vertical constraints
-        let collectionVConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[collectionView]|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views)
+        let collectionVConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[collectionView]|", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views)
         view.addConstraints(collectionVConstraints)
         
-        if let bottomConstraint = collectionVConstraints.filter({ $0.firstAttribute == NSLayoutAttribute.Bottom }).first {
+        if let bottomConstraint = collectionVConstraints.filter({ $0.firstAttribute == NSLayoutAttribute.bottom }).first {
             bottomConstraints.append(bottomConstraint)
         }
         
-        let textFieldVConstraints = [NSLayoutConstraint(item: textField, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: collectionView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)] + NSLayoutConstraint.constraintsWithVisualFormat("V:[textField(>=44)]", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views)
+        let textFieldVConstraints = [NSLayoutConstraint(item: textField, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: collectionView, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0)] + NSLayoutConstraint.constraints(withVisualFormat: "V:[textField(>=44)]", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views)
         view.addConstraints(textFieldVConstraints)
     }
     
-    func keyboard(notification: NSNotification) {
+    func keyboard(_ notification: Notification) {
         if
-            let userInfo = notification.userInfo as! [String: AnyObject]?,
+            let userInfo = (notification as NSNotification).userInfo as! [String: AnyObject]?,
             
-            let endFrame   = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue,
+            let endFrame   = userInfo[UIKeyboardFrameEndUserInfoKey]?.cgRectValue,
             
-            let animDuration: NSTimeInterval = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue,
-            let animCurveRaw = userInfo[UIKeyboardAnimationCurveUserInfoKey]?.unsignedIntegerValue
+            let animDuration: TimeInterval = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue,
+            let animCurveRaw = userInfo[UIKeyboardAnimationCurveUserInfoKey]?.uintValue
         {
             let animCurve = UIViewAnimationOptions(rawValue: UInt(animCurveRaw))
                 
@@ -352,7 +352,7 @@ public class RAMReel
                 bottomConstraint.constant = self.view.frame.height - endFrame.origin.y                    
             }
             
-            UIView.animateWithDuration(animDuration,
+            UIView.animate(withDuration: animDuration,
                 delay: 0.0,
                 options: animCurve,
                 animations: {
@@ -368,26 +368,26 @@ public class RAMReel
 
 class NotificationCallbackWrapper: NSObject {
     
-    func callItBack(notification: NSNotification) {
+    func callItBack(_ notification: Notification) {
         callback?(notification)
     }
     
-    typealias NotificationToVoid = (NSNotification) -> ()
+    typealias NotificationToVoid = (Notification) -> ()
     var callback: NotificationToVoid?
     
     init(name: String, object: AnyObject? = nil) {
         super.init()
         
-        NSNotificationCenter.defaultCenter().addObserver(
+        NotificationCenter.default.addObserver(
             self,
             selector: #selector(NotificationCallbackWrapper.callItBack(_:)),
-            name: name,
+            name: NSNotification.Name(rawValue: name),
             object: object
         )
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
 }
@@ -400,7 +400,7 @@ final class GestureTarget: NSObject, UIGestureRecognizerDelegate {
         super.init()
     }
     
-    init(type: GestureType, view: UIView, hook: HookType) {
+    init(type: GestureType, view: UIView, hook: @escaping HookType) {
         super.init()
         
         recognizeFor(view, type: type, hook: hook)
@@ -409,26 +409,27 @@ final class GestureTarget: NSObject, UIGestureRecognizerDelegate {
     typealias HookType = (UIView, UIGestureRecognizer) -> ()
     
     enum GestureType {
-        case Tap
-        case LongPress
-        case Swipe
+        case tap
+        case longPress
+        case swipe
     }
     
     var hooks: [UIGestureRecognizer: (UIView, HookType)] = [:]
-    func recognizeFor(view: UIView, type: GestureType, hook: HookType) {
+    func recognizeFor(_ view: UIView, type: GestureType, hook: @escaping HookType) {
         let gestureRecognizer: UIGestureRecognizer
         switch type {
-        case .Tap:
+        case .tap:
             gestureRecognizer = UITapGestureRecognizer(target: self, action: GestureTarget.gestureSelector)
-        case .LongPress:
+        case .longPress:
             gestureRecognizer = UILongPressGestureRecognizer(target: self, action: GestureTarget.gestureSelector)
-        case .Swipe:
+        case .swipe:
             gestureRecognizer = UISwipeGestureRecognizer(target: self, action: GestureTarget.gestureSelector)
         }
         
         gestureRecognizer.delegate = self
         view.addGestureRecognizer(gestureRecognizer)
-        hooks[gestureRecognizer] = (view, hook)
+      let item: (UIView, HookType) = (view, hook)
+        hooks[gestureRecognizer] = item
     }
     
     deinit {
@@ -437,14 +438,14 @@ final class GestureTarget: NSObject, UIGestureRecognizerDelegate {
         }
     }
     
-    func gesture(gestureRecognizer: UIGestureRecognizer) {
+    func gesture(_ gestureRecognizer: UIGestureRecognizer) {
         if let (textField, hook) = hooks[gestureRecognizer] {
             hook(textField, gestureRecognizer)
         }
     }
     
     // Gesture recognizer delegate
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOfGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
     

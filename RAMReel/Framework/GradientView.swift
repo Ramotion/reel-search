@@ -20,9 +20,9 @@ class GradientView: UIView {
     }
     
     func updateGradient() {
-        let color = listBackgroundColor ?? UIColor.whiteColor()
-        let white = color.colorWithAlphaComponent(1.0).CGColor
-        let clear = color.colorWithAlphaComponent(0.0).CGColor
+        let color = listBackgroundColor ?? UIColor.white
+        let white = color.withAlphaComponent(1.0).cgColor
+        let clear = color.withAlphaComponent(0.0).cgColor
         gradientLayer.colors = [clear, white, clear]
     }
     
@@ -30,7 +30,7 @@ class GradientView: UIView {
         gradientLayer = CAGradientLayer()
         gradientLayer.frame  = self.bounds
         updateGradient()
-        self.layer.insertSublayer(gradientLayer, atIndex: 0)
+        self.layer.insertSublayer(gradientLayer, at: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -52,7 +52,7 @@ class GradientView: UIView {
         gradientLayer.setNeedsDisplay()
     }
     
-    override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         return false
     }
 

@@ -22,7 +22,7 @@ public protocol ConfigurableCell {
     
         - parameter data: Data to present in the cell
     */
-    func configureCell(data: DataType)
+    func configureCell(_ data: DataType)
     
     /// Visual appearance theme
     var theme: Theme { get set }
@@ -35,7 +35,7 @@ public protocol ConfigurableCell {
  
  Example configurable cell
 */
-public class RAMCell: UICollectionViewCell, ConfigurableCell {
+open class RAMCell: UICollectionViewCell, ConfigurableCell {
     
     /**
     Proxy call to superclass init.
@@ -62,7 +62,7 @@ public class RAMCell: UICollectionViewCell, ConfigurableCell {
     var textLabel: UILabel!
     
     /// Visual appearance theme
-    public var theme: Theme = RAMTheme.sharedTheme {
+    open var theme: Theme = RAMTheme.sharedTheme {
         didSet {
             if theme.font != oldValue.font || theme.textColor != oldValue.textColor {
                 updateFont()
@@ -73,24 +73,28 @@ public class RAMCell: UICollectionViewCell, ConfigurableCell {
     func updateFont() {
         let theme = self.theme
         textLabel.font = theme.font
-        textLabel.textColor = theme.textColor.colorWithAlphaComponent(0.3)
+        textLabel.textColor = theme.textColor.withAlphaComponent(0.3)
     }
     
-    private func setup() {
+    fileprivate func setup() {
         let labelFrame = self.contentView.bounds
         textLabel = UILabel(frame: labelFrame)
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.contentView.addSubview(textLabel)
-        
-        let views = ["textLabel": textLabel]
-        
-        let textLabelHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(20)-[textLabel]-(20)-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views) 
-        self.addConstraints(textLabelHConstraints)
-        
-        let textLabelVConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[textLabel]|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views) 
-        self.addConstraints(textLabelVConstraints)
-        
+      
+      let attributes: [NSLayoutAttribute] = [.left, .right, .top, .bottom]
+      let constraints: [NSLayoutConstraint] = attributes.map {
+        let const: CGFloat = ($0 == .left || $0 == .right) ? -20 : 0
+        return NSLayoutConstraint(item: self,
+                                  attribute: $0,
+                                  relatedBy: .equal,
+                                  toItem: textLabel,
+                                  attribute: $0,
+                                  multiplier: 1,
+                                  constant: const)
+      }
+      addConstraints(constraints)
         updateFont()
     }
     
@@ -99,7 +103,7 @@ public class RAMCell: UICollectionViewCell, ConfigurableCell {
      
     - parameter string: String to show in the cell
     */
-    public func configureCell(string: String) {
+    open func configureCell(_ string: String) {
         
         self.textLabel.text = string
     

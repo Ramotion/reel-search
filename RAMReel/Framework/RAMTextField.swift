@@ -16,30 +16,32 @@ import UIKit
  
  Textfield with a line in the bottom
  */
-public class RAMTextField: UITextField {
+open class RAMTextField: UITextField {
     
     /**
      Overriding UIView's drawRect method to add line in the bottom of the Text Field
      
      - parameter rect: Rect that should be updated. This override ignores this parameter and redraws all text field
      */
-    override public func drawRect(rect: CGRect) {
+    override open func draw(_ rect: CGRect) {
         let rect = self.bounds
         let ctx = UIGraphicsGetCurrentContext()
         
-        let lineColor = self.tintColor.colorWithAlphaComponent(0.3)
+        let lineColor = self.tintColor.withAlphaComponent(0.3)
         lineColor.set()
         
-        CGContextSetLineWidth(ctx, 1)
+        ctx?.setLineWidth(1)
         
-        let path = CGPathCreateMutable()
+        let path = CGMutablePath()
         
-        var m = CGAffineTransformIdentity
-        CGPathMoveToPoint(path, &m, 0, rect.height)
-        CGPathAddLineToPoint(path, &m, rect.width, rect.height)
-        
-        CGContextAddPath(ctx, path)
-        CGContextStrokePath(ctx)
+//        var m = CGAffineTransform.identity
+//        CGPathMoveToPoint(path, &m, 0, rect.height)
+      path.move(to: CGPoint(x: 0, y: rect.height))
+      path.addLine(to: CGPoint(x: rect.width, y: rect.height))
+//        CGPathAddLineToPoint(path, &m, rect.width, rect.height)
+      
+        ctx?.addPath(path)
+        ctx?.strokePath()
     }
     
 }
@@ -51,7 +53,7 @@ extension UITextField {
     /**
      Overriding `UITextField` `tintColor` property to make it affect close image tint color.
      */
-    public override var tintColor: UIColor! {
+    open override var tintColor: UIColor! {
         get {
             return super.tintColor
         }
@@ -65,10 +67,10 @@ extension UITextField {
                     break
                 }
                 
-                let states: [UIControlState] = [.Normal, .Highlighted]
+                let states: [UIControlState] = [.highlighted]
                 states.forEach { state -> Void in
-                    let image = button.imageForState(state)?.tintedImage(self.tintColor)
-                    button.setImage(image, forState: state)
+                    let image = button.image(for: state)?.tintedImage(self.tintColor)
+                    button.setImage(image, for: state)
                 }
             }
         }
@@ -85,23 +87,23 @@ extension UIImage {
      
      - parameter color: New image tint color.
      */
-    public func tintedImage(color: UIColor) -> UIImage {
+    public func tintedImage(_ color: UIColor) -> UIImage {
         let size = self.size
         
         UIGraphicsBeginImageContextWithOptions(size, false, self.scale)
         let context = UIGraphicsGetCurrentContext()
-        self.drawAtPoint(CGPointZero, blendMode: CGBlendMode.Normal, alpha: 1.0)
+        self.draw(at: CGPoint.zero, blendMode: CGBlendMode.normal, alpha: 1.0)
         
-        CGContextSetFillColorWithColor(context, color.CGColor)
-        CGContextSetBlendMode(context, CGBlendMode.SourceIn)
-        CGContextSetAlpha(context, 1.0)
+        context?.setFillColor(color.cgColor)
+        context?.setBlendMode(CGBlendMode.sourceIn)
+        context?.setAlpha(1.0)
         
-        let rect = CGRectMake(
-            CGPointZero.x,
-            CGPointZero.y,
-            size.width,
-            size.height)
-        CGContextFillRect(UIGraphicsGetCurrentContext(), rect)
+        let rect = CGRect(
+            x: CGPoint.zero.x,
+            y: CGPoint.zero.y,
+            width: size.width,
+            height: size.height)
+        UIGraphicsGetCurrentContext()?.fill(rect)
         let tintedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         

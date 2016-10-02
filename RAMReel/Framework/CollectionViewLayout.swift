@@ -14,8 +14,8 @@ import UIKit
 @objc(RAMCollectionViewLayout)
 class RAMCollectionViewLayout: UICollectionViewLayout {
     
-    internal override func prepareLayout() {
-        super.prepareLayout()
+    internal override func prepare() {
+        super.prepare()
         
         updateInsets()
     }
@@ -27,35 +27,35 @@ class RAMCollectionViewLayout: UICollectionViewLayout {
         }
     }
     
-    internal override func initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        return self.layoutAttributesForItemAtIndexPath(itemIndexPath)
+    internal override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return self.layoutAttributesForItem(at: itemIndexPath)
     }
     
-    internal override func layoutAttributesForItemAtIndexPath(indexPath:NSIndexPath) -> UICollectionViewLayoutAttributes {
-        let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
+    internal override func layoutAttributesForItem(at indexPath:IndexPath) -> UICollectionViewLayoutAttributes {
+        let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         self.modifyLayoutAttributes(attributes)
         
         return attributes
     }
     
-    internal override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    internal override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
         var allAttributesInRect = [(UICollectionViewLayoutAttributes, CGFloat)]()
         
-        if let numberOfItems = collectionView?.numberOfItemsInSection(0) {
+        if let numberOfItems = collectionView?.numberOfItems(inSection: 0) {
             for item in 0 ..< numberOfItems {
-                let indexPath = NSIndexPath(forItem: item, inSection: 0)
+                let indexPath = IndexPath(item: item, section: 0)
                 
-                let attributes = self.layoutAttributesForItemAtIndexPath(indexPath)
+                let attributes = self.layoutAttributesForItem(at: indexPath)
                 
                 if rect.intersects(attributes.frame) {
-                    let intersection = CGRectIntersection(rect, attributes.frame)
+                    let intersection = rect.intersection(attributes.frame)
                     allAttributesInRect.append((attributes, intersection.area))
                 }
             }
         }
         
-        allAttributesInRect.sortInPlace {
+        allAttributesInRect.sort {
             let (_, a1) = $0
             let (_, a2) = $1
             
@@ -70,7 +70,7 @@ class RAMCollectionViewLayout: UICollectionViewLayout {
     }
     
     var itemHeight: CGFloat = 44
-    func modifyLayoutAttributes(layoutattributes: UICollectionViewLayoutAttributes) {
+    func modifyLayoutAttributes(_ layoutattributes: UICollectionViewLayoutAttributes) {
         
         if
             let collectionView = self.collectionView
@@ -79,19 +79,19 @@ class RAMCollectionViewLayout: UICollectionViewLayout {
             frame.size.height       = itemHeight
             frame.size.width        = collectionView.bounds.width
             frame.origin.x          = collectionView.bounds.origin.x
-            frame.origin.y          = itemHeight * CGFloat(layoutattributes.indexPath.item)
+            frame.origin.y          = itemHeight * CGFloat((layoutattributes.indexPath as NSIndexPath).item)
             layoutattributes.frame  = frame
         }
         
     }
     
-    internal override func collectionViewContentSize() -> CGSize {
+    internal override var collectionViewContentSize : CGSize {
         
         guard let collectionView = self.collectionView else {
             return CGSize.zero
         }
         
-        let number = collectionView.numberOfItemsInSection(0)
+        let number = collectionView.numberOfItems(inSection: 0)
         let height = CGFloat(number) * itemHeight
         
         let size = CGSize(width: collectionView.bounds.width, height: height)

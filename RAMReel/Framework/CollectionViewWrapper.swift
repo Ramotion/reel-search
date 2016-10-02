@@ -30,14 +30,14 @@ protocol WrapperProtocol : class {
      
      - returns: Fresh (or reused) cell.
      */
-    func createCell(collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionViewCell
+    func createCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell
     
     /**
      Attributes of cells in some rect.
      
      - parameter rect Area in which you want to probe for attributes.
     */
-    func cellAttributes(rect: CGRect) -> [UICollectionViewLayoutAttributes]
+    func cellAttributes(_ rect: CGRect) -> [UICollectionViewLayoutAttributes]
     
 }
 
@@ -47,14 +47,14 @@ protocol WrapperProtocol : class {
  
  Wraps collection view and set's collection view data source.
 */
-public class CollectionViewWrapper
+open class CollectionViewWrapper
     <
     DataType: Equatable,
-    CellClass: UICollectionViewCell
+    CellClass: UICollectionViewCell>: FlowDataDestination, WrapperProtocol
     where
     CellClass: ConfigurableCell,
     DataType == CellClass.DataType
->: FlowDataDestination, WrapperProtocol {
+ {
     
     var data: [DataType] = [] {
         didSet {
@@ -62,7 +62,7 @@ public class CollectionViewWrapper
                 return
             }
             
-            dispatch_async(dispatch_get_main_queue()) { [weak self] in
+            DispatchQueue.main.async { [weak self] in
                 guard let `self` = self else {
                     return
                 }
@@ -85,7 +85,7 @@ public class CollectionViewWrapper
      
      - parameter data: Data array to process.
     */
-    public func processData(data: [DataType]) {
+    open func processData(_ data: [DataType]) {
         self.data = data
     }
     
@@ -96,8 +96,8 @@ public class CollectionViewWrapper
     let collectionLayout = RAMCollectionViewLayout()
     let scrollDelegate: ScrollViewDelegate
     
-    let rotationWrapper = NotificationCallbackWrapper(name: UIDeviceOrientationDidChangeNotification, object: UIDevice.currentDevice())
-    let keyboardWrapper = NotificationCallbackWrapper(name: UIKeyboardDidChangeFrameNotification)
+    let rotationWrapper = NotificationCallbackWrapper(name: NSNotification.Name.UIDeviceOrientationDidChange.rawValue, object: UIDevice.current)
+    let keyboardWrapper = NotificationCallbackWrapper(name: NSNotification.Name.UIKeyboardDidChangeFrame.rawValue)
     
     var theme: Theme
     
@@ -114,7 +114,7 @@ public class CollectionViewWrapper
         
         self.scrollDelegate.itemIndexChangeCallback = indexCallback
         
-        collectionView.registerClass(CellClass.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(CellClass.self, forCellWithReuseIdentifier: cellId)
         
         dataSource.wrapper        = self
         collectionView.dataSource = dataSource
@@ -129,7 +129,7 @@ public class CollectionViewWrapper
                 return
             }
             
-            self.adjustScroll(notification)
+            self.adjustScroll(notification as Notification)
         }
         
         keyboardWrapper.callback = { [weak self] notification in
@@ -137,17 +137,17 @@ public class CollectionViewWrapper
                 return
             }
             
-            self.adjustScroll(notification)
+            self.adjustScroll(notification as Notification)
         }
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     var selectedItem: DataType?
-    func indexCallback(idx: Int?) {
-        guard let index = idx where 0 <= index && index < data.count else {
+    func indexCallback(_ idx: Int?) {
+        guard let index = idx , 0 <= index && index < data.count else {
             selectedItem = nil
             return
         }
@@ -157,17 +157,17 @@ public class CollectionViewWrapper
         
         // TODO: Update cell appearance maybe?
         // Toggle selected?
-        let indexPath = NSIndexPath(forItem: index, inSection: 0)
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        cell?.selected = true
+        let indexPath = IndexPath(item: index, section: 0)
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.isSelected = true
     }
     
     // MARK Implementation of WrapperProtocol
     
-    func createCell(collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! CellClass
+    func createCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CellClass
         
-        let row  = indexPath.row
+        let row  = (indexPath as NSIndexPath).row
         let dat  = self.data[row]
         
         cell.configureCell(dat)
@@ -180,9 +180,9 @@ public class CollectionViewWrapper
         return data.count
     }
     
-    func cellAttributes(rect: CGRect) -> [UICollectionViewLayoutAttributes] {
+    func cellAttributes(_ rect: CGRect) -> [UICollectionViewLayoutAttributes] {
         let layout = collectionView.collectionViewLayout
-        guard let attributes = layout.layoutAttributesForElementsInRect(rect) else {
+        guard let attributes = layout.layoutAttributesForElements(in: rect) else {
             return []
         }
         
@@ -191,12 +191,12 @@ public class CollectionViewWrapper
     
     // MARK: Update & Adjust
     
-    func updateOffset(notification: NSNotification? = nil) {
-        let durationNumber = notification?.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
+    func updateOffset(_ notification: Notification? = nil) {
+        let durationNumber = (notification as NSNotification?)?.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
         let duration = durationNumber?.doubleValue ?? 0.1
         
-        UIView.animateWithDuration(duration) {
-            let number    = self.collectionView.numberOfItemsInSection(0)
+        UIView.animate(withDuration: duration, animations: {
+            let number    = self.collectionView.numberOfItems(inSection: 0)
             let itemIndex = self.scrollDelegate.itemIndex ?? number/2
             
             guard itemIndex > 0 else {
@@ -208,11 +208,11 @@ public class CollectionViewWrapper
             let offset     = CGPoint(x: 0, y: CGFloat(itemIndex) * itemHeight - inset)
             
             self.collectionView.contentOffset = offset
-        }
+        }) 
     }
     
-    func adjustScroll(notification: NSNotification? = nil) {
-        collectionView.contentInset = UIEdgeInsetsZero
+    func adjustScroll(_ notification: Notification? = nil) {
+        collectionView.contentInset = UIEdgeInsets.zero
         collectionLayout.updateInsets()
         self.updateOffset(notification)
     }
@@ -223,13 +223,13 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     weak var wrapper: WrapperProtocol!
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let number = self.wrapper.numberOfCells
         
         return number
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.wrapper.createCell(collectionView, indexPath: indexPath)
         
         return cell
@@ -242,7 +242,7 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
     typealias ItemIndexChangeCallback = (Int?) -> ()
     
     var itemIndexChangeCallback: ItemIndexChangeCallback?
-    private(set) var itemIndex: Int? = nil {
+    fileprivate(set) var itemIndex: Int? = nil {
         willSet (newIndex) {
             if let callback = itemIndexChangeCallback {
                 callback(newIndex)
@@ -257,14 +257,14 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
         super.init()
     }
     
-    func adjustScroll(scrollView: UIScrollView) {
+    func adjustScroll(_ scrollView: UIScrollView) {
         let inset           = scrollView.contentInset.top
         let currentOffsetY  = scrollView.contentOffset.y + inset
         let floatIndex      = currentOffsetY/itemHeight
         
         let scrollDirection = ScrollDirection.scrolledWhere(scrollFrom, scrollTo)
         let itemIndex: Int
-        if scrollDirection == .Up {
+        if scrollDirection == .up {
             itemIndex = Int(floor(floatIndex))
         }
         else {
@@ -284,9 +284,9 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
         
         // If difference is larger than allowed, then adjust position animated
         if Δ > ε {            
-            UIView.animateWithDuration(0.25,
+            UIView.animate(withDuration: 0.25,
                 delay: 0.0,
-                options: UIViewAnimationOptions.CurveEaseOut,
+                options: UIViewAnimationOptions.curveEaseOut,
                 animations: {
                     let newOffset = CGPoint(x: 0, y: adjestedOffsetY)
                     scrollView.contentOffset = newOffset
@@ -300,36 +300,36 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
     
     enum ScrollDirection {
         
-        case Up
-        case Down
-        case NoScroll
+        case up
+        case down
+        case noScroll
         
-        static func scrolledWhere(from: CGFloat, _ to: CGFloat) -> ScrollDirection {
+        static func scrolledWhere(_ from: CGFloat, _ to: CGFloat) -> ScrollDirection {
             
             if from < to {
-                return .Down
+                return .down
             }
             else if from > to {
-                return .Up
+                return .up
             }
             else {
-                return .NoScroll
+                return .noScroll
             }
             
         }
         
     }
     
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         scrollFrom = scrollView.contentOffset.y
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         scrollTo = scrollView.contentOffset.y
         adjustScroll(scrollView)
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             scrollTo = scrollView.contentOffset.y
             adjustScroll(scrollView)

@@ -23,10 +23,10 @@ infix operator *> { precedence 180 }
 public func *>
     <
     DS: FlowDataSource,
-    DD: FlowDataDestination
-    where DS.ResultType == DD.DataType
-    >
+    DD: FlowDataDestination>
     (left: DS, right: DD) -> DataFlow<DS, DD>
+    where DS.ResultType == DD.DataType
+    
 {
     return DataFlow(from: left, to: right)
 }
@@ -42,20 +42,20 @@ public func *>
 public struct DataFlow
     <
     DS: FlowDataSource,
-    DD: FlowDataDestination
+    DD: FlowDataDestination>
     where DS.ResultType == DD.DataType
-    >
+    
 {
     let from: DS
     let   to: DD
     
-    private init(from: DS, to: DD) {
+    fileprivate init(from: DS, to: DD) {
         self.from = from
         self.to   = to
     }
     
-    func transport(query: DS.QueryType) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+    func transport(_ query: DS.QueryType) {
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
             let results = self.from.resultsForQuery(query)
             self.to.processData(results)
         }
@@ -77,7 +77,7 @@ public protocol FlowDataSource {
         
         - returns: Array of results
     */
-    func resultsForQuery(query: QueryType) -> [ResultType]
+    func resultsForQuery(_ query: QueryType) -> [ResultType]
     
 }
 
@@ -93,7 +93,7 @@ public protocol FlowDataDestination {
     
         - parameter data: Array to process
     */
-    func processData(data: [DataType])
+    func processData(_ data: [DataType])
     
 }
 
@@ -111,7 +111,7 @@ public struct SimplePrefixQueryDataSource: FlowDataSource {
     }
     
     /// Returns all the strings that starts with query string
-    public func resultsForQuery(query: String) -> [String] {
+    public func resultsForQuery(_ query: String) -> [String] {
         return data.filter{ $0.hasPrefix(query) }
     }
     

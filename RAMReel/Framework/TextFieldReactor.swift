@@ -25,12 +25,12 @@ infix operator <&> { precedence 175 }
 public func <&>
     <
     DS: FlowDataSource,
-    DD: FlowDataDestination
+    DD: FlowDataDestination>
+    (left: UITextField, right: DataFlow<DS, DD>) -> TextFieldReactor<DS, DD>
     where
     DS.ResultType == DD.DataType,
     DS.QueryType  == String
-    >
-    (left: UITextField, right: DataFlow<DS, DD>) -> TextFieldReactor<DS, DD>
+    
 {
     return TextFieldReactor(textField: left, dataFlow: right)
 }
@@ -46,22 +46,22 @@ public func <&>
 public struct TextFieldReactor
     <
     DS: FlowDataSource,
-    DD: FlowDataDestination
+    DD: FlowDataDestination>
     where
     DS.ResultType == DD.DataType,
     DS.QueryType  == String
-    >
+    
 {
     let textField : UITextField
     let dataFlow  : DataFlow<DS, DD>
     
-    private let editingTarget: TextFieldTarget
+    fileprivate let editingTarget: TextFieldTarget
     
-    private init(textField: UITextField, dataFlow: DataFlow<DS, DD>) {
+    fileprivate init(textField: UITextField, dataFlow: DataFlow<DS, DD>) {
         self.textField = textField
         self.dataFlow  = dataFlow
         
-        self.editingTarget = TextFieldTarget(controlEvents: UIControlEvents.EditingChanged, textField: textField) {
+        self.editingTarget = TextFieldTarget(controlEvents: UIControlEvents.editingChanged, textField: textField) {
             if let text = $0.text {
                 dataFlow.transport(text)
             }
@@ -80,25 +80,25 @@ final class TextFieldTarget: NSObject {
         super.init()
     }
     
-    init(controlEvents:UIControlEvents, textField: UITextField, hook: HookType) {
+    init(controlEvents:UIControlEvents, textField: UITextField, hook: @escaping HookType) {
         super.init()
         
         self.beTargetFor(textField, controlEvents: controlEvents, hook: hook)
     }
     
     var hooks: [UITextField: HookType] = [:]
-    func beTargetFor(textField: UITextField, controlEvents:UIControlEvents, hook: HookType) {
-        textField.addTarget(self, action: TextFieldTarget.actionSelector, forControlEvents: controlEvents)
+    func beTargetFor(_ textField: UITextField, controlEvents:UIControlEvents, hook: @escaping HookType) {
+        textField.addTarget(self, action: TextFieldTarget.actionSelector, for: controlEvents)
         hooks[textField] = hook
     }
     
     deinit {
         for (textField, _) in hooks {
-            textField.removeTarget(self, action: TextFieldTarget.actionSelector, forControlEvents: UIControlEvents.AllEvents)
+            textField.removeTarget(self, action: TextFieldTarget.actionSelector, for: UIControlEvents.allEvents)
         }
     }
     
-    func action(textField: UITextField) {
+    func action(_ textField: UITextField) {
         let hook = hooks[textField]
         hook?(textField)
     }
