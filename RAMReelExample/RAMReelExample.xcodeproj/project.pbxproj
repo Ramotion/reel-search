@@ -214,6 +214,7 @@
 				TargetAttributes = {
 					9E82B3B01AD7F35F0063F1B0 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = 34MUF9YXTA;
 						LastSwiftMigration = 0800;
 					};
 					9E82B3C51AD7F35F0063F1B0 = {
@@ -426,6 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 34MUF9YXTA;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/mikhail.s/Projects/RAMReel/build/Debug-iphoneos",
@@ -444,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 34MUF9YXTA;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/mikhail.s/Projects/RAMReel/build/Debug-iphoneos",

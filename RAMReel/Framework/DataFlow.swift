@@ -9,11 +9,11 @@
 import UIKit
 
 // MARK: - Data flow operators
-precedencegroup ComparisonPrecedence {
-  higherThan: LogicalConjunctionPrecedence
+precedencegroup MSPrecedence {
+  higherThan: RPrecedence
 }
 
-infix operator *> : ComparisonPrecedence
+infix operator *> : MSPrecedence
 
 /**
     Creates data flow from compatatible data source to data destination
