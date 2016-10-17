@@ -13,7 +13,7 @@
     <a title="RAMReel  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">RAMReel Docs</a> (96% documented)</p>
+        <p><a href="index.html">RAMReel Docs</a> (93% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -27,19 +27,10 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Classes.html">Classes</a>
+            <a href="Constructors.html">Constructors</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Classes/CollectionViewWrapper.html">CollectionViewWrapper</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/RAMCell.html">RAMCell</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/RAMReel.html">RAMReel</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/RAMTextField.html">RAMTextField</a>
+                <a href="Constructors.html#/s:FF7RAMReelU_FT_T_cERR">init(frame:dataSource:placeholder:hook:)</a>
               </li>
             </ul>
           </li>
@@ -52,19 +43,16 @@
               <li class="nav-group-task">
                 <a href="Extensions/UIImage.html">UIImage</a>
               </li>
-              <li class="nav-group-task">
-                <a href="Extensions/UITextField.html">UITextField</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Functions/*&gt;(_:_:).html">*&gt;(_:_:)</a>
+                <a href="Functions.html#/*&gt;(_:_:)">*&gt;(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions/&lt;&amp;&gt;(_:_:).html">&lt;&amp;&gt;(_:_:)</a>
+                <a href="Functions.html#/&lt;&amp;&gt;(_:_:)">&lt;&amp;&gt;(_:_:)</a>
               </li>
             </ul>
           </li>
@@ -95,7 +83,7 @@
             <a href="Structs.html">Structs</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Structs.html#/s:V7RAMReel8DataFlow">DataFlow</a>
+                <a href="Structs.html#/DataFlow">DataFlow</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/RAMTheme.html">RAMTheme</a>
@@ -108,33 +96,52 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:F7RAMReelU_FT_T_L_8HookType">HookType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Generic Type Parameters.html">Generic Type Parameters</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Generic Type Parameters.html#/s:tZF7RAMReeloi3lagu0_RxS_14FlowDataSource_S_19FlowDataDestinationrFTCSo11UITextFieldGVS_8DataFlowxq___GVS_16TextFieldReactorxq__L_2DSMx">DS</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
         <section>
           <section class="section">
             
-            <p><img src="https://raw.githubusercontent.com/Ramotion/reel-search/master/header.png" alt="header"></p>
+            <p><a href="https://business.ramotion.com?utm_source=gthb&amp;utm_medium=special&amp;utm_campaign=reel-search-logo"><img src="https://raw.githubusercontent.com/Ramotion/reel-search/master/header.png" alt="header"></a></p>
 <a href='#ramreel' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='ramreel'>RAMReel</h1>
 
 <p><a href="https://developer.apple.com/swift/"><img src="https://img.shields.io/badge/Swift-2.2-green.svg?style=flat" alt="Swift 2.2"></a>
 <a href="https://cocoapods.org/pods/RAMReel"><img src="https://img.shields.io/cocoapods/p/RAMReel.svg" alt="CocoaPods"></a>
-<a href="http://cocoapods.org/pods/RAMReel"><img src="https://img.shields.io/cocoapods/v/RAMReel.svg" alt="CocoaPods"></a></p>
-
-<p><a href="https://codebeat.co/projects/github-com-ramotion-reel-search"><img src="https://codebeat.co/badges/a591dc07-0f55-4321-929b-b33904c3dca8" alt="codebeat badge"></a>
+<a href="http://cocoapods.org/pods/RAMReel"><img src="https://img.shields.io/cocoapods/v/RAMReel.svg" alt="CocoaPods"></a>
+<a href="https://github.com/Ramotion/reel-search"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a>
+<a href="https://codebeat.co/projects/github-com-ramotion-reel-search"><img src="https://codebeat.co/badges/a591dc07-0f55-4321-929b-b33904c3dca8" alt="codebeat badge"></a>
 <a href="https://travis-ci.org/Ramotion/reel-search"><img src="https://img.shields.io/travis/Ramotion/reel-search.svg" alt="Travis"></a></p>
 
 <p><a href="http://twitter.com/Ramotion"><img src="https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat" alt="Twitter"></a></p>
+<a href='#about' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='about'>About</h2>
 
-<p>Controller that allows you to choose options from a list, like in our <a href="https://dribbble.com/shots/2516684-Doctor-On-Demand-iOS-App">shot on dribble</a>
-<img src="https://raw.githubusercontent.com/Ramotion/reel-search/master/reel-search.gif" alt="animated"></p>
+<p>This project is maintained by Ramotion, Inc.<br>
+We specialize in the designing and coding of custom UI for Mobile Apps and Websites.<br><br><strong>Looking for developers for your project?</strong> [<a href="http://business.ramotion.com?utm_source=gthb&amp;utm_medium=special&amp;utm_campaign=reel-search-contact-us/#Get_in_Touch">▶︎CONTACT OUR TEAM◀︎</a>]</p>
+
+<p><a href="https://dribbble.com/shots/2516684-Telemedicine-iOS-App-Swift-Open-Source"><img src="https://raw.githubusercontent.com/Ramotion/reel-search/master/reel-search.gif" alt="animated"></a></p>
 
 <p>The <a href="https://store.ramotion.com/product/iphone-6-mockups?utm_source=gthb&amp;utm_medium=special&amp;utm_campaign=reel-search">iPhone mockup</a> available <a href="https://store.ramotion.com/product/iphone-6-mockups?utm_source=gthb&amp;utm_medium=special&amp;utm_campaign=reel-search">here</a>.</p>
 <a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
 
 <ul>
 <li>iOS 8.0+</li>
-<li>Swift 2.2</li>
+<li>Swift 3.0</li>
 </ul>
 <a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
 
@@ -143,6 +150,11 @@
 <p>Just put this in your <code>Podfile</code>:</p>
 <pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'RAMReel'</span>
 </code></pre>
+
+<p>or <a href="https://github.com/Carthage/Carthage">Carthage</a> users can simply add Mantle to their <code>Cartfile</code>:
+<code>
+github &quot;Ramotion/reel-search&quot;
+</code></p>
 <a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='usage'>Usage</h2>
 
 <p>In order to use our control you need to implement the following:</p>
@@ -211,10 +223,7 @@
 <p><a href="https://rawgit.com/Ramotion/reel-search/master/docs/index.html"><img src="https://img.shields.io/cocoapods/metrics/doc-percent/RAMReel.svg" alt="CocoaPods"></a></p>
 
 <p>See more at <a href="https://rawgit.com/Ramotion/reel-search/master/docs/index.html">RAMReel docs</a></p>
-<a href='#about' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='about'>About</h2>
-
-<p>The project maintained by <a href="https://ramotion.com?utm_source=gthb&amp;utm_medium=special&amp;utm_campaign=reel-search">app development agency</a> <a href="https://ramotion.com?utm_source=gthb&amp;utm_medium=special&amp;utm_campaign=reel-search">Ramotion Inc.</a>
-See our other <a href="https://github.com/ramotion">open-source projects</a> or <a href="https://ramotion.com?utm_source=gthb&amp;utm_medium=special&amp;utm_campaign=reel-search">hire</a> us to design, develop, and grow your product.</p>
+<a href='#follow-us' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='follow-us'>Follow Us</h2>
 
 <p><a href="https://twitter.com/intent/tweet?text=https://github.com/ramotion/reel-search"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" alt="Twitter URL"></a>
 <a href="https://twitter.com/ramotion"><img src="https://img.shields.io/twitter/follow/ramotion.svg?style=social" alt="Twitter Follow"></a></p>
@@ -222,8 +231,8 @@ See our other <a href="https://github.com/ramotion">open-source projects</a> or 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.com/Ramotion/reel-search" target="_blank" rel="external">Mikhail Stepkin, Ramotion Inc.</a>. All rights reserved. (Last updated: 2016-05-30)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2016 <a class="link" href="https://github.com/Ramotion/reel-search" target="_blank" rel="external">Mikhail Stepkin, Ramotion Inc.</a>. All rights reserved. (Last updated: 2016-10-17)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
