@@ -12,7 +12,7 @@ import UIKit
   Example collection view layout
 */
 @objc(RAMCollectionViewLayout)
-class RAMCollectionViewLayout: UICollectionViewLayout {
+class RAMCollectionViewLayout: UICollectionViewFlowLayout {
     
     internal override func prepare() {
         super.prepare()
@@ -30,14 +30,14 @@ class RAMCollectionViewLayout: UICollectionViewLayout {
     internal override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return self.layoutAttributesForItem(at: itemIndexPath)
     }
-    
+
     internal override func layoutAttributesForItem(at indexPath:IndexPath) -> UICollectionViewLayoutAttributes {
         let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         self.modifyLayoutAttributes(attributes)
         
         return attributes
     }
-    
+
     internal override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
         var allAttributesInRect = [(UICollectionViewLayoutAttributes, CGFloat)]()
@@ -84,7 +84,7 @@ class RAMCollectionViewLayout: UICollectionViewLayout {
         }
         
     }
-    
+
     internal override var collectionViewContentSize : CGSize {
         
         guard let collectionView = self.collectionView else {

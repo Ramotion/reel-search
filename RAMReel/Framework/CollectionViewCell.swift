@@ -55,7 +55,6 @@ open class RAMCell: UICollectionViewCell, ConfigurableCell {
     */
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setup()
     }
     

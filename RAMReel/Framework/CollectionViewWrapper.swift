@@ -55,24 +55,16 @@ open class CollectionViewWrapper
     CellClass: ConfigurableCell,
     DataType == CellClass.DataType
  {
+    private var lock : NSLock = NSLock()
     
     var data: [DataType] = [] {
+        
         didSet {
-            guard data != oldValue else {
-                return
-            }
+            self.scrollDelegate.itemIndex = nil
             
-            DispatchQueue.main.async { [weak self] in
-                guard let `self` = self else {
-                    return
-                }
-                
-                self.scrollDelegate.itemIndex = nil
-                
-                self.collectionView.reloadData()
-                self.updateOffset()
-                self.scrollDelegate.adjustScroll(self.collectionView)
-            }
+            self.collectionView.reloadData()
+            self.updateOffset()
+            self.scrollDelegate.adjustScroll(self.collectionView)
         }
     }
     
@@ -118,8 +110,8 @@ open class CollectionViewWrapper
         
         dataSource.wrapper        = self
         collectionView.dataSource = dataSource
-        collectionView.collectionViewLayout = collectionLayout
-        collectionView.bounces    = false
+         collectionView.collectionViewLayout = collectionLayout
+         collectionView.bounces    = false
         
         let scrollView = collectionView as UIScrollView
         scrollView.delegate = scrollDelegate
