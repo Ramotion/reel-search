@@ -80,14 +80,14 @@ extension UITextField {
 
 // MARK: - UIImage extensions
 
-extension UIImage {
+private extension UIImage {
     
     /**
      Create new image by applying a tint.
      
      - parameter color: New image tint color.
      */
-    public func tintedImage(_ color: UIColor) -> UIImage {
+    func tintedImage(_ color: UIColor) -> UIImage {
         let size = self.size
         
         UIGraphicsBeginImageContextWithOptions(size, false, self.scale)

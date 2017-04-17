@@ -97,6 +97,7 @@ open class RAMReel
     let reactor: TextFieldReactor<DataSource, CollectionWrapperClass>
     let textField: TextFieldClass
     let returnTarget: TextFieldTarget
+    private var untouchedTarget : TextFieldTarget? = nil
     let gestureTarget: GestureTarget
     let dataFlow: DataFlow<DataSource, CollectionViewWrapper<CellClass.DataType, CellClass>>
     
@@ -289,6 +290,10 @@ open class RAMReel
         
         gestureTarget.recognizeFor(collectionView, type: GestureTarget.GestureType.swipe) { _,_ in }
         
+        weak var s = self
+        
+        self.untouchedTarget = TextFieldTarget(controlEvents: UIControlEvents.editingChanged, textField: self.textField, hook: {_ in s?.placeholder = "";})
+        
         self.keyboardCallbackWrapper.callback = keyboard
         
         updateVisuals()
@@ -306,7 +311,7 @@ open class RAMReel
         updatePlaceholder(self.placeholder)
     }
     
-    /// If you use `RAMReel` to enter set of values from the list call this method before each input.
+    /// If you use `RAMReel` to enter a set of values from the list call this method before each input.
     open func prepareForReuse() {
         self.textField.text = ""
         self.dataFlow.transport("")
