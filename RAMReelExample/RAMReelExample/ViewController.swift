@@ -14,6 +14,12 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     
     var dataSource: SimplePrefixQueryDataSource!
     var ramReel: RAMReel<RAMCell, RAMTextField, SimplePrefixQueryDataSource>!
+    fileprivate var data: [String] = ["Abc"] {
+        didSet {
+            dataSource = SimplePrefixQueryDataSource(data)
+            ramReel.updateWithNew(dataSource)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,20 +42,17 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         
         self.view.addSubview(ramReel.view)
         ramReel.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        ramReel.addToTextFieldTarget(self, action: #selector(textFieldDidChange), for: .editingDidEnd)
     }
+}
+
+// MARK: - Text Field Editing Event
+extension ViewController {
     
-    fileprivate let data: [String] = {
-        do {
-            guard let dataPath = Bundle.main.path(forResource: "data", ofType: "txt") else {
-                return []
-            }
-            
-            let data = try WordReader(filepath: dataPath)
-            return data.words
+    func textFieldDidChange(textField: UITextField) {
+        if textField.text! != "" {
+            self.data.append(textField.text!)
         }
-        catch let error {
-            print(error)
-            return []
-        }
-    }()
+    }
 }

@@ -94,12 +94,12 @@ open class RAMReel
     let gradientView: GradientView
     
     // MARK: TextField
-    let reactor: TextFieldReactor<DataSource, CollectionWrapperClass>
+    var reactor: TextFieldReactor<DataSource, CollectionWrapperClass>
     let textField: TextFieldClass
     let returnTarget: TextFieldTarget
     private var untouchedTarget : TextFieldTarget? = nil
     let gestureTarget: GestureTarget
-    let dataFlow: DataFlow<DataSource, CollectionViewWrapper<CellClass.DataType, CellClass>>
+    var dataFlow: DataFlow<DataSource, CollectionViewWrapper<CellClass.DataType, CellClass>>
     
     /// Delegate of text field, is used for extra control over text field.
     open var textFieldDelegate: UITextFieldDelegate? {
@@ -120,7 +120,7 @@ open class RAMReel
     
     // MARK: Data Source
     /// Data source of RAMReel
-    open let dataSource: DataSource
+    open var dataSource: DataSource
     
     // MARK: Selected Item
     /**
@@ -367,6 +367,17 @@ open class RAMReel
         }
     }
     
+    // MARK: - Update
+    open func updateWithNew(_ dataSource: DataSource) {
+        self.dataSource = dataSource
+        dataFlow = dataSource *> wrapper
+        reactor = textField <&> dataFlow
+    }
+    
+    open func addToTextFieldTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents) {
+        self.textField.addTarget(target, action: action, for: controlEvents)
+    }
+
 }
 
 // MARK: - Helpers
