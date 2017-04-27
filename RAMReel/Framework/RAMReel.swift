@@ -210,6 +210,7 @@ open class RAMReel
     
     var bottomConstraints: [NSLayoutConstraint] = []
     let keyboardCallbackWrapper: NotificationCallbackWrapper
+    let attemptToDodgeKeyboard : Bool
     
     // MARK: Initialization
     /**
@@ -220,12 +221,16 @@ open class RAMReel
         - dataSource: Object of type that implements FlowDataSource protocol
         - placeholder: Optional text field placeholder
         - hook: Optional initial value change hook
+        - attemptToDodgeKeyboard: attempt to center the widget on the available screen area when the iOS
+              keyboard appears (will cause issues if the widget isn't being used in full screen)
     */
-    public init(frame: CGRect, dataSource: DataSource, placeholder: String = "", hook: HookType? = nil) {
+    public init(frame: CGRect, dataSource: DataSource, placeholder: String = "", attemptToDodgeKeyboard: Bool, hook: HookType? = nil) {
         self.view = UIView(frame: frame)
         self.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.translatesAutoresizingMaskIntoConstraints = true
         self.dataSource = dataSource
+        
+        self.attemptToDodgeKeyboard = attemptToDodgeKeyboard
         
         if let h = hook {
             self.hooks.append(h)
@@ -351,6 +356,7 @@ open class RAMReel
             let animDuration: TimeInterval = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue,
             let animCurveRaw = userInfo[UIKeyboardAnimationCurveUserInfoKey]?.uintValue
         {
+            if(attemptToDodgeKeyboard){
             let animCurve = UIViewAnimationOptions(rawValue: UInt(animCurveRaw))
                 
             for bottomConstraint in self.bottomConstraints {
@@ -364,6 +370,7 @@ open class RAMReel
                     self.gradientView.layer.frame.size.height = endFrame.origin.y
                     self.textField.layoutIfNeeded()
                 }, completion: nil)
+            }
         }
     }
     

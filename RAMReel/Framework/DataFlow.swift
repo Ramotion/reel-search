@@ -42,6 +42,14 @@ public func *>
  
  Represent queried data flow
 */
+struct Cookie {
+    
+}
+
+func eat(a : Cookie) -> () {
+    
+}
+
 public struct DataFlow
     <
     DS: FlowDataSource,
@@ -53,8 +61,15 @@ public struct DataFlow
     let   to: DD
     
     fileprivate init(from: DS, to: DD) {
+        
         self.from = from
         self.to   = to
+        
+        let c1 = Cookie()
+        
+        eat(a : c1)
+        eat(a : c1)
+        
     }
     
     func transport(_ query: DS.QueryType) {

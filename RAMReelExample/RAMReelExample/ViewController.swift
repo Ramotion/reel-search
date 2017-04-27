@@ -24,7 +24,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         
         dataSource = SimplePrefixQueryDataSource(data)
         
-        ramReel = RAMReel(frame: self.view.bounds, dataSource: dataSource, placeholder: "Start by typing…") {
+        ramReel = RAMReel(frame: self.view.frame, dataSource: dataSource, placeholder: "Start by typing…", attemptToDodgeKeyboard: true) {
                 print("Plain:", $0)
             }
         
