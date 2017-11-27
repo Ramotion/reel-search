@@ -80,7 +80,7 @@ public struct RAMTheme: Theme {
         {
             font = roboto
         } else if #available(iOS 8.2, *) {
-            font = UIFont.systemFont(ofSize: 36, weight: UIFontWeightThin)
+            font = UIFont.systemFont(ofSize: 36, weight: UIFont.Weight.thin)
         } else {
             font = UIFont.systemFont(ofSize: 36)
         }
@@ -148,7 +148,7 @@ final class FontLoader {
             return
         }
         
-        let bundle = Bundle(for: type(of: self) as AnyClass)
+        let bundle = Bundle(for: Swift.type(of: self) as AnyClass)
 
         if
             let fontPath = bundle.path(forResource: name, ofType: type),
@@ -156,7 +156,7 @@ final class FontLoader {
             let provider = CGDataProvider(data: inData as CFData)
         {
           let font = CGFont(provider)
-          CTFontManagerRegisterGraphicsFont(font, nil)
+          CTFontManagerRegisterGraphicsFont(font!, nil)
           FontLoader.loadedFonts[self.name] = self
             return
         } else {

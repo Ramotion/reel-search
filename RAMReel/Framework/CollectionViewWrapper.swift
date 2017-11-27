@@ -49,7 +49,7 @@ protocol WrapperProtocol : class {
 */
 open class CollectionViewWrapper
     <
-    DataType: Equatable,
+    DataType,
     CellClass: UICollectionViewCell>: FlowDataDestination, WrapperProtocol
     where
     CellClass: ConfigurableCell,

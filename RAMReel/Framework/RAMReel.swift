@@ -203,8 +203,8 @@ open class RAMReel
         let size = self.textField.textRect(forBounds: textField.bounds).height * themeFont.pointSize / themeFont.lineHeight * 0.8
         let font = (size > 0) ? (UIFont(name: themeFont.fontName, size: size) ?? themeFont) : themeFont
         self.textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
-            NSFontAttributeName: font,
-            NSForegroundColorAttributeName: self.theme.textColor.withAlphaComponent(0.5)
+            NSAttributedStringKey.font: font,
+            NSAttributedStringKey.foregroundColor: self.theme.textColor.withAlphaComponent(0.5)
             ])
     }
     
@@ -282,7 +282,7 @@ open class RAMReel
             }
         }
         
-        gestureTarget.recognizeFor(collectionView, type: GestureTarget.GestureType.tap) { [weak self] _ in
+        gestureTarget.recognizeFor(collectionView, type: GestureTarget.GestureType.tap) { [weak self] _, _ in
             if
                 let `self` = self,
                 let selectedItem = self.wrapper.selectedItem
@@ -380,7 +380,7 @@ open class RAMReel
 
 class NotificationCallbackWrapper: NSObject {
     
-    func callItBack(_ notification: Notification) {
+    @objc func callItBack(_ notification: Notification) {
         callback?(notification)
     }
     
@@ -450,7 +450,7 @@ final class GestureTarget: NSObject, UIGestureRecognizerDelegate {
         }
     }
     
-    func gesture(_ gestureRecognizer: UIGestureRecognizer) {
+    @objc func gesture(_ gestureRecognizer: UIGestureRecognizer) {
         if let (textField, hook) = hooks[gestureRecognizer] {
             hook(textField, gestureRecognizer)
         }

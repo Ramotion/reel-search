@@ -25,15 +25,10 @@ infix operator <&> : RPrecedence
  
  - returns: `TextFieldReactor` object
  */
-public func <&>
-    <
-    DS: FlowDataSource,
-    DD: FlowDataDestination>
-    (left: UITextField, right: DataFlow<DS, DD>) -> TextFieldReactor<DS, DD>
+public func <&> <FlowDataSource, FlowDataDestination>
+    (left: UITextField, right: DataFlow<FlowDataSource, FlowDataDestination>) -> TextFieldReactor<FlowDataSource, FlowDataDestination>
     where
-    DS.ResultType == DD.DataType,
-    DS.QueryType  == String
-    
+    FlowDataSource.ResultType == FlowDataDestination.DataType
 {
     return TextFieldReactor(textField: left, dataFlow: right)
 }
@@ -101,7 +96,7 @@ final class TextFieldTarget: NSObject {
         }
     }
     
-    func action(_ textField: UITextField) {
+    @objc func action(_ textField: UITextField) {
         let hook = hooks[textField]
         hook?(textField)
     }

@@ -23,14 +23,8 @@ infix operator *> : MSPrecedence
 
     - returns: `DataFlow` from source to destination.
 */
-public func *>
-    <
-    DS: FlowDataSource,
-    DD: FlowDataDestination>
-    (left: DS, right: DD) -> DataFlow<DS, DD>
-    where DS.ResultType == DD.DataType
-    
-{
+public func *> <FlowDataSource, FlowDataDestination> (left: FlowDataSource, right: FlowDataDestination) -> DataFlow<FlowDataSource, FlowDataDestination>
+    where FlowDataSource.ResultType == FlowDataDestination.DataType {
     return DataFlow(from: left, to: right)
 }
 
