@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RAMReel"
-  s.version      = "2.1.0"
+  s.version      = "3.0.0"
   s.summary      = "Live search control with reel of suggestions"
   s.screenshots  = "https://raw.githubusercontent.com/Ramotion/reel-search/master/reel-search.gif"
 
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.author       = { "Mikhail Stepkin, Ramotion Inc." => "mikhail.s@ramotion.com" }
   s.social_media_url = "https://twitter.com/Ramotion"
 
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "9.0"
 
   s.source       = { :git => "https://github.com/Ramotion/reel-search.git", :tag => "#{s.version}" }
 
