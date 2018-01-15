@@ -14,19 +14,11 @@
 		9E82B3BC1AD7F35F0063F1B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E82B3BA1AD7F35F0063F1B0 /* Main.storyboard */; };
 		9E82B3BE1AD7F35F0063F1B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E82B3BD1AD7F35F0063F1B0 /* Images.xcassets */; };
 		9E82B3C11AD7F35F0063F1B0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E82B3BF1AD7F35F0063F1B0 /* LaunchScreen.xib */; };
-		9E82B3CD1AD7F35F0063F1B0 /* RAMReelExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E82B3CC1AD7F35F0063F1B0 /* RAMReelExampleTests.swift */; };
 		9EB2F3E01AFA4D080038C14E /* RAMReel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE9DA591AEA670D00D878B9 /* RAMReel.framework */; };
 		9EB2F3E11AFA4D080038C14E /* RAMReel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE9DA591AEA670D00D878B9 /* RAMReel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9E82B3C71AD7F35F0063F1B0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9E82B3A91AD7F35F0063F1B0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9E82B3B01AD7F35F0063F1B0;
-			remoteInfo = RAMReelExample;
-		};
 		9EB2F3E21AFA4D080038C14E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9EE9DA531AEA670D00D878B9 /* RAMReel.xcodeproj */;
@@ -67,9 +59,6 @@
 		9E82B3BB1AD7F35F0063F1B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9E82B3BD1AD7F35F0063F1B0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9E82B3C01AD7F35F0063F1B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		9E82B3C61AD7F35F0063F1B0 /* RAMReelExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RAMReelExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9E82B3CB1AD7F35F0063F1B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9E82B3CC1AD7F35F0063F1B0 /* RAMReelExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMReelExampleTests.swift; sourceTree = "<group>"; };
 		9E82B3E11AD7FDD00063F1B0 /* RAMReel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RAMReel.framework; path = "../../build/Debug-iphoneos/RAMReel.framework"; sourceTree = "<group>"; };
 		9EE9DA531AEA670D00D878B9 /* RAMReel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RAMReel.xcodeproj; path = ../RAMReel.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,13 +72,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E82B3C31AD7F35F0063F1B0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -97,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				9E82B3B31AD7F35F0063F1B0 /* RAMReelExample */,
-				9E82B3C91AD7F35F0063F1B0 /* RAMReelExampleTests */,
 				9E82B3B21AD7F35F0063F1B0 /* Products */,
 				9EE9DA531AEA670D00D878B9 /* RAMReel.xcodeproj */,
 			);
@@ -107,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				9E82B3B11AD7F35F0063F1B0 /* RAMReelExample.app */,
-				9E82B3C61AD7F35F0063F1B0 /* RAMReelExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,23 +112,6 @@
 				98F412441C5F66BD0071AB8E /* data.txt */,
 				9E82B3E11AD7FDD00063F1B0 /* RAMReel.framework */,
 				9E82B3B51AD7F35F0063F1B0 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9E82B3C91AD7F35F0063F1B0 /* RAMReelExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				9E82B3CC1AD7F35F0063F1B0 /* RAMReelExampleTests.swift */,
-				9E82B3CA1AD7F35F0063F1B0 /* Supporting Files */,
-			);
-			path = RAMReelExampleTests;
-			sourceTree = "<group>";
-		};
-		9E82B3CA1AD7F35F0063F1B0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9E82B3CB1AD7F35F0063F1B0 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -183,24 +146,6 @@
 			productReference = 9E82B3B11AD7F35F0063F1B0 /* RAMReelExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9E82B3C51AD7F35F0063F1B0 /* RAMReelExampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9E82B3D31AD7F35F0063F1B0 /* Build configuration list for PBXNativeTarget "RAMReelExampleTests" */;
-			buildPhases = (
-				9E82B3C21AD7F35F0063F1B0 /* Sources */,
-				9E82B3C31AD7F35F0063F1B0 /* Frameworks */,
-				9E82B3C41AD7F35F0063F1B0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9E82B3C81AD7F35F0063F1B0 /* PBXTargetDependency */,
-			);
-			name = RAMReelExampleTests;
-			productName = RAMReelExampleTests;
-			productReference = 9E82B3C61AD7F35F0063F1B0 /* RAMReelExampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -216,11 +161,6 @@
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = 34MUF9YXTA;
 						LastSwiftMigration = 0900;
-					};
-					9E82B3C51AD7F35F0063F1B0 = {
-						CreatedOnToolsVersion = 6.3;
-						LastSwiftMigration = 0900;
-						TestTargetID = 9E82B3B01AD7F35F0063F1B0;
 					};
 				};
 			};
@@ -244,7 +184,6 @@
 			projectRoot = "";
 			targets = (
 				9E82B3B01AD7F35F0063F1B0 /* RAMReelExample */,
-				9E82B3C51AD7F35F0063F1B0 /* RAMReelExampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -271,13 +210,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E82B3C41AD7F35F0063F1B0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -291,22 +223,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E82B3C21AD7F35F0063F1B0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9E82B3CD1AD7F35F0063F1B0 /* RAMReelExampleTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9E82B3C81AD7F35F0063F1B0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9E82B3B01AD7F35F0063F1B0 /* RAMReelExample */;
-			targetProxy = 9E82B3C71AD7F35F0063F1B0 /* PBXContainerItemProxy */;
-		};
 		9EB2F3E31AFA4D080038C14E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RAMReel;
@@ -440,11 +359,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 34MUF9YXTA;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/mikhail.s/Projects/RAMReel/build/Debug-iphoneos",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/RAMReelExample-elrihllfdnflobbsyznwnrlhgice/Build/Products/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = RAMReelExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -460,11 +374,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 34MUF9YXTA;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/mikhail.s/Projects/RAMReel/build/Debug-iphoneos",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/RAMReelExample-elrihllfdnflobbsyznwnrlhgice/Build/Products/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = RAMReelExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -472,46 +381,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		9E82B3D41AD7F35F0063F1B0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = RAMReelExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ramotion.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RAMReelExample.app/RAMReelExample";
-			};
-			name = Debug;
-		};
-		9E82B3D51AD7F35F0063F1B0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = RAMReelExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ramotion.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RAMReelExample.app/RAMReelExample";
 			};
 			name = Release;
 		};
@@ -532,15 +401,6 @@
 			buildConfigurations = (
 				9E82B3D11AD7F35F0063F1B0 /* Debug */,
 				9E82B3D21AD7F35F0063F1B0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9E82B3D31AD7F35F0063F1B0 /* Build configuration list for PBXNativeTarget "RAMReelExampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9E82B3D41AD7F35F0063F1B0 /* Debug */,
-				9E82B3D51AD7F35F0063F1B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

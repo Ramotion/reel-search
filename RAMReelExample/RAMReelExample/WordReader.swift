@@ -29,7 +29,7 @@ public final class WordReader {
             throw AnError.fileIsEmpty(filepath)
         }
         
-        let words = contents.characters.split(separator: "\n")
+        let words = contents.split(separator: "\n")
         self.words = words.map(String.init)
     }
     

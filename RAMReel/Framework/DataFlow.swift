@@ -251,7 +251,7 @@ extension Trie {
             return
         }
         var currentNode = root
-        for character in word.lowercased().characters {
+        for character in word.lowercased() {
             if let childNode = currentNode.children[character] {
                 currentNode = childNode
             } else {
@@ -276,7 +276,7 @@ extension Trie {
             return false
         }
         var currentNode = root
-        for character in word.lowercased().characters {
+        for character in word.lowercased() {
             guard let childNode = currentNode.children[character] else {
                 return false
             }
@@ -295,7 +295,7 @@ extension Trie {
     /// search failed.
     private func findLastNodeOf(word: String) -> Node? {
         var currentNode = root
-        for character in word.lowercased().characters {
+        for character in word.lowercased() {
             guard let childNode = currentNode.children[character] else {
                 return nil
             }

@@ -17,27 +17,23 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         dataSource = SimplePrefixQueryDataSource(data)
         
-        ramReel = RAMReel(frame: self.view.frame, dataSource: dataSource, placeholder: "Start by typing…", attemptToDodgeKeyboard: true) {
-                print("Plain:", $0)
-            }
+        ramReel = RAMReel(frame: view.bounds, dataSource: dataSource, placeholder: "Start by typing…", attemptToDodgeKeyboard: true) {
+            print("Plain:", $0)
+        }
         
         ramReel.hooks.append {
-            let r = Array($0.characters.reversed())
+            let r = Array($0.reversed())
             let j = String(r)
             print("Reversed:", j)
         }
         
-        self.view.addSubview(ramReel.view)
+        view.addSubview(ramReel.view)
         ramReel.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
-    
+        
     fileprivate let data: [String] = {
         do {
             guard let dataPath = Bundle.main.path(forResource: "data", ofType: "txt") else {
