@@ -8,6 +8,7 @@
 [![codebeat badge](https://codebeat.co/badges/a591dc07-0f55-4321-929b-b33904c3dca8)](https://codebeat.co/projects/github-com-ramotion-reel-search)
 [![Travis](https://img.shields.io/travis/Ramotion/reel-search.svg)](https://travis-ci.org/Ramotion/reel-search)
 [![Twitter](https://img.shields.io/badge/Twitter-@Ramotion-blue.svg?style=flat)](http://twitter.com/Ramotion)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://paypal.me/Ramotion)
 
 ## About
 This project is maintained by Ramotion, Inc.<br>
