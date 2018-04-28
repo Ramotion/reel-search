@@ -1,5 +1,6 @@
 [![header](./header.png)](https://ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search-logo)
-[![animated](./reel-search.gif)](https://dribbble.com/shots/2516684-Telemedicine-iOS-App-Swift-Open-Source)
+<img src="https://github.com/Ramotion/reel-search/blob/master/reel-search.gif" width="600" height="450" />
+<br><br/>
 # RAMReel
 [![Swift 4.0](https://img.shields.io/badge/Swift-4.0-green.svg?style=flat)](https://developer.apple.com/swift/)
 [![CocoaPods](https://img.shields.io/cocoapods/p/RAMReel.svg)](https://cocoapods.org/pods/RAMReel)
