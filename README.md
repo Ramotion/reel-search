@@ -23,7 +23,7 @@ This project is maintained by Ramotion, Inc. We specialize in the designing and 
 
 
 
-The [iPhone mockup](https://store.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search) available [here](https://store.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search).
+The [iPhone mockup](https://store.ramotion.com/product/iphone-x-clay-mockups?utm_source=gthb&utm_medium=special&utm_campaign=reel-search) available [here](https://store.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=reel-search).
 
 ## Requirements
 
