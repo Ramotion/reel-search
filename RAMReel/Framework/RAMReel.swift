@@ -96,7 +96,7 @@ open class RAMReel
     // MARK: TextField
     let reactor: TextFieldReactor<DataSource, CollectionWrapperClass>
     let textField: TextFieldClass
-    let returnTarget: TextFieldTarget
+    weak var returnTarget: TextFieldTarget?
     private var untouchedTarget : TextFieldTarget? = nil
     let gestureTarget: GestureTarget
     let dataFlow: DataFlow<DataSource, CollectionViewWrapper<CellClass.DataType, CellClass>>
@@ -209,7 +209,7 @@ open class RAMReel
     }
     
     var bottomConstraints: [NSLayoutConstraint] = []
-    let keyboardCallbackWrapper: NotificationCallbackWrapper
+    weak var keyboardCallbackWrapper: NotificationCallbackWrapper?
     let attemptToDodgeKeyboard : Bool
     
     // MARK: Initialization
@@ -270,7 +270,7 @@ open class RAMReel
         gestureTarget = GestureTarget()
         
         let controlEvents = UIControlEvents.editingDidEndOnExit
-        returnTarget.beTargetFor(textField, controlEvents: controlEvents) { textField -> () in
+        returnTarget?.beTargetFor(textField, controlEvents: controlEvents) { textField -> () in
             if
                 let text = textField.text,
                 let item = DataSource.ResultType.parse(text)
@@ -299,7 +299,7 @@ open class RAMReel
         
         self.untouchedTarget = TextFieldTarget(controlEvents: UIControlEvents.editingChanged, textField: self.textField, hook: {_ in s?.placeholder = "";})
         
-        self.keyboardCallbackWrapper.callback = keyboard
+        self.keyboardCallbackWrapper?.callback = keyboard
         
         updateVisuals()
         addHConstraints()
