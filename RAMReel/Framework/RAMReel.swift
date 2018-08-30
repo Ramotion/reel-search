@@ -96,7 +96,7 @@ open class RAMReel
     // MARK: TextField
     let reactor: TextFieldReactor<DataSource, CollectionWrapperClass>
     let textField: TextFieldClass
-    weak var returnTarget: TextFieldTarget?
+    let returnTarget: TextFieldTarget
     private var untouchedTarget : TextFieldTarget? = nil
     let gestureTarget: GestureTarget
     let dataFlow: DataFlow<DataSource, CollectionViewWrapper<CellClass.DataType, CellClass>>
@@ -209,7 +209,7 @@ open class RAMReel
     }
     
     var bottomConstraints: [NSLayoutConstraint] = []
-    weak var keyboardCallbackWrapper: NotificationCallbackWrapper?
+    let keyboardCallbackWrapper: NotificationCallbackWrapper
     let attemptToDodgeKeyboard : Bool
     
     // MARK: Initialization
@@ -270,7 +270,8 @@ open class RAMReel
         gestureTarget = GestureTarget()
         
         let controlEvents = UIControlEvents.editingDidEndOnExit
-        returnTarget?.beTargetFor(textField, controlEvents: controlEvents) { textField -> () in
+        returnTarget.beTargetFor(textField, controlEvents: controlEvents) { [weak self] textField -> () in
+            guard let `self` = self else { return }
             if
                 let text = textField.text,
                 let item = DataSource.ResultType.parse(text)
@@ -299,7 +300,31 @@ open class RAMReel
         
         self.untouchedTarget = TextFieldTarget(controlEvents: UIControlEvents.editingChanged, textField: self.textField, hook: {_ in s?.placeholder = "";})
         
-        self.keyboardCallbackWrapper?.callback = keyboard
+        self.keyboardCallbackWrapper.callback = { [weak self] notification in
+            guard let `self` = self else { return }
+            
+            if let userInfo = (notification as NSNotification).userInfo as! [String: AnyObject]?,
+                let endFrame   = userInfo[UIKeyboardFrameEndUserInfoKey]?.cgRectValue,
+                let animDuration: TimeInterval = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue,
+                let animCurveRaw = userInfo[UIKeyboardAnimationCurveUserInfoKey]?.uintValue {
+                
+                if (attemptToDodgeKeyboard) {
+                    let animCurve = UIViewAnimationOptions(rawValue: UInt(animCurveRaw))
+                    
+                    for bottomConstraint in self.bottomConstraints {
+                        bottomConstraint.constant = self.view.frame.height - endFrame.origin.y
+                    }
+                    
+                    UIView.animate(withDuration: animDuration,
+                                   delay: 0.0,
+                                   options: animCurve,
+                                   animations: {
+                                    self.gradientView.layer.frame.size.height = endFrame.origin.y
+                                    self.textField.layoutIfNeeded()
+                    }, completion: nil)
+                }
+            }
+        }
         
         updateVisuals()
         addHConstraints()
@@ -346,34 +371,6 @@ open class RAMReel
         let textFieldVConstraints = [NSLayoutConstraint(item: textField, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: collectionView, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0)] + NSLayoutConstraint.constraints(withVisualFormat: "V:[textField(>=44)]", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views)
         view.addConstraints(textFieldVConstraints)
     }
-    
-    func keyboard(_ notification: Notification) {
-        if
-            let userInfo = (notification as NSNotification).userInfo as! [String: AnyObject]?,
-            
-            let endFrame   = userInfo[UIKeyboardFrameEndUserInfoKey]?.cgRectValue,
-            
-            let animDuration: TimeInterval = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue,
-            let animCurveRaw = userInfo[UIKeyboardAnimationCurveUserInfoKey]?.uintValue
-        {
-            if(attemptToDodgeKeyboard){
-            let animCurve = UIViewAnimationOptions(rawValue: UInt(animCurveRaw))
-                
-            for bottomConstraint in self.bottomConstraints {
-                bottomConstraint.constant = self.view.frame.height - endFrame.origin.y                    
-            }
-            
-            UIView.animate(withDuration: animDuration,
-                delay: 0.0,
-                options: animCurve,
-                animations: {
-                    self.gradientView.layer.frame.size.height = endFrame.origin.y
-                    self.textField.layoutIfNeeded()
-                }, completion: nil)
-            }
-        }
-    }
-    
 }
 
 // MARK: - Helpers
