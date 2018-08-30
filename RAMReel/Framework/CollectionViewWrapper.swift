@@ -103,8 +103,22 @@ open class CollectionViewWrapper
         self.theme = theme
         
         self.scrollDelegate = ScrollViewDelegate(itemHeight: collectionLayout.itemHeight)
-        
-        self.scrollDelegate.itemIndexChangeCallback = indexCallback
+        self.scrollDelegate.itemIndexChangeCallback = { [weak self] idx in
+          guard let `self` = self else { return }
+          guard let index = idx , 0 <= index && index < self.data.count else {
+            self.selectedItem = nil
+            return
+          }
+          
+          let item = self.data[index]
+          self.selectedItem = item
+          
+          // TODO: Update cell appearance maybe?
+          // Toggle selected?
+          let indexPath = IndexPath(item: index, section: 0)
+          let cell = collectionView.cellForItem(at: indexPath)
+          cell?.isSelected = true
+        }
         
         collectionView.register(CellClass.self, forCellWithReuseIdentifier: cellId)
         
@@ -138,24 +152,8 @@ open class CollectionViewWrapper
     }
     
     var selectedItem: DataType?
-    func indexCallback(_ idx: Int?) {
-        guard let index = idx , 0 <= index && index < data.count else {
-            selectedItem = nil
-            return
-        }
-        
-        let item = data[index]
-        selectedItem = item
-        
-        // TODO: Update cell appearance maybe?
-        // Toggle selected?
-        let indexPath = IndexPath(item: index, section: 0)
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.isSelected = true
-    }
-    
+
     // MARK Implementation of WrapperProtocol
-    
     func createCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CellClass
         
