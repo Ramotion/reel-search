@@ -67,7 +67,7 @@ extension UITextField {
                     break
                 }
                 
-                let states: [UIControlState] = [.highlighted]
+                let states: [UIControl.State] = [.highlighted]
                 states.forEach { state -> Void in
                     let image = button.image(for: state)?.tintedImage(self.tintColor)
                     button.setImage(image, for: state)

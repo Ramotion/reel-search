@@ -82,7 +82,7 @@ open class RAMCell: UICollectionViewCell, ConfigurableCell {
         
         self.contentView.addSubview(textLabel)
       
-      let attributes: [NSLayoutAttribute] = [.left, .right, .top, .bottom]
+      let attributes: [NSLayoutConstraint.Attribute] = [.left, .right, .top, .bottom]
       let constraints: [NSLayoutConstraint] = attributes.map {
         let const: CGFloat = ($0 == .left || $0 == .right) ? -20 : 0
         return NSLayoutConstraint(item: self,

@@ -88,8 +88,8 @@ open class CollectionViewWrapper
     let collectionLayout = RAMCollectionViewLayout()
     let scrollDelegate: ScrollViewDelegate
     
-    let rotationWrapper = NotificationCallbackWrapper(name: NSNotification.Name.UIDeviceOrientationDidChange.rawValue, object: UIDevice.current)
-    let keyboardWrapper = NotificationCallbackWrapper(name: NSNotification.Name.UIKeyboardDidChangeFrame.rawValue)
+    let rotationWrapper = NotificationCallbackWrapper(name: UIDevice.orientationDidChangeNotification.rawValue, object: UIDevice.current)
+    let keyboardWrapper = NotificationCallbackWrapper(name: UIResponder.keyboardDidChangeFrameNotification.rawValue)
     
     var theme: Theme
     
@@ -182,7 +182,7 @@ open class CollectionViewWrapper
     // MARK: Update & Adjust
     
     func updateOffset(_ notification: Notification? = nil) {
-        let durationNumber = (notification as NSNotification?)?.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
+        let durationNumber = (notification as NSNotification?)?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber
         let duration = durationNumber?.doubleValue ?? 0.1
         
         UIView.animate(withDuration: duration, animations: {
@@ -268,7 +268,7 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
         }
         
         // Difference between actual and designated position in pixels
-        let Δ = fabs(scrollView.contentOffset.y - adjestedOffsetY)
+        let Δ = abs(scrollView.contentOffset.y - adjestedOffsetY)
         // Allowed differenct between actual and designated position in pixels
         let ε:CGFloat = 0.5
         
@@ -276,7 +276,7 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
         if Δ > ε {            
             UIView.animate(withDuration: 0.25,
                 delay: 0.0,
-                options: UIViewAnimationOptions.curveEaseOut,
+                options: UIView.AnimationOptions.curveEaseOut,
                 animations: {
                     let newOffset = CGPoint(x: 0, y: adjestedOffsetY)
                     scrollView.contentOffset = newOffset

@@ -88,7 +88,7 @@ open class RAMReel
     DataSource.ResultType: Parsable
  {
     /// Container view
-    open let view: UIView
+    public let view: UIView
     
     /// Gradient View
     let gradientView: GradientView
@@ -116,11 +116,11 @@ open class RAMReel
     typealias CollectionWrapperClass = CollectionViewWrapper<DataSource.ResultType, CellClass>
     let wrapper: CollectionWrapperClass
     /// Collection view with data items.
-    open let collectionView: UICollectionView
+    public let collectionView: UICollectionView
     
     // MARK: Data Source
     /// Data source of RAMReel
-    open let dataSource: DataSource
+    public let dataSource: DataSource
     
     // MARK: Selected Item
     /**
@@ -178,7 +178,7 @@ open class RAMReel
         
         self.textField.autocapitalizationType = UITextAutocapitalizationType.none
         self.textField.autocorrectionType     = UITextAutocorrectionType.no
-        self.textField.clearButtonMode        = UITextFieldViewMode.whileEditing
+        self.textField.clearButtonMode        = UITextField.ViewMode.whileEditing
         
         self.updatePlaceholder(self.placeholder)
         
@@ -203,8 +203,8 @@ open class RAMReel
         let size = self.textField.textRect(forBounds: textField.bounds).height * themeFont.pointSize / themeFont.lineHeight * 0.8
         let font = (size > 0) ? (UIFont(name: themeFont.fontName, size: size) ?? themeFont) : themeFont
         self.textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
-            NSAttributedStringKey.font: font,
-            NSAttributedStringKey.foregroundColor: self.theme.textColor.withAlphaComponent(0.5)
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: self.theme.textColor.withAlphaComponent(0.5)
             ])
     }
     
@@ -264,12 +264,12 @@ open class RAMReel
             "textField": textField
         ]
         
-        self.keyboardCallbackWrapper = NotificationCallbackWrapper(name: NSNotification.Name.UIKeyboardWillChangeFrame.rawValue)
+        self.keyboardCallbackWrapper = NotificationCallbackWrapper(name: UIResponder.keyboardWillChangeFrameNotification.rawValue)
         
         returnTarget  = TextFieldTarget()
         gestureTarget = GestureTarget()
         
-        let controlEvents = UIControlEvents.editingDidEndOnExit
+        let controlEvents = UIControl.Event.editingDidEndOnExit
         returnTarget.beTargetFor(textField, controlEvents: controlEvents) { [weak self] textField -> () in
             guard let `self` = self else { return }
             if
@@ -298,18 +298,18 @@ open class RAMReel
         
         weak var s = self
         
-        self.untouchedTarget = TextFieldTarget(controlEvents: UIControlEvents.editingChanged, textField: self.textField, hook: {_ in s?.placeholder = "";})
+        self.untouchedTarget = TextFieldTarget(controlEvents: UIControl.Event.editingChanged, textField: self.textField, hook: {_ in s?.placeholder = "";})
         
         self.keyboardCallbackWrapper.callback = { [weak self] notification in
             guard let `self` = self else { return }
             
             if let userInfo = (notification as NSNotification).userInfo as! [String: AnyObject]?,
-                let endFrame   = userInfo[UIKeyboardFrameEndUserInfoKey]?.cgRectValue,
-                let animDuration: TimeInterval = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue,
-                let animCurveRaw = userInfo[UIKeyboardAnimationCurveUserInfoKey]?.uintValue {
+                let endFrame   = userInfo[UIResponder.keyboardFrameEndUserInfoKey]?.cgRectValue,
+                let animDuration: TimeInterval = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey]?.doubleValue,
+                let animCurveRaw = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey]?.uintValue {
                 
                 if (attemptToDodgeKeyboard) {
-                    let animCurve = UIViewAnimationOptions(rawValue: UInt(animCurveRaw))
+                    let animCurve = UIView.AnimationOptions(rawValue: UInt(animCurveRaw))
                     
                     for bottomConstraint in self.bottomConstraints {
                         bottomConstraint.constant = self.view.frame.height - endFrame.origin.y
@@ -352,23 +352,23 @@ open class RAMReel
     
     func addHConstraints() {
         // Horisontal constraints
-        let collectionHConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: views)
+        let collectionHConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: NSLayoutConstraint.FormatOptions.alignAllCenterX, metrics: nil, views: views)
         view.addConstraints(collectionHConstraints)
         
-        let textFieldHConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(20)-[textField]-(20)-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: views)
+        let textFieldHConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(20)-[textField]-(20)-|", options: NSLayoutConstraint.FormatOptions.alignAllCenterX, metrics: nil, views: views)
         view.addConstraints(textFieldHConstraints)
     }
     
     func addVConstraints() {
         // Vertical constraints
-        let collectionVConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[collectionView]|", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views)
+        let collectionVConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[collectionView]|", options: NSLayoutConstraint.FormatOptions.alignAllCenterY, metrics: nil, views: views)
         view.addConstraints(collectionVConstraints)
         
-        if let bottomConstraint = collectionVConstraints.filter({ $0.firstAttribute == NSLayoutAttribute.bottom }).first {
+        if let bottomConstraint = collectionVConstraints.filter({ $0.firstAttribute == NSLayoutConstraint.Attribute.bottom }).first {
             bottomConstraints.append(bottomConstraint)
         }
         
-        let textFieldVConstraints = [NSLayoutConstraint(item: textField, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: collectionView, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0)] + NSLayoutConstraint.constraints(withVisualFormat: "V:[textField(>=44)]", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views)
+        let textFieldVConstraints = [NSLayoutConstraint(item: textField, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: collectionView, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1.0, constant: 0.0)] + NSLayoutConstraint.constraints(withVisualFormat: "V:[textField(>=44)]", options: NSLayoutConstraint.FormatOptions.alignAllCenterY, metrics: nil, views: views)
         view.addConstraints(textFieldVConstraints)
     }
 }

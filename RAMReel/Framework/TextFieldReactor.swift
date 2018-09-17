@@ -59,7 +59,7 @@ public struct TextFieldReactor
         self.textField = textField
         self.dataFlow  = dataFlow
         
-        self.editingTarget = TextFieldTarget(controlEvents: UIControlEvents.editingChanged, textField: textField) {
+        self.editingTarget = TextFieldTarget(controlEvents: UIControl.Event.editingChanged, textField: textField) {
             if let text = $0.text {
                 dataFlow.transport(text)
             }
@@ -78,21 +78,21 @@ final class TextFieldTarget: NSObject {
         super.init()
     }
     
-    init(controlEvents:UIControlEvents, textField: UITextField, hook: @escaping HookType) {
+    init(controlEvents:UIControl.Event, textField: UITextField, hook: @escaping HookType) {
         super.init()
         
         self.beTargetFor(textField, controlEvents: controlEvents, hook: hook)
     }
     
     var hooks: [UITextField: HookType] = [:]
-    func beTargetFor(_ textField: UITextField, controlEvents:UIControlEvents, hook: @escaping HookType) {
+    func beTargetFor(_ textField: UITextField, controlEvents:UIControl.Event, hook: @escaping HookType) {
         textField.addTarget(self, action: TextFieldTarget.actionSelector, for: controlEvents)
         hooks[textField] = hook
     }
     
     deinit {
         for (textField, _) in hooks {
-            textField.removeTarget(self, action: TextFieldTarget.actionSelector, for: UIControlEvents.allEvents)
+            textField.removeTarget(self, action: TextFieldTarget.actionSelector, for: UIControl.Event.allEvents)
         }
     }
     
