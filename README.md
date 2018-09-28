@@ -143,4 +143,4 @@ Try this UI component and more like this in our iOS app. Contact us if intereste
 
 Follow us for the latest updates<br>
 <a href="https://goo.gl/rPFpid" >
-<img src="https://i.imgur.com/ziSqeSo.png/" width="156" height="28"></a>
+<img src="https://i.imgur.com/ziSqeSo.png/" width="154" height="28"></a>
