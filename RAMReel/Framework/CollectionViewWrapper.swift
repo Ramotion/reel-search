@@ -254,10 +254,13 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
         
         let scrollDirection = ScrollDirection.scrolledWhere(scrollFrom, scrollTo)
         let itemIndex: Int
-        if scrollDirection == .up {
+        
+        switch scrollDirection {
+        case .noScroll:
+            return
+        case .up:
             itemIndex = Int(floor(floatIndex))
-        }
-        else {
+        case .down:
             itemIndex = Int(ceil(floatIndex))
         }
         
