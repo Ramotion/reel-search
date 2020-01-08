@@ -257,18 +257,23 @@ class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
         
         switch scrollDirection {
         case .noScroll:
-            return
+            itemIndex = Int(floatIndex)
         case .up:
             itemIndex = Int(floor(floatIndex))
         case .down:
             itemIndex = Int(ceil(floatIndex))
         }
         
-        let adjestedOffsetY = CGFloat(itemIndex) * itemHeight - inset
-        
         if itemIndex >= 0 {
             self.itemIndex = itemIndex
         }
+        
+        // Perform no animation if no scroll is needed
+        if case .noScroll = scrollDirection {
+            return
+        }
+        
+        let adjestedOffsetY = CGFloat(itemIndex) * itemHeight - inset
         
         // Difference between actual and designated position in pixels
         let Δ = abs(scrollView.contentOffset.y - adjestedOffsetY)
